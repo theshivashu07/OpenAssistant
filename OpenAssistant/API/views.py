@@ -7,7 +7,7 @@ from .models import *
 
 
 def index(request):
-	return HttpResponse("Hey there, This is <b>Client</b>  ( from Home App ) !!!");
+	return HttpResponse("Hey there, This is <b>API</b>  ( from API App ) !!!"); 
 
 # def index(request): 
 #           pass
