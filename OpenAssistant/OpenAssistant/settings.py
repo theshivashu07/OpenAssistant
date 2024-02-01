@@ -27,9 +27,16 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+# ADD - these below lines are only for set another address+port for our website
+from django.core.management.commands.runserver import Command as runserver        # adding  
+runserver.default_port = '8080'        # <-- Your port                                                                      # adding  
+runserver.default_port = '1234'        # <-- Your port                                                                       # adding  
+# runserver.default_addr = '127.0.0.1'                                                                                               # adding  
+runserver.default_addr = 'localhost'                                                                                                  # adding  
+
+
 
 # Application definition
-
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -37,6 +44,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    'Admin',     # adding  
+    'Client',     # adding  
+    'Home',     # adding  
 ]
 
 MIDDLEWARE = [
@@ -105,19 +116,44 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
-
-USE_I18N = True
-
-USE_TZ = True
+# Dont use below line, because if we using this then automatically our time is now showing well, and save less 05:30 hours of actual timing...
+# TIME_ZONE = 'UTC'
+# USE_I18N = True
+# USE_TZ = True
+TIME_ZONE =  'Asia/Kolkata'     # adding  
+USE_I18N = True     # adding  
 
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
+# STATIC_URL = 'static/'     # hiding  
+STATIC_URL = '_static/'     # adding  
 
-STATIC_URL = 'static/'
+# Addituinal Adding, So that static files are accessable, 
+STATICFILES_DIRS = [          # adding  
+    BASE_DIR,"_static"          # adding  
+    # BASE_DIR/"_static"      # adding  
+]                                                    # adding  
+
+
+# Because of uploading media files, follow below!! 
+# MEDIA_ROOT =  os.path.join(BASE_DIR, '_uploads') 
+MEDIA_ROOT =  BASE_DIR / '_uploads'       # adding  
+MEDIA_URL = '/_uploads/'                               # adding  
+
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
-
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+
+# below things is for MESSAGE
+from django.contrib.messages import constants as messages        # adding  
+MESSAGE_TAGS = {                                                                                      # adding  
+    messages.ERROR : 'danger',                                                                    # adding  
+}                                                                                                                           # adding  
+
+
+
