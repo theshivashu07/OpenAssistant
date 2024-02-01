@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'Admin',     # adding  
     'Client',     # adding  
     'Home',     # adding  
+    'API',     # adding  
 ]
 
 MIDDLEWARE = [
