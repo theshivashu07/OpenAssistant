@@ -3,7 +3,10 @@ from django.http import HttpResponse
 # Create your views here.
 
 from .models import *
+from Home.models import *
 
+from API.views.user import *
+from user import *
 
 
 def index(request):
@@ -11,6 +14,10 @@ def index(request):
 
 # def index(request): 
 #           pass
+
+
+
+
 
 
 
