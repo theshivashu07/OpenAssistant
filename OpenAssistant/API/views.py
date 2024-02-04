@@ -16,6 +16,17 @@ def index(request):
 #           pass 
 
 
+def user(request):
+	pass
+
+def signup(request):
+	pass
+
+def login(request):
+	pass
+
+def logout(request):
+	pass
 
 
 

@@ -9,20 +9,19 @@ from django.contrib.auth.decorators import login_required as LoginRequired
 from Home.models import *
 
 
-
 class SignUp:
 	
 	# def validate(request, *args,**kwargs):
 	def validate(*args,**kwargs):
 
-                # if you entered atleast (email or mobilenumber) and password, then you able to signup !!!
+		# if you entered atleast (email or mobilenumber) and password, then you able to signup !!!
 		if ( kwargs.get('email',False) or kwargs.get('mobilenumber',False) ) and kwargs.get('password',False):
-                        return {
+			return {
 				'status' : 'fail',
 				'message' : "Email or Mobile Number and Password is must to entered !!!"
-                        }
+			}
 		# if passwords are empty or they not matched, so go back to your 'signup' page !!! 
-                if kwargs.password=='' or kwargs.password!=kwargs.passwordagain:
+		if kwargs.password=='' or kwargs.password!=kwargs.passwordagain:
 			return {
 				'status' : 'fail',
 				'message' : "Password are not matched each other !!!"
@@ -35,14 +34,15 @@ class SignUp:
 				'status' : 'fail',
 				'message' : "User already exists !!!"
 			}
-			
+		
+                # default returning content, if everything okay !!!
 		return{
 			'status' : 'pass',
 			'message' : "Good to go chief !!!"
 		}
         
 
-	def assign(*args,**kwargs):
+	def run(*args,**kwargs):
 
 		object = USER()
                 
@@ -54,27 +54,26 @@ class SignUp:
 			object.FullName = kwargs.lastname
 
 		if kwargs.firstname:
-                        object.FirstName = kwargs.firstname
-                if kwargs.lastname:
-                        object.LastName = kwargs.lastname
+			object.FirstName = kwargs.firstname
+		if kwargs.lastname:
+			object.LastName = kwargs.lastname
 
-                if kwargs.username:
-                        object.Username = kwargs.username
-                if kwargs.mobilenumber:
-                        object.MobileNumber = kwargs.mobilenumber
-                if kwargs.email:
-                        object.Email = kwargs.email
-                if kwargs.password:
-                        object.Password = kwargs.password
-                if kwargs.profile:
-                        object.Profile = kwargs.profile
+		if kwargs.username:
+			object.Username = kwargs.username
+		if kwargs.mobilenumber:
+			object.MobileNumber = kwargs.mobilenumber
+		if kwargs.email:
+			object.Email = kwargs.email
+		if kwargs.password:
+			object.Password = kwargs.password
+		if kwargs.profile:
+			object.Profile = kwargs.profile
                               
-                if kwargs.checked:
-                        object.isChecked = kwargs.checked
-                if kwargs.active:
-                        object.isActive = kwargs.active
-
-                object.save()
+		if kwargs.checked:
+			object.isChecked = kwargs.checked
+		
+		object.isActive = False
+		object.save()
 		return object
 
 
@@ -91,7 +90,6 @@ class LogIn:
 				'status' : 'fail',
 				'message' : "User not exists !!!"
 			}
-
 		user = user[0]  # because we got queryset, because of filter search
 		userauth = Authenticate(username=kwargs.username, password=kwargs.password)
                 # if you entered atleast (email or mobilenumber) and password, then you able to signup !!!
@@ -100,48 +98,48 @@ class LogIn:
 				'status' : 'fail',
 				'message' : "Invalid User, username and password not matched !!!"
                         }
-                
-                return {
-			'status' : 'pass',
-			'message' : "Invalid User, username and password not matched !!!"
-                }
+		# default returning content, if everything okay !!!
+		return {
+		        'status' : 'pass',
+			'message' : "Invalid User, username and password not matched !!!",
+			'object' : userauth,
+		}
 
-        def assign(*args,**kwargs):
+	def run(*args,**kwargs):
                 
-                object = USER()
-
-                if kwargs.firstname and kwargs.lastname:
-                        object.FullName = kwargs.firstname+' '+kwargs.lastname
-                elif kwargs.firstname:
-                        object.FullName = kwargs.firstname                    
-                elif kwargs.lastname:
-                        object.FullName = kwargs.lastname
-                              
-                if kwargs.firstname:
-                        object.FirstName = kwargs.firstname
-                if kwargs.lastname:
-                        object.LastName = kwargs.lastname
+                object.Username = None
+                object.Email = None
+                object.Password = None
 
                 if kwargs.username:
                         object.Username = kwargs.username
-                if kwargs.mobilenumber:
-                        object.MobileNumber = kwargs.mobilenumber
                 if kwargs.email:
                         object.Email = kwargs.email
                 if kwargs.password:
                         object.Password = kwargs.password
-                if kwargs.profile:
-                        object.Profile = kwargs.profile
                               
                 if kwargs.checked:
                         object.isChecked = kwargs.checked
-                if kwargs.active:
-                        object.isActive = kwargs.active
+                object.isActive = True
 
                 object.save()
                 return object
 
+
+
+class LogOut:
+	
+	def validate(*args,**kwargs):
                 
+		user = USER.objects.get(id=kwargs.id) 
+		if kwargs.user: 
+                        pass
+        
+        def run(*args,**kwargs):
+                pass
+
+
+
 
 class dummyUSER(USER):
 
