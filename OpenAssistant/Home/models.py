@@ -24,19 +24,20 @@ class USER(models.Model):
         JoiningDate = models.DateTimeField(auto_now_add=True);
         UpdationDate = models.DateTimeField(auto_now=True);           
         def __str__(self):
-                return f" user@{self.Username}  ( {self.FullName} ) ."; 
+                # 	user@theshivashu ( SHivam SHukla ).
+                return f" user@{self.Username}  ( {self.FullName} )."; 
 
 
 
-
+'''
 class Checked(models.Model):
-        user = models.ForeignKey(USER, on_delete=models.SET_NULL, null=True, blank=True);
-        status = models.BooleanField(default=False, null=True); 
-        datetime = models.DateTimeField(auto_now_add=True);   
         def user_status(self):
                 if self.status:
                         return 'Checked';
                 return 'Uncheked'
+        user = models.ForeignKey(USER, on_delete=models.SET_NULL, null=True, blank=True);
+        status = models.BooleanField(default=False, null=True); 
+        datetime = models.DateTimeField(auto_now_add=True);   
         def __str__(self):
                 return f" user@{self.user.Username}  is {self.user_status}."; 
 
@@ -50,7 +51,37 @@ class Active(models.Model):
         datetime = models.DateTimeField(auto_now_add=True);   
         def __str__(self):
                 return f" user@{self.user.Username}  is {self.user_status}."; 
+'''
 
+
+class Actions(models.Model):
+        name = models.CharField(max_length=50, default=None, null=True);  
+        discription = models.TextField(default=None, null=True);  
+        datetime = models.DateTimeField(auto_now_add=True); 
+        def filter(self):
+                temp = ''
+                for ch in self.name.lower():
+                        if ch!=' ':
+                                temp += ch
+                return temp 
+        def __str__(self):
+                # action@signup ( SignUp ).
+                return f" action@{self.filter()}  ( {self.name} )."; 
+
+class Activities(models.Model):
+        user = models.ForeignKey(USER, on_delete=models.SET_NULL, null=True, blank=True);
+        action = models.ForeignKey(Actions, on_delete=models.SET_NULL, null=True, blank=True);
+        discription = models.TextField(default=None, null=True);  
+        datetime = models.DateTimeField(auto_now_add=True);
+        def filter(self,string):
+                temp = ''
+                for ch in string.lower():
+                        if ch!=' ':
+                                temp += ch
+                return temp
+        def __str__(self):
+                # activities@signup@theshivashu ( SignUp - SHivam SHukla ).
+                return f" activities@{self.filter(self.action.name)}@{self.filter(self.user.Username)}  ( {self.action.name} - {self.user.FullName} )."; 
 
 
 

@@ -128,15 +128,15 @@ class LogIn:
 
 
 class LogOut:
-	
+
 	def validate(*args,**kwargs):
                 
-		user = USER.objects.get(id=kwargs.id) 
-		if kwargs.user: 
-                        pass
+		user = USER.objects.filter(id=kwargs.id) 
+		if user: 
+                        pass 
         
-        def run(*args,**kwargs):
-                pass
+	def run(*args,**kwargs): 
+                pass 
 
 
 
