@@ -15,15 +15,18 @@ from .models import *
 
 
 
+
 def index(request):
 	return HttpResponse("Hey there, This is <b>Client</b>  ( from Home App ) !!!");
 
 
 
 
-
+import API.Views.User.SignUp as dbSignUp
 def signup(request): 
-	pass
+	dbSignUp.SignUp(
+		
+	)
 
 
 

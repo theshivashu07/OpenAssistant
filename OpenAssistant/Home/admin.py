@@ -52,7 +52,7 @@ class ActivitiesAdmin(admin.ModelAdmin):
           # list_display = [ 'id', 'user', 'action', 'discription', 'datetime' ] 
 
           def Username(self, obj):
-                    return f"user@{format(obj.user.Username)} ({obj.user.id}) "
+                    return f"@{format(obj.user.Username)} ({obj.user.id}) "
           # UserName.admin_order_field  = '_user'  #Allows column order sorting
           Username.short_description = 'User (Username)'  #Renames column head
 
