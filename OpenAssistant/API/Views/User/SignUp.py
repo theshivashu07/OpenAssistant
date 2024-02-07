@@ -12,7 +12,7 @@ from django.contrib.auth.decorators import login_required as LoginRequired
 from django.contrib import messages
 from Home.models import *
 
-from API.Views.User.Return import *
+from API.Views.User.Return import Return
 
 
 
@@ -87,46 +87,51 @@ Returned : <USER:  user@theshivashu  ( SHivam SHukla ).>
 
 
 
+        
+
+
 # def SignUp(*args,**kwargs):
 class SignUp:
 
-        def __init__(self, *args, **kwargs):
+        def __init__(self,*args,**kwargs):
+                self.request = kwargs.get('request',None)
+                #dummyobject = DummyUSER()
                 object = self.__checks(kwargs)
                 if object.status=='pass':
                         object = self.__run(kwargs)
-                return object
+                self.returned = object
+                #return object 
 
         def __checks(self,kwargs):
 
-		# if you entered atleast (email or mobilenumber) and password, then you able to signup !!!
-                if ( kwargs.get('email',False) or kwargs.get('mobilenumber',False) ) and kwargs.get('password',False):
-                        return Return(
-				status = 'fail',
-                                showtype = 'warning', # success, error, warning, info
-				message = "Email or Mobile Number and Password is must to entered !!!",
-                        )
-		# if passwords are empty or they not matched, so go back to your 'signup' page !!! 
-                if kwargs['password']=='' or kwargs['password']!=kwargs['passwordagain']:
-                        return Return(
-				status = 'fail',
-                                showtype = 'warning', # success, error, warning, info
-				message = "Password are not matched each other !!!"
-			)
-		# if user already exist, then go back to your 'signup' page again !!! 
-                user = USER.objects.filter(Username=kwargs['username'])
-                if user.exists():
-                        return Return(
-				status = 'fail',
-                                showtype = 'info', # success, error, warning, info
-				message = "User already exists !!!"
-                        )
-                
-                # default returning content, if everything okay !!!
+            # if you entered atleast (email or mobilenumber) and password, then you able to signup !!!
+            if not checks1( kwargs.get('email',None), kwargs.get('mobilenumber',None), kwargs.get('password',None) ):
                 return Return(
-			status = 'pass',
-                        showtype = 'success', # success, error, warning, info
-			message = "Good to go chief !!!"
+                    status = 'fail',
+                    showtype = 'warning', # success, error, warning, info
+                    message = "Email or Mobile Number and Password is must to entered !!!",
                 )
+            # if passwords are empty or they not matched, so go back to your 'signup' page !!! 
+            if not checks2( kwargs.get('password',None), kwargs.get('passwordagain',None) ):
+                return Return(
+                    status = 'fail',
+                    showtype = 'warning', # success, error, warning, info
+                    message = "Password are not matched each other !!!"
+                )
+            # if user already exist, then go back to your 'signup' page again !!!
+            if not checks3( kwargs.get('username',None) ):
+                return Return(
+                    status = 'fail',
+                    showtype = 'info', # success, error, warning, info
+                    message = "User already exists !!!"
+                )
+
+            # default returning content, if everything okay !!!
+            return Return(
+                status = 'pass',
+                showtype = 'success', # success, error, warning, info
+                message = "Good to go chief !!!"
+            )
 
 
 
@@ -171,23 +176,48 @@ class SignUp:
                         )
                         
                         return Return(
-				status = 'pass',
-                                showtype = 'success', # success, error, warning, info
-				message = "User SignUp Successfully !!!",
-                                returned = object,
+                            status = 'pass',
+                            showtype = 'success', # success, error, warning, info
+                            message = "User SignUp Successfully !!!",
+                            returned = object,
                         )
                 
                 except:
                         return Return(
-				status = 'fail',
-                                showtype = 'error', # success, error, warning, info
-				message = "This error coming from insertion data to model !!!"
-			)
+                            status = 'fail',
+                            showtype = 'error', # success, error, warning, info
+                            message = "This error coming from insertion data to model !!!"
+                        )
 
 
 
 
 
+
+
+def checks1(email,mobilenumber,password):
+    if email and password:
+        return True
+    elif mobilenumber and password:
+        return True
+    #else : and now return for any conditions...
+    return False
+
+def checks2(password,passwordagain):
+    if password in [ '', None ]:
+        return False
+    elif password==passwordagain:
+        return True
+    #else : and now return for any conditions...
+    return False
+
+def checks3(username):
+    return True
+    user = USER.objects.filter(Username=username )
+    if user.exists():
+        return True
+    #else : and now return for any conditions...
+    return False
 
 
 

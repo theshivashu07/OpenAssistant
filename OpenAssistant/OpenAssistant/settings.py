@@ -66,7 +66,7 @@ ROOT_URLCONF = 'OpenAssistant.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR,"_templates"],    # 'DIRS': [],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
