@@ -41,7 +41,6 @@ def index(request):
 
 
 
-
 # if value is blank string or None return None, otherwise return original string...
 # this function is needed in everypoint of getting values back to the work...
 def filterValue(self,value):
@@ -50,43 +49,51 @@ def filterValue(self,value):
           return None
 
 def signup(request): 
-	ReturnObject = __SignUp.__SignUp(
-		firstname = filterValue(request.POST.get('firstname',None)),
-		lastname = filterValue(request.POST.get('lastname',None)),
-		username = filterValue(request.POST.get('username',None)),
-		email = filterValue(request.POST.get('email',None)),
-		mobile = filterValue(request.POST.get('mobile',None)),
-		password = filterValue(request.POST.get('password',None)),
-		passwordagain = filterValue(request.POST.get('passwordagain',None)),
-		# profile = filterValue(request.POST.get('profile',None)),
-		checked = filterValue(request.POST.get('checked',None)),
-		# active = filterValue(request.POST.get('active',None)),
-	)
-	
-	if ReturnObject.status=="pass":
-		messages.success(request, ReturnObject.showtype )
-		return redirect("/security/login/")
-	
-	# elif ReturnObject.status=="fail":
-	if ReturnObject.showtype=="error":
-		messages.error(request, ReturnObject.showtype )
-	elif ReturnObject.showtype=="warning":
-		messages.warning(request, ReturnObject.showtype )
-	elif ReturnObject.showtype=="info":
-		messages.info(request, ReturnObject.showtype )
 
-	ReturningData = {
-		'firstname' : request.POST.get('firstname',None),
-		'lastname' : request.POST.get('lastname',None),
-		'username' : request.POST.get('username',None),
-		'email' : request.POST.get('email',None),
-		'mobile' : request.POST.get('mobile',None),
-		'password' : request.POST.get('password',None),
-		'passwordagain' : request.POST.get('passwordagain',None),
-		# 'profile' : request.POST.get('profile',None),
-		'checked' : request.POST.get('checked',None),
-		# 'active' : request.POST.get('active',None),	
-	}
+	# it will required for all, don't worry about method...
+	ReturningData = dict() 
+
+	if request.method == "POST":
+
+		ReturnObject = __SignUp.__SignUp(
+			firstname = filterValue(request.POST.get('firstname',None)),
+			lastname = filterValue(request.POST.get('lastname',None)),
+			username = filterValue(request.POST.get('username',None)),
+			email = filterValue(request.POST.get('email',None)),
+			mobile = filterValue(request.POST.get('mobile',None)),
+			password = filterValue(request.POST.get('password',None)),
+			passwordagain = filterValue(request.POST.get('passwordagain',None)),
+			# profile = filterValue(request.POST.get('profile',None)),
+			checked = filterValue(request.POST.get('checked',None)),
+			# active = filterValue(request.POST.get('active',None)),
+		)
+		
+		if ReturnObject.status=="pass":
+			messages.success(request, ReturnObject.showtype )
+			return redirect("/security/login/")
+		
+		# elif ReturnObject.status=="fail":
+		if ReturnObject.showtype=="error":
+			messages.error(request, ReturnObject.showtype )
+		elif ReturnObject.showtype=="warning":
+			messages.warning(request, ReturnObject.showtype )
+		elif ReturnObject.showtype=="info":
+			messages.info(request, ReturnObject.showtype )
+
+		ReturningData = {
+			'firstname' : request.POST.get('firstname',None),
+			'lastname' : request.POST.get('lastname',None),
+			'username' : request.POST.get('username',None),
+			'email' : request.POST.get('email',None),
+			'mobile' : request.POST.get('mobile',None),
+			'password' : request.POST.get('password',None),
+			'passwordagain' : request.POST.get('passwordagain',None),
+			# 'profile' : request.POST.get('profile',None),
+			'checked' : request.POST.get('checked',None),
+			# 'active' : request.POST.get('active',None),	
+		}
+		return render(request,"home/signup.html", ReturningData); 
+
 	return render(request,"home/signup.html", ReturningData); 
 
 
@@ -94,6 +101,9 @@ def signup(request):
 
 
 def login(request): 
+
+	print( request.session )
+	print( request.session.get('username' ) )
 
 	if request.method == "POST":
 		next = filterValue(request.POST.get('next',None)),
@@ -103,8 +113,35 @@ def login(request):
 			password = filterValue(request.POST.get('password',None)),
 			checked = filterValue(request.POST.get('check',None)),
 		)
+		
+		if ReturnObject.status=="pass":
+			request.session['user'] = {
+				'username' : ReturnObject.returned.Username, 
+				'status' : 'On', 
+			}
+			messages.success(request, ReturnObject.showtype ) 
+			
+			# if this login comes 
+			if next not in [ '', None ]:
+				return redirect(next)
+			return redirect("/")
+		
+		# elif ReturnObject.status=="fail":
+		if ReturnObject.showtype=="error": 
+			messages.error(request, ReturnObject.showtype ) 
+		elif ReturnObject.showtype=="warning": 
+			messages.warning(request, ReturnObject.showtype ) 
+		elif ReturnObject.showtype=="info": 
+			messages.info(request, ReturnObject.showtype ) 
 
-		# .....
+		ReturningData = {
+			'user' : filterValue(request.POST.get('user',None)),
+			'by' : filterValue(request.POST.get('by',None)),
+			'password' : filterValue(request.POST.get('password',None)),
+			'checked' : filterValue(request.POST.get('check',None)),
+		} 
+		
+		return render(request,"home/login.html", ReturningData); 
 
 	ReturningData = ReturningDataset()
 	currUrlPath = request.build_absolute_uri() 

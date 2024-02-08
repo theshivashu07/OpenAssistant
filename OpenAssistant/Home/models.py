@@ -84,7 +84,8 @@ class Activities(models.Model):
                 return f" activities@{self.filter(self.action.name)}@{self.filter(self.user.Username)}  ( {self.action.name} - {self.user.FullName} )."; 
 
 
-
+class ManageCookies(models.Model):
+        user = models.ForeignKey(USER, on_delete=models.SET_NULL, null=True, blank=True);
 
 
 
