@@ -43,7 +43,7 @@ def index(request):
 
 # if value is blank string or None return None, otherwise return original string...
 # this function is needed in everypoint of getting values back to the work...
-def filterValue(self,value):
+def filterValue(value):
           if value:
                     return value
           return None
@@ -55,7 +55,7 @@ def signup(request):
 
 	if request.method == "POST":
 
-		ReturnObject = __SignUp.__SignUp(
+		SignUpObject = __SignUp.__SignUp(
 			firstname = filterValue(request.POST.get('firstname',None)),
 			lastname = filterValue(request.POST.get('lastname',None)),
 			username = filterValue(request.POST.get('username',None)),
@@ -63,34 +63,38 @@ def signup(request):
 			mobile = filterValue(request.POST.get('mobile',None)),
 			password = filterValue(request.POST.get('password',None)),
 			passwordagain = filterValue(request.POST.get('passwordagain',None)),
-			# profile = filterValue(request.POST.get('profile',None)),
-			checked = filterValue(request.POST.get('checked',None)),
+			profile = filterValue(request.POST.get('profile',None)),
+			check = filterValue(request.POST.get('check',None)),
 			# active = filterValue(request.POST.get('active',None)),
 		)
+		ReturnObject = SignUpObject.returned
+		print(ReturnObject)
 		
 		if ReturnObject.status=="pass":
-			messages.success(request, ReturnObject.showtype )
+			messages.success(request, ReturnObject.message )
 			return redirect("/security/login/")
 		
 		# elif ReturnObject.status=="fail":
 		if ReturnObject.showtype=="error":
-			messages.error(request, ReturnObject.showtype )
+			messages.error(request, ReturnObject.message ) 
 		elif ReturnObject.showtype=="warning":
-			messages.warning(request, ReturnObject.showtype )
+			messages.warning(request, ReturnObject.message )
 		elif ReturnObject.showtype=="info":
-			messages.info(request, ReturnObject.showtype )
+			messages.info(request, ReturnObject.message )
 
 		ReturningData = {
-			'firstname' : request.POST.get('firstname',None),
-			'lastname' : request.POST.get('lastname',None),
-			'username' : request.POST.get('username',None),
-			'email' : request.POST.get('email',None),
-			'mobile' : request.POST.get('mobile',None),
-			'password' : request.POST.get('password',None),
-			'passwordagain' : request.POST.get('passwordagain',None),
-			# 'profile' : request.POST.get('profile',None),
-			'checked' : request.POST.get('checked',None),
-			# 'active' : request.POST.get('active',None),	
+			'values' : {
+				'firstname' : request.POST.get('firstname',None),
+				'lastname' : request.POST.get('lastname',None),
+				'mobile' : request.POST.get('mobile',None),
+				'email' : request.POST.get('email',None),
+				'username' : request.POST.get('username',None),
+				'password' : request.POST.get('password',None),
+				'passwordagain' : request.POST.get('passwordagain',None),
+				# 'profile' : request.POST.get('profile',None),
+				'check' : request.POST.get('check',None),
+				# 'active' : request.POST.get('active',None),	
+			}
 		}
 		return render(request,"home/signup.html", ReturningData); 
 
@@ -111,20 +115,20 @@ def login(request):
 			user = filterValue(request.POST.get('user',None)),
 			by = filterValue(request.POST.get('by',None)),
 			password = filterValue(request.POST.get('password',None)),
-			checked = filterValue(request.POST.get('check',None)),
+			check = filterValue(request.POST.get('check',None)),
 		)
 		
 		if ReturnObject.status=="pass":
 			request.session['user'] = {
 				'username' : ReturnObject.returned.Username, 
-				'status' : 'On', 
+				'status' : 'On',  # 
 			}
 			messages.success(request, ReturnObject.showtype ) 
 			
 			# if this login comes 
 			if next not in [ '', None ]:
 				return redirect(next)
-			return redirect("/")
+			return redirect("/") 
 		
 		# elif ReturnObject.status=="fail":
 		if ReturnObject.showtype=="error": 
@@ -138,7 +142,7 @@ def login(request):
 			'user' : filterValue(request.POST.get('user',None)),
 			'by' : filterValue(request.POST.get('by',None)),
 			'password' : filterValue(request.POST.get('password',None)),
-			'checked' : filterValue(request.POST.get('check',None)),
+			'check' : filterValue(request.POST.get('check',None)),
 		} 
 		
 		return render(request,"home/login.html", ReturningData); 
@@ -152,7 +156,7 @@ def login(request):
 			if user.isChecked: 
 				ReturningData['username'] = user.Username 
 				ReturningData['password'] = user.Password 
-				ReturningData['checked'] = user.isChecked 
+				ReturningData['check'] = user.isChecked 
 				break 
 	return render(request,"home/login.html", ReturningData); 
 

@@ -8,7 +8,7 @@ class Return:
                 self.showtype = kwargs.get('showtype',None)     # success, error, warning, info
                 self.message = kwargs.get('message',None)       # "..."
                 self.returned = kwargs.get('returned',None)       # object
-        
+
         def addStatus(self,given):
                 self.status = given
         def addShowType(self,given):

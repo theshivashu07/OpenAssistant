@@ -55,10 +55,10 @@ Sign Up | OpenAssistant
 														"> Your Name </label>
 												</div>
 												<div class="col-4">
-													<input type="text" id="firstname" name="firstname" class="form-control" placeholder="First Name" autofocus required>
+													<input type="text" id="firstname" name="firstname" class="form-control" {% if values.firstname %} value='{{values.firstname}}' {% endif %} placeholder="First Name" autofocus required>
 												</div>
 												<div class="col-4">
-													<input type="text" id="lastname" name="lastname" class="form-control" placeholder="Last Name" required>
+													<input type="text" id="lastname" name="lastname" class="form-control" {% if values.lastname %} value='{{values.lastname}}' {% endif %} placeholder="Last Name" required>
 												</div>
 											</div>
 										</div>
@@ -70,7 +70,7 @@ Sign Up | OpenAssistant
 														"> Mobile Number </label>
 												</div>
 												<div class="col-8">
-													<input type="number" id="mobilenumber" name="mobilenumber" class="form-control" placeholder="78985650xx" required>
+													<input type="number" id="mobile" name="mobile" class="form-control" {% if values.mobile %} value='{{values.mobile}}' {% endif %} placeholder="78985650xx" required>
 												</div>
 											</div>
 										</div>
@@ -82,7 +82,7 @@ Sign Up | OpenAssistant
 														"> Email Id </label>
 												</div>
 												<div class="col-8">
-													<input type="email" id="email" name="email" class="form-control" placeholder="theshivashu07@gmail.com" required>
+													<input type="email" id="email" name="email" class="form-control" {% if values.email %} value='{{values.email}}' {% endif %} placeholder="theshivashu07@gmail.com" required>
 												</div>
 											</div>
 										</div>
@@ -94,7 +94,7 @@ Sign Up | OpenAssistant
 														"> Username </label>
 												</div>
 												<div class="col-8">
-													<input type="text" id="username" name="username" class="form-control" placeholder="theshivashu07" required>
+													<input type="text" id="username" name="username" class="form-control" {% if values.username %} value='{{values.username}}' {% endif %} placeholder="theshivashu07" required>
 												</div>
 											</div>
 										</div>
@@ -106,7 +106,7 @@ Sign Up | OpenAssistant
 														"> Password</label>
 												</div>
 												<div class="col-8">
-													<input type="password" id="password" name="password" class="form-control" placeholder="**********" required>
+													<input type="password" id="password" name="password" class="form-control" {% if values.password %} value='{{values.password}}' {% endif %} placeholder="**********" required>
 												</div>
 											</div>
 										</div>
@@ -118,7 +118,7 @@ Sign Up | OpenAssistant
 														"> Password Again</label>
 												</div>
 												<div class="col-8">
-													<input type="password" id="passwordagain" name="passwordagain" class="form-control" placeholder="**********" required>
+													<input type="password" id="passwordagain" name="passwordagain" class="form-control" {% if values.passwordagain %} value='{{values.passwordagain}}' {% endif %} placeholder="**********" required>
 													<div id="passwordHelpBlock" class="form-text">
 														Your password must be 8-20 characters long, contain letters and numbers, 
 														and must not contain spaces, special characters, or emoji.
@@ -132,7 +132,7 @@ Sign Up | OpenAssistant
 								<div class="col-12 g-5">
 									<div class="form-check">
 										<!-- <input class="form-check-input" type="checkbox" name="check" id="check" required> -->
-										<input class="form-check-input" type="checkbox" name="check" id="check">
+										<input class="form-check-input" type="checkbox" name="check" id="check" {% if values.check %} checked {% endif %} >
 										<label class="form-check-label" for="check">
 										Remember me
 										</label>

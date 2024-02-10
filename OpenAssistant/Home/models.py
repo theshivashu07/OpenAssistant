@@ -11,18 +11,18 @@ class USER(models.Model):
         FullName = models.CharField(max_length=50, default=None, null=True); 
         FirstName = models.CharField(max_length=25, default=None, null=True); 
         LastName = models.CharField(max_length=25, default=None, null=True); 
-        Username=models.CharField(max_length=30, default=None, null=True); 
-        MobileNumber = models.IntegerField(default=None, null=True);
+        Username=models.CharField(max_length=30); 
+        Mobile = models.IntegerField(default=None, null=True);
         Email = models.EmailField(max_length = 254)
         Password = models.CharField(max_length=50); 
-        Profile = models.ImageField(upload_to='user/')
+        Profile = models.ImageField(upload_to='_user/_profiles/', default='_user/_profiles/_default.jpeg', null=True)
 
         # Checked=models.BooleanField(default=None, null=False);
         isChecked = models.BooleanField(default=False, null=True); 
         isActive = models.BooleanField(default=False, null=True);   #isLogin
 
         JoiningDate = models.DateTimeField(auto_now_add=True);
-        UpdationDate = models.DateTimeField(auto_now=True);           
+        UpdationDate = models.DateTimeField(auto_now=True); 
         def __str__(self):
                 # 	user@theshivashu ( SHivam SHukla ).
                 return f" user@{self.Username}  ( {self.FullName} )."; 
@@ -84,9 +84,11 @@ class Activities(models.Model):
                 return f" activities@{self.filter(self.action.name)}@{self.filter(self.user.Username)}  ( {self.action.name} - {self.user.FullName} )."; 
 
 
-class ManageCookies(models.Model):
-        user = models.ForeignKey(USER, on_delete=models.SET_NULL, null=True, blank=True);
+# class Cookies(models.Model):
+#         user = models.ForeignKey(USER, on_delete=models.SET_NULL, null=True, blank=True); 
+#         status = 
 
+# class AllLogInFromCookies(models.Model):
 
 
 

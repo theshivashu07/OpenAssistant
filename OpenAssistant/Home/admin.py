@@ -11,7 +11,7 @@ from .models import USER, Actions, Activities
 
 # admin.site.register(USER)
 class USERAdmin(admin.ModelAdmin):
-    fields = ['FullName', 'FirstName', 'LastName', 'Username', 'Email', 'MobileNumber', 'Password', 'isChecked', 'isActive' ]
+    fields = ['FullName', 'FirstName', 'LastName', 'Username', 'Profile', 'Email', 'Mobile', 'Password', 'isChecked', 'isActive' ]
 admin.site.register(USER, USERAdmin)
 
 '''

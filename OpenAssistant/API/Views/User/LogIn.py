@@ -4,7 +4,7 @@ from django.http import HttpResponse
 
 from django.contrib.auth.models import User
 
-from django.contrib.auth import authenticate as Authenticate
+from django.contrib.auth import authenticate as Authenticate 
 from django.contrib.auth import login as Login
 from django.contrib.auth import logout as Logout
 from django.contrib.auth.decorators import login_required as LoginRequired
@@ -12,7 +12,9 @@ from django.contrib.auth.decorators import login_required as LoginRequired
 from django.contrib import messages
 from Home.models import *
 
-from API.Views.User.Return import *
+
+from API.Views.User.Return import Return
+import API.Views.User.Checks as Checks
 
 
 
@@ -26,27 +28,32 @@ from API.Views.User.Return import *
 class LogIn:
 
         def __init__(self, request, *args, **kwargs):
-                object = self.__checks(kwargs)
+                self.args, self.kwargs = args, kwargs
+                self.request = self.__getValueOfKey('request')
+                
+                object = self.__checks()
                 if object.status=='pass':
                         object = self.__run(request,kwargs)
-                return object
+                self.returned = object
+                #return object 
 
-
+        def __getValueOfKey(self,key,otherwise=None):
+              return self.kwargs.get(key,otherwise)
 
 
         def __checks(self,kwargs):
 
-		# if user already not exist, then go back to your 'login' page !!! 
-                user = USER.objects.filter(Username=kwargs.username) 
-                if not user.exists():
+                checks = Checks.LogInChecks()
+
+		# if user not exist, then go back to your 'login' page !!! 
+                if not checks.UserExist(  self.__getValueOfKey('username') ):
                         return Return(
 				status = 'fail',
                                 showtype = 'error', # success, error, warning, info
 				message = "User not exists !!!"
                         )
-                userauth = Authenticate(username=kwargs.username, password=kwargs.password)
-                # if you entered atleast (email or mobilenumber) and password, then you able to signup !!!
-                if userauth is None:
+                # if user is authenticated, then we move for next process !!!
+                if not checks.UserAuthenticated(  self.__getValueOfKey('username'), self.__getValueOfKey('password') ):
                         return Return(
 				status = 'fail',
                                 showtype = 'error', # success, error, warning, info
