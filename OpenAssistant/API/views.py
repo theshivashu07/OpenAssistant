@@ -6,7 +6,7 @@ from .models import *
 from Home.models import *
 
 # from API.views.user import *
-from .Views.User import *
+from .Code.User import *
 
 
 def index(request): 

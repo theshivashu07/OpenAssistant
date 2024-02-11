@@ -1,6 +1,6 @@
 
-from django.contrib.auth import authenticate as Authenticate
-
+# from django.contrib.auth import authenticate as Authenticate
+from API.Code.Management.Sessions import Authenticate, Login, Logout
 
 
 from Home.models import *
@@ -40,16 +40,32 @@ class SignUpChecks:
 
 class LogInChecks:
 
-        def UserExist(self,username):
+        def UsernameExist(self,username):
                     user = USER.objects.filter(Username=username) 
                     if user.exists():
                             return True
                     return False 
         
         def UserAuthenticated(self,username,password):
-                    userauth = Authenticate(username=username, password=password)
+                print(username,password)
+                userauth = Authenticate(username=username, password=password)
+                if userauth:
+                        return True 
+                return False 
+                '''
+                    # userauth = Authenticate(username=username, password=password)
+                    user = USER.objects.get(Username=username)
                     # if userauth is None:
-                    if userauth:
+                    if user.Password == password:
                               return True 
                     return False 
+                '''
 
+'''
+                    # userauth = Authenticate(username=username, password=password)
+                    user = USER.objects.filter(Username=username, Password=password)
+                    # if userauth is None:
+                    if user.exists():
+                              return True 
+                    return False 
+'''

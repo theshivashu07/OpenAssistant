@@ -54,14 +54,14 @@ Log In | OpenAssistant
 													<label class="col-form-label" style="font-weight: bold;"> Username or Email :-</label>
 												</div>
 												<div class="col-5">
-													<input type="text" id="user" name="user" class="form-control" value="{{username}}" placeholder="Username/Email" autofocus required>
+													<input type="text" id="user" name="user" class="form-control" value="{{values.user}}" placeholder="Username/Email" autofocus required>
 												</div>
 												<div class="col-3">
 													<label class="visually-hidden" for="by">Preference</label>
 													<select class="form-select" name="by" id="by">
-														<option value="">Choose...</option>
-														<option value="email">Email</option>
-														<option value="username" selected>Username</option>
+														<option value="">Choose... {{values.by}}</option>
+														<option value="email" {% if values.by == 'email' %} selected {% endif %} >Email</option>
+														<option value="username"  {% if values.by == 'username' %} selected {% endif %} >Username</option>
 													</select>
 												</div>
 											</div>
@@ -82,7 +82,7 @@ Log In | OpenAssistant
 													<label class="col-form-label" style="font-weight: bold;"> Enter Password :-</label>
 												</div>
 												<div class="col-8">
-													<input type="password" id="password" name="password" class="form-control" value="{{password}}" placeholder="**********" required>
+													<input type="password" id="password" name="password" class="form-control" value="{{values.password}}" placeholder="**********" required>
 													<div id="passwordHelpBlock" class="form-text">
 														Your password must be 8-20 characters long, contain letters and numbers, 
 														and must not contain spaces, special characters, or emoji.
@@ -100,7 +100,7 @@ Log In | OpenAssistant
 								<br>
 								<div class="col-12 g-5">
 									<div class="form-check">
-										<input class="form-check-input" type="checkbox" name="check" id="check" {% if checked %} checked {% endif %}>
+										<input class="form-check-input" type="checkbox" name="check" id="check" {% if values.check %} checked {% endif %}>
 										<!-- <input class="form-check-input" type="checkbox" name="check" id="check" required> -->
 										<label class="form-check-label" for="check">
 										Remember me

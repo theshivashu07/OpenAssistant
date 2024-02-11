@@ -3,21 +3,24 @@ from django.shortcuts import render,redirect
 from django.http import HttpResponse
 # Create your views here.
 
-from django.contrib.auth import authenticate as Authenticate
-from django.contrib.auth import login as Login
-from django.contrib.auth import logout as Logout
+# from django.contrib.auth import authenticate as Authenticate
+# from django.contrib.auth import login as Login
+# from django.contrib.auth import logout as Logout
 from django.contrib.auth.decorators import login_required as LoginRequired
+from API.Code.Management.Sessions import Authenticate, Login, Logout
 
 from django.contrib import messages
 from .models import *
 
 
-import API.Views.User.LogIn as __Logout
-import API.Views.User.LogIn as __LogIn
-import API.Views.User.SignUp as __SignUp
-import API.Views.User.Return as __Return
+import API.Code.User.LogIn as __Logout
+import API.Code.User.LogIn as __LogIn
+import API.Code.User.SignUp as __SignUp
+import API.Code.User.Return as __Return
 
 
+import API.Code.Management.Messages as __Messages
+import API.Code.Management.Sessions as __Sessions
 
 
 # def index(request):
@@ -56,6 +59,7 @@ def signup(request):
 	if request.method == "POST":
 
 		SignUpObject = __SignUp.__SignUp(
+			request = request,
 			firstname = filterValue(request.POST.get('firstname',None)),
 			lastname = filterValue(request.POST.get('lastname',None)),
 			username = filterValue(request.POST.get('username',None)),
@@ -67,21 +71,22 @@ def signup(request):
 			check = filterValue(request.POST.get('check',None)),
 			# active = filterValue(request.POST.get('active',None)),
 		)
-		ReturnObject = SignUpObject.returned
-		print(ReturnObject)
-		
-		if ReturnObject.status=="pass":
-			messages.success(request, ReturnObject.message )
-			return redirect("/security/login/")
-		
-		# elif ReturnObject.status=="fail":
-		if ReturnObject.showtype=="error":
-			messages.error(request, ReturnObject.message ) 
-		elif ReturnObject.showtype=="warning":
-			messages.warning(request, ReturnObject.message )
-		elif ReturnObject.showtype=="info":
-			messages.info(request, ReturnObject.message )
 
+		ReturnObject = SignUpObject.returned 
+
+		__Messages.__Messages(
+			request = request, 
+			ReturnObject = ReturnObject,
+		)
+
+		if ReturnObject.status == "pass":
+			__Sessions.SignInSessions(
+				request = request,
+				ReturnObject = ReturnObject,
+			)
+			return redirect("/security/login/")
+
+		# elif ReturnObject.status == "fail":
 		ReturningData = {
 			'values' : {
 				'firstname' : request.POST.get('firstname',None),
@@ -106,57 +111,65 @@ def signup(request):
 
 def login(request): 
 
-	print( request.session )
-	print( request.session.get('username' ) )
+	# print( request.session )
+	# print( request.session.get('username' ) )
 
 	if request.method == "POST":
-		next = filterValue(request.POST.get('next',None)),
-		ReturnObject = __LogIn.__LogIn(
+		next = filterValue(request.POST.get('next',None))
+		print('NEXT :',next)
+		LogInObject = __LogIn.__LogIn(
+			request = request,
 			user = filterValue(request.POST.get('user',None)),
 			by = filterValue(request.POST.get('by',None)),
 			password = filterValue(request.POST.get('password',None)),
 			check = filterValue(request.POST.get('check',None)),
 		)
-		
-		if ReturnObject.status=="pass":
-			request.session['user'] = {
-				'username' : ReturnObject.returned.Username, 
-				'status' : 'On',  # 
-			}
-			messages.success(request, ReturnObject.showtype ) 
-			
+
+		ReturnObject = LogInObject.returned 
+
+		__Messages.__Messages( 
+			request = request, 
+			ReturnObject = ReturnObject, 
+		) 
+
+		if ReturnObject.status == "pass":
+			__Sessions.LogInSessions( 
+				request = request, 
+				ReturnObject = ReturnObject, 
+			) 
+
 			# if this login comes 
+			print("NEXT :",next)
 			if next not in [ '', None ]:
 				return redirect(next)
 			return redirect("/") 
 		
-		# elif ReturnObject.status=="fail":
-		if ReturnObject.showtype=="error": 
-			messages.error(request, ReturnObject.showtype ) 
-		elif ReturnObject.showtype=="warning": 
-			messages.warning(request, ReturnObject.showtype ) 
-		elif ReturnObject.showtype=="info": 
-			messages.info(request, ReturnObject.showtype ) 
-
+		# elif ReturnObject.status == "fail":
 		ReturningData = {
-			'user' : filterValue(request.POST.get('user',None)),
-			'by' : filterValue(request.POST.get('by',None)),
-			'password' : filterValue(request.POST.get('password',None)),
-			'check' : filterValue(request.POST.get('check',None)),
-		} 
+			'values' : {
+				'user' : filterValue(request.POST.get('user',None)),
+				'by' : filterValue(request.POST.get('by',None)),
+				'password' : filterValue(request.POST.get('password',None)),
+				'check' : filterValue(request.POST.get('check',None)),
+			},
+		}
 		
 		return render(request,"home/login.html", ReturningData); 
 
-	ReturningData = ReturningDataset()
+	ReturningData = dict()
 	currUrlPath = request.build_absolute_uri() 
 	prevUrlPath = request.META.get('HTTP_REFERER') 
 	# we check if current login path is not equal to previous path, means we are able to show username and password 
 	if currUrlPath != prevUrlPath: 
 		for user in USER.objects.all()[::-1]: 
 			if user.isChecked: 
-				ReturningData['username'] = user.Username 
-				ReturningData['password'] = user.Password 
-				ReturningData['check'] = user.isChecked 
+				values = {
+					'user' : user.Username,
+					'by' : 'username',
+					'password' : user.Password,
+					'check' : user.isChecked,
+				}
+				ReturningData['values'] = values
 				break 
 	return render(request,"home/login.html", ReturningData); 
 
@@ -174,7 +187,7 @@ def resetpassword(request):
 
 def userslist(request):
 	ReturningData = dict()
-	return render(request,"home/userslist.html", ReturningData); 
+	return render(request,"home/users-list.html", ReturningData); 
 
 def defaultuser(request):
 	ReturningData = dict()
@@ -187,18 +200,6 @@ def defaultuser(request):
 
 
 
-class dummyUSER:
-	def __init__(self):
-		self.USER = None
-	def input(self,object):
-		self.USER = object
-	
 
-
-def ReturningDataset():
-	object = dummyUSER()
-	return {
-		'__db' : object,
-	}
 
 

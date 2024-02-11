@@ -12,8 +12,8 @@ from django.contrib.auth.decorators import login_required as LoginRequired
 from django.contrib import messages
 from Home.models import *
 
-from API.Views.User.Return import Return
-import API.Views.User.Checks as Checks
+from API.Code.User.Return import Return
+import API.Code.User.Checks as Checks
 
 
 
