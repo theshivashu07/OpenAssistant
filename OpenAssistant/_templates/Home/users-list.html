@@ -83,8 +83,7 @@ Users List | OpenAssistant
                                                                                                                         </thead>
                                                                                                                         <tbody>
 
-                                                                                                                                  {% for type,user in ListOfUsers %}
-                                                                                                                                            {% if type == 'manuals' %}
+                                                                                                                                  {% for user in values.users %}
                                                                                                                                             <tr>
                                                                                                                                                       <th scope="row">{{ forloop.counter }}</th>
                                                                                                                                                       <!-- <td>{{user.User}}</td> -->
@@ -95,20 +94,7 @@ Users List | OpenAssistant
                                                                                                                                                       <td>{{user.isActive}}</td>
                                                                                                                                                       <td>{{user.Password}}</td>
                                                                                                                                                       <td>{{user.JoiningDate}}</td>
-                                                                                                                                            </tr>                                                                                                                                            
-                                                                                                                                            {% elif type == 'superusers' %}                                                                                                                                            
-                                                                                                                                            <tr>
-                                                                                                                                                      <th scope="row">{{ forloop.counter }}</th>
-                                                                                                                                                      <td>{{user.username}}</td>                                                                                                                 
-                                                                                                                                                      <td> {% if user.first_name %}  {{user.first_name}} {{user.last_name}} {% else %} - {% endif %} </td>
-                                                                                                                                                      <!-- <td> {% if user.first_name or user.last_name %}   {{user.first_name}} {{user.last_name}} {% else %} - {% endif %} </td> -->
-                                                                                                                                                      <td>{{user.email}}</td> 
-                                                                                                                                                      <td>-</td>
-                                                                                                                                                      <td>-</td>
-                                                                                                                                                      <td>*****</td>
-                                                                                                                                                      <td>{{user.date_joined}}</td>
                                                                                                                                             </tr>
-                                                                                                                                            {% endif %}
                                                                                                                                   {% endfor %}                                                                                                                                  
 
                                                                                                                         </tbody>

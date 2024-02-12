@@ -6,8 +6,8 @@ from django.http import HttpResponse
 # from django.contrib.auth import authenticate as Authenticate
 # from django.contrib.auth import login as Login
 # from django.contrib.auth import logout as Logout
-from django.contrib.auth.decorators import login_required as LoginRequired
-from API.Code.Management.Sessions import Authenticate, Login, Logout
+# from django.contrib.auth.decorators import login_required as LoginRequired
+from API.Code.Management.Sessions import Authenticate, Login, Logout, LoginRequired
 
 from django.contrib import messages
 from .models import *
@@ -32,8 +32,15 @@ def askedquestions(request):
 	return render(request,"home/asked-questions.html"); 
 	# return redirect("/security/asked-questions/")
 
+def getpaths(request): 
+	# http://localhost:1234/security/users-list/
+	from django.core.management.commands.runserver import Command as runserver  
+	base_path = f"http://{runserver.default_addr}:{runserver.default_port}/"
+	print(base_path)
+
 
 def index(request): 
+	getpaths(request)
 	# if we first time come here, and there is no user registered, then redirect that to 'signup' page...
 	if USER.objects.all():
 		return redirect("/security/login/"); 
@@ -111,9 +118,6 @@ def signup(request):
 
 def login(request): 
 
-	# print( request.session )
-	# print( request.session.get('username' ) )
-
 	if request.method == "POST":
 		next = filterValue(request.POST.get('next',None))
 		print('NEXT :',next)
@@ -174,6 +178,21 @@ def login(request):
 	return render(request,"home/login.html", ReturningData); 
 
 def logout(request): 
+
+	if request.method == "POST":
+		next = filterValue(request.POST.get('next',None))
+		username = filterValue(request.POST.get('username',None))
+		Logout(request,username)
+		print('NEXT :',next)
+		LogInObject = __LogIn.__LogIn(
+			request = request,
+			user = filterValue(request.POST.get('user',None)),
+			by = filterValue(request.POST.get('by',None)),
+			password = filterValue(request.POST.get('password',None)),
+			check = filterValue(request.POST.get('check',None)),
+		)
+
+
 	ReturningData = dict() 
 	return render(request,"home/logout.html", ReturningData); 
 
@@ -187,6 +206,17 @@ def resetpassword(request):
 
 def userslist(request):
 	ReturningData = dict()
+
+	objects = USER.objects.all() 
+	users = list()
+	for user in objects:
+		users.append( user ) 
+	ReturningData['values'] = {
+		'userslist' : users,
+	}
+	# request.session['user'] 
+	# user = USER.objects.get( request.sessions. )
+	# ReturningData['values'] = 
 	return render(request,"home/users-list.html", ReturningData); 
 
 def defaultuser(request):
