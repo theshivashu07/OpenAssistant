@@ -9,11 +9,8 @@ from Home.models import *
 # def index(request):
 # 	return HttpResponse("Hey there, This is <b>User</b>  ( from Client App ) !!!");
 
-def getpaths(request): 
-          from django.core.management.commands.runserver import Command as runserver  
-          base_path = f"{runserver.default_addr}:{runserver.default_port}"
+
 def index(request): 
-          # getpaths(request)
           return redirect("security/") 
           if not request.session.get('user',None): 
                   return redirect("security/") 

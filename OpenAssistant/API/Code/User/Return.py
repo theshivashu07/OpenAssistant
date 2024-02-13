@@ -1,6 +1,8 @@
 
 
 
+from Home.models import *
+
 class Return:
 
         def __init__(self,*args,**kwargs):
@@ -40,6 +42,18 @@ class Return:
                 for key,value in self.show().items():
                         print( f"{key} : {value}" )
                 
+
+
+
+
+def ReturningDatabase(request,ReturningData):
+        user = request.session.get('user',None) 
+        if user and user.get('username',None):
+                username = user.get('username',None)
+                ReturningData['ObjectUSER'] = USER.objects.get(Username=username)
+        # return ReturningData
+
+
 
 
 

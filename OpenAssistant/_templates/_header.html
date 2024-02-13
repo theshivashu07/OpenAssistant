@@ -42,7 +42,8 @@
 			</div>
 
 
-			{% if not values.user %}
+			<!-- if not values.user  -->
+			{% if not request.session.user %}
 				<div class="right" style="align-items: center; align-self: center;">
 					<div class="flex">
 						<div style="display: contents;">
@@ -95,18 +96,19 @@
 							<div style="font-weight: bold;align-self: center;text-align: center;/* color: #fff000; */">
 								<h5 style="margin-bottom: -5px;font-weight: bold;">
 									<!-- Shivam Shukla  -->
-									{{request.user.first_name |default:"No Name"}} {{request.user.last_name}}
+									{{ObjectUSER.FullName |default:"Developer"}}
+									 <!-- ); -->
 								</h5>
 								<spen style="font-weight: initial; font-weight: bold; color: darkslategray; color: #234abc;">
-									<!-- theshivashu04 ); -->
-									{{request.user.username}} );
+									user@{{ObjectUSER.Username |default:"none"}} ); 
 								</spen>
 							</div>
-											
+
 							<div class="btn-group" role="group" style="background-color: white;padding: 4px;border-radius: 50px;margin-left: 5px;">
 								<button type="button" class="btn" data-bs-toggle="dropdown" aria-expanded="false" style="padding: 0; background-color: white; border: 0; border-radius: 50px;">
-									<img src="/_static/_personal/images/self.jpeg" alt="img not found" width="40" height="40">
-								</button>
+									<img src="/_static/_user/_profiles/_default.jpeg" alt="img not found" width="40" height="40" style="font-size: 12px; border-radius: 25px;">
+									<!-- <img src="/_uploads/{{ObjectUSER.Profile |default:'_user/_profiles/default.jpeg'}}" alt="img not found" width="40" height="40" style="font-size: 12px; border-radius: 25px;"> -->
+								</button>  
 								<ul class="dropdown-menu dropdown-menu-end mt-1" style="border-radius: 5px;">
 									<li><a class="dropdown-item" href="#">Profile</a></li>
 									<!-- <li><a class="dropdown-item" href="#">Activity</a></li> -->

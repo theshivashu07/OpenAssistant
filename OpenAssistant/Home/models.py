@@ -15,7 +15,8 @@ class USER(models.Model):
         Mobile = models.IntegerField(default=None, null=True);
         Email = models.EmailField(max_length = 254)
         Password = models.CharField(max_length=50); 
-        Profile = models.ImageField(upload_to='_user/_profiles/', default='_user/_profiles/_default.jpeg', null=True)
+        # Profile = models.ImageField(upload_to='_user/_profiles/', default='_user/_profiles/_default.jpeg', null=True)
+        Profile = models.ImageField(upload_to='_user/_profiles/', default=None, null=True)
 
         # Checked=models.BooleanField(default=None, null=False);
         isChecked = models.BooleanField(default=False, null=True); 
@@ -26,6 +27,10 @@ class USER(models.Model):
         def __str__(self):
                 # 	user@theshivashu ( SHivam SHukla ).
                 return f" user@{self.Username}  ( {self.FullName} )."; 
+
+        def __str__(self):
+                # 	user@theshivashu ( SHivam SHukla ).
+                return f" user@{self.Username} - {self.FullName} );"; 
 
 
 

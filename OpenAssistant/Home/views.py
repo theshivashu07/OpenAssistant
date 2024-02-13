@@ -8,6 +8,7 @@ from django.http import HttpResponse
 # from django.contrib.auth import logout as Logout
 # from django.contrib.auth.decorators import login_required as LoginRequired
 from API.Code.Management.Sessions import Authenticate, Login, Logout, LoginRequired
+# from django.contrib.auth.decorators import login_required as LoginRequired
 
 from django.contrib import messages
 from .models import *
@@ -17,6 +18,7 @@ import API.Code.User.LogIn as __Logout
 import API.Code.User.LogIn as __LogIn
 import API.Code.User.SignUp as __SignUp
 import API.Code.User.Return as __Return
+from API.Code.User.Return import ReturningDatabase
 
 
 import API.Code.Management.Messages as __Messages
@@ -29,18 +31,13 @@ import API.Code.Management.Sessions as __Sessions
 
 @LoginRequired(login_url="/security/login/")
 def askedquestions(request):
-	return render(request,"home/asked-questions.html"); 
+	ReturningData = {}
+	ReturningDatabase(request,ReturningData)
+	return render(request,"home/asked-questions.html",ReturningData); 
 	# return redirect("/security/asked-questions/")
-
-def getpaths(request): 
-	# http://localhost:1234/security/users-list/
-	from django.core.management.commands.runserver import Command as runserver  
-	base_path = f"http://{runserver.default_addr}:{runserver.default_port}/"
-	print(base_path)
 
 
 def index(request): 
-	getpaths(request)
 	# if we first time come here, and there is no user registered, then redirect that to 'signup' page...
 	if USER.objects.all():
 		return redirect("/security/login/"); 
@@ -178,6 +175,15 @@ def login(request):
 	return render(request,"home/login.html", ReturningData); 
 
 def logout(request): 
+
+	# this is the edge case - directly working 
+	if request.session.get('user',None):
+		username =request.session['user']['username']
+		object = USER.objects.get( Username=username)
+		object.isActive = False
+		object.save()
+	Logout(request)
+	return redirect('/security/login/')
 
 	if request.method == "POST":
 		next = filterValue(request.POST.get('next',None))
