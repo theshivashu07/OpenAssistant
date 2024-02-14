@@ -83,8 +83,8 @@ Users List | OpenAssistant
                                                                                                                         </thead>
                                                                                                                         <tbody>
 
-                                                                                                                                  {% for user in values.users %}
-                                                                                                                                            <tr>
+                                                                                                                                  {% for user in values.userslist %}
+                                                                                                                                            <tr {% if user.isActive %}style="background-color: ghostwhite;" {% endif %} >
                                                                                                                                                       <th scope="row">{{ forloop.counter }}</th>
                                                                                                                                                       <!-- <td>{{user.User}}</td> -->
                                                                                                                                                       <td>{{user.Username}}</td>

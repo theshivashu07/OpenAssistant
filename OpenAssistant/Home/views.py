@@ -7,7 +7,7 @@ from django.http import HttpResponse
 # from django.contrib.auth import login as Login
 # from django.contrib.auth import logout as Logout
 # from django.contrib.auth.decorators import login_required as LoginRequired
-from API.Code.Management.Sessions import Authenticate, Login, Logout, LoginRequired
+from API.Code.Management.Sessions import Authenticate, Login, Logout, LoginRequired 
 # from django.contrib.auth.decorators import login_required as LoginRequired
 
 from django.contrib import messages
@@ -220,14 +220,13 @@ def userslist(request):
 	ReturningData['values'] = {
 		'userslist' : users,
 	}
-	# request.session['user'] 
-	# user = USER.objects.get( request.sessions. )
-	# ReturningData['values'] = 
+	ReturningDatabase(request,ReturningData)
 	return render(request,"home/users-list.html", ReturningData); 
 
 def defaultuser(request):
 	ReturningData = dict()
-	return render(request,"home/defaultuser.html", ReturningData); 
+	ReturningDatabase(request,ReturningData)
+	return render(request,"home/default-user.html", ReturningData); 
 
 # def defaultuser(request):
 # 	ReturningData = dict()
