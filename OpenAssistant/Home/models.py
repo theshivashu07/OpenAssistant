@@ -34,6 +34,37 @@ class USER(models.Model):
 
 
 
+
+
+
+
+from model_utils import Choices
+
+
+class Responces(models.Model):
+
+        WHAT = Choices( 'Report', 'Suggestion', 'Ask' )
+        STATUS = Choices( 'Activated', 'Declined', 'Resolved' )
+        FROM = Choices( 'Artical', 'Problem', 'Youtube' )
+        TYPE = Choices( 'Add Link', 'Missleading Content', 'Verify Content', 'Others' )
+
+        What = models.CharField(choices=WHAT,max_length=25)
+        Status = models.CharField(choices=STATUS, default=STATUS.Activated, max_length=25)
+        From = models.CharField(choices=FROM, max_length=25) 
+        Type = models.CharField(choices=TYPE, default=TYPE.Others, max_length=100) 
+
+        user = models.ForeignKey(USER, on_delete=models.SET_NULL, null=True, blank=True);
+
+        Title = models.CharField(max_length=50, default=None, null=True); 
+        Content = models.TextField(default=None, null=True); 
+        Discription = models.CharField(max_length=100, default=None, null=True); 
+
+
+
+
+
+
+
 '''
 class Checked(models.Model):
         def user_status(self):

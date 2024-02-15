@@ -1,8 +1,17 @@
 
 
 
-
-<div class="edge" style="background-color: #0d6efd;">
+{% if request.path == '/articals/' %}
+	<div class="edge" style="background-color: rebeccapurple;">
+{% elif request.path == '/youtube/' %}
+	<div class="edge" style="background-color: red;">
+{% elif request.path == '/problems/' %}
+	<div class="edge" style="background-color: darkorange;">
+{% elif request.path == '/profile/' %}
+	<div class="edge" style="background-color: deepskyblue;">
+{% else %}
+	<div class="edge" style="background-color: #0d6efd;">
+{% endif %}
 	<header>
 		<div class="headers" style="color: white;">
 			<div class="left" style="align-items: center; align-self: center; font-weight: bold; font-size: larger;">
@@ -23,11 +32,11 @@
 					<a href="/" style="text-decoration:none">
 						<div class="options">Home</div>
 					</a>
-					<a href="/articals/" style="text-decoration:none">
-						<div class="options">Articals</div>
-					</a>
 					<a href="/problems/" style="text-decoration:none">
 						<div class="options">Problems</div>
+					</a>
+					<a href="/articals/" style="text-decoration:none">
+						<div class="options">Articals</div>
 					</a>
 					<a href="/youtube/" style="text-decoration:none">
 						<div class="options">YouTube</div>
@@ -89,10 +98,10 @@
 								<h5 style="margin-bottom: -5px;font-weight: bold;">
 									{{ObjectUSER.FullName |default:"Developer"}}
 								</h5>
-								<a href="/profile/" style="text-decoration: auto;">
-								<spen style="font-weight: bold;color: #000aaa; /*color:blue;*/ background-color: #ffffff75;padding: 0 10px;border-radius: 5px;">
-									user@{{ObjectUSER.Username |default:"none"}} ); 
-								</spen>
+								<a href="/profile/" style="text-decoration: auto; color:#00000028;">
+									<spen style="font-weight: bold; /*color: #000aaa;*/ /*color:blue;*/ background-color: #ffffff60;padding: 0 10px;border-radius: 5px;">
+										user@{{ObjectUSER.Username |default:"none"}} ); 
+									</spen>
 								</a>	
 								<!-- 
 								<spen style="font-weight: initial; font-weight: bold; color: darkslategray; color: blue; color: #000aaa;">

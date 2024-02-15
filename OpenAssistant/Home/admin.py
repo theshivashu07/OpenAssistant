@@ -4,7 +4,7 @@ from django.contrib import admin
 
 
 # from .models import USER, Checked, Active, Action, Activities
-from .models import USER, Actions, Activities
+from .models import USER, Actions, Activities, Responces
 # from .models import *
 
 
@@ -39,6 +39,16 @@ admin.site.register(Activities, ActivitiesAdmin)
 '''
 
 
+
+@admin.register(Responces)
+class ResponcesAdmin(admin.ModelAdmin):
+    # list_display = [ 'What', 'Status', 'From', 'Type', 'user', 'Title', 'Content', 'Discription' ] 
+    list_display = [ 'User', 'What', 'Status', 'From', 'Type', 'Title', 'Discription' ] 
+
+    def User(self, obj):
+        return f"user@{format(obj.user.Username)} ({obj.user.id}) "
+    # UserName.admin_order_field  = '_user'  #Allows column order sorting
+    User.short_description = 'User (Username)'  #Renames column head
 
 @admin.register(Actions)
 class ActionsAdmin(admin.ModelAdmin):
