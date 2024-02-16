@@ -26,6 +26,7 @@ urlpatterns=[
 		# path('problems/ask/<slug:problem_slug>/',views.problem_ask,name='problem_ask'),
                     
 		path('youtube/',views.youtube,name='youtube'),
+		path('youtube/<str:from_>/',views.youtube_from_,name='youtube_from_'),
 		# path('youtube/<slug:youtube_link>/',views.youtube_open,name='youtube_open'),
 		# path('youtube/edit/<slug:youtube_link>/',views.youtube_edit,name='youtube_edit'),
 		# path('youtube/report/<slug:youtube_link>/',views.youtube_report,name='youtube_report'),

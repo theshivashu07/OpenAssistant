@@ -5,7 +5,7 @@
 
 
 {% block tcontent %}
-YouTube | OpenAssistant
+YouTube (4'Slides) | OpenAssistant
 {% endblock %}
 
 
@@ -22,35 +22,191 @@ YouTube | OpenAssistant
 {% block childcontent %}
 
 
+<div class="row" style="margin: 0; padding: 0; /*padding-top: 12px;*/ background-color: #f8f8f8;background-color: #fdfdfd;">
+
+<div class="scrollbar-outer">
+          <div class="scrollbar col-md-auto">
+          
+                    <div class="scrollbar-inner">
+                              {% for keys,values in sidebar.items %}
+                                        {% for key,value in values.items %}
+                                                  <div class="scrollbar-box" >
+                                                            <a class="scrollbar-link  {% if request.path == value.path %} active {% endif %}" href="{{value.path}}">
+                                                                      {{value.name}}
+                                                            </a>
+                                                  </div>
+                                        {% endfor %}
+                              {% endfor %}
+                    </div>
+          </div>
+</div>
+
+<style>
+          .scrollbar-outer{
+                    /*background-color: #f8f8f8;*/ 
+                    background-color: white; 
+                    border: 1px solid #f0f0f0; 
+          }
+          .scrollbar{
+                    border: 1px solid #fbfbfb; 
+                    overflow-x: auto;
+                    padding: 2px 10px;
+          }
+          .scrollbar-inner{
+                    /*background-color: #f8f8f8;*/ 
+                    padding: 5px 20px; 
+                    display: flex;  
+                    width: max-content;
+          }
+          .scrollbar::-webkit-scrollbar{
+                    width: 0;
+                    height: 0;
+          }
+          .scrollbar-box{
+                    padding: 2px;
+                    /* margin: 0 5px;  */
+                    margin: 0 2px; 
+                    width: fit-content; 
+                    border-radius: 25px; 
+                    font-size: smaller; 
+                    background-color: white; 
+                    background-color: #fdfdfd; 
+                    border: 1px solid #f8f8f8; 
+          }
+          .scrollbar-link{
+                    border-radius: 25px; 
+                    padding: 5px 10px; 
+                    color: black; 
+                    text-decoration: auto;
+          }
+          .scrollbar-link:hover{
+                    color: white;
+                    background-color: black;
+          }
+          .scrollbar-link.active{
+                    color: white;
+                    background-color: black;
+          }
+</style>
 
 
-
-
-
-<div class="edge " style="background-color: #f8f8f8;background-color: #fdfdfd;">
-	<div style="padding: 25px;background-color: #f8f8f8;background-color: #fcfcfc;background-color: white;/* padding: 50px 25px; */border-radius: 10px;">
+<div class="col-md-2 edge " style="/*overflow: scroll;*/ background-color: #f8f8f8;background-color: #fdfdfd;/* margin: 0; */padding: 25px;">
+	<!-- <div style="padding: 25px;background-color: #f8f8f8;background-color: #fcfcfc;background-color: white;/* padding: 50px 25px; */border-radius: 10px;"> -->
 		<div class="row">
-			<div class="col-sm-12" style="margin: 200px 0;">
+
+                              <!-- <hr style="margin: 0;"> -->
+
+                              {% for keys,values in sidebar.items %}
+                              
+                              <div class="col-md-12" style="padding: 10px;/* padding-top: 25px; */">
+                                        <ul class="list-group list-group-flush">
+
+                                                  {% for key,value in values.items %}
+                                                  <li class="list-group-item">
+                                                            <a class="side-keys row {% if request.path == value.path %} active {% endif %} " href="{{value.path}}" class="row" style="align-items: center; font-weight: normal;">
+                                                                      <i class="col-md-2 {{value.logo}}"></i>
+                                                                      <spem class="col-md-10">
+                                                                                {{value.name}}
+                                                                      </spem>
+                                                            </a>
+                                                  </li>
+                                                  {% endfor %}
+
+                                        </ul>
+                              </div>
+
+                              
+                              <hr style="margin: 0;">
+
+                              {% endfor %} 
+
+
+		</div>
+                    <style>
+                              .list-group-item{
+                                        background-color: #fdfdfd;
+                                        padding: 5px 10px;
+                                        border: 1px solid #0000000a;
+                              }
+                              .side-keys{
+                                        /* padding: 0.5rem 1rem; */
+                                        text-decoration: auto;
+                                        color: unset;
+                                        font-weight: bold;
+                                        font-size: larger;
+                                        font-size: 16px;
+                                        padding: 5px;
+                                        align-items: center;
+                              }
+                              .side-keys:hover{
+                                        background-color: #f8f8f8; 
+                                        color: red;
+                                        border-radius: 50px; 
+                              }
+                              .side-keys.active{
+                                        background-color: red; 
+                                        color: #f8f8f8;
+                                        border-radius: 50px; 
+                              }
+                              .box{
+                                        margin: 10px;
+                              }
+                    </style>
+	<!-- </div> -->
+</div>
+
+
+
+
+<div class="col-md-10 edge " style="background-color: #f8f8f8;background-color: #fdfdfd;">
+	<div style="padding: 18px;background-color: #f8f8f8;background-color: #fcfcfc;background-color: white;/* padding: 50px 25px; */border-radius: 10px;">
+		<div class="row" style="margin: 0; padding: 0;">
+
+                              {% for videoslist in videos %}
+			<div class="col-sm-12">
 				<div class="row">
 
+                                                  {% for video in videoslist %}
 
-					<div class="col-sm-3">
-					</div> 
-					<!-- <div class="col-sm-6" style="text-align: center;"> --> 
-					<div class="col-sm-6" style="text-align: center;"> 
-						<h1 style="font-weight: bold;font-size: 100px;/* color: blue; */"> 
-                                                                      YouTube 
-                                                            </h1> 
-                                                            <h4 style="background-color: whitesmoke;"> 
-                                                                      "/client{{request.path}}"
-                                                            </h4> 
-					</div> 
-					<div class="col-sm-3">
+					<div class="col-sm-3" style="text-align: center; margin: 0; padding: 0;"> 
+                                                            <div class="hold" style="background-color: #fdfdfd; border-radius: 10px; margin: 5px;">
+                                                                      <div class="video">
+                                                                                <div class="container" style="height: 168px ; width:300px; background-color: gray; background-color: black; border-radius: 15px; margin: 0; padding: 0;">
+                                                                                          <iframe width="300" height="168" src="{{video}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen style="border-radius: 10px;"></iframe>
+                                                                                </div>
+                                                                      </div>
+                                                                      <div class="about" style="padding: 2px;">
+                                                                                <div class="row" style="margin: 0; padding: 0;">
+                                                                                          <div class="col-md-2" style="padding:5px;">
+                                                                                                    <img src="/_static/_user/_profiles/_default.jpeg" alt="img not found" width="35" height="35" style="font-size: 12px; border-radius: 25px;">
+                                                                                          </div>
+                                                                                          <div class="col-md-10" style="padding:5px;text-align: start;">
+                                                                                                    <div class="title" style="font-weight: bold;font-size: small; line-height: normal;">
+                                                                                                              Lenovo Yoga Book 9i First Look: Dual OLED Screens, Key Features & More ...
+                                                                                                              <!--| Leptops -->
+                                                                                                    </div>
+                                                                                                    <div class="others" style="color: darkslategray;font-size: small;line-height: normal;margin-top: 5px;font-weight: bold;">
+                                                                                                              <div class="channel" style="">
+                                                                                                                        Counterpoint Research
+                                                                                                              </div>
+                                                                                                              
+                                                                                                              
+                                                                                                              <div class="basics">
+                                                                                                                        <spen>198k Views</spen> | 
+                                                                                                                        <spen> 4 days ago</spen>
+                                                                                                              </div>
+                                                                                                    </div>
+                                                                                          </div>
+                                                                                </div>
+                                                                      </div>
+                                                            </div>
 					</div>
 
-
+                                                  {% endfor %} 
 				</div>
 			</div>
+                              {% endfor %}
+
 		</div>
 	</div>
 	<div style="margin: 100px 0;">
@@ -58,7 +214,7 @@ YouTube | OpenAssistant
 </div>
 
 
-
+</div>
 
 
 

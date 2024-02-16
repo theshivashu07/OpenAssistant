@@ -1,13 +1,13 @@
 
 
 
-{% if request.path == '/articals/' %}
+{% if '/articals/' in request.path %}
 	<div class="edge" style="background-color: rebeccapurple;">
-{% elif request.path == '/youtube/' %}
+{% elif '/youtube/' in request.path %}
 	<div class="edge" style="background-color: red;">
-{% elif request.path == '/problems/' %}
+{% elif '/problems/' in request.path %}
 	<div class="edge" style="background-color: darkorange;">
-{% elif request.path == '/profile/' %}
+{% elif '/profile/' in request.path %}
 	<div class="edge" style="background-color: deepskyblue;">
 {% else %}
 	<div class="edge" style="background-color: #0d6efd;">
@@ -30,24 +30,24 @@
 			<div class="mid" style="align-items: center; align-self: center;">
 				<div class="flex">
 					<a href="/" style="text-decoration:none">
-						<div class="options">Home</div>
+						<div class="options {% if request.path == '/' %} active {% endif %} ">Home</div>
 					</a>
 					<a href="/problems/" style="text-decoration:none">
-						<div class="options">Problems</div>
+						<div class="options {% if request.path == '/problems/' %} active {% endif %} ">Problems</div>
 					</a>
 					<a href="/articals/" style="text-decoration:none">
-						<div class="options">Articals</div>
+						<div class="options {% if request.path == '/articals/' %} active {% endif %} ">Articals</div>
 					</a>
 					<a href="/youtube/" style="text-decoration:none">
-						<div class="options">YouTube</div>
+						<div class="options {% if request.path == '/youtube/' %} active {% endif %} ">YouTube</div>
 					</a>
 					<!-- 
 					<a href="/profile/" style="text-decoration:none">
-						<div class="options">Profile</div>
+						<div class="options {% if request.path == '/profile/' %} active {% endif %} ">Profile</div>
 					</a> 
 					-->
 					<a href="/hireus/" style="text-decoration:none">
-						<div class="options">Hire US </div>
+						<div class="options {% if request.path == '/hireus/' %} active {% endif %} ">Hire US </div>
 					</a>
 				</div>
 			</div>
@@ -98,8 +98,8 @@
 								<h5 style="margin-bottom: -5px;font-weight: bold;">
 									{{ObjectUSER.FullName |default:"Developer"}}
 								</h5>
-								<a href="/profile/" style="text-decoration: auto; color:#00000028;">
-									<spen style="font-weight: bold; /*color: #000aaa;*/ /*color:blue;*/ background-color: #ffffff60;padding: 0 10px;border-radius: 5px;">
+								<a href="/profile/" style="text-decoration: auto; color:#00000025;">
+									<spen style="font-weight: bold; /*color: #000aaa;*/ /*color:blue;*/ background-color: #ffffff50;padding: 0 10px;border-radius: 5px;">
 										user@{{ObjectUSER.Username |default:"none"}} ); 
 									</spen>
 								</a>	

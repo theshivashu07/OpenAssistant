@@ -5,7 +5,7 @@
 
 
 {% block tcontent %}
-Testing YouTube | OpenAssistant
+YouTube (3'Slides) | OpenAssistant
 {% endblock %}
 
 
@@ -22,20 +22,20 @@ Testing YouTube | OpenAssistant
 {% block childcontent %}
 
 
-<div class="row" style="margin: 0; padding: 0;">
+<div class="row" style="margin: 0; padding: 0; padding-top: 5px; background-color: #f8f8f8;background-color: #fdfdfd;">
 
 
-<div class="col-md-2 edge " style="/*overflow: scroll;*/ background-color: #f8f8f8;background-color: #fdfdfd;/* margin: 0; */padding: 50px 25px;">
+<div class="col-md-2 edge " style="/*overflow: scroll;*/ background-color: #f8f8f8;background-color: #fdfdfd;/* margin: 0; */padding: 35px 20px;">
 	<!-- <div style="padding: 25px;background-color: #f8f8f8;background-color: #fcfcfc;background-color: white;/* padding: 50px 25px; */border-radius: 10px;"> -->
 		<div class="row">
 
-                              <hr style="margin: 0;">
+                              <!-- <hr style="margin: 0;"> -->
                               
                               <div class="col-md-12" style="padding: 10px;/* padding-top: 25px; */">
 
                                         <ul class="list-group list-group-flush">
                                                   <li class="list-group-item">
-                                                            <a class="side-keys row" href="/youtube/" class="row" style="align-items: center; font-weight: normal;">
+                                                            <a class="side-keys row active" href="/youtube/" class="row" style="align-items: center; font-weight: normal;">
                                                                       <i class="col-md-2 fa-solid fa-house"></i>
                                                                       <spem class="col-md-10">
                                                                                 Home
@@ -171,7 +171,7 @@ Testing YouTube | OpenAssistant
                               </div>
                               
                               
-                              <hr style="margin: 0;">
+                              <!-- <hr style="margin: 0;"> -->
 
 
 		</div>
@@ -187,7 +187,7 @@ Testing YouTube | OpenAssistant
                                         color: unset;
                                         font-weight: bold;
                                         font-size: larger;
-                                        font-size: 16px;
+                                        font-size: 18px;
                                         padding: 5px;
                                         align-items: center;
                               }
@@ -196,7 +196,7 @@ Testing YouTube | OpenAssistant
                                         color: red;
                                         border-radius: 50px; 
                               }
-                              .side-keys:active{
+                              .side-keys.active{
                                         background-color: red; 
                                         color: #f8f8f8;
                                         border-radius: 50px; 
@@ -220,7 +220,9 @@ Testing YouTube | OpenAssistant
 				<div class="row">
 
                                                   {% for video in videoslist %}
-					<div class="col-sm-4" style="text-align: center; margin: 0; padding: 0;"> 
+
+					
+                                                  <div class="col-sm-4" style="text-align: center; margin: 0; padding: 0;"> 
                                                             <div class="hold" style="background-color: #fdfdfd; border-radius: 10px; margin: 5px;">
                                                                       <div class="video">
                                                                                 <div class="container" style="height: 225px ; width:400px; background-color: gray; background-color: black; border-radius: 15px; margin: 0; padding: 0;">
@@ -234,7 +236,6 @@ Testing YouTube | OpenAssistant
                                                                                           </div>
                                                                                           <div class="col-md-10" style="padding:5px;text-align: start;">
                                                                                                     <div class="title" style="font-weight: bold;font-size: 15px; line-height: normal;">
-                                                                                                              <!-- Lenovo Yoga Book 9i REVIEW - 45-Days Later -->
                                                                                                               Lenovo Yoga Book 9i First Look: Dual OLED Screens, Key Features &amp; More | Leptops
                                                                                                     </div>
                                                                                                     <div class="others" style="color: darkslategray;font-size: 15px;line-height: normal;margin-top: 5px;font-weight: bold;">
@@ -252,7 +253,10 @@ Testing YouTube | OpenAssistant
                                                                                 </div>
                                                                       </div>
                                                             </div>
-					</div>
+					</div> 
+                                                 
+
+
                                                   {% endfor %} 
 				</div>
 			</div>
