@@ -5,7 +5,7 @@
 
 
 {% block tcontent %}
-YouTube (4'Slides) | OpenAssistant
+YouTube | OpenAssistant
 {% endblock %}
 
 
@@ -90,7 +90,7 @@ YouTube (4'Slides) | OpenAssistant
 </style>
 
 
-<div class="col-md-2 edge " style="/*overflow: scroll;*/ background-color: #f8f8f8;background-color: #fdfdfd;/* margin: 0; */padding: 25px;">
+<div class="col-md-2 edge " style="/*overflow: scroll;*/ background-color: #f8f8f8;background-color: #fdfdfd;/* margin: 0; */padding: 35px 20px;">
 	<!-- <div style="padding: 25px;background-color: #f8f8f8;background-color: #fcfcfc;background-color: white;/* padding: 50px 25px; */border-radius: 10px;"> -->
 		<div class="row">
 
@@ -168,11 +168,12 @@ YouTube (4'Slides) | OpenAssistant
 
                                                   {% for video in videoslist %}
 
+                                                  
 					<div class="col-sm-3" style="text-align: center; margin: 0; padding: 0;"> 
                                                             <div class="hold" style="background-color: #fdfdfd; border-radius: 10px; margin: 5px;">
                                                                       <div class="video">
-                                                                                <div class="container" style="height: 168px ; width:300px; background-color: gray; background-color: black; border-radius: 15px; margin: 0; padding: 0;">
-                                                                                          <iframe width="300" height="168" src="{{video}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen style="border-radius: 10px;"></iframe>
+                                                                                <div class="container" style="height: 168px ; width:300px; background-color: black; /*background-color: #848484;*/ border-radius: 15px; margin: 0; padding: 0;">
+                                                                                          <!-- <iframe width="300" height="168" src="{{video}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen style="border-radius: 10px;"></iframe> -->
                                                                                 </div>
                                                                       </div>
                                                                       <div class="about" style="padding: 2px;">
@@ -183,7 +184,6 @@ YouTube (4'Slides) | OpenAssistant
                                                                                           <div class="col-md-10" style="padding:5px;text-align: start;">
                                                                                                     <div class="title" style="font-weight: bold;font-size: small; line-height: normal;">
                                                                                                               Lenovo Yoga Book 9i First Look: Dual OLED Screens, Key Features & More ...
-                                                                                                              <!--| Leptops -->
                                                                                                     </div>
                                                                                                     <div class="others" style="color: darkslategray;font-size: small;line-height: normal;margin-top: 5px;font-weight: bold;">
                                                                                                               <div class="channel" style="">
@@ -192,7 +192,8 @@ YouTube (4'Slides) | OpenAssistant
                                                                                                               
                                                                                                               
                                                                                                               <div class="basics">
-                                                                                                                        <spen>198k Views</spen> | 
+                                                                                                                        <spen>198k Views</spen>
+                                                                                                                        <spen> • </spen>
                                                                                                                         <spen> 4 days ago</spen>
                                                                                                               </div>
                                                                                                     </div>
@@ -201,6 +202,48 @@ YouTube (4'Slides) | OpenAssistant
                                                                       </div>
                                                             </div>
 					</div>
+                                                  
+                                                  
+					<!-- <div class="col-sm-3" style="text-align: center; margin: 0; padding: 0;"> 
+                                                            <div class="hold" style="background-color: #fdfdfd; border-radius: 10px; margin: 5px;">
+                                                                      <div class="video">
+                                                                                <div class="container" style="height: 168px ; width:300px; background-color: black; /*background-color: #848484;*/ border-radius: 15px; margin: 0; padding: 0;">
+                                                                                          ?
+                                                                                </div>
+                                                                      </div>
+                                                                      <div class="about" style="padding: 2px;">
+                                                                                <div class="row" style="margin: 0; padding: 0;">
+                                                                                          <div class="col-md-2" style="padding:5px;">
+                                                                                                    <img src="/_static/_user/_profiles/_default.jpeg" alt="img not found" width="35" height="35" style="font-size: 12px; border-radius: 25px;">
+                                                                                          </div>
+                                                                                          <div class="col-md-10" style="padding:5px;text-align: start;">
+                                                                                                    <div class="title" style="font-weight: bold;font-size: small; line-height: normal;">
+                                                                                                              <span class="placeholder col-12 "></span>
+                                                                                                              <span class="placeholder col-12"></span>
+                                                                                                    </div>
+                                                                                                    <div class="others" style="color: darkslategray;font-size: small;line-height: normal;margin-top: 5px;font-weight: bold;">
+                                                                                                              <div class="channel">
+                                                                                                                        <span class="placeholder col-12 placeholder-sm" style="width: 75%;"></span>
+                                                                                                              </div>
+                                                                                                              
+                                                                                                              
+                                                                                                              <div class="basics">
+                                                                                                                        <span class="placeholder col-12 placeholder-xs" style="width: 30%;"></span>
+                                                                                                                         <spen style="color: #f0f0f0;"> • </spen>
+                                                                                                                        <span class="placeholder col-12 placeholder-xs" style="width: 45%;"></span>
+                                                                                                              </div>
+                                                                                                    </div>
+                                                                                          </div>
+                                                                                          <style>
+                                                                                                    .placeholder{
+                                                                                                              color: #bababa;
+                                                                                                    }
+                                                                                          </style>
+                                                                                </div>
+                                                                      </div>
+                                                            </div>
+					</div> -->
+
 
                                                   {% endfor %} 
 				</div>

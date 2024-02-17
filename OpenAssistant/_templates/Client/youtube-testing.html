@@ -5,7 +5,7 @@
 
 
 {% block tcontent %}
-Testing YouTube | OpenAssistant
+Testing@YouTube  | OpenAssistant
 {% endblock %}
 
 
@@ -22,156 +22,103 @@ Testing YouTube | OpenAssistant
 {% block childcontent %}
 
 
-<div class="row" style="margin: 0; padding: 0;">
+<div class="row" style="margin: 0; padding: 0; /*padding-top: 12px;*/ background-color: #f8f8f8;background-color: #fdfdfd;">
+
+<div class="scrollbar-outer">
+          <div class="scrollbar col-md-auto">
+          
+                    <div class="scrollbar-inner">
+                              {% for keys,values in sidebar.items %}
+                                        {% for key,value in values.items %}
+                                                  <div class="scrollbar-box" >
+                                                            <a class="scrollbar-link  {% if request.path == value.path %} active {% endif %}" href="{{value.path}}">
+                                                                      {{value.name}}
+                                                            </a>
+                                                  </div>
+                                        {% endfor %}
+                              {% endfor %}
+                    </div>
+          </div>
+</div>
+
+<style>
+          .scrollbar-outer{
+                    /*background-color: #f8f8f8;*/ 
+                    background-color: white; 
+                    border: 1px solid #f0f0f0; 
+          }
+          .scrollbar{
+                    border: 1px solid #fbfbfb; 
+                    overflow-x: auto;
+                    padding: 2px 10px;
+          }
+          .scrollbar-inner{
+                    /*background-color: #f8f8f8;*/ 
+                    padding: 5px 20px; 
+                    display: flex;  
+                    width: max-content;
+          }
+          .scrollbar::-webkit-scrollbar{
+                    width: 0;
+                    height: 0;
+          }
+          .scrollbar-box{
+                    padding: 2px;
+                    /* margin: 0 5px;  */
+                    margin: 0 2px; 
+                    width: fit-content; 
+                    border-radius: 25px; 
+                    font-size: smaller; 
+                    background-color: white; 
+                    background-color: #fdfdfd; 
+                    border: 1px solid #f8f8f8; 
+          }
+          .scrollbar-link{
+                    border-radius: 25px; 
+                    padding: 5px 10px; 
+                    color: black; 
+                    text-decoration: auto;
+          }
+          .scrollbar-link:hover{
+                    color: white;
+                    background-color: black;
+          }
+          .scrollbar-link.active{
+                    color: white;
+                    background-color: black;
+          }
+</style>
 
 
-<div class="col-md-2 edge " style="/*overflow: scroll;*/ background-color: #f8f8f8;background-color: #fdfdfd;/* margin: 0; */padding: 50px 25px;">
+<div class="col-md-2 edge " style="/*overflow: scroll;*/ background-color: #f8f8f8;background-color: #fdfdfd;/* margin: 0; */padding: 35px 20px;">
 	<!-- <div style="padding: 25px;background-color: #f8f8f8;background-color: #fcfcfc;background-color: white;/* padding: 50px 25px; */border-radius: 10px;"> -->
 		<div class="row">
 
-                              <hr style="margin: 0;">
+                              <!-- <hr style="margin: 0;"> -->
+
+                              {% for keys,values in sidebar.items %}
                               
                               <div class="col-md-12" style="padding: 10px;/* padding-top: 25px; */">
-
                                         <ul class="list-group list-group-flush">
-                                                  <li class="list-group-item">
-                                                            <a class="side-keys row" href="/youtube/" class="row" style="align-items: center; font-weight: normal;">
-                                                                      <i class="col-md-2 fa-solid fa-house"></i>
-                                                                      <spem class="col-md-10">
-                                                                                Home
-                                                                      </spem>
-                                                            </a>
-                                                  </li>
-                                                  <li class="list-group-item">
-                                                            <a class="side-keys row" href="#" class="row" style="align-items: center; font-weight: normal;">
-                                                                      <i class="col-md-2 fa-solid fa-mobile"></i>
-                                                                      <spem class="col-md-10">
-                                                                                Reels
-                                                                      </spem>
-                                                            </a>
-                                                  </li>
-                                                  <li class="list-group-item">
-                                                            <a class="side-keys row" href="#" class="row" style="align-items: center; font-weight: normal;">
-                                                                      <i class="col-md-2 fa-solid fa-video"></i>
-                                                                      <spem class="col-md-10">
-                                                                                Subscription
-                                                                      </spem>
-                                                            </a>
-                                                  </li>
-                                        </ul>
 
+                                                  {% for key,value in values.items %}
+                                                  <li class="list-group-item">
+                                                            <a class="side-keys row {% if request.path == value.path %} active {% endif %} " href="{{value.path}}" class="row" style="align-items: center; font-weight: normal;">
+                                                                      <i class="col-md-2 {{value.logo}}"></i>
+                                                                      <spem class="col-md-10">
+                                                                                {{value.name}}
+                                                                      </spem>
+                                                            </a>
+                                                  </li>
+                                                  {% endfor %}
+
+                                        </ul>
                               </div>
 
-                              <hr style="margin: 0;">
-                              
-                              <div class="col-md-12" style="padding: 10px;/* padding-top: 25px; */">
-
-                                        <ul class="list-group list-group-flush">
-                                                  <li class="list-group-item">
-                                                            <a class="side-keys row" href="#" class="row" style="align-items: center; font-weight: normal;">
-                                                                      <i class="col-md-2 fa-solid fa-om"></i>
-                                                                      <spem class="col-md-10">
-                                                                                Spiritual
-                                                                      </spem>
-                                                            </a>
-                                                  </li>
-                                                  <li class="list-group-item">
-                                                            <a class="side-keys row" href="#" class="row" style="align-items: center; font-weight: normal;">
-                                                                      <i class="col-md-2 fa-solid fa-book"></i>
-                                                                      <spem class="col-md-10">
-                                                                                Study
-                                                                      </spem>
-                                                            </a>
-                                                  </li>
-                                                  <li class="list-group-item">
-                                                            <a class="side-keys row" href="#" class="row" style="align-items: center; font-weight: normal;">
-                                                                      <!-- <i class="col-md-2 fa-solid fa-music"></i> -->
-                                                                      <i class="col-md-2 fa-solid fa-headphones"></i>
-                                                                      <spem class="col-md-10">
-                                                                                Songs
-                                                                      </spem>
-                                                            </a>
-                                                  </li>
-                                                  <li class="list-group-item">
-                                                            <a class="side-keys row" href="#" class="row" style="align-items: center; font-weight: normal;">
-                                                                      <i class="col-md-2 fa-solid fa-dumbbell"></i>
-                                                                      <spem class="col-md-10">
-                                                                                Workout
-                                                                      </spem>
-                                                            </a>
-                                                  </li>
-                                                  <li class="list-group-item">
-                                                            <a class="side-keys row" href="#" class="row" style="align-items: center; font-weight: normal;">
-                                                                      <!-- <i class="col-md-2 fa-solid fa-person-booth"></i> -->
-                                                                      <i class="col-md-2 fa-solid fa-landmark-dome"></i>
-                                                                      <spem class="col-md-10">
-                                                                                Political
-                                                                      </spem>
-                                                            </a>
-                                                  </li>
-                                                  <li class="list-group-item">
-                                                            <a class="side-keys row" href="#" class="row" style="align-items: center; font-weight: normal;">
-                                                                      <i class="col-md-2 fa-regular fa-face-smile"></i>
-                                                                      <spem class="col-md-10">
-                                                                                Standups
-                                                                      </spem>
-                                                            </a>
-                                                  </li>
-                                                  <li class="list-group-item">
-                                                            <a class="side-keys row" href="#" class="row" style="align-items: center; font-weight: normal;">
-                                                                      <i class="col-md-2 fa-solid fa-tv"></i>
-                                                                      <spem class="col-md-10">
-                                                                                NEWS
-                                                                      </spem>
-                                                            </a>
-                                                  </li>
-                                                  <li class="list-group-item">
-                                                            <a class="side-keys row" href="#" class="row" style="align-items: center; font-weight: normal;">
-                                                                      <i class="col-md-2 fa-regular fa-handshake"></i>
-                                                                      <spem class="col-md-10">
-                                                                                Best Works
-                                                                      </spem>
-                                                            </a>
-                                                  </li>
-                                                  <li class="list-group-item">
-                                                            <a class="side-keys row" href="#" class="row" style="align-items: center; font-weight: normal;">
-                                                                      <i class="col-md-2 fa-solid fa-bullhorn"></i>
-                                                                      <spem class="col-md-10">
-                                                                                Announcements
-                                                                      </spem>
-                                                            </a>
-                                                  </li>
-                                                  <li class="list-group-item">
-                                                            <a class="side-keys row" href="#" class="row" style="align-items: center; font-weight: normal;">
-                                                                      <i class="col-md-2 fa-solid fa-chalkboard-user"></i>
-                                                                      <spem class="col-md-10">
-                                                                                Interview | Podcast
-                                                                      </spem>
-                                                            </a>
-                                                  </li>
-                                                  <li class="list-group-item">
-                                                            <a class="side-keys row" href="#" class="row" style="align-items: center; font-weight: normal;">
-                                                                      <!-- <i class="col-md-2 fa-solid fa-book-open-reader"></i> -->
-                                                                      <i class="col-md-2 fa-solid fa-person-chalkboard"></i>
-                                                                      <spem class="col-md-10">
-                                                                                Interviews Guide
-                                                                      </spem>
-                                                            </a>
-                                                  </li>
-                                                  <li class="list-group-item">
-                                                            <a class="side-keys row" href="#" class="row" style="align-items: center; font-weight: normal;">
-                                                                      <i class="col-md-2 fa-solid fa-laptop-code"></i>
-                                                                      <spem class="col-md-10">
-                                                                                Coding
-                                                                      </spem>
-                                                            </a>
-                                                  </li>
-                                        </ul>
-
-                              </div>
-                              
                               
                               <hr style="margin: 0;">
+
+                              {% endfor %} 
 
 
 		</div>
@@ -196,7 +143,7 @@ Testing YouTube | OpenAssistant
                                         color: red;
                                         border-radius: 50px; 
                               }
-                              .side-keys:active{
+                              .side-keys.active{
                                         background-color: red; 
                                         color: #f8f8f8;
                                         border-radius: 50px; 
@@ -220,31 +167,33 @@ Testing YouTube | OpenAssistant
 				<div class="row">
 
                                                   {% for video in videoslist %}
-					<div class="col-sm-4" style="text-align: center; margin: 0; padding: 0;"> 
+
+                                                  
+					<div class="col-sm-3" style="text-align: center; margin: 0; padding: 0;"> 
                                                             <div class="hold" style="background-color: #fdfdfd; border-radius: 10px; margin: 5px;">
                                                                       <div class="video">
-                                                                                <div class="container" style="height: 225px ; width:400px; background-color: gray; background-color: black; border-radius: 15px; margin: 0; padding: 0;">
-                                                                                          <iframe width="400" height="225" src="{{video}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen style="border-radius: 10px;"></iframe>
+                                                                                <div class="container" style="height: 168px ; width:300px; background-color: black; /*background-color: #848484;*/ border-radius: 15px; margin: 0; padding: 0;">
+                                                                                          <!-- <iframe width="300" height="168" src="{{video}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen style="border-radius: 10px;"></iframe> -->
                                                                                 </div>
                                                                       </div>
                                                                       <div class="about" style="padding: 2px;">
                                                                                 <div class="row" style="margin: 0; padding: 0;">
                                                                                           <div class="col-md-2" style="padding:5px;">
-                                                                                                    <img src="/_static/_user/_profiles/_default.jpeg" alt="img not found" width="40" height="40" style="font-size: 12px; border-radius: 25px;">
+                                                                                                    <img src="/_static/_user/_profiles/_default.jpeg" alt="img not found" width="35" height="35" style="font-size: 12px; border-radius: 25px;">
                                                                                           </div>
                                                                                           <div class="col-md-10" style="padding:5px;text-align: start;">
-                                                                                                    <div class="title" style="font-weight: bold;font-size: 15px; line-height: normal;">
-                                                                                                              <!-- Lenovo Yoga Book 9i REVIEW - 45-Days Later -->
-                                                                                                              Lenovo Yoga Book 9i First Look: Dual OLED Screens, Key Features &amp; More | Leptops
+                                                                                                    <div class="title" style="font-weight: bold;font-size: small; line-height: normal;">
+                                                                                                              Lenovo Yoga Book 9i First Look: Dual OLED Screens, Key Features & More ...
                                                                                                     </div>
-                                                                                                    <div class="others" style="color: darkslategray;font-size: 15px;line-height: normal;margin-top: 5px;font-weight: bold;">
+                                                                                                    <div class="others" style="color: darkslategray;font-size: small;line-height: normal;margin-top: 5px;font-weight: bold;">
                                                                                                               <div class="channel" style="">
                                                                                                                         Counterpoint Research
                                                                                                               </div>
                                                                                                               
                                                                                                               
                                                                                                               <div class="basics">
-                                                                                                                        <spen>198k Views</spen> | 
+                                                                                                                        <spen>198k Views</spen>
+                                                                                                                        <spen> • </spen>
                                                                                                                         <spen> 4 days ago</spen>
                                                                                                               </div>
                                                                                                     </div>
@@ -253,6 +202,49 @@ Testing YouTube | OpenAssistant
                                                                       </div>
                                                             </div>
 					</div>
+                                                  
+                                                  
+					<!-- <div class="col-sm-3" style="text-align: center; margin: 0; padding: 0;"> 
+                                                            <div class="hold" style="background-color: #fdfdfd; border-radius: 10px; margin: 5px;">
+                                                                      <div class="video">
+                                                                                <div class="container" style="height: 168px ; width:300px; background-color: black; /*background-color: #848484;*/ border-radius: 15px; margin: 0; padding: 0;">
+                                                                                          ?
+                                                                                </div>
+                                                                      </div>
+                                                                      <div class="about" style="padding: 2px;">
+                                                                                <div class="row" style="margin: 0; padding: 0;">
+                                                                                          <div class="col-md-2" style="padding:5px;">
+                                                                                                    <img src="/_static/_user/_profiles/_default.jpeg" alt="img not found" width="35" height="35" style="font-size: 12px; border-radius: 25px;">
+                                                                                          </div>
+                                                                                          <div class="col-md-10" style="padding:5px;text-align: start;">
+                                                                                                    <div class="title" style="font-weight: bold;font-size: small; line-height: normal;">
+                                                                                                              <span class="placeholder col-12 "></span>
+                                                                                                              <span class="placeholder col-12"></span>
+                                                                                                    </div>
+                                                                                                    <div class="others" style="color: darkslategray;font-size: small;line-height: normal;margin-top: 5px;font-weight: bold;">
+                                                                                                              <div class="channel">
+                                                                                                                        <span class="placeholder col-12 placeholder-sm" style="width: 75%;"></span>
+                                                                                                              </div>
+                                                                                                              
+                                                                                                              
+                                                                                                              <div class="basics">
+                                                                                                                        <span class="placeholder col-12 placeholder-xs" style="width: 30%;"></span>
+                                                                                                                         <spen style="color: #f0f0f0;"> • </spen>
+                                                                                                                        <span class="placeholder col-12 placeholder-xs" style="width: 45%;"></span>
+                                                                                                              </div>
+                                                                                                    </div>
+                                                                                          </div>
+                                                                                          <style>
+                                                                                                    .placeholder{
+                                                                                                              color: #bababa;
+                                                                                                    }
+                                                                                          </style>
+                                                                                </div>
+                                                                      </div>
+                                                            </div>
+					</div> -->
+
+
                                                   {% endfor %} 
 				</div>
 			</div>
