@@ -35,21 +35,21 @@
 						<div class="options {% if request.path == '/' %} active {% endif %} ">Home</div>
 					</a>
 					<a href="/problems/" style="text-decoration:none">
-						<div class="options {% if request.path == '/problems/' %} active {% endif %} ">Problems</div>
+						<div class="options {% if '/problems/' in request.path %} active {% endif %} ">Problems</div>
 					</a>
 					<a href="/articals/" style="text-decoration:none">
-						<div class="options {% if request.path == '/articals/' %} active {% endif %} ">Articals</div>
+						<div class="options {% if '/articals/' in request.path %} active {% endif %} ">Articals</div>
 					</a>
 					<a href="/youtube/" style="text-decoration:none">
-						<div class="options {% if request.path == '/youtube/' %} active {% endif %} ">YouTube</div>
+						<div class="options {% if '/youtube/' in request.path %} active {% endif %} ">YouTube</div>
 					</a>
 					<!-- 
 					<a href="/profile/" style="text-decoration:none">
-						<div class="options {% if request.path == '/profile/' %} active {% endif %} ">Profile</div>
+						<div class="options {% if '/profile/' in request.path %} active {% endif %} ">Profile</div>
 					</a> 
 					-->
 					<a href="/hireus/" style="text-decoration:none">
-						<div class="options {% if request.path == '/hireus/' %} active {% endif %} ">Hire US </div>
+						<div class="options {% if '/hireus/' in request.path %} active {% endif %} ">Hire US </div>
 					</a>
 				</div>
 			</div>
