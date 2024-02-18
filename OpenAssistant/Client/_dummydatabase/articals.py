@@ -71,6 +71,7 @@ SidebarTopicsLeft = {
                     'Database Articals',
                     'System Design Articals',
                     'Programming Articals',
+                    'Other Articals',
           ],
           'others' : [
                     'Political Articals', 
@@ -85,6 +86,10 @@ SidebarTopicsRight = [
         "Which componies use Python?",
         "Python Setup - Download and Installation.",
         "Is Python a most popular?",
+        "Introduction of Django ( Rest Framework ).",
+        "How to Python and Django interconnected.",
+        "Django's Authentication & Autherization.",
+        "How to connect Database with Django.",
         "Python vs C vs C++ vs Java vs Javascript.",
         "Tech with Python (Software,Web,AI,ML).",
 ]

@@ -10,7 +10,7 @@ from API.Code.User.Return import ReturningDatabase
 
 from Client._dummydatabase.youtube import YoutubeRUN
 from Client._dummydatabase.articals import ArticalsRUN
-# from Client._dummydatabase.problems import ProblemsRUN
+from Client._dummydatabase.problems import ProblemsRUN
 
 
 # def index(request):
@@ -53,15 +53,18 @@ def articals_from_(request,from_):
 @LoginRequired(login_url="/security/login/")
 def problems(request): 
         ReturningData = dict()
+        ProblemsRUN( dictionary=ReturningData)
         ReturningDatabase(request,ReturningData)
-        return render(request,"client/problems.html",ReturningData); 
-        # return render(request,"client/problems-testing.html",ReturningData); 
+        # return render(request,"client/problems.html",ReturningData); 
+        return render(request,"client/problems-testing.html",ReturningData); 
 
-# @LoginRequired(login_url="/security/login/")
+# @LoginRequired(login_url="/security/login/") 
 def problems_from_(request,from_): 
         ReturningData = dict()
+        ProblemsRUN( dictionary=ReturningData)
         ReturningDatabase(request,ReturningData)
-        return render(request,"client/problems.html",ReturningData); 
+        # return render(request,"client/problems.html",ReturningData); 
+        return render(request,"client/problems-testing.html",ReturningData); 
 
 
 
