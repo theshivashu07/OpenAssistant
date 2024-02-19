@@ -158,7 +158,7 @@ def getSidebarData(database):
         Database = list()
         for value in database:
                 name, logo = value, None
-                path = '/articals/'+value.lower().replace(' ','-')+'/'
+                path = '/problems/'+value.lower().replace(' ','-')+'/'
                 dictionary = { 'name':name, 'path':path, 'logo':logo }
                 object = Menus(
                         dictionary = dictionary
