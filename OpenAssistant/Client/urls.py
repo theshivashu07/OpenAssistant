@@ -19,6 +19,9 @@ urlpatterns=[
                     
 		path('youtube/',views.youtube,name='youtube'),
 		path('youtube/<str:from_>/',views.youtube_from_,name='youtube_from_'),
+                    
+		path('aadhyatm/',views.aadhyatm,name='aadhyatm'),
+		path('aadhyatm/<str:from_>/',views.aadhyatm_from_,name='aadhyatm_from_'),
 
 
 

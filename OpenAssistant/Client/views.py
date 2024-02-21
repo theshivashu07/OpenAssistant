@@ -11,6 +11,7 @@ from API.Code.User.Return import ReturningDatabase
 from Client._dummydatabase.youtube import YoutubeRUN
 from Client._dummydatabase.articals import ArticalsRUN
 from Client._dummydatabase.problems import ProblemsRUN
+from Client._dummydatabase.aadhyatm import AadhyatmRUN
 
 
 # def index(request):
@@ -85,6 +86,26 @@ def youtube_from_(request,from_):
         ReturningDatabase(request,ReturningData)
         return render(request,"client/youtube.html",ReturningData); 
         # return render(request,"client/youtube-testing.html",ReturningData); 
+
+
+
+
+
+
+@LoginRequired(login_url="/security/login/")
+def aadhyatm(request): 
+        ReturningData = dict()
+        AadhyatmRUN( limit=4, dictionary=ReturningData)
+        ReturningDatabase(request,ReturningData)
+        return render(request,"client/aadhyatm.html",ReturningData); 
+        # return render(request,"client/aadhyatm-testing.html",ReturningData); 
+
+def aadhyatm_from_(request,from_): 
+        ReturningData = dict()
+        YoutubeRUN( limit=4, dictionary=ReturningData)
+        ReturningDatabase(request,ReturningData)
+        return render(request,"client/aadhyatm.html",ReturningData); 
+        # return render(request,"client/aadhyatm-testing.html",ReturningData); 
 
 
 
