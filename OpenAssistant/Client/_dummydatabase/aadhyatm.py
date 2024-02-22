@@ -2,11 +2,6 @@
 
 
 
-
-
-
-
-
 class Menus:
         def __init__(self,dictionary):
                 self.name = dictionary.get('name',None)
@@ -34,48 +29,49 @@ class Dicto:
 
 
 Datasets = {
-          'ProgrammingLanguages' : [
-                    'C',
-                    'C++',
-                    'Python',
-                    'Java',
-                    'Javascript',
-          ],
-          'DataStructures' : [
-                    'Array',
-                    'String',
-                    'Linked List',
-                    'Stack',
-                    'Queue',
-                    'Matrix',
-                    'Heap',
-                    'Hashing',
-                    'Graph',
-                    'Tree',
-                    'Binary Search Tree',
-                    'Dynamic Programming',
-          ],
+        'Aarti' : {
+                "Maa Durga'ji Aarti",
+                "Satyanarayan'ji Aarti",
+                "Shri Ram'ji Aarti",
+                "Shri Ram Raksha Strot",
+                "Hanuman Chalisha",
+        },
+        'Katha' : {
+                "Satyanarayan'ji Katha", 
+                "Ekadashi Katha", 
+                "Guruwar Katha", 
+        },
+        'Mantra' : {
+                "Surya Mantra", 
+                "Shani Mantra", 
+                "Maa Durga Mantra", 
+                "Shaptsati Mantra", 
+                "Chandra Mantra", 
+        },
 }
 
 
 
 
 Database = {
-        'Problems' : {
-                'Arrays' : 279,
-                'Linked List' : 194,
-                'Stack' : 173,
-                'Queue' : 164,
-                'Dequeue' : 153,
-                'Heap' : 145,
+        'Aarti' : {
+                "Maa Durga'ji Aarti" : None,
+                "Satyanarayan'ji Aarti" : None,
+                "Shri Ram'ji Aarti" : None,
+                "Shri Ram Raksha Strot" : None,
+                "Hanuman Chalisha" : None,
         },
-        'Solutions' : {
-                'Python' : 329,
-                'C++' : 192,
-                'Java' : 126,
-                'Javascript' : 27,
-                'Go' : 23,
-                'C' : 12,
+        'Katha' : {
+                "Satyanarayan'ji Katha" : None, 
+                "Ekadashi Katha" : None, 
+                "Guruwar Katha" : None, 
+        },
+        'Mantra' : {
+                "Surya Mantra" : None, 
+                "Shani Mantra" : None, 
+                "Maa Durga Mantra" : None, 
+                "Shaptsati Mantra" : None, 
+                "Chandra Mantra" : None, 
         },
 }
 
@@ -83,23 +79,20 @@ Database = {
 
 SidebarTopicsLeft = {
         'basics' : [
-                    'Recent Problems',
-                    'Most Viewed Problems',
-                    'Most Liked Problems',
-                    'Most Comment Problems',
+                "Images",
+                "Audios",
+                "Reels",
+                "Videos",
           ],
           'notes' : [
-                    'DSA Problems',
-                    'SQL Problems',
-                    'Pattern Problems',
-                    'Design Problems',
-                    'OOPs Problems',
+                "Mantra",
+                "Aarti",
+                "Kthaa"
           ],
           'others' : [
-                    'Basic Problems', 
-                    'Easy Problems', 
-                    'Mediem Problems', 
-                    'Hard Problems', 
+                  "Ekadashi Dates",
+                  "Festival Dates",
+                  "Other Saved Dates"
           ],
         # 'Notes Problems', 
 }
@@ -127,7 +120,7 @@ def getSidebarData_DICTS(database):
                 objects = list()
                 for key,value in values.items():
                         name, value, logo = key, value, None
-                        path = '/problems/'+keys.lower().replace(' ','-')+'/'
+                        path = '/aadhyatm/'+keys.lower().replace(' ','-')+'/'
                         dictionary = { 'name':name, 'value':value, 'path':path, 'logo':logo }
                         temp = Dicto(
                                 dictionary = dictionary 
@@ -147,7 +140,7 @@ def getSidebarData_DICT(database):
                 objects = list()
                 for value in values:
                         name, logo = value, None
-                        path = '/problems/'+value.lower().replace(' ','-')+'/'
+                        path = '/aadhyatm/'+value.lower().replace(' ','-')+'/'
                         dictionary = { 'name':name, 'path':path, 'logo':logo }
                         temp = Menus(
                                 dictionary = dictionary 
@@ -163,7 +156,7 @@ def getSidebarData(database):
         Database = list()
         for value in database:
                 name, logo = value, None
-                path = '/problems/'+value.lower().replace(' ','-')+'/'
+                path = '/aadhyatm/'+value.lower().replace(' ','-')+'/'
                 dictionary = { 'name':name, 'path':path, 'logo':logo }
                 object = Menus(
                         dictionary = dictionary
@@ -181,15 +174,24 @@ def getSidebarData(database):
 
 
 
-
-
-
 def AadhyatmRUN(dictionary=dict()):
         dictionary['DataSets'] = getSidebarData_DICT(Datasets)
         dictionary['sidebarleft'] = getSidebarData_DICT(SidebarTopicsLeft)
         dictionary['Database'] = getSidebarData_DICTS(Database)
         dictionary['sidebarright'] = getSidebarData(SidebarTopicsRight)
         return None
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

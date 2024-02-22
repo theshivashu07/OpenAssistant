@@ -95,17 +95,17 @@ def youtube_from_(request,from_):
 @LoginRequired(login_url="/security/login/")
 def aadhyatm(request): 
         ReturningData = dict()
-        AadhyatmRUN( limit=4, dictionary=ReturningData)
-        ReturningDatabase(request,ReturningData)
-        return render(request,"client/aadhyatm.html",ReturningData); 
-        # return render(request,"client/aadhyatm-testing.html",ReturningData); 
+        AadhyatmRUN( dictionary=ReturningData )
+        ReturningDatabase( request,ReturningData )
+        # return render(request,"client/aadhyatm.html",ReturningData); 
+        return render(request,"client/aadhyatm-testing.html",ReturningData); 
 
 def aadhyatm_from_(request,from_): 
         ReturningData = dict()
-        YoutubeRUN( limit=4, dictionary=ReturningData)
-        ReturningDatabase(request,ReturningData)
-        return render(request,"client/aadhyatm.html",ReturningData); 
-        # return render(request,"client/aadhyatm-testing.html",ReturningData); 
+        AadhyatmRUN( dictionary=ReturningData )
+        ReturningDatabase( request,ReturningData )
+        # return render(request,"client/aadhyatm.html",ReturningData); 
+        return render(request,"client/aadhyatm-testing.html",ReturningData); 
 
 
 
