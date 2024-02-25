@@ -16,7 +16,7 @@ from .models import *
 
 import API.Code.User.LogIn as __Logout
 import API.Code.User.LogIn as __LogIn
-import API.Code.User.SignUp as __SignUp
+import API.Code.User.SignUp as __SignUp 
 import API.Code.User.Return as __Return
 from API.Code.User.Return import ReturningDatabase
 
