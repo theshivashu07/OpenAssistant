@@ -8,10 +8,10 @@ from Home.models import *
 from API.Code.Management.Sessions import Authenticate, Login, Logout, LoginRequired 
 from API.Code.User.Return import ReturningDatabase
 
-from Client._dummydatabase.youtube import YoutubeRUN
-from Client._dummydatabase.articals import ArticalsRUN
-from Client._dummydatabase.problems import ProblemsRUN
-from Client._dummydatabase.aadhyatm import AadhyatmRUN
+# from _dummydatabase.articals import ArticalsRUN
+# from _dummydatabase.problems import ProblemsRUN
+from _dummydatabase.youtube import YoutubeRUN
+from _dummydatabase.aadhyatm import AadhyatmRUN
 
 
 # def index(request):
@@ -32,40 +32,40 @@ def index(request):
 
 
 
-@LoginRequired(login_url="/security/login/")
-def articals(request): 
-        ReturningData = dict()
-        ArticalsRUN( dictionary=ReturningData)
-        ReturningDatabase(request,ReturningData)
-        # return render(request,"client/articals.html",ReturningData); 
-        return render(request,"client/articals-testing.html",ReturningData); 
+# @LoginRequired(login_url="/security/login/")
+# def articals(request): 
+#         ReturningData = dict()
+#         ArticalsRUN( dictionary=ReturningData)
+#         ReturningDatabase(request,ReturningData)
+#         # return render(request,"client/articals.html",ReturningData); 
+#         return render(request,"client/articals-testing.html",ReturningData); 
+
+# # @LoginRequired(login_url="/security/login/")
+# def articals_from_(request,from_):         
+#         ReturningData = dict()
+#         ArticalsRUN( dictionary=ReturningData)
+#         ReturningDatabase(request,ReturningData)
+#         # return render(request,"client/articals.html",ReturningData); 
+#         return render(request,"client/articals-testing.html",ReturningData); 
+
+
+
 
 # @LoginRequired(login_url="/security/login/")
-def articals_from_(request,from_):         
-        ReturningData = dict()
-        ArticalsRUN( dictionary=ReturningData)
-        ReturningDatabase(request,ReturningData)
-        # return render(request,"client/articals.html",ReturningData); 
-        return render(request,"client/articals-testing.html",ReturningData); 
+# def problems(request): 
+#         ReturningData = dict()
+#         ProblemsRUN( dictionary=ReturningData)
+#         ReturningDatabase(request,ReturningData)
+#         # return render(request,"client/problems.html",ReturningData); 
+#         return render(request,"client/problems-testing.html",ReturningData); 
 
-
-
-
-@LoginRequired(login_url="/security/login/")
-def problems(request): 
-        ReturningData = dict()
-        ProblemsRUN( dictionary=ReturningData)
-        ReturningDatabase(request,ReturningData)
-        # return render(request,"client/problems.html",ReturningData); 
-        return render(request,"client/problems-testing.html",ReturningData); 
-
-# @LoginRequired(login_url="/security/login/") 
-def problems_from_(request,from_): 
-        ReturningData = dict()
-        ProblemsRUN( dictionary=ReturningData)
-        ReturningDatabase(request,ReturningData)
-        # return render(request,"client/problems.html",ReturningData); 
-        return render(request,"client/problems-testing.html",ReturningData); 
+# # @LoginRequired(login_url="/security/login/") 
+# def problems_from_(request,from_): 
+#         ReturningData = dict()
+#         ProblemsRUN( dictionary=ReturningData)
+#         ReturningDatabase(request,ReturningData)
+#         # return render(request,"client/problems.html",ReturningData); 
+#         return render(request,"client/problems-testing.html",ReturningData); 
 
 
 
