@@ -7,7 +7,7 @@ from django.shortcuts import render,redirect
 
 
 def Login(request,username):
-        request.session['user'] = {
+        request.session['user'] = { 
                 'username' : username, 
                 'status' : True
 	}

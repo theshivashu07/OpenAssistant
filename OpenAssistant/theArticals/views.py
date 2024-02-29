@@ -13,6 +13,7 @@ from API.Code.User.Return import ReturningDatabase
 # from _dummydatabase.problems import ProblemsRUN
 from _dummydatabase.articals import ArticalsRUN
 
+from theArticals.functions import get as function_get
 
 
 
@@ -22,6 +23,8 @@ def index(request):
         ReturningData = dict()
         ArticalsRUN( dictionary=ReturningData)
         ReturningDatabase(request,ReturningData)
+        ReturningData['Articals'] = dict()
+        ReturningData['Articals']['RecentArticalsList'] = function_get.getRecentArticalsList(request)
         # return render(request,"thearticals/client/articals.html",ReturningData); 
         return render(request,"thearticals/client/articals-testing.html",ReturningData); 
 
@@ -30,8 +33,32 @@ def articals_from_(request,from_):
         ReturningData = dict()
         ArticalsRUN( dictionary=ReturningData)
         ReturningDatabase(request,ReturningData)
+        ReturningData['Articals'] = dict()
+        ReturningData['Articals']['RecentArticalsList'] = function_get.getRecentArticalsList(request)
         # return render(request,"thearticals/client/articals.html",ReturningData); 
         return render(request,"thearticals/client/articals-testing.html",ReturningData); 
+
+# @LoginRequired(login_url="/security/login/")
+def open(request,slug):
+        ReturningData = dict()
+        ArticalsRUN( dictionary=ReturningData)
+        ReturningDatabase(request,ReturningData)
+        ReturningData['Articals'] = dict()
+        ReturningData['Articals']['OpenedArticals'] = function_get.getOpenedArticals(request) 
+        ReturningData['Articals']['RecentArticalsList'] = function_get.getRecentArticalsList(request) 
+        # return render(request,"thearticals/client/articals.html",ReturningData); 
+        return render(request,"thearticals/client/articals-open.html",ReturningData); 
+
+# @LoginRequired(login_url="/security/login/")
+def write(request):
+        ReturningData = dict()
+        ArticalsRUN( dictionary=ReturningData)
+        ReturningDatabase(request,ReturningData)
+        ReturningData['Articals'] = dict()
+        ReturningData['Articals']['OpenedArticals'] = function_get.getOpenedArticalsDetails(request) 
+        ReturningData['Articals']['RecentArticalsList'] = function_get.getRecentArticalsList(request) 
+        # return render(request,"thearticals/client/articals.html",ReturningData); 
+        return render(request,"thearticals/client/articals-write.html",ReturningData); 
 
 
 

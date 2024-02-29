@@ -123,6 +123,14 @@ Testing@Articals | OpenAssistant
                                                                                           </spem>
                                                                                 </a>
                                                                       </li>          
+                                                                      <li class="list-group-item">
+                                                                                <a class="side-keys row {% if request.path == '/articals/write/' %} active {% endif %}" href="/articals/write/" style="align-items: center; font-weight: normal;">
+                                                                                          <i class="col-md-2 fa-solid fa-house"></i>
+                                                                                          <spem class="col-md-10">
+                                                                                                    Write
+                                                                                          </spem>
+                                                                                </a>
+                                                                      </li>          
                                                             </ul>
                                                   </div>
                     
@@ -188,7 +196,7 @@ Testing@Articals | OpenAssistant
                               <!-- </div> -->
                     </div>
                     
-                    
+
                     
                     
                     <div class="col-md-7 edge " style="/*background-color: #f8f8f8;*/ /*background-color: #fdfdfd;*/ background-color: white; padding: 0;">
@@ -229,11 +237,6 @@ Testing@Articals | OpenAssistant
                                                                                                                         that denotes a release as stable and officially maintained for a long period of time. 
                                                                                                                         While regular updates will be part of releases we ship to the current version of Font Awesome, 
                                                                                                                         LTS versions will be focused on dependability and stability and not regularly updated. 
-                                                                                                                        <!-- 
-                                                                                                                        Version 6 is the current major version of Font Awesome. Any updates to icons 
-                                                                                                                        and software will be made as part of this version through minor and patch releases. 
-                                                                                                                        Looking for another version, check out our versions archive to access any and all of the Awesome. 
-                                                                                                                        -->
                                                                                                                         ... <span style="color: lightgray;">...more</span>
                                                                                                               </div>
                                                                                                               
@@ -283,12 +286,12 @@ Testing@Articals | OpenAssistant
                                                                                                     <div class="recommendation" style="padding: 20px 10px;">
                                                                                                               <div style="padding: 12px 0;">
                                                                                                                         <ul class="list-group list-group-flush">
-                    
-                                                                                                                                  {% for object in sidebarright %}
+
+                                                                                                                                  {% for object in Articals.RecentArticalsList %}
                                                                                                                                   <li class="list-group-item sidebar-right">
-                                                                                                                                            <a class="side-keys row {% if request.path == object.path %} active {% endif %} " href="{{object.path}}" class="row" style="align-items: center; font-weight: normal;">
+                                                                                                                                            <a class="side-keys row" href="/articals/open/{{object.slug}}/" class="row" style="align-items: center; font-weight: normal;">
                                                                                                                                                       <spem>
-                                                                                                                                                                {{object.name}}
+                                                                                                                                                                {{object.title}} 
                                                                                                                                                       </spem>
                                                                                                                                             </a>
                                                                                                                                   </li>

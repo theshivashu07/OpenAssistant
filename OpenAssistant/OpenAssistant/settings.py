@@ -49,6 +49,8 @@ INSTALLED_APPS = [
     'Client',     # adding  
     'Home',     # adding  
     'API',     # adding  
+    'theArticals',
+    'theProblems',
 ]
 
 MIDDLEWARE = [

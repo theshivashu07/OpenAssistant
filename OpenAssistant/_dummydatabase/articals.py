@@ -99,14 +99,32 @@ Articals = {
 }
 
 
-def getSidebarData_DICT(database):
+def filter(name):
+        string=''
+        for ch in name:
+                if ch==' ':
+                        string+='-'
+                        continue
+                temp = ord(ch)
+                if temp>=65 and temp<=90:
+                        ch = chr(temp+32)
+                        string+=ch
+                elif temp>=97 and temp<=122:
+                        string+=ch
+                elif temp>=48 and temp<=57:
+                        string+=ch
+        return string
+
+
+def getSidebarData_DICT(database,extraadd=''):
         '''actually this is fixed for youtube, but if want for another url, give app name only, like : 'problem' / 'artical' ..... '''
         Database = dict()
         for keys,values in database.items():
                 objects = list()
                 for value in values:
                         name, logo = value, None
-                        path = '/articals/'+value.lower().replace(' ','-')+'/'
+                        # path = '/articals/'+extraadd+value.lower().replace(' ','-')+'/'
+                        path = '/articals/'+extraadd+filter(value)+'/'
                         dictionary = { 'name':name, 'path':path, 'logo':logo }
                         temp = Menus(
                                 dictionary = dictionary 
@@ -118,12 +136,15 @@ def getSidebarData_DICT(database):
 
 
 
-def getSidebarData(database):
+def getSidebarData(database,extraadd=''):
         '''actually this is fixed for youtube, but if want for another url, give app name only, like : 'problem' / 'artical' ..... '''
+        if extraadd!='':
+                extraadd=extraadd+"/"
         Database = list()
         for value in database:
                 name, logo = value, None
-                path = '/articals/'+value.lower().replace(' ','-')+'/'
+                # path = '/articals/'+extraadd+value.lower().replace(' ','-')+'/'
+                path = '/articals/'+extraadd+filter(value)+'/'
                 dictionary = { 'name':name, 'path':path, 'logo':logo }
                 object = Menus(
                         dictionary = dictionary
@@ -138,7 +159,7 @@ def getSidebarData(database):
 def ArticalsRUN(dictionary=dict()):
         dictionary['scrollbar'] = getSidebarData(ScrollbarTopics)
         dictionary['sidebarleft'] = getSidebarData_DICT(SidebarTopicsLeft)
-        dictionary['sidebarright'] = getSidebarData(SidebarTopicsRight)
+        dictionary['sidebarright'] = getSidebarData(SidebarTopicsRight,'open')
         return None
 
 
