@@ -12,6 +12,7 @@ from .models import USER, Actions, Activities, Responces
 # admin.site.register(USER)
 class USERAdmin(admin.ModelAdmin):
     fields = ['FullName', 'FirstName', 'LastName', 'Username', 'Profile', 'Email', 'Mobile', 'Password', 'isChecked', 'isActive' ]
+    list_display = [ 'id', 'Username', 'FullName', 'Email', 'Mobile', 'Password', 'isChecked', 'isActive', 'JoiningDate', 'UpdationDate' ] 
 admin.site.register(USER, USERAdmin)
 
 '''

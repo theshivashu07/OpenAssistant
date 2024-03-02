@@ -7,6 +7,7 @@ urlpatterns=[
 		# path('index/',views.index,name='index'),
 
 		path('write/',views.write,name='write'),
+		path('write/<int:id>/',views.write,name='write'),
 		path('<str:from_>/',views.articals_from_,name='articals_from_'),
 		path('open/<str:slug>/',views.open,name='open'),
                     

@@ -24,13 +24,13 @@ class USER(models.Model):
 
         JoiningDate = models.DateTimeField(auto_now_add=True);
         UpdationDate = models.DateTimeField(auto_now=True); 
-        def __str__(self):
-                # 	user@theshivashu ( SHivam SHukla ).
-                return f" user@{self.Username}  ( {self.FullName} )."; 
 
         def __str__(self):
-                # 	user@theshivashu ( SHivam SHukla ).
-                return f" user@{self.Username} - {self.FullName} );"; 
+                # user@theshivashu ( SHivam SHukla ).
+                # return f" user@{self.Username}  ( {self.FullName} )."; 
+                # user@theshivashu - SHivam SHukla );
+                # return f" user@{self.Username} - {self.FullName} );"; 
+                return f" user@{self.Username} - {self.FullName} ({self.id}) );"; 
 
 
 
