@@ -12,6 +12,7 @@ from API.Code.Management.Sessions import Authenticate, Login, Logout
 
 from django.contrib import messages
 from Home.models import *
+from theArticals.models import *
 
 
 from API.Code.User.Return import Return
@@ -83,6 +84,13 @@ class __LogIn:
                         print(user)
                         print(self.request, user.Username)
                         Login(self.request, user.Username) 
+
+                        # by default add activity on Activities Dtaabase
+                        action = Actions.objects.get(pk=2) # or name=LogIn
+                        object = Activities()
+                        object.user = user
+                        object.action = action
+                        object.save()
 
                         object = USER.objects.get( Username=self.__getValueOfKey('user') )
                         if self.__getValueOfKey('checks'):

@@ -185,19 +185,19 @@ def logout(request):
 	Logout(request)
 	return redirect('/security/login/')
 
-	if request.method == "POST":
-		next = filterValue(request.POST.get('next',None))
-		username = filterValue(request.POST.get('username',None))
-		Logout(request,username)
-		print('NEXT :',next)
-		LogInObject = __LogIn.__LogIn(
-			request = request,
-			user = filterValue(request.POST.get('user',None)),
-			by = filterValue(request.POST.get('by',None)),
-			password = filterValue(request.POST.get('password',None)),
-			check = filterValue(request.POST.get('check',None)),
-		)
-
+	# if request.method == "POST":
+	next = filterValue(request.POST.get('next',None))
+	username = filterValue(request.POST.get('username',None))
+	Logout(request,username)
+	print('NEXT :',next)
+	LogInObject = __LogIn.__LogIn(
+		request = request,
+		user = filterValue(request.POST.get('user',None)),
+		by = filterValue(request.POST.get('by',None)),
+		password = filterValue(request.POST.get('password',None)),
+		check = filterValue(request.POST.get('check',None)),
+	)
+	return redirect('/security/login/')
 
 	ReturningData = dict() 
 	return render(request,"home/logout.html", ReturningData); 

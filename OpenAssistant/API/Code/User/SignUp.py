@@ -114,10 +114,12 @@ class __SignUp:
                         object.save()
                         
                         # Also submit data to Activity model...
+                        print("Welcome")
                         activityObject = Activities(
                                 user = object,
                                 action = Actions.objects.get(pk=1) 
                         )
+                        print("Thankyou")
                         
                         return Return(
                             status = 'pass',

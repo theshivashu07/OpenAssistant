@@ -2,18 +2,22 @@ from django.shortcuts import render,redirect
 from django.http import HttpResponse
 # Create your views here.
 
-from django.contrib.auth.models import User
+# from django.contrib.auth.models import User
 
-from django.contrib.auth import authenticate as Authenticate
-from django.contrib.auth import login as Login
-from django.contrib.auth import logout as Logout
+# from django.contrib.auth import authenticate as Authenticate 
+# from django.contrib.auth import login as Login
+# from django.contrib.auth import logout as Logout
 from django.contrib.auth.decorators import login_required as LoginRequired
+from API.Code.Management.Sessions import Authenticate, Login, Logout, whosMyUser
+
 
 from django.contrib import messages
 from Home.models import *
+# from theArticals.models import *
 
-from API.Views.User.Return import *
 
+from API.Code.User.Return import Return
+import API.Code.User.Checks as Checks
 
 
 
@@ -69,6 +73,18 @@ class Logout:
                 try:
                         
                         # .....
+
+                        # by default add activity on Activities Dtaabase
+                        print(12)
+                        user = whosMyUser(request)
+                        action = Actions.objects.get(pk=3) # or name=Logout
+                        object = Activities()
+                        object.user = user
+                        object.action = action
+                        object.save()
+                        print(object)
+                        print(34) 
+
 
                         return Return(
 				status = 'pass',
