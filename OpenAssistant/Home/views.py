@@ -7,14 +7,14 @@ from django.http import HttpResponse
 # from django.contrib.auth import login as Login
 # from django.contrib.auth import logout as Logout
 # from django.contrib.auth.decorators import login_required as LoginRequired
-from API.Code.Management.Sessions import Authenticate, Login, Logout, LoginRequired 
+from API.Code.Management.Sessions import Authenticate, Login, Logout, LoginRequired, UserExists
 # from django.contrib.auth.decorators import login_required as LoginRequired
 
 from django.contrib import messages
 from .models import *
 
 
-import API.Code.User.LogIn as __Logout
+import API.Code.User.Logout as __Logout
 import API.Code.User.LogIn as __LogIn
 import API.Code.User.SignUp as __SignUp 
 import API.Code.User.Return as __Return
@@ -176,21 +176,7 @@ def login(request):
 
 def logout(request): 
 
-	# this is the edge case - directly working 
-	if request.session.get('user',None):
-		username =request.session['user']['username']
-		object = USER.objects.get( Username=username)
-		object.isActive = False
-		object.save()
-	Logout(request)
-	return redirect('/security/login/')
-
-	# if request.method == "POST":
-	next = filterValue(request.POST.get('next',None))
-	username = filterValue(request.POST.get('username',None))
-	Logout(request,username)
-	print('NEXT :',next)
-	LogInObject = __LogIn.__LogIn(
+	LogoutObject = __Logout.__Logout(
 		request = request,
 		user = filterValue(request.POST.get('user',None)),
 		by = filterValue(request.POST.get('by',None)),
@@ -198,9 +184,8 @@ def logout(request):
 		check = filterValue(request.POST.get('check',None)),
 	)
 	return redirect('/security/login/')
-
-	ReturningData = dict() 
-	return render(request,"home/logout.html", ReturningData); 
+	# ReturningData = dict() 
+	# return render(request,"home/logout.html", ReturningData); 
 
 def resetpassword(request): 
 	ReturningData = dict() 

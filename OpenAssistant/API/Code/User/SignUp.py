@@ -113,14 +113,14 @@ class __SignUp:
                         object.isActive = False
                         object.save()
                         
-                        # Also submit data to Activity model...
-                        print("Welcome")
-                        activityObject = Activities(
-                                user = object,
-                                action = Actions.objects.get(pk=1) 
-                        )
-                        print("Thankyou")
-                        
+                        # by default add activity on Activities Database
+                        user = object  # we are copy that user's instance
+                        action = Actions.objects.get(pk=1)  # or name=Logout
+                        object = Activities() 
+                        object.user = user 
+                        object.action = action 
+                        object.save() 
+
                         return Return(
                             status = 'pass',
                             showtype = 'success', # success, error, warning, info

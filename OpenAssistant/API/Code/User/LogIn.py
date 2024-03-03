@@ -50,10 +50,10 @@ class __LogIn:
 
 		# if user not exist, then go back to your 'login' page !!! 
                 if not checks.UsernameExist(  self.__getValueOfKey('user') ):
-                        return Return(
-				status = 'fail',
-                                showtype = 'error', # success, error, warning, info
-				message = "User not exists !!!"
+                        return Return( 
+				status = 'fail', 
+                                showtype = 'error', # success, error, warning, info 
+				message = "User not exists !!!" 
                         )
                 # if user is authenticated, then we move for next process !!!
                 if not checks.UserAuthenticated(  self.__getValueOfKey('user'), self.__getValueOfKey('password') ):
@@ -75,7 +75,7 @@ class __LogIn:
 
         def __run(self):
                 
-                # try:
+                try:
                         
                         # userauth = Authenticate(username=self.kwargs.username, password=self.kwargs.password)
                         print(self.__getValueOfKey('user'),self.__getValueOfKey('password'))
@@ -85,7 +85,7 @@ class __LogIn:
                         print(self.request, user.Username)
                         Login(self.request, user.Username) 
 
-                        # by default add activity on Activities Dtaabase
+                        # by default add activity on Activities Database
                         action = Actions.objects.get(pk=2) # or name=LogIn
                         object = Activities()
                         object.user = user
@@ -98,11 +98,6 @@ class __LogIn:
                         object.isActive = True
                         object.save()
 
-                        # activityObject = Activities(
-                        #         user = object,
-                        #         action = Actions.objects.get(pk=2) 
-                        # )
-
                         return Return(
 				status = 'pass',
                                 showtype = 'success', # success, error, warning, info
@@ -111,12 +106,12 @@ class __LogIn:
                         )
 
 
-                # except:
-                #         return Return(
-		# 		status = 'fail',
-                #                 showtype = 'error', # success, error, warning, info
-		# 		message = "This error coming from insertion data to model !!!"
-		# 	)
+                except:
+                        return Return(
+				status = 'fail',
+                                showtype = 'error', # success, error, warning, info
+				message = "This error coming from insertion data to model !!!"
+			)
 
 
 

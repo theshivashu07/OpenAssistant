@@ -94,7 +94,7 @@ class Actions(models.Model):
         name = models.CharField(max_length=50, default=None, null=True);  
         discription = models.TextField(default=None, null=True);  
         datetime = models.DateTimeField(auto_now_add=True); 
-        
+
         def filter(self):
                 return "".join( self.name.lower().split( ) ) 
         def __str__(self):
@@ -102,10 +102,10 @@ class Actions(models.Model):
                 return f" action@{self.filter()}  ( {self.name} )."; 
 
 class Activities(models.Model):
-        user = models.ForeignKey(USER, on_delete=models.SET_NULL, null=True, blank=True);
-        action = models.ForeignKey(Actions, on_delete=models.SET_NULL, null=True, blank=True);
+        user = models.ForeignKey(USER, on_delete=models.SET_DEFAULT, default=None, null=True, blank=True);
+        action = models.ForeignKey(Actions, on_delete=models.SET_DEFAULT, default=None, null=True, blank=True);
         discription = models.TextField(default=None, null=True);  
-        datetime = models.DateTimeField(auto_now_add=True);
+        datetime = models.DateTimeField(auto_now_add=True); 
 
         def filter(self,string):
                 return "".join( self.name.lower().split( ) ) 

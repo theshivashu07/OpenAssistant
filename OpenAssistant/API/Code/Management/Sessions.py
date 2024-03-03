@@ -4,7 +4,7 @@ from Home.models import *
 from django.shortcuts import render,redirect
 
 
-def whosMyUser(request):
+def UserExists(request):
         if request.session.get('user',None):
                 username = request.session['user']['username']
                 user = USER.objects.get( Username=username )
