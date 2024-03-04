@@ -196,6 +196,7 @@ def resetpassword(request):
 # 	return render(request,"home/askedquestions.html", ReturningData); 
 
 def userslist(request):
+
 	ReturningData = dict()
 
 	objects = USER.objects.all() 
@@ -209,17 +210,21 @@ def userslist(request):
 	return render(request,"home/users-list.html", ReturningData); 
 
 def defaultuser(request):
+	# default()
 	ReturningData = dict()
 	ReturningDatabase(request,ReturningData)
 	return render(request,"home/default-user.html", ReturningData); 
 
-# def defaultuser(request):
-# 	ReturningData = dict()
-# 	return render(request,"home/defaultuser.html", ReturningData); 
 
 
-
-
-
+# this function is to submit bulk data, but dont's push the data if you have already, so be carefull and click only once on that link...
+# add this function to a defaultuser(), so that data automatically save when you click on logo button, but only once, else overwrite data...
+from _dummydatabase.default import submitdummydata 
+def default(): 
+	print("Working.....",end=" ") 
+	submitdummydata() 
+	# submitdummydata() 
+	# submitdummydata('user') 
+	print("Bulk data submitted directly!!!") 
 
 

@@ -95,11 +95,11 @@ class Actions(models.Model):
         discription = models.TextField(default=None, null=True);  
         datetime = models.DateTimeField(auto_now_add=True); 
 
-        def filter(self):
-                return "".join( self.name.lower().split( ) ) 
+        def filter(self,string):
+                return "".join( string.lower().split( ' ' ) ) 
         def __str__(self):
                 # action@signup ( SignUp ).
-                return f" action@{self.filter()}  ( {self.name} )."; 
+                return f" action@{self.filter(self.name)}  ( {self.name} )."; 
 
 class Activities(models.Model):
         user = models.ForeignKey(USER, on_delete=models.SET_DEFAULT, default=None, null=True, blank=True);
@@ -108,7 +108,7 @@ class Activities(models.Model):
         datetime = models.DateTimeField(auto_now_add=True); 
 
         def filter(self,string):
-                return "".join( self.name.lower().split( ) ) 
+                return "".join( string.lower().split( ' ' ) ) 
         def __str__(self):
                 # activities@signup@theshivashu ( SignUp - SHivam SHukla ).
                 return f" activities@{self.filter(self.action.name)}@{self.filter(self.user.Username)}  ( {self.action.name} - {self.user.FullName} )."; 
