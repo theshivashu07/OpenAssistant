@@ -9,12 +9,9 @@ from API.models import *
 
 
 def submitdummydata(user=None):
-          # dummydatasubmission__()
-          # return None
-          if user:
-                    dummydatasubmission_()
-          else:
-                    dummydatasubmission()
+          dummydatasubmission()
+          dummydatasubmission_()
+          dummydatasubmission__()
           return
 
 
@@ -71,10 +68,20 @@ def dummydatasubmission_():
                 object = Articals()
                 object.title = string
                 object.save()
-
+        
+        user = USER()
+        user.FullName = "SHivam SHukla"
+        user.FirstName = "SHivam"
+        user.LastName = "SHukla"
+        user.Username = "theshivashu"
+        user.Mobile = "7898565074"
+        user.Email = "theshivashu@gmail.com"
+        user.Password = "12345"
+        user.isChecked = True 
+        user.save()
 
         objects = Articals.objects.all()
-        user = USER.objects.get( pk=1 ) 
+        # user = USER.objects.get( pk=1 ) 
         for object in objects:
                 object.USER = user
                 object.save()
@@ -92,18 +99,26 @@ def dummydatasubmission__():
         }
         dictionary = {
                 'skills' : [
+                        # 01-07
                         'C', 'C++', 'Python', 'Java', 'Javascript', 'Go', 'Rust',
+                        # 08-12
                         'HTML', 'CSS', 'jQuery', 'XML', 'Jinja', 
-                        'Django', 'Django Rest Framework', 'JSON', 'React',
+                        # 13-16
+                        'Django', 'Django Rest Framework', 'React', 'Bootstrap',
+                        # 17-19
                         'SQLite', 'MySQL', 'MongoDB', 
+                        # 20-22
                         'Git', 'GitHub', 'Docker',
                         
-                        'Array', 'Linked List', 'Stack', 'Queue', 
-                        'Hashing', 'Heap', 'Matrix',
+                        #23-36
+                        'Array', 'Linked List', 'Stack', 'Queue',  
+                        'Hashing', 'Heap', 'Matrix', 
                         'Tree', 'Binary Tree', 'Binary Search Tree', 
                         'Misc', 'Graph', 'DP', 'Trie',
-                        'Advanced Data Structures'
+                        #37-38
+                        'Advanced Data Structures', 'Others'
                 ],
+                
                 'skillsof' : [
                         'Programming Languages',
                         'Data Structures and Algorithms',
@@ -112,7 +127,8 @@ def dummydatasubmission__():
                         'Databases', 
                         'Others',
                 ],
-                'skillsgroups' : {
+                
+                'skillsgroup' : {
                         1 : [
                               'Frontend', 
                               'Backend', 
@@ -129,52 +145,65 @@ def dummydatasubmission__():
                         4 : [
                               'Frontend', 
                               'Backend', 
-                              'Others',
+                              'Bothend'
                         ],
                         5 : [
                               'SQL', 
                               'NoSQL', 
                         ],
                 },
+                
+                'skillsetsbuild' : {
+                        1 : {
+                                1 : [8,9,5,10,11,12], 
+                                2 : [1,2,3,4,6,7], 
+                                3 : [1,2,3,4,5,6,7], 
+                        },
+                        2 : {
+                                4 : [ 23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38 ], 
+                                5 : [  ], 
+                        },
+                        4 : {
+                                8 : [ 15,16 ], 
+                                9 : [ 13,14 ], 
+                                10 : [  ], 
+                        },
+                        5 : {
+                                11 : [ 17,18 ], 
+                                12 : [ 19 ], 
+                        },
+                },
         } 
-        for key,values in dictionary.items(): 
+        # for key,values in dictionary.items(): 
+        for key in [ 'skills', 'skillsof', 'skillsgroup', 'skillsetsbuild' ]: 
+                values = dictionary.get(key)
                 if key in ['skills','skillsof']: 
                         for value in values: 
                               object=get.get(key) 
                               object.name = value 
                               object.save() 
-                else:
+                elif key in ['skillsgroup']: 
                         for id,values in values.items():
                               for value in values:
                                         skillsof = SkillsOf.objects.get(pk=id)
-                                        object=get(key) 
+                                        object=get.get(key) 
                                         object.name = value 
                                         object.skillsof = skillsof
                                         object.save()
-                              
+                elif key in ['skillsetsbuild']: 
+                        for id,values in values.items(): 
+                                skillsof = SkillsOf.objects.get(pk=id)
+                                for id,values in values.items(): 
+                                        skillsgroup = SkillsGroup.objects.get(pk=id)
+                                        for id in values: 
+                                                skills = Skills.objects.get(pk=id)
+                                                object = SkillSetsBuild()
+                                                object.skillsof = skillsof
+                                                object.skillsgroup = skillsgroup
+                                                object.skills = skills
+                                                object.save()
 
-        
-        skillsof = SkillsOf.objects.get(pk=1)
-        dicting = {
-                1 : {
-                    1 : [8,9,5,10,11,12],
-                    2 : [1,2,3,4,6,7],
-                    3 : [1,2,3,4,5,6,7],
-                },
-                4 : {
-                        
-                }
-          }
-        for id,values in dicting.items(): 
-          skillsof = SkillsOf.objects.get(pk=id)
-          for id,values in values.items(): 
-                    skillsgroup = SkillsGroup.objects.get(pk=id)
-                    for id in values: 
-                              skills = Skills.objects.get(pk=id)
-                              object = SkillSetsBuild()
-                              object.skillsof = skillsof
-                              object.skillsgroup = skillsgroup
-                              object.skills = skills
-                              object.save()
+                print(f"{key}'s data insertion done !!!")
+                              
 
 
