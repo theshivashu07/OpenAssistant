@@ -1,6 +1,7 @@
 
 from Home.models import USER
 from theArticals.models import Articals
+from API.models import Skills,SkillsOf, SkillsGroup, SkillSetsBuild
 
 
 
@@ -19,10 +20,6 @@ def getArtical(request,slug):
         if artical:
                 artical = Articals.objects.filter( slug=slug )[0] 
 
-
-
-
-
 def getRecentArticalsList(request):   
           ListOfArticals = list() 
           user = getUser(request) 
@@ -31,8 +28,6 @@ def getRecentArticalsList(request):
                     for artical in articals: 
                               ListOfArticals.append( artical ) 
           return ListOfArticals 
-
-
 
 def getOpenedArticalsDetails(request):
                 USER = getUser(request) 
@@ -54,6 +49,8 @@ def getOpenedArticalsDetails(request):
 
           
 
+###################################################################
+                
 
 
 
@@ -63,7 +60,39 @@ def getOpenedArticalsDetails(request):
 
 
 
+#-----------------------------------------------------------------------
+        
 
+showonly = [ 1,4,5,3, ]
+def getScrollbarDetails(request):
+        count = 0
+        objects = SkillSetsBuild.objects.all()
+        sets,lists = set(),list() #
+        returningdataset = dict()
+        for object in objects:
+                if object.skillsof.id in showonly:
+                        count +=1
+                        if object not in sets:
+                                sets.add(object)
+                                lists.append(object)
+                                returningdataset[object.skills.name] = {
+                                        'name' : object.skills.name,
+                                        'path' : '/articals/'+object.slug+'/'
+                                }
+        return returningdataset
+
+
+def getSkillsets(request):
+        objects = SkillSetsBuild.objects.all()
+        dataset = list()
+        for object in objects:
+                data = {
+                        'id' : object.skills.id, 
+                        'name' : object.skills.name, 
+                        'string' : f"{object.skills.name} | {object.skillsgroup.name} | {object.skillsof.name}"
+                }
+                dataset.append( data )
+        return dataset
 
 
 

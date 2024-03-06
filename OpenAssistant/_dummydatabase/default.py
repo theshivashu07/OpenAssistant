@@ -174,36 +174,44 @@ def dummydatasubmission__():
                         },
                 },
         } 
+        
         # for key,values in dictionary.items(): 
-        for key in [ 'skills', 'skillsof', 'skillsgroup', 'skillsetsbuild' ]: 
-                values = dictionary.get(key)
-                if key in ['skills','skillsof']: 
-                        for value in values: 
-                              object=get.get(key) 
-                              object.name = value 
-                              object.save() 
-                elif key in ['skillsgroup']: 
-                        for id,values in values.items():
-                              for value in values:
-                                        skillsof = SkillsOf.objects.get(pk=id)
-                                        object=get.get(key) 
-                                        object.name = value 
-                                        object.skillsof = skillsof
-                                        object.save()
-                elif key in ['skillsetsbuild']: 
-                        for id,values in values.items(): 
-                                skillsof = SkillsOf.objects.get(pk=id)
-                                for id,values in values.items(): 
-                                        skillsgroup = SkillsGroup.objects.get(pk=id)
-                                        for id in values: 
-                                                skills = Skills.objects.get(pk=id)
-                                                object = SkillSetsBuild()
-                                                object.skillsof = skillsof
-                                                object.skillsgroup = skillsgroup
-                                                object.skills = skills
-                                                object.save()
+        values = dictionary.get('skills')
+        for value in values: 
+                object=Skills()
+                object.name = value 
+                object.save() 
 
-                print(f"{key}'s data insertion done !!!")
+        values = dictionary.get('skillsof')
+        for value in values: 
+                object=SkillsOf()
+                object.name = value 
+                object.save() 
+
+        values = dictionary.get('skillsgroup')
+        for id,values in values.items():
+                skillsof = SkillsOf.objects.get(pk=id)
+                for value in values:
+                        object=SkillsGroup()
+                        object.name = value 
+                        object.skillsof = skillsof
+                        object.save()
+
+        values = dictionary.get('skillsetsbuild')
+        for id,values in values.items(): 
+                skillsof = SkillsOf.objects.get(pk=id)
+                for id,values in values.items(): 
+                        skillsgroup = SkillsGroup.objects.get(pk=id)
+                        for id in values: 
+                                skills = Skills.objects.get(pk=id)
+                                object = SkillSetsBuild()
+                                object.skillsof = skillsof
+                                object.skillsgroup = skillsgroup
+                                object.skills = skills
+                                object.save()
+
+
+        print(f"API's Apps all data insertion done !!!") 
                               
 
 

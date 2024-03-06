@@ -10,9 +10,9 @@ from .models import ContentFrom, ContentOf, RunningNewArticals
 
 # admin.site.register(Articals)
 class ArticalsAdmin(admin.ModelAdmin):
-    fields = [ 'USER', 'title' ] 
+    fields = [ 'USER', 'title', 'SkillSetsBuild' ] 
     # fields = [ 'USER', 'title', 'discription'  ] 
-    list_display = ['USER', 'title', 'slug', 'discription', 'updationdate' ] 
+    list_display = ['USER', 'title', 'SkillSetsBuild', 'discription', 'updationdate' ] 
     # list_display = ['USER', 'title', 'slug', 'discription', 'joiningdate', 'updationdate' ] 
     def __str__(self):
         return f"{self.name}" 

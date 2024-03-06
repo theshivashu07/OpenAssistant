@@ -28,7 +28,7 @@ class SkillsGroup(models.Model):
         discription = models.TextField(default=None, null=True); 
 
         def __str__(self):
-                return f"{self.name} | {self.skillsof.name}"
+                return f"{self.name}"
         # this function save title's slug automatically...
         def save(self, *args, **kwargs):
                 self.slug = slugify(self.name)
@@ -70,7 +70,7 @@ class SkillSetsBuild(models.Model):
         slug = AutoSlugField(populate_from='skills.slug');
 
         def __str__(self): 
-                return f"{self.skills.name}" 
+                return f"{self.skills.name} | {self.skillsgroup.name} | {self.skillsof.name}" 
         # this function save title's slug automatically... 
         def save(self, *args, **kwargs): 
                 self.slug = slugify(self.skills.slug) 

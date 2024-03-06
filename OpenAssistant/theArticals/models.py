@@ -4,7 +4,7 @@ from autoslug import AutoSlugField
 from django.template.defaultfilters import slugify
 
 from Home.models import USER
-
+from API.models import SkillSetsBuild
 
 
 
@@ -12,14 +12,11 @@ from Home.models import USER
 class Articals(models.Model):
 
           USER = models.ForeignKey(USER, on_delete=models.SET_NULL, null=True, blank=True);
-          # LinkedSkillsObjects = models.ForeignKey(USER, on_delete=models.SET_NULL, null=True, blank=True);
+          SkillSetsBuild = models.ForeignKey(SkillSetsBuild, on_delete=models.SET_NULL, null=True, blank=True);
 
           title = models.CharField(max_length=150, default=None, null=True) 
           slug = AutoSlugField(populate_from='title');
           discription = models.TextField(default=None, null=True) 
-
-      #     MainTags = models.JSONField(default=dict(),null=True,blank=True)
-      #     OtherTags = models.JSONField(default=dict(),null=True,blank=True)
 
           joiningdate = models.DateTimeField(auto_now_add=True);
           updationdate = models.DateTimeField(auto_now=True); 
@@ -50,8 +47,8 @@ class ContentOf(models.Model):
 
 class RunningNewArticals(models.Model):
           USER = models.ForeignKey(USER, on_delete=models.SET_NULL, null=True, blank=True);
+          artical = models.ForeignKey(Articals, on_delete=models.SET_NULL, null=True, blank=True);
           content = models.JSONField(default=dict,null=True,blank=True)
-
 
 
 
