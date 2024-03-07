@@ -6,6 +6,19 @@
 
 
 
+default = {
+          'h1' : {
+                    'title' : None,
+          },
+          'spam' : {
+                    'title' : None,
+          },
+          'hr' : {
+          },
+}
+
+
+
 tags = {
           'h1' : {
                     'title' : None,
@@ -16,6 +29,7 @@ tags = {
           'h3' : {
                     'title' : None,
           },
+          
           'h4' : {
                     'title' : None,
           },

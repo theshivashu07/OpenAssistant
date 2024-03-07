@@ -1,0 +1,45 @@
+
+
+
+
+
+h1,h2,h3,h4,h5,h6,p,span {
+          margin-bottom: 10px;
+          font-family: math;
+}
+
+
+h1{
+          color: rebeccapurple;
+}
+
+span.discription{
+          font-size: smaller; 
+          /* color: lightgray; */
+          color: gray;
+}
+span.hashtags{
+          font-size: smaller; 
+          /* color: lightgray; */
+          color: gray;
+          color: lightblue;
+}
+
+.code{
+          font-family: math; 
+          background-color: #fafafa; 
+          border-radius: 8px; 
+          margin-bottom: 15px; 
+          padding: 20px 15px; 
+          border: 1px solid #f5f5f5; 
+          font-size: smaller; 
+          color: gray;
+          margin-top: -5px;
+}
+
+
+
+
+
+
+

@@ -19,6 +19,15 @@ Write2@Articals | OpenAssistant
 
 
 
+{% block csscontent %}
+
+<link rel="stylesheet" href="/_static/theArticals/css/content.css">
+
+{% endblock %}
+
+
+
+
 {% block childcontent %}
 
 
@@ -46,24 +55,56 @@ Write2@Articals | OpenAssistant
                     
                     
                     <div class="col-md-9 edge " style="background-color: white; padding: 0;">
-                              <div class="row" style="padding: 18px;background-color: #f8f8f8;background-color: #fcfcfc;background-color: white; padding: 40px;">
+                              <div class="row" style="background-color: #f8f8f8;background-color: #fcfcfc;background-color: white; padding: 75px 50px;">
                                         <!-- <div class="row" style="margin: 0; padding: 0;"> -->
-                    
                                                   <!-- <div class="col-sm-12"> -->
                                                             <!-- <div class="row"> -->
 
-                                                                      <div class="content">
+                                                                      <div class="content" style="font-family: math;">
                                                                                 
-                                                                                <h2>{{Articals.slug}}</h2>
-                                                                                <span>  {{Articals.slug}}  </span>
+
+
+
+                                                                                <div class="head">
+                                                                                          <h2 style="margin-bottom: 0; font-weight: bold;">How to make Project and App in Django</h2>
+                                                                                          <spam class="discription">This is django's very basic artical, who instruct us about django implementations initial steps.</spam>
+                                                                                          <spam class="hashtags">#django #djangorestframework</spam>
+                                                                                </div>
+
+                                                                                <hr>
+
+                                                                                <div class="mid" style="padding: 25px 0;">
+
+                                                                                          <p>
+                                                                                                    Bootstrap’s form controls expand on our Rebooted form styles with classes. Use these classes to opt 
+                                                                                                    into their customized displays for a more consistent rendering across browsers and devices. 
+                                                                                                    Bootstrap’s form controls expand on our Rebooted form styles with classes. Use these classes 
+                                                                                                    to opt into their customized displays for a more consistent rendering across browsers and devices. 
+                                                                                                    <!-- Bootstrap’s form controls expand on our Rebooted form styles with classes.  -->
+                                                                                          </p>
+
+                                                                                          <div class="code" style="">
+                                                                                                    Bootstrap’s form controls expand on our Rebooted form styles with classes. Use these classes to opt 
+                                                                                                    <br>
+                                                                                                    into their customized displays for a more consistent rendering across browsers and devices. 
+                                                                                                    <br>
+                                                                                                    Bootstrap’s form controls expand on our Rebooted form styles with classes. Use these classes 
+                                                                                                    <br>
+                                                                                                    to opt into their customized displays for a more consistent rendering across browsers and devices. 
+                                                                                          </div>
+
+                                                                                          <p>Be sure to use an appropriate type attribute on all inputs (e.g., email for email address or number for numerical information) to take advantage of newer input controls like email verification, number selection, and more.</p>
+                                                                                          <p>Here’s a quick example to demonstrate Bootstrap’s form styles. Keep reading for documentation on required classes, form layout, and more.</p>
+
+                                                                                          <h4></h4>
+
+                                                                                </div>
 
 
                                                                       </div>
                                                                       
                                                             <!-- </div> -->
                                                   <!-- </div> -->
-                                                  
-                    
                                         <!-- </div> -->
                               </div>
                               <div style="margin: 100px 0;">
@@ -94,5 +135,14 @@ Write2@Articals | OpenAssistant
 {% endblock %}
 
 
+
+
+
+		
+{% block scriptcontent %}
+		
+
+
+{% endblock %}
 
 

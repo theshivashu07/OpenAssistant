@@ -73,12 +73,23 @@
 }
 
 
-
 *{
           font-family: math;
           font-family: 'Philosopher', sans-serif;
+} 
+
+/* body{
+    font-family: math;
+    font-family: 'Philosopher', sans-serif;
+} */
+
+.edge{
+    font-family: 'Philosopher', sans-serif;
 }
 
+.content{
+    font-family: math;
+}
 
 spen{
           margin: 0;
