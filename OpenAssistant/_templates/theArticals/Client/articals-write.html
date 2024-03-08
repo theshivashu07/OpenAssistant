@@ -67,13 +67,178 @@ Write2@Articals | OpenAssistant
 
                                                                                 <div class="head">
                                                                                           <h2 style="margin-bottom: 0; font-weight: bold;">How to make Project and App in Django</h2>
-                                                                                          <spam class="discription">This is django's very basic artical, who instruct us about django implementations initial steps.</spam>
-                                                                                          <spam class="hashtags">#django #djangorestframework</spam>
+                                                                                          <span class="discription">This is django's very basic artical, who instruct us about django implementations initial steps.</span>
+                                                                                          <!-- <br> -->
+                                                                                          <!-- <span class="hashtags">#django #djangorestframework #python #fixerror</span> -->
                                                                                 </div>
 
                                                                                 <hr>
 
                                                                                 <div class="mid" style="padding: 25px 0;">
+
+                                                                                          <p>
+                                                                                                    I explain you a situation from scratch, 
+                                                                                                    I make project named <b class="project"> OpenAssistant </b>, 
+                                                                                                    So first i give you instructions about what is the must steps after make app.
+
+                                                                                                    And then give you an idea about after that how we make an app named 
+                                                                                                    <b class="app">Admin</b>, <b class="app">Client</b>, <b class="app">Home</b>, 
+                                                                                                    <b class="app">API</b>. There is Admin app control by Developer, 
+                                                                                                    and Client app is for Client/User prospactive with login and Home app for without login, 
+                                                                                                    and API app is for give responces according to coming requests. 
+
+                                                                                          </p>
+                                                                                          
+
+
+                                                                                          <h4>How to make Django Projects</h4>
+
+                                                                                          <div class="ul-with-head">
+                                                                                                    <p style="margin: 0;">
+                                                                                                              See first step to you have such requirements, to make Django Project on your system. list in below .....
+                                                                                                    </p>
+                                                                                                    <ul style="font-size: smaller;">
+                                                                                                              <li>Python</li>
+                                                                                                              <li>Django</li>
+                                                                                                              <li>Django Rest Framework</li>
+                                                                                                    </ul>
+                                                                                          </div>
+
+
+                                                                                          <div class="ul-with-head">
+                                                                                                    <p>
+                                                                                                              Project making process start from the directory/folder location, where we want to make project.
+                                                                                                              Suppose location is <b class="location">F:\django\projects</b>. 
+                                                                                                              <br>
+                                                                                                              So, now there are two ways .....
+                                                                                                    </p>
+                                                                                                    <ul>
+                                                                                                              <li>
+                                                                                                                        <p>
+                                                                                                                                  First thing that we go to the Command Prompt (cmd), and there is you write below instructions to change your directory location.
+                                                                                                                        </p>
+                                                                                                                        <div class="code">
+                                                                                                                                  C:\Users\hp>
+                                                                                                                                  <br>
+                                                                                                                                  C:\Users\hp> <b>F:</b>
+                                                                                                                                  <br>
+                                                                                                                                  F:\> <b>cd F:\django\projects</b>
+                                                                                                                                  <br>
+                                                                                                                                  F:\django\projects>
+                                                                                                                        </div>
+
+                                                                                                              </li>
+                                                                                                              <li>
+                                                                                                                        <p>
+                                                                                                                                  Second way that we directly go to that location on folder, 
+                                                                                                                                  and on the top we write <b>cmd</b> and space before location, 
+                                                                                                                                  and just enter your command prompt opened on that location directly ...
+                                                                                                                        </p>
+                                                                                                                        <div class="code">
+                                                                                                                                  F:\django\projects>   ───────────── ( Actual Directory Location ) 
+                                                                                                                                  <br>
+                                                                                                                                  <b>cmd</b> F:\django\projects> ──────── ( We Edit this Location ) 
+                                                                                                                        </div>
+
+                                                                                                              </li>
+                                                                                                    </ul>
+                                                                                          </div>
+                                                                                          
+                                                                                          
+                                                                                          <p>
+                                                                                                    Now we run command to make Project, and than change directory to under project, and wait .....
+                                                                                          </p>
+                                                                                          
+                                                                                          <div class="code">
+                                                                                                    F:\django\projects> <b>python manage.py startapp OpenAssistant</b>
+                                                                                          </div>
+                                                                                          
+                                                                                          <div class="code">
+                                                                                                    F:\django\projects> <b>django-admin startapp OpenAssistant</b>
+                                                                                          </div>
+                                                                                          
+                                                                                          <div class="code">
+                                                                                                    F:\django\projects> <b>django-admin startapp OpenAssistant</b>
+                                                                                                    <br>
+                                                                                                    F:\django\projects> <b>cd OpenAssistant</b>
+                                                                                                    <br>
+                                                                                                    F:\django\projects\OpenAssistant> <b>cd OpenAssistant</b>
+                                                                                                    <br>
+                                                                                                    F:\django\projects\OpenAssistant> <b>python manage.py runserver</b>
+                                                                                          </div>
+                                                                                          
+
+                                                                                          <div class="ul-with-head">
+                                                                                                    <p>
+                                                                                                              Now before start anything on there, first setup multiple files one-by-one .....
+                                                                                                    </p>
+                                                                                                    <ul>
+                                                                                                              <li>
+                                                                                                                        <p>
+                                                                                                                                  First we setup our settings.py file, and do changes on that
+                                                                                                                        </p>
+                                                                                                                        <div class="code">
+                                                                                                                                  <pre style="margin: 0;">
+
+setup/
+│
+├── setup/
+│   ├── __init__.py
+│   ├── asgi.py
+│   ├── settings.py
+│   ├── urls.py
+│   └── wsgi.py
+│
+└── manage.py
+                                                                                                                                  </pre>
+                                                                                                                        </div>
+
+                                                                                                              </li>
+                                                                                                              <li>
+                                                                                                                        <p>
+                                                                                                                                  Second way that we directly go to that location on folder, 
+                                                                                                                                  and on the top we write <b>cmd</b> and space before location, 
+                                                                                                                                  and just enter your command prompt opened on that location directly ...
+                                                                                                                        </p>
+                                                                                                                        <div class="code">
+                                                                                                                                  F:\django\projects>   ───────────── ( Actual Directory Location ) 
+                                                                                                                                  <br>
+                                                                                                                                  <b>cmd</b> F:\django\projects> ──────── ( We Edit this Location ) 
+                                                                                                                        </div>
+
+                                                                                                              </li>
+                                                                                                    </ul>
+                                                                                          </div>
+                                                                                          
+
+
+                                                                                          
+
+
+                                                                                          <br>
+                                                                                          <br>
+                                                                                          <br>
+                                                                                          <br>
+                                                                                          <br>
+
+
+
+                                                                                          <div class="code">
+                                                                                                    >> python manage.py startapp OpenAssistant
+                                                                                                    <br>
+                                                                                                    >> django-admin startapp OpenAssistant
+                                                                                                    <br>
+                                                                                                    >>  python manage.py runserver
+                                                                                          </div>
+
+                                                                                          <p>
+                                                                                                    First you go to a same name's Project's personal app's settings.py file, and add that
+                                                                                          </p>
+                                                                                          
+
+
+
+
 
                                                                                           <p>
                                                                                                     Bootstrap’s form controls expand on our Rebooted form styles with classes. Use these classes to opt 
@@ -83,7 +248,7 @@ Write2@Articals | OpenAssistant
                                                                                                     <!-- Bootstrap’s form controls expand on our Rebooted form styles with classes.  -->
                                                                                           </p>
 
-                                                                                          <div class="code" style="">
+                                                                                          <div class="code">
                                                                                                     Bootstrap’s form controls expand on our Rebooted form styles with classes. Use these classes to opt 
                                                                                                     <br>
                                                                                                     into their customized displays for a more consistent rendering across browsers and devices. 
@@ -93,10 +258,70 @@ Write2@Articals | OpenAssistant
                                                                                                     to opt into their customized displays for a more consistent rendering across browsers and devices. 
                                                                                           </div>
 
-                                                                                          <p>Be sure to use an appropriate type attribute on all inputs (e.g., email for email address or number for numerical information) to take advantage of newer input controls like email verification, number selection, and more.</p>
-                                                                                          <p>Here’s a quick example to demonstrate Bootstrap’s form styles. Keep reading for documentation on required classes, form layout, and more.</p>
+                                                                                          <p>
+                                                                                                    Be sure to use an appropriate type attribute on all inputs (e.g., email for email address or number for 
+                                                                                                    numerical information) to take advantage of newer input controls like email verification, number selection, 
+                                                                                                    and more. Bootstrap’s form controls expand on our Rebooted form styles with classes. 
+                                                                                          </p>
 
-                                                                                          <h4></h4>
+                                                                                          
+                                                                                          <div class="code">
+                                                                                                    <div class="head" style="font-weight: bold;">
+                                                                                                              OpenAssistant | theArticals > manage.py
+                                                                                                    </div>
+                                                                                                    <hr style="margin: 5px 0;">
+                                                                                                    <div class="data">
+                                                                                                              Bootstrap’s form controls expand on our Rebooted form styles with classes. Use these classes to opt 
+                                                                                                              <br>
+                                                                                                              into their customized displays for a more consistent rendering across browsers and devices. 
+                                                                                                              <br>
+                                                                                                              Bootstrap’s form controls expand on our Rebooted form styles with classes. Use these classes 
+                                                                                                              <br>
+                                                                                                              to opt into their customized displays for a more consistent rendering across browsers and devices. 
+                                                                                                    </div>
+                                                                                          </div>
+
+
+                                                                                          <h4>How to connect App with Project</h4>
+
+                                                                                          <p>Here’s a quick example to demonstrate Bootstrap’s form styles. Keep reading for documentation on required classes, form layout, and more.</p>
+                                                                                          
+                                                                                          <div class="code">
+                                                                                                    <div class="head" style="font-weight: bold;">
+                                                                                                              OpenAssistant | theArticals > manage.py
+                                                                                                    </div>
+                                                                                                    <hr style="margin: 5px 0;">
+                                                                                                    <div class="data">
+                                                                                                              Bootstrap’s form controls expand on our Rebooted form styles with classes. Use these classes to opt 
+                                                                                                              <br>
+                                                                                                              into their customized displays for a more consistent rendering across browsers and devices. 
+                                                                                                              <br>
+                                                                                                              Bootstrap’s form controls expand on our Rebooted form styles with classes. Use these classes 
+                                                                                                              <br>
+                                                                                                              to opt into their customized displays for a more consistent rendering across browsers and devices. 
+                                                                                                    </div>
+                                                                                          </div>
+
+                                                                                          
+                                                                                          <div class="highlight">
+                                                                                                    <pre>
+                                                                                                              <span></span>
+                                                                                                              <code>
+setup/
+│
+├── setup/
+│   ├── __init__.py
+│   ├── asgi.py
+│   ├── settings.py
+│   ├── urls.py
+│   └── wsgi.py
+│
+└── manage.py
+                                                                                                    </code></pre></div>
+                                                                                          
+
+
+
 
                                                                                 </div>
 

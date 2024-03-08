@@ -4,33 +4,38 @@
 
 
 h1,h2,h3,h4,h5,h6,p,span {
-          margin-bottom: 10px;
+          margin-bottom: 15px;
           font-family: math;
 }
 
 
-h1{
+h2{
           color: rebeccapurple;
+          font-weight: bold;
 }
+
+h4{
+          font-weight: bold;
+          margin-top: 50px;
+}
+
 
 span.discription{
           font-size: smaller; 
-          /* color: lightgray; */
-          color: gray;
+          /* color: gray; */
+          color: lightgray;
 }
 span.hashtags{
           font-size: smaller; 
-          /* color: lightgray; */
-          color: gray;
           color: lightblue;
 }
 
 .code{
-          font-family: math; 
+          font-family: monospace; 
           background-color: #fafafa; 
           border-radius: 8px; 
           margin-bottom: 15px; 
-          padding: 20px 15px; 
+          padding: 10px 15px; 
           border: 1px solid #f5f5f5; 
           font-size: smaller; 
           color: gray;
@@ -40,6 +45,37 @@ span.hashtags{
 
 
 
+
+/* ################################################### */
+
+.highlight{
+          background-color: gray;
+}
+
+
+/* ############################################################################## */
+
+
+
+.content b{
+          /* color: red; */
+          font-family: math;
+          padding: 0 2px;
+}
+
+b.project{
+          color: #a00000;
+}
+b.app{
+          color: #d00000;
+}
+b.location{
+          color: cadetblue;
+}
+
+.code b{
+          font-family: monospace;
+}
 
 
 
