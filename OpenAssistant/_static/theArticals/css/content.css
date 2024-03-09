@@ -1,6 +1,8 @@
 
 
-
+p{
+          line-height: normal;
+}
 
 
 h1,h2,h3,h4,h5,h6,p,span {
@@ -72,10 +74,30 @@ b.app{
 b.location{
           color: cadetblue;
 }
+b.command{
+          color: blue;
+}
 
 .code b{
           font-family: monospace;
 }
+
+
+
+.ul-with-head .code{
+          margin-top: -10px;
+}
+
+
+
+
+
+
+
+
+
+
+
 
 
 
