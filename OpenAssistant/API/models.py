@@ -79,6 +79,21 @@ class SkillSetsBuild(models.Model):
 
 
 
+class SkillsPointers(models.Model):
+        skillsetbuild = models.ForeignKey(SkillSetsBuild, on_delete=models.SET_NULL, null=True, blank=True);
+
+        name = models.CharField(max_length=50, default=None, null=True); 
+        slug = AutoSlugField(populate_from='name'); 
+        discription = models.TextField(max_length=150, default=None, null=True); 
+
+        def __str__(self):
+                return f"{self.name}"
+        # this function save title's slug automatically...
+        def save(self, *args, **kwargs):
+                self.slug = slugify(self.name)
+                super().save(*args, **kwargs)
+
+
 
 
 

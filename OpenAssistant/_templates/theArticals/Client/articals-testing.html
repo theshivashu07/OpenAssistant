@@ -41,98 +41,11 @@ Testing@Articals | OpenAssistant
                     
 
 
+                    {% include 'thearticals/client/sidebar-left.html' %} 
 
 
                     
                     
-                    <div class="col-md-2 edge " style="/*overflow: scroll;*/ background-color: #f8f8f8;background-color: #fdfdfd;/* margin: 0; */padding: 35px 20px;">
-                              <!-- <div style="padding: 25px;background-color: #f8f8f8;background-color: #fcfcfc;background-color: white;/* padding: 50px 25px; */border-radius: 10px;"> -->
-                                        <div class="row">
-                    
-                                                  
-                                                  <div class="col-md-12" style="padding: 10px;/* padding-top: 25px; */">
-                                                            <ul class="list-group list-group-flush">
-                                                                      <li class="list-group-item">
-                                                                                <a class="side-keys row {% if request.path == '/articals/' %} active {% endif %}" href="/articals/" style="align-items: center; font-weight: normal;">
-                                                                                          <i class="col-md-2 fa-solid fa-house"></i>
-                                                                                          <spem class="col-md-10">
-                                                                                                    Home
-                                                                                          </spem>
-                                                                                </a>
-                                                                      </li>          
-                                                                      <li class="list-group-item">
-                                                                                <!-- <a class="side-keys row {% if request.path == '/articals/write/' %} active {% endif %}" href="/articals/write/" style="align-items: center; font-weight: normal;"> -->
-                                                                                <a class="side-keys row {% if request.path == '/articals/write/setup/' %} active {% endif %}" href="/articals/write/setup/" style="align-items: center; font-weight: normal;">
-                                                                                          <i class="col-md-2 fa-solid fa-house"></i>
-                                                                                          <spem class="col-md-10">
-                                                                                                    Write
-                                                                                          </spem>
-                                                                                </a>
-                                                                      </li>        
-                                                            </ul>
-                                                  </div>
-                    
-                                                  <hr style="margin: 0;">
-
-                                                  {% for keys,values in sidebarleft.items %}
-                                                  <div class="col-md-12" style="padding: 10px;/* padding-top: 25px; */">
-                                                            <ul class="list-group list-group-flush">
-                    
-                                                                      {% for object in values %}
-                                                                      <li class="list-group-item">
-                                                                                <a class="side-keys row {% if object.path in request.path %} active {% endif %}" href="{{object.path}}" style="align-items: center; font-weight: normal;">
-                                                                                          <!-- <i class="col-md-2 {{object.logo}}"></i> -->
-                                                                                          <!-- <i class="col-md-2 fa-solid fa-circle-info"></i> -->
-                                                                                          <i class="col-md-2 fa-solid fa-book"></i>
-                                                                                          <spem class="col-md-10" style="padding: 0; padding-left: 5px;">
-                                                                                                    {{object.name}}
-                                                                                          </spem>
-                                                                                </a>
-                                                                      </li>
-                                                                      {% endfor %}
-                    
-                                                            </ul>
-                                                  </div>
-                    
-                                                  <hr style="margin: 0;">
-
-                                                  {% endfor %}
-                    
-                                        
-                    
-                                        </div>
-                                        <style>
-                                                  .list-group-item{
-                                                            background-color: #fdfdfd;
-                                                            padding: 5px 10px;
-                                                            border: 1px solid #0000000a;
-                                                  }
-                                                  .side-keys{
-                                                            /* padding: 0.5rem 1rem; */
-                                                            text-decoration: auto;
-                                                            color: unset;
-                                                            font-weight: bold;
-                                                            font-size: larger;
-                                                            font-size: 16px;
-                                                            padding: 5px;
-                                                            align-items: center;
-                                                  }
-                                                  .side-keys:hover{
-                                                            background-color: #f8f8f8; 
-                                                            color: rebeccapurple;
-                                                            border-radius: 50px; 
-                                                  }
-                                                  .side-keys.active{
-                                                            background-color: rebeccapurple; 
-                                                            color: #f8f8f8;
-                                                            border-radius: 50px; 
-                                                  }
-                                                  .box{
-                                                            margin: 10px;
-                                                  }
-                                        </style>
-                              <!-- </div> -->
-                    </div>
                     
                     <div class="col-md-7 edge " style="/*background-color: #f8f8f8;*/ /*background-color: #fdfdfd;*/ background-color: white; padding: 0;">
                               <div style="padding: 18px;background-color: #f8f8f8;background-color: #fcfcfc;background-color: white;/* padding: 50px 25px;*/ /*border-radius: 10px;*/ padding: 40px;">

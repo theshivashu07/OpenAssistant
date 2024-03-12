@@ -27,6 +27,7 @@ def dummydatasubmission():
                 object.name = string 
                 object.save() 
 
+        '''
         dicting = { 
                 'Tag' : [ 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p', 'span', 'a', ],
                 'Feature' : [ 'div', 'table', 'ul' ],
@@ -42,6 +43,7 @@ def dummydatasubmission():
                         object.names = string
                         object.locations = f"{string}.html"
                         object.save()
+        '''
                 
         print(" Data is saved !!! ")
 

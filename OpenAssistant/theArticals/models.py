@@ -4,19 +4,22 @@ from autoslug import AutoSlugField
 from django.template.defaultfilters import slugify
 
 from Home.models import USER
-from API.models import SkillSetsBuild
+from API.models import SkillsPointers
 
+from ckeditor_uploader.fields import RichTextUploadingField
 
 
 
 class Articals(models.Model):
 
           USER = models.ForeignKey(USER, on_delete=models.SET_NULL, null=True, blank=True);
-          SkillSetsBuild = models.ForeignKey(SkillSetsBuild, on_delete=models.SET_NULL, null=True, blank=True);
+          skillspointers = models.ForeignKey(SkillsPointers, on_delete=models.SET_NULL, null=True, blank=True);
 
           title = models.CharField(max_length=150, default=None, null=True) 
           slug = AutoSlugField(populate_from='title');
           discription = models.TextField(default=None, null=True) 
+
+          content = RichTextUploadingField()
 
           joiningdate = models.DateTimeField(auto_now_add=True);
           updationdate = models.DateTimeField(auto_now=True); 
@@ -29,6 +32,24 @@ class Articals(models.Model):
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+"""
 class ContentFrom(models.Model):
         ''' tag / feature ''' 
         names = models.CharField(max_length=50, default=None, null=True) 
@@ -50,7 +71,7 @@ class RunningNewArticals(models.Model):
           artical = models.ForeignKey(Articals, on_delete=models.SET_NULL, null=True, blank=True);
           content = models.JSONField(default=dict,null=True,blank=True)
 
-
+"""
 
 
 

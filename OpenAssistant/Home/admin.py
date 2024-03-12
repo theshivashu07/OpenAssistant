@@ -6,7 +6,7 @@ from django.contrib import admin
 # from .models import USER, Checked, Active, Action, Activities
 from .models import USER, Actions, Activities, Responces
 # from .models import *
-
+from .models import OptionsOf, OptionsGroup, Options
 
 
 # admin.site.register(USER)
@@ -76,6 +76,35 @@ class ActivitiesAdmin(admin.ModelAdmin):
                     return f" {format(obj.action.name)} ({obj.action.id})";
           # Action.admin_order_field  = '_user'  #Allows column order sorting
           Action.short_description = 'Action'  #Renames column head
+
+
+
+
+
+
+# admin.site.register(OptionsOf)
+class OptionsOfAdmin(admin.ModelAdmin):
+    fields = ['name' ]
+    list_display = [ 'id', 'name' ] 
+admin.site.register(OptionsOf, OptionsOfAdmin)
+
+
+# admin.site.register(OptionsGroup)
+class OptionsGroupAdmin(admin.ModelAdmin):
+    fields = [ 'name', 'optionsof' ]
+    list_display = [ 'id', 'name', 'optionsof' ] 
+admin.site.register(OptionsGroup, OptionsGroupAdmin)
+
+
+# admin.site.register(Options)
+class OptionsAdmin(admin.ModelAdmin):
+    # fields = [ 'name', 'path', 'logo', 'optionsgroup' ]
+    fields = [ 'name', 'path', 'logo', 'optionsof', 'optionsgroup' ]
+    list_display = [ 'id', 'name', 'slug', 'slugged', 'path', 'logo', 'optionsof', 'optionsgroup' ]
+admin.site.register(Options, OptionsAdmin)
+
+
+
 
 
 

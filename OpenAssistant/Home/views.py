@@ -223,8 +223,6 @@ from _dummydatabase.default import submitdummydata
 def default(): 
 	print("Working.....",end=" ") 
 	submitdummydata() 
-	# submitdummydata() 
-	# submitdummydata('user') 
 	print("Bulk data submitted directly!!!") 
 
 

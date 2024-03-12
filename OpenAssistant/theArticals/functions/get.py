@@ -3,6 +3,7 @@ from Home.models import USER
 from theArticals.models import Articals
 from API.models import Skills,SkillsOf, SkillsGroup, SkillSetsBuild
 
+from API.Code.Management.Sessions import *
 
 
 def getUser(request):
@@ -95,6 +96,53 @@ def getSkillsets(request):
         return dataset
 
 
+
+
+
+
+
+
+def knowoptionsof(request):
+        ''' function to know that this URL if coming from this APP '''
+        data = {
+                '/problems/' : 'Problems',
+                '/articals/' : 'Articals',
+                '/youtube/' : 'YouTube',
+                '/aadhyatm/' : 'Aadhyatm',
+                '/hire-us/' : 'Hire US',
+                '/profile/' : 'Profile',
+                # '' : 'Home',
+        }
+        for key,value in data.items():
+                if key in request.path:
+                        return value
+        return data.get(request.path,'Home') 
+
+
+def getSidebarLeftDetails(request): 
+        ''' this function is to get all Options related to this App '''
+        dicting = dict()
+        optionsof = OptionsOf.objects.get( name=knowoptionsof(request) )
+        optionsgroup_list = OptionsGroup.objects.filter( optionsof=optionsof ) 
+        print(optionsgroup_list)
+        for optionsgroup in optionsgroup_list:
+                temp = list()
+                options_list = Options.objects.filter( optionsgroup=optionsgroup )
+                for options in options_list:
+                        temp.append( options )
+                        # print( options.name )
+                dicting[optionsgroup.name] = temp
+                # print(temp)
+        print(dicting)
+        return dicting
+
+
+def gettingrelatedarticals(request):
+        ''' this function is to get all Options related this Feature '''
+        dicting = dict()
+        optionsof = OptionsOf.objects.get( name=knowoptionsof(request) )
+        options_list = Options.objects.filter( optionsof=optionsof )
+        # for options in options_list:
 
 
 

@@ -2,7 +2,7 @@ from django.contrib import admin
 # Register your models here.
 
 from .models import Articals
-from .models import ContentFrom, ContentOf, RunningNewArticals
+# from .models import ContentFrom, ContentOf, RunningNewArticals
 
 
 
@@ -10,15 +10,29 @@ from .models import ContentFrom, ContentOf, RunningNewArticals
 
 # admin.site.register(Articals)
 class ArticalsAdmin(admin.ModelAdmin):
-    fields = [ 'USER', 'title', 'SkillSetsBuild' ] 
-    # fields = [ 'USER', 'title', 'discription'  ] 
-    list_display = ['USER', 'title', 'SkillSetsBuild', 'discription', 'updationdate' ] 
-    # list_display = ['USER', 'title', 'slug', 'discription', 'joiningdate', 'updationdate' ] 
+    fields = [ 'USER', 'title', 'skillspointers', 'content', 'discription' ] 
+    # fields = [ 'USER', 'title', 'skillspointers', 'content', 'discription' ] 
+    list_display = ['USER', 'title', 'skillspointers', 'discription', 'updationdate' ] 
+    # list_display = ['USER', 'title', 'skillspointers', 'content', 'discription', 'updationdate' ] 
     def __str__(self):
         return f"{self.name}" 
 admin.site.register(Articals, ArticalsAdmin)
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+'''
 
 # admin.site.register(ContentFrom)
 class ContentFromAdmin(admin.ModelAdmin):
@@ -46,7 +60,7 @@ class RunningNewArticalsAdmin(admin.ModelAdmin):
         return f"{self.content}" 
 admin.site.register(RunningNewArticals, RunningNewArticalsAdmin)
 
-
+'''
 
 
 

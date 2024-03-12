@@ -44,6 +44,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    
+    'ckeditor',
 
     'Admin',     # adding  
     'Client',     # adding  
@@ -157,6 +159,29 @@ from django.contrib.messages import constants as messages        # adding
 MESSAGE_TAGS = {                                                                                      # adding  
     messages.ERROR : 'danger',                                                                    # adding  
 }                                                                                                                           # adding  
+
+
+
+
+CKEDITOR_BASEPATH = "/_static/ckeditor/ckeditor/"
+
+
+CKEDITOR_UPLOAD_PATH = "/_static/ckeditor/ckeditor/"
+
+
+
+CKEDITOR_CONFIGS = {
+    'default': {
+        'toolbar': 'full',
+        'extraPlugins': ','.join(
+            [
+                'codesnippet',
+            ]),
+    },
+}
+
+
+
 
 
 

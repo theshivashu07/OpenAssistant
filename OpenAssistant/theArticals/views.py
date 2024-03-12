@@ -17,6 +17,11 @@ from theArticals.functions import get as function_get
 
 from API.Code.Management.Sessions import *
 
+from API.models import Skills,SkillsOf, SkillsGroup, SkillSetsBuild
+
+
+
+
 
 @LoginRequired(login_url="/security/login/")
 def index(request): 
@@ -27,7 +32,7 @@ def index(request):
         ReturningData['Articals']['RecentArticalsList'] = function_get.getRecentArticalsList(request)
         
         ReturningData['Articals']['Scrollbar'] = function_get.getScrollbarDetails(request) 
-        # return render(request,"thearticals/client/articals.html",ReturningData); 
+        ReturningData['Articals']['SidebarLeft'] = function_get.getSidebarLeftDetails(request) 
         return render(request,"thearticals/client/articals-testing.html",ReturningData); 
 
 # @LoginRequired(login_url="/security/login/")
@@ -68,19 +73,26 @@ def write(request):
         
         ReturningData['Articals']['Scrollbar'] = function_get.getScrollbarDetails(request) 
 
-
-
-        # there is we check if we are have ".../write/tag=h1/
-        datasets = checkWritingWith(request)
-        if datasets:
-                
-
-                
-                return render(request,"thearticals/client/articals-write.html",ReturningData); 
-
         ReturningData['skills'] = function_get.getSkillsets(request) 
+        if request.method == "POST":
+                return redirect('/articals/show/')
         return render(request,"thearticals/client/articals-write.html",ReturningData); 
 
+
+
+def show(request):
+        
+        ReturningData = dict()
+        ReturningData['Articals'] = dict() 
+        
+        ReturningData['Articals']['OpenedArticals'] = function_get.getOpenedArticalsDetails(request) 
+        ReturningData['Articals']['RecentArticalsList'] = function_get.getRecentArticalsList(request) 
+        ReturningData['Articals']['Scrollbar'] = function_get.getScrollbarDetails(request) 
+
+        user = UserExists(request)
+        artical = Articals.objects.filter( USER=user )[::-1][0]
+        ReturningData['Articals']['Content'] = artical
+        return render(request,"thearticals/client/articals-show.html",ReturningData); 
 
 
 def writesetup(request):
@@ -241,6 +253,75 @@ content = {
                 },
         },
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+def ShowByOption(request,optionname):
+        ReturningData = dict()
+        ReturningData['Articals'] = dict()
+        
+        ReturningData['Articals']['Scrollbar'] = function_get.getScrollbarDetails(request) 
+        ReturningData['Articals']['SidebarLeft'] = function_get.getSidebarLeftDetails(request) 
+        # ReturningData['Articals']['SidebarRight'] = function_get.getSidebarRightDetails(request) 
+        return
+
+
+
+
+
+def ShowRelatedArticals(request,skillsetsbuild):
+        user = UserExists(request)
+        skillsetsbuild = '-'.join( skillsetsbuild.split('-')[1:] )
+        skills = Skills.objects.get( name=skillsetsbuild )
+        skillsetsbuild = SkillSetsBuild.objects.get( skills=skills )
+        return
+
+
+
+
+def ShowMyArtical(request,skillsetsbuild,skillspointers):
+        user = UserExists(request)
+
+
+        return
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

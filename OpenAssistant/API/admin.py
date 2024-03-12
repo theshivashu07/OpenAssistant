@@ -1,7 +1,7 @@
 from django.contrib import admin
 # Register your models here.
 
-from .models import SkillsOf, SkillsGroup, Skills, SkillSetsBuild
+from .models import SkillsOf, SkillsGroup, Skills, SkillSetsBuild, SkillsPointers
 # from .models import SkillsOf, SkillsGroup, Skills, BuildSkillSets, SkillSetsBuild
 
 
@@ -53,6 +53,16 @@ class SkillSetsBuildAdmin(admin.ModelAdmin):
     def __str__(self):
         return f"{self.skills} | {self.skillsgroup} | {self.skillsof}" 
 admin.site.register(SkillSetsBuild, SkillSetsBuildAdmin)
+
+
+# admin.site.register(SkillsPointers)
+class SkillsPointersAdmin(admin.ModelAdmin):
+    fields = [ 'skillsetbuild', 'name', 'discription' ] 
+    list_display = ['id', 'skillsetbuild', 'name', 'discription', 'slug' ] 
+    def __str__(self):
+        return f"{self.name}" 
+admin.site.register(SkillsPointers, SkillsPointersAdmin)
+
 
 
 

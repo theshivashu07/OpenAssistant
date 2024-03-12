@@ -131,6 +131,48 @@ class Activities(models.Model):
 
 
 
+class OptionsOf(models.Model):
+        ''' Articals, Problems, Youtube, Aadhyatm '''
+        name = models.CharField(max_length=50, default=None, null=True);  
+        def __str__(self):
+                return f" optionsof@{self.name} )."; 
+
+
+
+class OptionsGroup(models.Model):
+        ''' Default, ..... (According to requirements ) '''
+        name = models.CharField(max_length=50, default=None, null=True);  
+        optionsof = models.ForeignKey(OptionsOf, on_delete=models.SET_DEFAULT, default=None, null=True, blank=True);
+
+        def __str__(self):
+                return f" optionsgroup@{self.name} | {self.optionsof.name} )."; 
+
+
+
+class Options(models.Model):
+        ''' Default, ..... (According to requirements ) '''
+        name = models.CharField(max_length=100, default=None, null=True);  
+        slug = AutoSlugField(populate_from='name');
+        slugged  = AutoSlugField(populate_from='name');
+        path = models.CharField(max_length=100, default=None, null=True);  
+        logo = models.CharField(max_length=100, default=None, null=True);  
+        optionsof = models.ForeignKey(OptionsOf, on_delete=models.SET_DEFAULT, default=None, null=True, blank=True);
+        optionsgroup = models.ForeignKey(OptionsGroup, on_delete=models.SET_DEFAULT, default=None, null=True, blank=True);
+        
+        def __str__(self): 
+                return f" options@{self.name} | {self.optionsgroup.name} )."; 
+
+	# this function save title's slug automatically...
+        def save(self, *args, **kwargs): 
+                self.slug = slugify(self.name) 
+                self.slugged = slugify(self.name) 
+                # if not self.slugged:
+                #         self.slugged = slugify(self.name) 
+                super().save(*args, **kwargs) 
+
+
+
+
 
 
 
