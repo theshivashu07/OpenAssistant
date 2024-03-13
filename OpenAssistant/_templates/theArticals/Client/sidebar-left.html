@@ -1,6 +1,7 @@
 
 
-{{sidebarleft}}
+<!-- {{sidebarleft}} -->
+<!-- {{Articals.SidebarLeft}} -->
 
 
 <div class="col-md-2 edge " style="/*overflow: scroll;*/ background-color: #f8f8f8;background-color: #fdfdfd;/* margin: 0; */padding: 35px 20px;">
@@ -8,11 +9,13 @@
                     <div class="row">
 
 
-                              {% for keys,values in sidebarleft.items %}
+                              {% for keys,values in Articals.SidebarLeft.items %}
 
+                              <!-- 
                               <div style="text-transform: uppercase; font-weight: bold; padding: 5px 25px; font-size: large; background-color: beige;">
                                         {{keys}}
-                              </div>
+                              </div> 
+                              -->
 
                               <div class="col-md-12" style="padding: 10px;/* padding-top: 25px; */">
                                         <ul class="list-group list-group-flush">
@@ -44,6 +47,7 @@
                               .list-group-item{
                                         background-color: #fdfdfd;
                                         padding: 5px 10px;
+                                        /* padding: 2px 5px; */
                                         border: 1px solid #0000000a;
                               }
                               .side-keys{

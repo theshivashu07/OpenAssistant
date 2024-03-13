@@ -8,7 +8,7 @@ urlpatterns=[
 		# path('<slug:skillsetsbuild>/',views.write,name='write'),
 		# path('<slug:skillsetsbuild>/<slug:skillspointers>/',views.write,name='write'),
                     
-		path('options/<slug:skillspointers>/',views.ShowMyArtical,name='ShowMyArtical'),
+		path('options/<slug:optionname>/',views.ShowMyArtical,name='ShowByOption'),
                     
 		path('<str:skillsetsbuild>/',views.ShowRelatedArticals,name='ShowRelatedArticals'),
 		path('<str:skillsetsbuild>/<str:skillspointers>/',views.ShowMyArtical,name='ShowMyArtical'),
