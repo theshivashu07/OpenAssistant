@@ -8,10 +8,13 @@ urlpatterns=[
 		# path('<slug:skillsetsbuild>/',views.write,name='write'),
 		# path('<slug:skillsetsbuild>/<slug:skillspointers>/',views.write,name='write'),
                     
-		path('options/<slug:optionname>/',views.ShowMyArtical,name='ShowByOption'),
+		path('options/<slug:optionname>/',views.adda,name='adda'),
+		# path('options/<slug:optionname>/',views.ShowMyArtical,name='ShowByOption'),
                     
-		path('<str:skillsetsbuild>/',views.ShowRelatedArticals,name='ShowRelatedArticals'),
-		path('<str:skillsetsbuild>/<str:skillspointers>/',views.ShowMyArtical,name='ShowMyArtical'),
+		path('skills/<str:skillsetsbuild>/',views.adda,name='adda'),
+		path('skills/<str:skillsetsbuild>/<str:skill>/',views.adda,name='adda'),
+		path('skills/<str:skillsetsbuild>/<str:skillspointers>/',views.adda,name='adda'),
+		path('skills/<str:skillsetsbuild>/<str:skillspointers>/<str:skill>/',views.adda,name='adda'),
                     
 		path('write/',views.write,name='write'),
 		path('show/',views.show,name='show'),

@@ -54,28 +54,33 @@ Testing@Articals | OpenAssistant
                                                   <div class="col-sm-12">
                                                             <div class="row">
                     
-                                                                      {% for object in sidebarright %}
+                                                                      {% for object in Articals.DefaultArticalsList %}
                     
                                                                       <div class="col-sm-12" style="background-color: #fdfdfd; border: 1px solid #f0f0f0; /*margin: 10px 0;*/ margin: 0; margin-bottom: 12px; padding: 18px 20px; /*padding: 15px 25px;*/ border-radius: 10px;"> 
                                                                                 <div class="row">
                                                                                           <div class="col-md-12">
                                                                                                     <div class="artical-heading" style="line-height: normal;">
                                                                                                               <div class="title" style="font-weight: bold;font-size: 24px;">
-                                                                                                                        <a class="title" href="{{object.path}}" style="color: rebeccapurple; text-decoration: auto;"> 
+                                                                                                                        <a class="title" href="{{object.Artical.path}}" style="color: rebeccapurple; text-decoration: auto;"> 
                                                                                                                                   <!-- | • ◦ ● -->
-                                                                                                                                  {{object.name}}
+                                                                                                                                  {{object.Artical.title}}
                                                                                                                         </a>
                                                                                                               </div>
                                                                                                               <div class="basics" style="color: #939393;/*background-color: white;*/font-size: 15px; font-weight: bold;">
                                                                                                                         <spen> 
-                                                                                                                                            SHivam SHukla (theshivashu)
+                                                                                                                                  <!-- SHivam SHukla (theshivashu) -->
+                                                                                                                                  {{object.User.fullname}} ({{object.User.username}})
                                                                                                                         </spen>
                                                                                                                         <spen> • </spen>
                                                                                                                         <spen>
-                                                                                                                                  17-02-2024 
+                                                                                                                                  <!-- 17-02-2024 -->
+                                                                                                                                  {{object.Artical.date}}
                                                                                                                         </spen>
                                                                                                                         <spen> • </spen>
-                                                                                                                        <spen> Saturday </spen>
+                                                                                                                        <spen> 
+                                                                                                                                  <!-- Saturday -->
+                                                                                                                                  {{object.Artical.day}} 
+                                                                                                                        </spen>
                                                                                                               </div>
                                                                                                     </div>
                                                                                                     <div class="artical-content" style="line-height: normal;">
@@ -89,7 +94,8 @@ Testing@Articals | OpenAssistant
                                                                                                               </div>
                                                                                                               
                                                                                                               <div class="basics" style="color: #ababab;/*background-color: white;*/font-size: 15px;/*font-weight: bold;*/">
-                                                                                                                        <spen> 4 days ago</spen>
+                                                                                                                        <!-- <spen> 4 days ago</spen> -->
+                                                                                                                        <spen>{{object.Artical.ago}} </spen>
                                                                                                                         <spen> • </spen>
                                                                                                                         <spen>198k Views</spen>
                                                                                                                         <spen> • </spen>

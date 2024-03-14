@@ -28,12 +28,30 @@ def index(request):
         ReturningData = dict()
         ArticalsRUN( dictionary=ReturningData)
         ReturningDatabase(request,ReturningData)
-        ReturningData['Articals'] = dict()
+        ReturningData['Articals'] = dict() 
+        ReturningData['Articals']['DefaultArticalsList'] = function_get.getDefaultArticalsList(request)
         ReturningData['Articals']['RecentArticalsList'] = function_get.getRecentArticalsList(request)
         
         ReturningData['Articals']['Scrollbar'] = function_get.getScrollbarDetails(request) 
         ReturningData['Articals']['SidebarLeft'] = function_get.getSidebarLeftDetails(request) 
         return render(request,"thearticals/client/articals-testing.html",ReturningData); 
+
+
+def adda(request,*args,**kwargs):
+        ReturningData = dict()
+        ArticalsRUN( dictionary=ReturningData)
+        ReturningDatabase(request,ReturningData)
+        ReturningData['Articals'] = dict() 
+        ReturningData['Articals']['DefaultArticalsList'] = function_get.getDefaultArticalsList(request)
+        ReturningData['Articals']['RecentArticalsList'] = function_get.getRecentArticalsList(request)
+        
+        ReturningData['Articals']['Scrollbar'] = function_get.getScrollbarDetails(request) 
+        ReturningData['Articals']['SidebarLeft'] = function_get.getSidebarLeftDetails(request) 
+        return render(request,"thearticals/client/articals-testing.html",ReturningData); 
+
+
+
+
 
 # @LoginRequired(login_url="/security/login/")
 def articals_from_(request,from_):         
@@ -270,14 +288,8 @@ content = {
 
 
 
-def ShowByOption(request,optionname):
-        ReturningData = dict()
-        ReturningData['Articals'] = dict()
-        
-        ReturningData['Articals']['Scrollbar'] = function_get.getScrollbarDetails(request) 
-        ReturningData['Articals']['SidebarLeft'] = function_get.getSidebarLeftDetails(request) 
-        # ReturningData['Articals']['SidebarRight'] = function_get.getSidebarRightDetails(request) 
-        return
+def ShowByOption(request,optionname): 
+        return redirect('/articals/')  
 
 
 

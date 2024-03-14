@@ -21,6 +21,32 @@ def getArtical(request,slug):
         if artical:
                 artical = Articals.objects.filter( slug=slug )[0] 
 
+
+from theArticals.functions.getSidebarRight import getDate,getDay, getAgo
+def getDefaultArticalsList(request):
+          ListOfArticals = list() 
+          articals = Articals.objects.all() #[-1:-11:-1]
+          for artical in articals: 
+                  skill = artical.skillspointers.skillsetbuild.skills.name
+                  dicting = {
+                          'self' : artical,
+                          'Artical' : {
+                                'title' : artical.title,
+                                'slug' : artical.slug,
+                                'date' : getDate(artical.joiningdate),
+                                'day' : getDay(artical.joiningdate),
+                                'ago' : getAgo(artical.joiningdate),
+                                'path' : f"/articals/options/recent-articals/?skill={skill}&artical={artical.slug}"
+                          },
+                          'User' : {
+                                'fullname' : artical.USER.FullName,
+                                'username' : artical.USER.Username,                                  
+                          },
+                  }
+                  ListOfArticals.append( dicting ) 
+          return ListOfArticals 
+
+
 def getRecentArticalsList(request):   
           ListOfArticals = list() 
           user = getUser(request) 
@@ -124,7 +150,7 @@ def getSidebarLeftDetails(request):
         dicting = dict()
         optionsof = OptionsOf.objects.get( name=knowoptionsof(request) )
         optionsgroup_list = OptionsGroup.objects.filter( optionsof=optionsof ) 
-        print(optionsgroup_list)
+        # print(optionsgroup_list)
         for optionsgroup in optionsgroup_list:
                 temp = list()
                 options_list = Options.objects.filter( optionsgroup=optionsgroup )
@@ -133,9 +159,15 @@ def getSidebarLeftDetails(request):
                         # print( options.name )
                 dicting[optionsgroup.name] = temp
                 # print(temp)
-        print(dicting)
+        # print(dicting)
         return dicting
 
+def getSidebarRightDetails(request,relatedwith):
+        if relatedwith=='recent-articals':
+                pass
+        articals = Articals.objects.all()
+        for artical in articals:
+                pass 
 
 def gettingrelatedarticals(request):
         ''' this function is to get all Options related this Feature '''
