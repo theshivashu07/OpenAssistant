@@ -35,8 +35,8 @@ def getAgo(prev):
                 'second' : curr.second-prev.second,
                 'microsecond' : curr.microsecond-prev.microsecond,
         }
-        print(prev,curr)
-        print(dictt)
+        # print(prev,curr)
+        # print(dictt)
         
         def filter(data,string):
                 if data!=1:

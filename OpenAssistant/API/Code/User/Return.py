@@ -51,6 +51,7 @@ def ReturningDatabase(request,ReturningData):
         if user and user.get('username',None):
                 username = user.get('username',None)
                 ReturningData['ObjectUSER'] = USER.objects.get(Username=username)
+                print("loading . . . . .    ",USER.objects.get(Username=username))
         # return ReturningData
 
 

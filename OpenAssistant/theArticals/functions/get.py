@@ -27,7 +27,7 @@ def getDefaultArticalsList(request):
           ListOfArticals = list() 
           articals = Articals.objects.all() #[-1:-11:-1]
           for artical in articals: 
-                  skill = artical.skillspointers.skillsetbuild.skills.name
+                  skill = artical.skillspointers.skillsetbuild.skills
                   dicting = {
                           'self' : artical,
                           'Artical' : {
@@ -36,7 +36,7 @@ def getDefaultArticalsList(request):
                                 'date' : getDate(artical.joiningdate),
                                 'day' : getDay(artical.joiningdate),
                                 'ago' : getAgo(artical.joiningdate),
-                                'path' : f"/articals/options/recent-articals/?skill={skill}&artical={artical.slug}"
+                                'path' : f"/articals/options/recent-articals/?skill={skill.slug}&artical={artical.slug}"
                           },
                           'User' : {
                                 'fullname' : artical.USER.FullName,

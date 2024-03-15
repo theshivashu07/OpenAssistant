@@ -78,6 +78,33 @@ def open(request,slug):
         # return render(request,"thearticals/client/articals.html",ReturningData); 
         return render(request,"thearticals/client/articals-open.html",ReturningData); 
 
+# @LoginRequired(login_url="/security/login/")
+def open(request,*args,**kwargs):
+        skill = kwargs.get( 'skill', request.GET.get( 'skill',None ) )
+        artical = kwargs.get( 'artical', request.GET.get( 'artical',None ) )
+        
+        ReturningData = dict()
+        ReturningDatabase(request,ReturningData) # USER Header
+
+        ReturningData['Articals'] = dict() 
+        
+        ReturningData['Articals']['OpenedArticals'] = function_get.getOpenedArticalsDetails(request) 
+        ReturningData['Articals']['RecentArticalsList'] = function_get.getRecentArticalsList(request) 
+        ReturningData['Articals']['Scrollbar'] = function_get.getScrollbarDetails(request) 
+
+        # Actually SkillSetsBuild's slug is exect same as Skills slug !!! 
+        skillsetsbuild = SkillSetsBuild.objects.filter( slug=skill )[0]
+        # we get all related SkillsPointers's and then check their related slug !!!
+        skillspointers = SkillsPointers.objects.filter( skillsetbuild=skillsetsbuild )
+        print(skillspointers)
+
+        for skillspointer in skillspointers: 
+                object = Articals.objects.filter( skillspointers=skillspointer,slug=artical ) [0]
+                ReturningData['Articals']['Content'] = object 
+                break
+        
+        return render(request,"thearticals/client/articals-show.html",ReturningData);  
+
 
 
 # @LoginRequired(login_url="/security/login/")
@@ -101,6 +128,7 @@ def write(request):
 def show(request):
         
         ReturningData = dict()
+        ReturningDatabase(request,ReturningData) # USER Header
         ReturningData['Articals'] = dict() 
         
         ReturningData['Articals']['OpenedArticals'] = function_get.getOpenedArticalsDetails(request) 
@@ -110,6 +138,7 @@ def show(request):
         user = UserExists(request)
         artical = Articals.objects.filter( USER=user )[::-1][0]
         ReturningData['Articals']['Content'] = artical
+        return render(request,"thearticals/client/ckeditor.html",ReturningData); 
         return render(request,"thearticals/client/articals-show.html",ReturningData); 
 
 

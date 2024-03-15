@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     
     'ckeditor',
+    'ckeditor_uploader',
 
     'Admin',     # adding  
     'Client',     # adding  
@@ -169,6 +170,8 @@ CKEDITOR_BASEPATH = "/_static/ckeditor/ckeditor/"
 CKEDITOR_UPLOAD_PATH = "/_static/ckeditor/ckeditor/"
 
 
+CKEDITOR_UPLOAD_PATH = "uploads/"
+CKEDITOR_IMAGE_BACKEND = "pillow"
 
 CKEDITOR_CONFIGS = {
     'default': {
