@@ -74,8 +74,9 @@
 
 
 *{
-          font-family: math;
-          font-family: 'Philosopher', sans-serif;
+          /* font-family: math; */
+          /* font-family: 'Philosopher', sans-serif; */
+          font-family: 'Philosopher', math;
 } 
 
 /* body{
