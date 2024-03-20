@@ -44,6 +44,7 @@ def getDefaultArticalsList(request):
                           },
                   }
                   ListOfArticals.append( dicting ) 
+          ListOfArticals.reverse()
           return ListOfArticals 
 
 
@@ -55,6 +56,7 @@ def getRecentArticalsList(request):
                     for artical in articals: 
                               ListOfArticals.append( artical ) 
           return ListOfArticals 
+
 
 def getOpenedArticalsDetails(request):
                 USER = getUser(request) 

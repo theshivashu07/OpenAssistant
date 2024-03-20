@@ -72,17 +72,17 @@
     background-color: #b19a3c;
 }
 
-
+/* 
 *{
-          /* font-family: math; */
-          /* font-family: 'Philosopher', sans-serif; */
+          font-family: math;
+          font-family: 'Philosopher', sans-serif;
           font-family: 'Philosopher', math;
-} 
+}  */
 
-/* body{
+body{
     font-family: math;
     font-family: 'Philosopher', sans-serif;
-} */
+}
 
 .edge{
     font-family: 'Philosopher', sans-serif;
