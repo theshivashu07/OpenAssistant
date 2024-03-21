@@ -26,7 +26,7 @@ from API.models import Skills,SkillsOf, SkillsGroup, SkillSetsBuild
 @LoginRequired(login_url="/security/login/")
 def index(request): 
         ReturningData = dict()
-        ArticalsRUN( dictionary=ReturningData)
+        # ArticalsRUN( dictionary=ReturningData)
         ReturningDatabase(request,ReturningData)
         ReturningData['Articals'] = dict() 
         ReturningData['Articals']['DefaultArticalsList'] = function_get.getDefaultArticalsList(request)
