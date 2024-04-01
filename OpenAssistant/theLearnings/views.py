@@ -23,6 +23,7 @@ from _dummydatabase.aadhyatm import AadhyatmRUN
 
 @LoginRequired(login_url="/security/login/")
 def index(request): 
+        "personal-function"
         ReturningData = dict()
         ReturningDatabase(request,ReturningData)
         print(request.session.get('User',None))

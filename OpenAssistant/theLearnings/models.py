@@ -9,8 +9,8 @@ from Home.models import USER
 
 
 class SkillsOf(models.Model):
-        
-        name = models.ForeignKey(USER, on_delete=models.SET_NULL, null=True, blank=True);
+        " Programming / Database / Advanced / Framework / Cloud / Others "
+        name = models.CharField(max_length=150, default=None, null=True)   
 
 
 
@@ -18,4 +18,12 @@ class SkillsOf(models.Model):
 
 class Skills(models.Model):
 
-          skillsof = 
+          skillsof = models.ForeignKey(USER, on_delete=models.SET_NULL, null=True, blank=True);
+
+
+
+
+
+
+
+
