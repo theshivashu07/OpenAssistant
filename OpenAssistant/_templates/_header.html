@@ -3,6 +3,8 @@
 
 {% if '/articals/' in request.path %}
 	<div class="edge" style="background-color: rebeccapurple;">
+{% elif '/learnings/' in request.path %}
+	<div class="edge" style="background-color: #0077bb;">
 {% elif '/youtube/' in request.path %}
 	<div class="edge" style="background-color: red;">
 {% elif '/problems/' in request.path %}
@@ -51,6 +53,9 @@
 					</a>
 					<a href="/problems/" style="text-decoration:none">
 						<div class="options {% if '/problems/' in request.path %} active {% endif %} ">Problems</div>
+					</a>
+					<a href="/learnings/" style="text-decoration:none">
+						<div class="options {% if '/learnings/' in request.path %} active {% endif %} ">Learnings</div>
 					</a>
 					<a href="/articals/" style="text-decoration:none">
 						<div class="options {% if '/articals/' in request.path %} active {% endif %} ">Articals</div>

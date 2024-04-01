@@ -6,19 +6,19 @@ from django.template.defaultfilters import slugify
 
 
 
-class USER(models.Model):
-        # User = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True);
+class USER(models.Model): 
+        # User = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True); 
         FullName = models.CharField(max_length=50, default=None, null=True); 
         FirstName = models.CharField(max_length=25, default=None, null=True); 
         LastName = models.CharField(max_length=25, default=None, null=True); 
         Username=models.CharField(max_length=30); 
-        Mobile = models.IntegerField(default=None, null=True);
-        Email = models.EmailField(max_length = 254)
+        Mobile = models.IntegerField(default=None, null=True); 
+        Email = models.EmailField(max_length = 254); 
         Password = models.CharField(max_length=50); 
-        # Profile = models.ImageField(upload_to='_user/_profiles/', default='_user/_profiles/_default.jpeg', null=True)
-        Profile = models.ImageField(upload_to='_user/_profiles/', default=None, null=True)
+        # Profile = models.ImageField(upload_to='_user/_profiles/', default='_user/_profiles/_default.jpeg', null=True) 
+        Profile = models.ImageField(upload_to='_user/_profiles/', default=None, null=True) 
 
-        # Checked=models.BooleanField(default=None, null=False);
+        # Checked=models.BooleanField(default=None, null=False); 
         isChecked = models.BooleanField(default=False, null=True); 
         isActive = models.BooleanField(default=False, null=True);   #isLogin
 

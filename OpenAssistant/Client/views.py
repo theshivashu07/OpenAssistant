@@ -109,8 +109,6 @@ def aadhyatm_from_(request,from_):
 
 
 
-
-
 @LoginRequired(login_url="/security/login/")
 def hireus(request): 
         ReturningData = dict()
@@ -119,7 +117,6 @@ def hireus(request):
         for keys,values in request.session.items():
                 print(f"{keys} : {values}")
         return render(request,"client/hireus.html",ReturningData); 
-
 
 @LoginRequired(login_url="/security/login/")
 def notifications(request): 

@@ -23,7 +23,9 @@ urlpatterns=[
 		path('aadhyatm/',views.aadhyatm,name='aadhyatm'),
 		path('aadhyatm/<str:from_>/',views.aadhyatm_from_,name='aadhyatm_from_'),
 
-
+		# path('learnings/',views.learnings,name='learnings'),
+		# path('learnings/<str:skillsof_>/',views.learnings_from_,name='learnings_from_'),
+		# path('learnings/<str:skillsof_>/<str:skills_>/',views.learnings_from_,name='learnings_from_'),
 
 
 

@@ -67,7 +67,13 @@ Show@Articals | OpenAssistant
 
                                                                                 <div class="head">
                                                                                           <h2 style="margin-bottom: 0; font-weight: bold;">{{ Articals.Content.title }}</h2>
-                                                                                          <span class="discription">{{ Articals.Content.USER.FullName }} | {{ Articals.Content.joiningdate }} | {{ Articals.Content.discription }}</span>
+                                                                                          <div class="details">
+                                                                                            <span class="user"> {{ Articals.Content.USER.FullName }} </span>
+                                                                                             | 
+                                                                                            <span class="date"> {{ Articals.Content.joiningdate }} </span>
+                                                                                             | 
+                                                                                            <span class="discription"> {{ Articals.Content.discription }} </span>
+                                                                                        </span>
                                                                                           <!-- <br> -->
                                                                                           <!-- <span class="hashtags">#django #djangorestframework #python #fixerror</span> -->
                                                                                 </div>
@@ -77,6 +83,16 @@ Show@Articals | OpenAssistant
                                                                                 <div class="mid" style="padding: 25px 0;">
 
                                                                                           {{ Articals.Content.content | safe }}
+
+                                                                                          <style>
+                                                                                                    p{
+                                                                                                        margin:0px;
+                                                                                                        margin-top: 15px;
+                                                                                                    };
+                                                                                                    li{
+                                                                                                        margin-bottom:10px;
+                                                                                                    };
+                                                                                            </style>
 
                                                                                 </div>
 

@@ -12,3 +12,10 @@ def getUSER(user,fields=list()):
 
 
 
+class SkillKeywords:
+        pass
+
+class 
+
+
+

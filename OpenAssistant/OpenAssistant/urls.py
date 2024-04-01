@@ -34,6 +34,7 @@ urlpatterns = [
 
     path('articals/', include('theArticals.urls')),
     path('problems/', include('theProblems.urls')),
+    path('learnings/', include('theLearnings.urls')),
 
     path('ckeditor/', include('ckeditor_uploader.urls')), 
 
