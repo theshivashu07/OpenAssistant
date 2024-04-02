@@ -12,9 +12,6 @@ from .Code.User import *
 def index(request): 
 	return HttpResponse("Hey there, This is <b>API</b>  ( from API App ) !!!");  
 
-# def index(request):  
-#           pass 
-
 
 def user(request):
 	pass
