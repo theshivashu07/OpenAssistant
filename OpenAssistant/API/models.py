@@ -6,6 +6,7 @@ from django.template.defaultfilters import slugify
 
 
 
+
 class SkillsOf(models.Model):
         ''' only name give ..... '''
         name = models.CharField(max_length=50, default=None, null=True); 
