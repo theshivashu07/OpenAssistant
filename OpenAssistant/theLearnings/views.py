@@ -23,7 +23,6 @@ from _dummydatabase.aadhyatm import AadhyatmRUN
 
 @LoginRequired(login_url="/security/login/")
 def index(request): 
-        "personal-function"
         ReturningData = dict()
         ReturningDatabase(request,ReturningData)
         print(request.session.get('User',None))
@@ -39,5 +38,7 @@ def learnings_from_(request,skillsof_=None,skills_=None):
                 print(f"{keys} : {values}") 
         return render(request,"theLearnings/learnings.html",ReturningData); 
 
-def Authentications(  ):
-        pass
+
+
+
+
