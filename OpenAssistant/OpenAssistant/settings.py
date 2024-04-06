@@ -54,6 +54,7 @@ INSTALLED_APPS = [
     'API',     # adding  
     'theArticals',
     'theProblems',
+    'theLearnings',
 ]
 
 MIDDLEWARE = [

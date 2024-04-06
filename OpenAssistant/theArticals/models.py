@@ -17,7 +17,7 @@ class Articals(models.Model):
 
           title = models.CharField(max_length=150, default=None, null=True) 
           slug = AutoSlugField(populate_from='title');
-          discription = models.TextField(default=None, null=True) 
+          discription = models.TextField(default=None, null=True, blank=True) 
 
           content = RichTextUploadingField()
 

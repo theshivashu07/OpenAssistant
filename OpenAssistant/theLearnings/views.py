@@ -37,7 +37,5 @@ def learnings_from_(request,skillsof_=None,skills_=None):
         return render(request,"theLearnings/learnings.html",ReturningData); 
 
 
-def checks(request,*args,**kwargs):
-        pass
 
 
