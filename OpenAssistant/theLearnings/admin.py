@@ -19,8 +19,8 @@ admin.site.register(SkillOf, SkillOfAdmin)
 
 # admin.site.register(Skills)
 class SkillAdmin(admin.ModelAdmin):
-    fields = [ 'skillsof', 'name' ] 
-    list_display = [ 'id', 'skillsof', 'name', 'slug', 'slugs' ] 
+    fields = [ 'skillsof', 'name', 'status' ] 
+    list_display = [ 'id', 'skillsof', 'name', 'slug', 'slugs', 'status' ] 
     def __str__(self):
         return f"{self.name}" 
 admin.site.register(Skill, SkillAdmin)

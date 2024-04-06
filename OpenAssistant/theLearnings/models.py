@@ -30,9 +30,13 @@ class SkillOf(models.Model):
 
 class Skill(models.Model):
         skillsof = models.ForeignKey(SkillOf, on_delete=models.SET_NULL, null=True, blank=True);
+
         name = models.CharField(max_length=50, default=None, null=True); 
         slug = AutoSlugField(populate_from='name');
         slugs = models.TextField(default=None, null=True, blank=True); 
+        
+        status = models.BooleanField(default=True, null=True, blank=True); 
+
         tags = models.TextField(default=None, null=True, blank=True); 
         discription = models.TextField(default=None, null=True, blank=True); 
 
