@@ -26,7 +26,7 @@ def index(request):
         print(request.session.get('User',None))
         for keys,values in request.session.items():
                 print(f"{keys} : {values}")
-        return render(request,"theLearnings/learnings.html",ReturningData); 
+        return render(request,"theLearnings/Client/learnings-testing.html",ReturningData); 
 
 def learnings_from_(request,skillsof_=None,skills_=None): 
         ReturningData = dict()
@@ -34,7 +34,25 @@ def learnings_from_(request,skillsof_=None,skills_=None):
         print(request.session.get('User',None))
         for keys,values in request.session.items():
                 print(f"{keys} : {values}") 
-        return render(request,"theLearnings/learnings.html",ReturningData); 
+        return render(request,"theLearnings/Client/learnings-testing.html",ReturningData); 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
