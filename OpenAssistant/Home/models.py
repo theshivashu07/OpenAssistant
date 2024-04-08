@@ -140,7 +140,7 @@ class OptionsOf(models.Model):
 
 
 class OptionsGroup(models.Model):
-        ''' Default, ..... (According to requirements ) '''
+        ''' Default, ..... (According to requirements ) ''' 
         name = models.CharField(max_length=50, default=None, null=True);  
         optionsof = models.ForeignKey(OptionsOf, on_delete=models.SET_DEFAULT, default=None, null=True, blank=True);
 
@@ -150,7 +150,7 @@ class OptionsGroup(models.Model):
 
 
 class Options(models.Model):
-        ''' Default, ..... (According to requirements ) '''
+        ''' Default, ..... (According to requirements ) ''' 
         name = models.CharField(max_length=100, default=None, null=True);  
         slug = AutoSlugField(populate_from='name');
         slugged  = AutoSlugField(populate_from='name');
@@ -158,7 +158,7 @@ class Options(models.Model):
         logo = models.CharField(max_length=100, default=None, null=True);  
         optionsof = models.ForeignKey(OptionsOf, on_delete=models.SET_DEFAULT, default=None, null=True, blank=True);
         optionsgroup = models.ForeignKey(OptionsGroup, on_delete=models.SET_DEFAULT, default=None, null=True, blank=True);
-        
+
         def __str__(self): 
                 return f" options@{self.name} | {self.optionsgroup.name} )."; 
 

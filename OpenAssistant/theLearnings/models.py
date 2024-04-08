@@ -36,6 +36,7 @@ class Skill(models.Model):
         slugs = models.TextField(default=None, null=True, blank=True); 
         
         status = models.BooleanField(default=True, null=True, blank=True); 
+        image = models.TextField(max_length=150, default=None, null=True, blank=True); 
 
         tags = models.TextField(default=None, null=True, blank=True); 
         discription = models.TextField(default=None, null=True, blank=True); 

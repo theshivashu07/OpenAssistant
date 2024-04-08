@@ -108,7 +108,8 @@ def getScrollbarDetails(request):
                                         'name' : object.skills.name,
                                         'path' : '/articals/'+object.slug+'/'
                                 }
-        return returningdataset
+        print( returningdataset )  
+        return returningdataset    
 
 
 def getSkillsets(request):

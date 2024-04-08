@@ -1,33 +1,104 @@
 
 
 from theLearnings.models import Skill, SkillOf
+from Home.models import OptionsOf,OptionsGroup,Options
+
+# from Home.models import *
+from theArticals.models import *
 
 
 
-def scrollbar( dictionary ):
-          skills = Skill.objects.filter( status=True ) 
+def getScrollbarDetails( request ):
+          returningdataset = dict()
+          skillofs = SkillOf.objects.all()
+          for skillof in skillofs:
+                  skills = Skill.objects.filter( skillsof=skillof, status=True ) 
+                  # skills = Skill.objects.filter( skillsof=skillof ).filter( status=True )  
+                  for skill in skills: 
+                         returningdataset[skill.name] = { 
+                                 'name' : skill.name, 
+                                #  'path' : '/learnings/'+skill.slug+'/' 
+                                 'path' : '/learnings/'+skill.skillsof.slug+'/'+skill.slug+'/' 
+                        } 
+                        #  print( returningdataset )  
+        #   print( returningdataset )  
+          return returningdataset   
 
 
 
-def getScrollbarDetails(request):
-        count = 0
-        objects = Skills.objects.all()
-        sets,lists = set(),list() #
+
+def knowoptionsof(request):
+        ''' function to know that this URL if coming from this APP '''
+        data = {
+                '/problems/' : 'Problems',
+                '/articals/' : 'Articals',
+                '/youtube/' : 'YouTube',
+                '/aadhyatm/' : 'Aadhyatm',
+                '/hire-us/' : 'Hire US',
+                '/profile/' : 'Profile',
+                '/learnings/' : 'Learnings',
+                # '' : 'Home',
+        }
+        for key,value in data.items():
+                if key in request.path:
+                        return value
+        return data.get(request.path,'Home') 
+
+def getSidebarLeftDetails(request): 
+        ''' this function is to get all Options related to this App '''
+        dicting = dict()
+        optionsof = OptionsOf.objects.get( name=knowoptionsof(request) )
+        optionsgroup_list = OptionsGroup.objects.filter( optionsof=optionsof ) 
+        # print(optionsgroup_list)
+        for optionsgroup in optionsgroup_list:
+                temp = list() 
+                options_list = Options.objects.filter( optionsgroup=optionsgroup ) 
+                for options in options_list:
+                        temp.append( options )
+                        # print( options.name )
+                dicting[optionsgroup.name] = temp
+                # print(temp)
+        print(dicting)
+        return dicting
+
+
+
+
+
+
+
+
+def getOptionsDetails( skillof ):
         returningdataset = dict()
-        for object in objects:
-                if object.skillsof.id in showonly:
-                        count +=1
-                        if object not in sets:
-                                sets.add(object)
-                                lists.append(object)
-                                returningdataset[object.skills.name] = {
-                                        'name' : object.skills.name,
-                                        'path' : '/articals/'+object.slug+'/'
-                                }
-        return returningdataset 
+        skills = Skill.objects.filter( skillof=skillof )
+        for skill in skills:
+                returningdataset[skill.name] = {
+                        'name' : skill.name, 
+                        # 'image' : skill.image,
+                        'path' : '/learnings/'+skill.skillsof.slug+'/'+skill.slug+'/' 
+                } 
+        print( returningdataset )  
+        return returningdataset   
+        
+                
 
 
+def getUser(request):
+          ''' if user logged-in return User's Object, otherwise return 'None' '''
+          user = request.session.get('user',None)
+          if user:
+                    user = user['username'] 
+                    user = USER.objects.get(Username=user)
+          return user 
 
+def getRelatedArticalsList(request):   
+          ListOfArticals = list() 
+          user = getUser(request) 
+          if user: 
+                    articals = Articals.objects.filter(USER=user) 
+                    for artical in articals: 
+                              ListOfArticals.append( artical ) 
+          return ListOfArticals 
 
 
 
