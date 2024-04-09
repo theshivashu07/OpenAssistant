@@ -64,6 +64,16 @@ def getSidebarLeftDetails(request):
 
 
 
+from theLearnings.models import Topic,TopicHeadings,TopicSubHeadings
+def getSidebarLeftDetails_Skills( request,skillof,skill ): 
+        dicting = dict()
+        skill = Skill.objects.get( name=skill )
+        topics = Topic.objects.filter( skill=skill ) 
+
+
+
+
+
 
 
 

@@ -56,9 +56,8 @@ def options( request,skillof ):
         ReturningData['Articals']['Scrollbar'] = builder.getScrollbarDetails(request) 
         ReturningData['Articals']['SidebarLeft'] = builder.getSidebarLeftDetails(request) 
         ReturningData['Articals']['RelatedArticalsList'] = builder.getRelatedArticalsList(request) 
+        return render(request,"theLearnings/Client/skills.html",ReturningData); 
 
-        pass
-        
 
 
 def skills( request,skillof,skill ):
