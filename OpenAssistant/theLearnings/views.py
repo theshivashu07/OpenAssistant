@@ -61,7 +61,14 @@ def options( request,skillof ):
 
 
 def skills( request,skillof,skill ):
-        pass
+        ReturningData = dict()
+        ReturningDatabase(request,ReturningData)
+        
+        ReturningData['Articals'] = dict()
+        ReturningData['Articals']['Scrollbar'] = builder.getScrollbarDetails(request) 
+        ReturningData['Articals']['SidebarLeft'] = builder.getSidebarLeftDetails_Skills(request,skillof,skill) 
+        ReturningData['Articals']['RelatedArticalsList'] = builder.getRelatedArticalsList(request) 
+        return render(request,"theLearnings/Client/skills.html",ReturningData); 
 
 
 

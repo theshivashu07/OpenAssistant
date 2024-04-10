@@ -9,7 +9,7 @@
                     <div class="row">
 
 
-                              {% for keys,values in Articals.SidebarLeft.items %}
+                              {% for heading,subheadings in Articals.SidebarLeft.items %}
 
                               <!-- 
                               <div style="text-transform: uppercase; font-weight: bold; padding: 5px 25px; font-size: large; background-color: beige;">
@@ -18,18 +18,26 @@
                               -->
 
                               <div class="col-md-12" style="padding: 10px;/* padding-top: 25px; */">
+                                        
                                         <ul class="list-group list-group-flush">
-
-                                                  {% for object in values %}
+                                                  <h4>{{heading}}</h4>
+                                                  
+                                                  {% for subheading,topics in subheadings.items %}
                                                   <li class="list-group-item">
-                                                            <a class="side-keys row {% if object.path in request.path %} active {% endif %}" href="{{object.path}}" style="align-items: center; font-weight: normal;">
-                                                                      <!-- <i class="col-md-2 {{object.logo}}"></i> -->
-                                                                      <!-- <i class="col-md-2 fa-solid fa-circle-info"></i> -->
-                                                                      <i class="col-md-2 fa-solid fa-book"></i>
-                                                                      <spem class="col-md-10" style="padding: 0; padding-left: 5px;">
-                                                                                {{object.name}}
-                                                                      </spem>
-                                                            </a>
+                                                            <ul class="list-group list-group-flush">
+                                                                      <h5>{{subheading}}</h5>
+
+                                                                      {% for topic in topics %}
+                                                                      <li class="list-group-item">
+                                                                                <a class="side-keys row {% if object.path in request.path %} active {% endif %}" href="{{topic.path}}" style="align-items: center; font-weight: normal;">
+                                                                                          <spem class="" style="padding: 0; padding-left: 5px;">
+                                                                                                    {{topic.name}}
+                                                                                          </spem>
+                                                                                </a>
+                                                                      </li>
+                                                                      {% endfor %}
+
+                                                            </ul>
                                                   </li>
                                                   {% endfor %}
 
@@ -44,11 +52,10 @@
 
                     </div>
                     <style>
-                              .list-group-item{
-                                        background-color: #fdfdfd;
+                              .list-group-item {
                                         padding: 5px 10px;
-                                        /* padding: 2px 5px; */
-                                        border: 1px solid #0000000a;
+                                        margin: 2px 5px;
+                                        margin: 0 5px;
                               }
                               .side-keys{
                                         /* padding: 0.5rem 1rem; */
@@ -57,11 +64,12 @@
                                         font-weight: bold;
                                         font-size: larger;
                                         font-size: 16px;
-                                        padding: 5px;
+                                        padding: 0 5px;
                                         align-items: center;
                               }
                               .side-keys:hover{
                                         background-color: #f8f8f8; 
+                                        background-color: #fdfdfd; 
                                         color: #0077bb;
                                         border-radius: 50px; 
                               }

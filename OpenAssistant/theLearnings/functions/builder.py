@@ -66,9 +66,26 @@ def getSidebarLeftDetails(request):
 
 from theLearnings.models import Topic,TopicHeadings,TopicSubHeadings
 def getSidebarLeftDetails_Skills( request,skillof,skill ): 
-        dicting = dict()
-        skill = Skill.objects.get( name=skill )
-        topics = Topic.objects.filter( skill=skill ) 
+        dicting = dict() 
+        topics = Topic.objects.filter( skill = Skill.objects.get( slug=skill )  ) 
+        print(topics) 
+
+        for topic in topics: 
+                headings = dicting.get( topic.headings.name, dict() ) 
+                subheadings = headings.get( topic.subheadings.name, list() ) 
+                subheadings.append( { 
+                        'name' : topic.title, 
+                        'path' : '/learnings/'+skillof+'/'+skill+'/'+topic.headings.slug+'/'+topic.subheadings.slug+'/'+topic.slug+'/' 
+                } ) 
+
+                headings[ topic.subheadings.name ] = subheadings 
+                dicting[ topic.headings.name ] = headings 
+                
+        print( "All Sets" ) 
+        print( dicting ) 
+        return dicting 
+                
+                
 
 
 
