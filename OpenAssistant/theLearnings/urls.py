@@ -9,6 +9,7 @@ urlpatterns=[
 
 		path('options/<str:skillof>/',views.options,name='options'), 
 		path('<str:skillof>/<str:skill>/',views.skills,name='skills'), 
+		path('<str:skillof>/<str:skill>/<str:heading>/<str:subheading>/<str:topic>/',views.showtopic,name='showtopic'), 
 
                     path(r'^(.*)$', views.index), 
 

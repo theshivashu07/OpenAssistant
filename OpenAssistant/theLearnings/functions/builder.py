@@ -68,7 +68,7 @@ from theLearnings.models import Topic,TopicHeadings,TopicSubHeadings
 def getSidebarLeftDetails_Skills( request,skillof,skill ): 
         dicting = dict() 
         topics = Topic.objects.filter( skill = Skill.objects.get( slug=skill )  ) 
-        print(topics) 
+        # print(topics) 
 
         for topic in topics: 
                 headings = dicting.get( topic.headings.name, dict() ) 
@@ -81,11 +81,31 @@ def getSidebarLeftDetails_Skills( request,skillof,skill ):
                 headings[ topic.subheadings.name ] = subheadings 
                 dicting[ topic.headings.name ] = headings 
                 
-        print( "All Sets" ) 
-        print( dicting ) 
         return dicting 
                 
+
+
+from theLearnings.models import Topic,TopicHeadings,TopicSubHeadings
+def getSidebarLeftDetails_Topics( request,skillof,skill,heading=None,subheading=None,topic=None): 
+        dicting = dict() 
+        topics = Topic.objects.filter( skill = Skill.objects.get( slug=skill )  ) 
+        for topic_ in topics: 
+                headings = dicting.get( topic_.headings.name, dict() ) 
+                subheadings = headings.get( topic_.subheadings.name, dict() ) 
+                data = { 
+                        'name' : topic_.title, 
+                        'path' : '/learnings/'+skillof+'/'+skill+'/'+topic_.headings.slug+'/'+topic_.subheadings.slug+'/'+topic_.slug+'/',
+                }
                 
+                subheadings[ topic_.title ] = data 
+                subheadings[  'securedslugOfSubheading' ] = topic_.subheadings.slug  
+
+                headings[ topic_.subheadings.name ] = subheadings 
+                headings[  'securedslugOfHeading' ] = topic_.headings.slug  
+
+                dicting[ topic_.headings.name ] = headings 
+                
+        return dicting
 
 
 

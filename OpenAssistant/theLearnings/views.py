@@ -67,10 +67,25 @@ def skills( request,skillof,skill ):
         ReturningData['Articals'] = dict()
         ReturningData['Articals']['Scrollbar'] = builder.getScrollbarDetails(request) 
         ReturningData['Articals']['SidebarLeft'] = builder.getSidebarLeftDetails_Skills(request,skillof,skill) 
+        ReturningData['Articals']['CenteredDatasets'] = builder.getSidebarLeftDetails_Topics(request,skillof,skill) 
         ReturningData['Articals']['RelatedArticalsList'] = builder.getRelatedArticalsList(request) 
         return render(request,"theLearnings/Client/skills.html",ReturningData); 
 
 
+
+		# path('<str:skillof>/<str:skill>/<str:heading>/<str:subheading>/<str:topic>/',views.showtopic,name='showtopic'), 
+
+
+def showtopic( request,skillof,skill,heading,subheading,topic ):
+        ReturningData = dict()
+        ReturningDatabase(request,ReturningData)
+        
+        ReturningData['Articals'] = dict()
+        ReturningData['Articals']['Scrollbar'] = builder.getScrollbarDetails(request) 
+        ReturningData['Articals']['SidebarLeft'] = builder.getSidebarLeftDetails_Skills(request,skillof,skill) 
+        ReturningData['Articals']['CenteredDatasets'] = builder.getSidebarLeftDetails_Topics(request,skillof,skill,heading,subheading,topic) 
+        ReturningData['Articals']['RelatedArticalsList'] = builder.getRelatedArticalsList(request) 
+        return render(request,"theLearnings/Client/skills.html",ReturningData); 
 
 
 

@@ -4,58 +4,109 @@
 <!-- {{Articals.SidebarLeft}} -->
 
 
-<div class="col-md-2 edge " style="/*overflow: scroll;*/ background-color: #f8f8f8;background-color: #fdfdfd;/* margin: 0; */padding: 35px 20px;">
+<div class="col-md-2 edge " style="/*overflow: scroll;*/ background-color: #f8f8f8;background-color: #fdfdfd;/* margin: 0; */padding: 35px 20px; padding-left: 50px; width: 20%; border-right: 2px solid #f8f8f8;">
           <!-- <div style="padding: 25px;background-color: #f8f8f8;background-color: #fcfcfc;background-color: white;/* padding: 50px 25px; */border-radius: 10px;"> -->
                     <div class="row">
 
 
-                              {% for heading,subheadings in Articals.SidebarLeft.items %}
+                              
+                              <!-- {{Articals.SidebarLeft}} -->
+                              {% for heading,subheadings in Articals.CenteredDatasets.items %}
+                              
+                              
+                                      <div class="accordion" id="accordionPanelsStayOpenExample">
+                                        <div class="accordion-item" style="border: 0;">
+                                          <h4 class="accordion-header">
+                                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#{{subheadings.securedslugOfHeading}}" aria-expanded="true" aria-controls="{{subheadings.securedslugOfHeading}}" style="font-size: x-large; padding: 10px; background-color: #fdfdfd;">
+                                              {{heading}}
+                                            </button>
+                                          </h4>
+                                          <div id="{{subheadings.securedslugOfHeading}}" class="accordion-collapse collapse show" style="background-color: #fdfdfd;">
+                                            <div class="accordion-body">
 
-                              <!-- 
-                              <div style="text-transform: uppercase; font-weight: bold; padding: 5px 25px; font-size: large; background-color: beige;">
-                                        {{keys}}
-                              </div> 
-                              -->
 
-                              <div class="col-md-12" style="padding: 10px;/* padding-top: 25px; */">
-                                        
-                                        <ul class="list-group list-group-flush">
-                                                  <h4>{{heading}}</h4>
-                                                  
                                                   {% for subheading,topics in subheadings.items %}
-                                                  <li class="list-group-item">
-                                                            <ul class="list-group list-group-flush">
-                                                                      <h5>{{subheading}}</h5>
+                                                      {% if subheading != 'securedslugOfHeading' %}
+                                                          <div class="accordion" id="accordionPanelsStayOpenExample">
+                                                            <div class="accordion-item" style="border: 0;">
+                                                              <h4 class="accordion-header">
+                                                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#{{topics.securedslugOfSubheading}}" aria-expanded="true" aria-controls="{{topics.securedslugOfSubheading}}" style="font-size: large; padding: 10px; background-color: #fdfdfd;">
+                                                                  {{subheading}}
+                                                                </button>
+                                                              </h4>
+                                                              <div id="{{topics.securedslugOfSubheading}}" class="accordion-collapse collapse show"  style="background-color: #fdfdfd;">
+                                                                <div class="accordion-body">
+                                                                  <!-- <strong>This is the first item's accordion body.</strong> It is shown by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow. -->
+                                                                
+                                                                  {% for topic,datasets in topics.items %}
+                                                                      {% if topic != 'securedslugOfSubheading' %}
+                                                                                <li class="list-group-item">
+                                                                                          <a class="side-keys row {% if datasets.path == request.path %} active {% endif %}" href="{{datasets.path}}" style="align-items: center; font-weight: normal;">
+                                                                                                    <spem class="" style="padding: 0; padding-left: 5px;">
+                                                                                                              <!-- - – — -->
+                                                                                                              {% if datasets.path == request.path %} — {% endif %}
+                                                                                                              {% if datasets.path != request.path %} – {% endif %}
+                                                                                                              {{datasets.name}} 
+                                                                                                    </spem>
+                                                                                          </a>
+                                                                                </li>
+                                                                      {% endif %}
+                                                                  {% endfor %}
 
-                                                                      {% for topic in topics %}
-                                                                      <li class="list-group-item">
-                                                                                <a class="side-keys row {% if object.path in request.path %} active {% endif %}" href="{{topic.path}}" style="align-items: center; font-weight: normal;">
-                                                                                          <spem class="" style="padding: 0; padding-left: 5px;">
-                                                                                                    {{topic.name}}
-                                                                                          </spem>
-                                                                                </a>
-                                                                      </li>
-                                                                      {% endfor %}
-
-                                                            </ul>
-                                                  </li>
+                                                                </div>
+                                                              </div>
+                                                            </div>
+                                                          </div>
+                                                      {% endif %}
                                                   {% endfor %}
 
-                                        </ul>
-                              </div>
 
-                              <hr style="margin: 0;">
+
+
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div>
+
+
 
                               {% endfor %}
+
+
+
 
                     
 
                     </div>
                     <style>
-                              .list-group-item {
+                              .accordion-body {
+                                        padding: 1rem 1.25rem;
                                         padding: 5px 10px;
+                              }
+                              .accordion-button:not(.collapsed)::after {
+                                        background-image: none;
+                                        transform: rotate(-180deg);
+                                        transform: none;
+                              }
+                              .accordion-button::after {
+                                        background-image: none;
+                              }
+                              .accordion-button:focus {
+                                        /* z-index: 3; */
+                                        border-color: #fdfdfd;
+                                        /* outline: 0; */
+                                        box-shadow: none;
+                              }
+
+
+                              .list-group-item {
+                                        margin: 0; 
+                                        padding: 0 10px; 
+                                        background-color: #fdfdfd; 
+                                        border: none; 
+                                        /* padding: 5px 10px;
                                         margin: 2px 5px;
-                                        margin: 0 5px;
+                                        margin: 0 5px; */
                               }
                               .side-keys{
                                         /* padding: 0.5rem 1rem; */
@@ -74,8 +125,9 @@
                                         border-radius: 50px; 
                               }
                               .side-keys.active{
-                                        background-color: #0077bb; 
-                                        color: #f8f8f8;
+                                        /* background-color: #0077bb;  */
+                                        /* color: #f8f8f8; */
+                                        color: #0077bb; 
                                         border-radius: 50px; 
                               }
                               .box{
