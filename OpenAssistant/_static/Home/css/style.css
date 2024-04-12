@@ -211,6 +211,32 @@ body::-webkit-scrollbar-thumb {
 
 
 
+
+
+/* sidebar */
+
+.row-advanced::-webkit-scrollbar {
+    /* width: 5px; */
+    height: 0;
+    width: 0;
+}
+ 
+.row-advanced::-webkit-scrollbar-track {
+    /* -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); */
+    -webkit-box-shadow: inset 0 0 5px #1500ff;
+}
+ 
+.row-advanced::-webkit-scrollbar-thumb {
+  /* background-color: darkgrey; */
+  /* outline: 1px solid slategrey; */
+    background-color: #1500ff;
+    outline: 1px solid white;
+    height: 50px;
+}
+
+
+
+
 /* ############################################# */
 
 

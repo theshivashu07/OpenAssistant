@@ -63,12 +63,13 @@ def getSidebarLeftDetails(request):
 
 
 
+'''
 
 from theLearnings.models import Topic,TopicHeadings,TopicSubHeadings
 def getSidebarLeftDetails_Skills( request,skillof,skill ): 
         dicting = dict() 
         topics = Topic.objects.filter( skill = Skill.objects.get( slug=skill )  ) 
-        # print(topics) 
+        print(topics) 
 
         for topic in topics: 
                 headings = dicting.get( topic.headings.name, dict() ) 
@@ -82,11 +83,12 @@ def getSidebarLeftDetails_Skills( request,skillof,skill ):
                 dicting[ topic.headings.name ] = headings 
                 
         return dicting 
-                
+
+'''
 
 
 from theLearnings.models import Topic,TopicHeadings,TopicSubHeadings
-def getSidebarLeftDetails_Topics( request,skillof,skill,heading=None,subheading=None,topic=None): 
+def getSidebarLeftDetails( request,skillof,skill,heading=None,subheading=None,topic=None): 
         dicting = dict() 
         topics = Topic.objects.filter( skill = Skill.objects.get( slug=skill )  ) 
         for topic_ in topics: 
@@ -109,7 +111,30 @@ def getSidebarLeftDetails_Topics( request,skillof,skill,heading=None,subheading=
 
 
 
+def getCenteredDetails( request,skillof,skill,heading=None,subheading=None,topic=None ): 
 
+        # print( "BEFORE :  ",skillof,skill,heading,subheading,topic )
+
+        skill = Skill.objects.filter( slug=skill ).first()
+        
+        if heading: 
+                heading = TopicHeadings.objects.filter( slug=heading ).first()
+        else:
+                heading = TopicHeadings.objects.filter( skill=skill ).first()
+
+        if subheading: 
+                subheading = TopicSubHeadings.objects.filter( slug=subheading ).first()
+        else:
+                subheading = TopicSubHeadings.objects.filter( skill=skill, headings=heading ).first()
+
+        if topic: 
+                topic = Topic.objects.filter( slug=topic ).first()
+        else:
+                topic = Topic.objects.filter( skill=skill, headings=heading, subheadings=subheading ).first()
+
+        # print( "AFTER :  ",skillof,skill,heading,subheading,topic )
+
+        return topic
 
 
 
@@ -149,6 +174,82 @@ def getRelatedArticalsList(request):
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+##########################################################################
+
+# DUMMY DATA CENTER #
+
+
+
+
+
+
+
+
+
+
+
+from theLearnings.models import Topic,TopicHeadings,TopicSubHeadings
+def dummydata_1( *args,**kwargs ):
+        # basics/datatypes/definitions/
+        heading = TopicHeadings.objects.filter( slug='basics' )[0]
+        subheading = TopicSubHeadings.objects.filter( headings=heading,slug='datatypes' )[0]
+        subheadings = TopicSubHeadings.objects.filter( headings=heading )
+        topics = Topic.objects.filter( headings=heading,subheadings=subheading ) 
+        for subheading in subheadings: 
+                if subheading.slug in [ 'keywords','constants','variables','identifiers','namespaces',
+                                       'literals','statement','indentations','comments',  ]:
+                        for topic in topics:
+                                objects = Topic()
+                                objects.USER = topic.USER
+                                objects.skill = topic.skill
+                                objects.headings = heading
+                                objects.subheadings = subheading
+                                objects.title = topic.title
+                                objects.content = topic.content
+                                objects.discription = topic.discription
+                                objects.save()
+        
+        print( "All Sets" )
+        return
+
+
+
+
+from theLearnings.models import Topic,TopicHeadings,TopicSubHeadings
+def dummydata_2( *args,**kwargs ):
+        # basics/datatypes/definitions/
+        skill = Skill.objects.filter( name="Python" )[0]
+
+        heading = TopicHeadings.objects.filter( slug='basics' )[0]
+        subheading = TopicSubHeadings.objects.filter( headings=heading,slug='datatypes' )[0]
+        # topics = Topic.objects.filter( headings=heading,subheadings=subheading ) 
+        topics = Topic.objects.all() 
+        for topic in topics: 
+                if not topic.skill:
+                        print(topic.title)
+                        topic.skill = skill
+                        topic.save()
+        
+        print( "All Sets" )
+        return
 
 
 

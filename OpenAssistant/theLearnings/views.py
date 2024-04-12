@@ -66,8 +66,8 @@ def skills( request,skillof,skill ):
         
         ReturningData['Articals'] = dict()
         ReturningData['Articals']['Scrollbar'] = builder.getScrollbarDetails(request) 
-        ReturningData['Articals']['SidebarLeft'] = builder.getSidebarLeftDetails_Skills(request,skillof,skill) 
-        ReturningData['Articals']['CenteredDatasets'] = builder.getSidebarLeftDetails_Topics(request,skillof,skill) 
+        ReturningData['Articals']['SidebarLeft'] = builder.getSidebarLeftDetails(request,skillof,skill) 
+        ReturningData['Articals']['CenteredDetails'] = builder.getCenteredDetails(request,skillof,skill) 
         ReturningData['Articals']['RelatedArticalsList'] = builder.getRelatedArticalsList(request) 
         return render(request,"theLearnings/Client/skills.html",ReturningData); 
 
@@ -79,11 +79,13 @@ def skills( request,skillof,skill ):
 def showtopic( request,skillof,skill,heading,subheading,topic ):
         ReturningData = dict()
         ReturningDatabase(request,ReturningData)
+
+        # builder.dummydata_2() 
         
         ReturningData['Articals'] = dict()
         ReturningData['Articals']['Scrollbar'] = builder.getScrollbarDetails(request) 
-        ReturningData['Articals']['SidebarLeft'] = builder.getSidebarLeftDetails_Skills(request,skillof,skill) 
-        ReturningData['Articals']['CenteredDatasets'] = builder.getSidebarLeftDetails_Topics(request,skillof,skill,heading,subheading,topic) 
+        ReturningData['Articals']['SidebarLeft'] = builder.getSidebarLeftDetails(request,skillof,skill,heading,subheading,topic) 
+        ReturningData['Articals']['CenteredDetails'] = builder.getCenteredDetails(request,skillof,skill,heading,subheading,topic) 
         ReturningData['Articals']['RelatedArticalsList'] = builder.getRelatedArticalsList(request) 
         return render(request,"theLearnings/Client/skills.html",ReturningData); 
 

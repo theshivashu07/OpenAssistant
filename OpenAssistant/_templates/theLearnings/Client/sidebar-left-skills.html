@@ -4,21 +4,20 @@
 <!-- {{Articals.SidebarLeft}} -->
 
 
-<div class="col-md-2 edge " style="/*overflow: scroll;*/ background-color: #f8f8f8;background-color: #fdfdfd;/* margin: 0; */padding: 35px 20px; padding-left: 50px; width: 20%; border-right: 2px solid #f8f8f8;">
+<div class="col-md-2 edge " style="/*overflow: scroll;*/ background-color: #f8f8f8;background-color: #fdfdfd;/* margin: 0; */padding: 35px 20px; padding-left: 50px; width: 20%; border-right: 2px solid #f8f8f8; height: 100%;min-height: 555px;">
           <!-- <div style="padding: 25px;background-color: #f8f8f8;background-color: #fcfcfc;background-color: white;/* padding: 50px 25px; */border-radius: 10px;"> -->
-                    <div class="row">
+                    <div class="row row-advanced">
 
 
                               
-                              <!-- {{Articals.SidebarLeft}} -->
-                              {% for heading,subheadings in Articals.CenteredDatasets.items %}
+                              {% for heading,subheadings in Articals.SidebarLeft.items %}
                               
                               
                                       <div class="accordion" id="accordionPanelsStayOpenExample">
                                         <div class="accordion-item" style="border: 0;">
                                           <h4 class="accordion-header">
-                                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#{{subheadings.securedslugOfHeading}}" aria-expanded="true" aria-controls="{{subheadings.securedslugOfHeading}}" style="font-size: x-large; padding: 10px; background-color: #fdfdfd;">
-                                              {{heading}}
+                                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#{{subheadings.securedslugOfHeading}}" aria-expanded="true" aria-controls="{{subheadings.securedslugOfHeading}}" style="font-size: x-large; padding: 5px 10px; padding-bottom: 0; background-color: #fdfdfd;">
+                                              Python - {{heading}}
                                             </button>
                                           </h4>
                                           <div id="{{subheadings.securedslugOfHeading}}" class="accordion-collapse collapse show" style="background-color: #fdfdfd;">
@@ -30,7 +29,7 @@
                                                           <div class="accordion" id="accordionPanelsStayOpenExample">
                                                             <div class="accordion-item" style="border: 0;">
                                                               <h4 class="accordion-header">
-                                                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#{{topics.securedslugOfSubheading}}" aria-expanded="true" aria-controls="{{topics.securedslugOfSubheading}}" style="font-size: large; padding: 10px; background-color: #fdfdfd;">
+                                                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#{{topics.securedslugOfSubheading}}" aria-expanded="true" aria-controls="{{topics.securedslugOfSubheading}}" style="font-size: large; font-size: smaller; padding: 5px 10px; padding-bottom: 0; background-color: #fdfdfd;">
                                                                   {{subheading}}
                                                                 </button>
                                                               </h4>
@@ -68,6 +67,8 @@
                                         </div>
                                       </div>
 
+                                      <!-- <hr> -->
+
 
 
                               {% endfor %}
@@ -79,10 +80,28 @@
 
                     </div>
                     <style>
+                              .row-advanced{
+                                /* scrollbar-width: thin; */
+                                position: sticky;
+                                top: 5rem;
+                                display: block !important;
+                                height: calc(100vh - 6rem);
+                                height: calc(80vh - 5rem);
+                                padding-left: .25rem;
+                                margin-left: -.25rem;
+                                overflow-y: auto;
+                                overflow-x: hidden;
+                              }
+                              
+
+
+
+
                               .accordion-body {
                                         padding: 1rem 1.25rem;
                                         padding: 5px 10px;
                               }
+                              /* this below 2 function is responsible for hide signs with headings and subheadings ..... */ 
                               .accordion-button:not(.collapsed)::after {
                                         background-image: none;
                                         transform: rotate(-180deg);
@@ -96,6 +115,14 @@
                                         border-color: #fdfdfd;
                                         /* outline: 0; */
                                         box-shadow: none;
+                              }
+                              .accordion-button:not(.collapsed) {
+                                        /* color: #0c63e4; */
+                                        color: black;
+                                        /* background-color: #e7f1ff; */
+                                        /* box-shadow: inset 0 -1px 0 rgba(0,0,0,.125); */
+                                        box-shadow: none;
+                                        /* font-weight: bold; */
                               }
 
 
