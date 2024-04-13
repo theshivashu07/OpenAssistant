@@ -5,7 +5,7 @@ from Home.models import OptionsOf,OptionsGroup,Options
 
 # from Home.models import *
 from theArticals.models import *
-
+from theArticals.functions.getSidebarRight import getDay,getDate,getAgo
 
 
 def getScrollbarDetails( request ):
@@ -118,23 +118,38 @@ def getCenteredDetails( request,skillof,skill,heading=None,subheading=None,topic
         skill = Skill.objects.filter( slug=skill ).first()
         
         if heading: 
-                heading = TopicHeadings.objects.filter( slug=heading ).first()
+                heading = TopicHeadings.objects.filter( skill=skill, slug=heading ).first()
         else:
                 heading = TopicHeadings.objects.filter( skill=skill ).first()
 
         if subheading: 
-                subheading = TopicSubHeadings.objects.filter( slug=subheading ).first()
+                subheading = TopicSubHeadings.objects.filter( skill=skill, headings=heading, slug=subheading ).first()
         else:
                 subheading = TopicSubHeadings.objects.filter( skill=skill, headings=heading ).first()
 
         if topic: 
-                topic = Topic.objects.filter( slug=topic ).first()
+                topic = Topic.objects.filter( skill=skill, headings=heading, subheadings=subheading, slug=topic ).first()
         else:
                 topic = Topic.objects.filter( skill=skill, headings=heading, subheadings=subheading ).first()
 
         # print( "AFTER :  ",skillof,skill,heading,subheading,topic )
 
-        return topic
+        # return topic 
+        return {
+                "topic" : topic,
+                "head" : {
+                        "user" : str(topic.USER.FullName),
+                        "skill" : skill.name,
+                        "heading" : heading.name,
+                        "subheading" : subheading.name,
+                        "topic" : topic.title,
+                        "path" : f"{skill.slug}/{heading.slug}/{subheading.slug}/{topic.slug}", 
+                        "date" : getDate(topic.joiningdate),
+                        "day" : getDay(topic.joiningdate),
+                        "ago" : getAgo(topic.updationdate),
+                        # "datetime" : "{} — {} — {}".format( getDate(topic.joiningdate), getDay(topic.joiningdate), getAgo(topic.updationdate) ),
+                }
+        }
 
 
 
@@ -253,6 +268,14 @@ def dummydata_2( *args,**kwargs ):
 
 
 
+def dummydata_3( *args,**kwargs ):
+        # basics/datatypes/definitions/
+        topics = Topic.objects.filter( title='Open' ) 
+        for topic in topics: 
+                print(topic.content)
+        
+        print( "All Sets" )
+        return
 
 
 

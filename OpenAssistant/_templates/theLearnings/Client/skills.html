@@ -52,10 +52,42 @@ Testing@ | Learnings | OpenAssistant
                                         <div class="row" style="margin: 0; padding: 0;">
                     
                                                   <div class="col-sm-12">
+                                                            <div class="head" style="margin-bottom: 35px;">
+                                                                      <h2>
+                                                                                <span>{{Articals.CenteredDetails.head.skill}}'s
+                                                                                          {{Articals.CenteredDetails.head.heading}}</span>
+                                                                                —
+                                                                                <span>{{Articals.CenteredDetails.head.subheading}}</span>
+                                                                                —
+                                                                                <span>{{Articals.CenteredDetails.head.topic}}</span>
+                                                                      </h2>
+                                                                      <div class="basics" style="color: #939393;/*background-color: white;*/font-size: 15px; font-weight: bold;">
+                                                                                <spen> 
+                                                                                          <!-- SHivam SHukla (theshivashu) -->
+                                                                                          {{Articals.CenteredDetails.head.user}}
+                                                                                </spen>
+                                                                                <spen> • </spen>
+                                                                                <spen>
+                                                                                          <!-- 17-02-2024 -->
+                                                                                          {{Articals.CenteredDetails.head.date}}
+                                                                                </spen>
+                                                                                <spen> • </spen>
+                                                                                <spen> 
+                                                                                          <!-- Saturday -->
+                                                                                          {{Articals.CenteredDetails.head.day}}
+                                                                                </spen>
+                                                                                <spen> • </spen>
+                                                                                <spen> 
+                                                                                          <!-- 1 Month Ago -->
+                                                                                          {{Articals.CenteredDetails.head.ago}}
+                                                                                </spen>
+                                                                      </div>
 
-                                                            {{Articals.CenteredDetails.title}}
+                                                                      <hr style="height: 10px; color: lightgray; border-radius: 15px;">
+                                                                      
+                                                            </div>
 
-                                                            {{Articals.CenteredDetails.content  | safe}}
+                                                            {{Articals.CenteredDetails.topic.content  | safe}}
 
                                                             <!-- <div class="row"> -->
                                                                       <!-- <div class="col-sm-12" style="background-color: #fdfdfd; border: 1px solid #f0f0f0; /*margin: 10px 0;*/ margin: 0; margin-bottom: 12px; padding: 18px 20px; /*padding: 15px 25px;*/ border-radius: 10px;">  -->
@@ -65,6 +97,7 @@ Testing@ | Learnings | OpenAssistant
 
                                                   </div>
 
+
                                                   <style>
 
                                                             p{
@@ -72,7 +105,10 @@ Testing@ | Learnings | OpenAssistant
                                                             }
 
                                                             div ol li{
-                                                                      margin-top: 8px;
+                                                                      margin-top: 10px;
+                                                            }
+                                                            div ol li ul li{
+                                                                      margin: 0;
                                                             }
 
 

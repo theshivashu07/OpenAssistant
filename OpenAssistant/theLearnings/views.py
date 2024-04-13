@@ -80,7 +80,7 @@ def showtopic( request,skillof,skill,heading,subheading,topic ):
         ReturningData = dict()
         ReturningDatabase(request,ReturningData)
 
-        # builder.dummydata_2() 
+        builder.dummydata_3() 
         
         ReturningData['Articals'] = dict()
         ReturningData['Articals']['Scrollbar'] = builder.getScrollbarDetails(request) 
