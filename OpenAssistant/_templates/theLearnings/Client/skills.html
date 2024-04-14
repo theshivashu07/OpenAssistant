@@ -47,44 +47,74 @@ Testing@ | Learnings | OpenAssistant
                     
                     
                     
-                    <div class="col-md-10 edge " style="/*background-color: #f8f8f8;*/ background-color: #fefefe; /*background-color: white;*/ padding: 0; width: 80%;">
-                              <div style="padding: 18px;/*background-color: #f8f8f8;background-color: #fcfcfc;background-color: white;*//* padding: 50px 25px;*/ /*border-radius: 10px;*/ padding: 40px;">
-                                        <div class="row" style="margin: 0; padding: 0;">
+                    <div class="col-md-10 edge " style="background-color: #fefefe; width: 80%; padding: 10px 35px; padding-right: 50px; font-size: larger; font-family: math;">
+                              <!-- <div style=""> -->
+                                        <div class="row row-advanced" style="margin: 0; padding: 0;">
                     
-                                                  <div class="col-sm-12">
-                                                            <div class="head" style="margin-bottom: 35px;">
-                                                                      <h2>
-                                                                                <span>{{Articals.CenteredDetails.head.skill}}'s
-                                                                                          {{Articals.CenteredDetails.head.heading}}</span>
-                                                                                —
-                                                                                <span>{{Articals.CenteredDetails.head.subheading}}</span>
-                                                                                —
-                                                                                <span>{{Articals.CenteredDetails.head.topic}}</span>
-                                                                      </h2>
-                                                                      <div class="basics" style="color: #939393;/*background-color: white;*/font-size: 15px; font-weight: bold;">
-                                                                                <spen> 
-                                                                                          <!-- SHivam SHukla (theshivashu) -->
-                                                                                          {{Articals.CenteredDetails.head.user}}
-                                                                                </spen>
-                                                                                <spen> • </spen>
-                                                                                <spen>
-                                                                                          <!-- 17-02-2024 -->
-                                                                                          {{Articals.CenteredDetails.head.date}}
-                                                                                </spen>
-                                                                                <spen> • </spen>
-                                                                                <spen> 
-                                                                                          <!-- Saturday -->
-                                                                                          {{Articals.CenteredDetails.head.day}}
-                                                                                </spen>
-                                                                                <spen> • </spen>
-                                                                                <spen> 
-                                                                                          <!-- 1 Month Ago -->
-                                                                                          {{Articals.CenteredDetails.head.ago}}
-                                                                                </spen>
+                                                  <div class="col-sm-12" style="padding: 15px 0;">
+                                                            <div class="head" style="margin-bottom: 45px;">
+                                                                      <div class="head d-flex" style="/*place-items: center;*/">
+                                                                                <div>
+                                                                                          <h1 style="margin: 0;">
+                                                                                                    <span>{{Articals.CenteredDetails.head.skill}}'s
+                                                                                                              {{Articals.CenteredDetails.head.heading}}</span>
+                                                                                                    —
+                                                                                                    <span>{{Articals.CenteredDetails.head.subheading}}</span>
+                                                                                                    —
+                                                                                                    <span>{{Articals.CenteredDetails.head.topic}}</span>
+                                                                                          </h1>
+                                                                                          <div class="basics" style="color: #b4b4b4;/*background-color: white;*/font-size: 18px; /*font-weight: bold;*/">
+                                                                                                    <spen> 
+                                                                                                              {{Articals.CenteredDetails.head.user}}
+                                                                                                    </spen>
+                                                                                                    <spen> • </spen>
+                                                                                                    <spen>
+                                                                                                              {{Articals.CenteredDetails.head.date}}
+                                                                                                    </spen>
+                                                                                                    <spen> • </spen>
+                                                                                                    <spen> 
+                                                                                                              {{Articals.CenteredDetails.head.day}}
+                                                                                                    </spen>
+                                                                                                    <spen> • </spen>
+                                                                                                    <spen> 
+                                                                                                              Updated {{Articals.CenteredDetails.head.ago}}
+                                                                                                    </spen>
+                                                                                          </div>
+                                                                                </div>
+                                                                                
+                                                                                <div class="d-flex ms-auto" style="/* height: 61px; */">          
+                                                                                          <a target="_blank" id="myLink2" onclick="document.getElementById('cke_90').click()" class="btn btn-light" style="align-content: center;/*align-self: center;*/margin-left: 5px; color: blue;" 
+                                                                                                    href="http://localhost:1234/admin/theLearnings/topic/{{Articals.CenteredDetails.topic.id}}/change/">
+                                                                                                    <i class="fa-solid fa-pen-to-square fa-lg"></i>
+                                                                                          </a>
+                                                                                          <a target="_blank" id="myLink2" onclick="document.getElementById('cke_90').click()" class="btn btn-light" style="align-content: center;/*align-self: center;*/margin-left: 5px; color: red;" 
+                                                                                                    href="http://localhost:1234/admin/theLearnings/topic/{{Articals.CenteredDetails.topic.id}}/delete/">
+                                                                                                    <i class="fa-solid fa-trash fa-lg"></i>
+                                                                                          </a>
+                                                                                </div>
+                                                                                <!--
+                                                                                <div class="basics" style="color: #939393;/*background-color: white;*/font-size: 15px; font-weight: bold;">
+                                                                                          <spen> 
+                                                                                                    {{Articals.CenteredDetails.head.user}}
+                                                                                          </spen>
+                                                                                          <spen> • </spen>
+                                                                                          <spen>
+                                                                                                    {{Articals.CenteredDetails.head.date}}
+                                                                                          </spen>
+                                                                                          <spen> • </spen>
+                                                                                          <spen> 
+                                                                                                    {{Articals.CenteredDetails.head.day}}
+                                                                                          </spen>
+                                                                                          <spen> • </spen>
+                                                                                          <spen> 
+                                                                                                    {{Articals.CenteredDetails.head.ago}}
+                                                                                          </spen>
+                                                                                </div>
+                                                                                -->
                                                                       </div>
 
-                                                                      <hr style="height: 10px; color: lightgray; border-radius: 15px;">
-                                                                      
+                                                                      <hr style="height: 10px; height: 2px; color: #dbdbdb; border-radius: 15px;">
+
                                                             </div>
 
                                                             {{Articals.CenteredDetails.topic.content  | safe}}
@@ -116,9 +146,11 @@ Testing@ | Learnings | OpenAssistant
                                                   
                     
                                         </div>
-                              </div>
+                              <!-- </div> -->
+                              <!-- 
                               <div style="margin: 100px 0;">
-                              </div>
+                              </div> 
+                              -->
                     </div>
                     
                     

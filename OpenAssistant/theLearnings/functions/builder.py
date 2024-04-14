@@ -58,7 +58,7 @@ def getSidebarLeftDetails(request):
                         # print( options.name )
                 dicting[optionsgroup.name] = temp
                 # print(temp)
-        print(dicting)
+        # print(dicting)
         return dicting
 
 
@@ -69,7 +69,7 @@ from theLearnings.models import Topic,TopicHeadings,TopicSubHeadings
 def getSidebarLeftDetails_Skills( request,skillof,skill ): 
         dicting = dict() 
         topics = Topic.objects.filter( skill = Skill.objects.get( slug=skill )  ) 
-        print(topics) 
+        # print(topics) 
 
         for topic in topics: 
                 headings = dicting.get( topic.headings.name, dict() ) 
@@ -259,23 +259,14 @@ def dummydata_2( *args,**kwargs ):
         topics = Topic.objects.all() 
         for topic in topics: 
                 if not topic.skill:
-                        print(topic.title)
+                        # print(topic.title)
                         topic.skill = skill
                         topic.save()
         
-        print( "All Sets" )
+        # print( "All Sets" )
         return
 
 
-
-def dummydata_3( *args,**kwargs ):
-        # basics/datatypes/definitions/
-        topics = Topic.objects.filter( title='Open' ) 
-        for topic in topics: 
-                print(topic.content)
-        
-        print( "All Sets" )
-        return
 
 
 
