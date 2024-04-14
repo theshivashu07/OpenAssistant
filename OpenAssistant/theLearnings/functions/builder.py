@@ -132,7 +132,9 @@ def getCenteredDetails( request,skillof,skill,heading=None,subheading=None,topic
         else:
                 topic = Topic.objects.filter( skill=skill, headings=heading, subheadings=subheading ).first()
 
-        # print( "AFTER :  ",skillof,skill,heading,subheading,topic )
+
+
+        print( "AFTER :  ",skillof,skill,heading,subheading,topic )
 
         # return topic 
         return {
