@@ -29,14 +29,14 @@ def index(request):
                 
         ReturningData['Articals'] = dict()
         ReturningData['Articals']['Scrollbar'] = builder.getScrollbarDetails(request) 
-        ReturningData['Articals']['SidebarLeft'] = builder.getSidebarLeftDetails(request) 
+        ReturningData['Articals']['SidebarLeft'] = builder.getSidebarLeftDetails_forApp(request) 
         ReturningData['Articals']['RelatedArticalsList'] = builder.getRelatedArticalsList(request) 
         return render(request,"theLearnings/Client/learnings-testing.html",ReturningData); 
 
 def learnings_from_(request,skillsof_=None,skills_=None): 
-        ReturningData = dict()
-        ReturningDatabase(request,ReturningData)
-        
+        ReturningData = dict() 
+        ReturningDatabase(request,ReturningData) 
+
         ReturningData['Articals'] = dict()
         ReturningData['Articals']['Scrollbar'] = builder.getScrollbarDetails(request) 
         ReturningData['Articals']['SidebarLeft'] = builder.getSidebarLeftDetails(request) 

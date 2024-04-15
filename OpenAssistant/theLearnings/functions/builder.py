@@ -44,7 +44,7 @@ def knowoptionsof(request):
                         return value
         return data.get(request.path,'Home') 
 
-def getSidebarLeftDetails(request): 
+def getSidebarLeftDetails_forApp(request): 
         ''' this function is to get all Options related to this App '''
         dicting = dict()
         optionsof = OptionsOf.objects.get( name=knowoptionsof(request) )
@@ -86,11 +86,18 @@ def getSidebarLeftDetails_Skills( request,skillof,skill ):
 
 '''
 
-
+# NOTICE : For now I set skillsof = programming-languages anf skill = python, because of default setups ...
 from theLearnings.models import Topic,TopicHeadings,TopicSubHeadings
-def getSidebarLeftDetails( request,skillof,skill,heading=None,subheading=None,topic=None): 
+def getSidebarLeftDetails( request, skillof, skill, heading=None, subheading=None, topic=None): 
         dicting = dict() 
-        topics = Topic.objects.filter( skill = Skill.objects.get( slug=skill )  ) 
+        topics = Topic.objects.filter( skill = Skill.objects.get( slug=skill )  )  
+        active = True
+
+        # NOTICE : if no topics are listed for that skills, so to show default things, we prefer as python's skills ...
+        if not topics: 
+                skillof, skill, active = "programming-languages", "python", False 
+                topics = Topic.objects.filter( skill = Skill.objects.get( slug=skill )  ) 
+
         for topic_ in topics: 
                 headings = dicting.get( topic_.headings.name, dict() ) 
                 subheadings = headings.get( topic_.subheadings.name, dict() ) 
@@ -98,6 +105,8 @@ def getSidebarLeftDetails( request,skillof,skill,heading=None,subheading=None,to
                         'name' : topic_.title, 
                         'path' : '/learnings/'+skillof+'/'+skill+'/'+topic_.headings.slug+'/'+topic_.subheadings.slug+'/'+topic_.slug+'/',
                 }
+                if not active:
+                        data['path'] = '#'
                 
                 subheadings[ topic_.title ] = data 
                 subheadings[  'securedslugOfSubheading' ] = topic_.subheadings.slug  
@@ -106,8 +115,11 @@ def getSidebarLeftDetails( request,skillof,skill,heading=None,subheading=None,to
                 headings[  'securedslugOfHeading' ] = topic_.headings.slug  
 
                 dicting[ topic_.headings.name ] = headings 
-                
-        return dicting
+        
+        return {
+                'dataset' : dicting,
+                'active' : active,
+        }
 
 
 
@@ -133,13 +145,20 @@ def getCenteredDetails( request,skillof,skill,heading=None,subheading=None,topic
                 topic = Topic.objects.filter( skill=skill, headings=heading, subheadings=subheading ).first()
 
 
+        # print( "AFTER :  ",skillof,skill,heading,subheading,topic )
 
-        print( "AFTER :  ",skillof,skill,heading,subheading,topic )
+        if not topic:
+                return {
+                        "topic" : None,
+                        "head" : { 
+                                "skill" : skill.name,
+                        } 
+                }
 
         # return topic 
         return {
                 "topic" : topic,
-                "head" : {
+                "head" : { 
                         "user" : str(topic.USER.FullName),
                         "skill" : skill.name,
                         "heading" : heading.name,
@@ -150,7 +169,7 @@ def getCenteredDetails( request,skillof,skill,heading=None,subheading=None,topic
                         "day" : getDay(topic.joiningdate),
                         "ago" : getAgo(topic.updationdate),
                         # "datetime" : "{} — {} — {}".format( getDate(topic.joiningdate), getDay(topic.joiningdate), getAgo(topic.updationdate) ),
-                }
+                } 
         }
 
 
@@ -166,7 +185,7 @@ def getOptionsDetails( skillof ):
                         # 'image' : skill.image,
                         'path' : '/learnings/'+skill.skillsof.slug+'/'+skill.slug+'/' 
                 } 
-        print( returningdataset )  
+        # print( returningdataset )  
         return returningdataset   
         
                 

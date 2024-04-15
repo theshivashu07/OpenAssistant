@@ -1,8 +1,5 @@
 
 
-<!-- {{sidebarleft}} -->
-<!-- {{Articals.SidebarLeft}} -->
-
 
 <div class="col-md-2 edge " style="/*overflow: scroll;*/ background-color: #f8f8f8;background-color: #fdfdfd;/* margin: 0; */padding: 10px; padding-left: 50px; width: 20%; border-right: 2px solid #f8f8f8; height: 100%;min-height: 555px;">
           <!-- <div style="padding: 25px;background-color: #f8f8f8;background-color: #fcfcfc;background-color: white;/* padding: 50px 25px; */border-radius: 10px;"> -->
@@ -11,15 +8,14 @@
 
                               <div style="padding: 15px 0;">
 
-
-                              {% for heading,subheadings in Articals.SidebarLeft.items %}
+                              {% for heading,subheadings in Articals.SidebarLeft.dataset.items %}
                               
                               
                                       <div class="accordion" id="accordionPanelsStayOpenExample">
                                         <div class="accordion-item" style="border: 0;">
                                           <h4 class="accordion-header">
                                             <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#{{subheadings.securedslugOfHeading}}" aria-expanded="true" aria-controls="{{subheadings.securedslugOfHeading}}" style="font-size: x-large; padding: 5px 10px; padding-bottom: 0; background-color: #fdfdfd;">
-                                              Python - {{heading}}
+                                              {{ Articals.CenteredDetails.head.skill}} - {{heading}}
                                             </button>
                                           </h4>
                                           <div id="{{subheadings.securedslugOfHeading}}" class="accordion-collapse collapse show" style="background-color: #fdfdfd;">
@@ -31,7 +27,7 @@
                                                           <div class="accordion" id="accordionPanelsStayOpenExample">
                                                             <div class="accordion-item" style="border: 0;">
                                                               <h4 class="accordion-header">
-                                                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#{{topics.securedslugOfSubheading}}" aria-expanded="true" aria-controls="{{topics.securedslugOfSubheading}}" style="font-size: large; font-size: smaller; padding: 5px 10px; padding-bottom: 0; background-color: #fdfdfd;">
+                                                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#{{topics.securedslugOfSubheading}}" aria-expanded="true" aria-controls="{{topics.securedslugOfSubheading}}" style="font-size: large; font-size: smaller; padding: 5px 10px; padding-bottom: 0; background-color: #fdfdfd;  ">
                                                                   {{subheading}}
                                                                 </button>
                                                               </h4>
@@ -169,5 +165,23 @@
                                         margin: 10px;
                               }
                     </style>
+                    
+                    {% if not Articals.SidebarLeft.active %}
+                    <style>
+                      
+                      .accordion-item:first-of-type .accordion-button {
+                          /* border-top-left-radius: calc(.25rem - 1px); */
+                          /* border-top-right-radius: calc(.25rem - 1px); */
+                          color: lightgray;
+                      }
+                      .side-keys {
+                          color: lightgray;
+                      }
+                      .side-keys:hover {
+                          color: lightgray;
+                      }
+
+                    </style>
+                    {% endif%}
           <!-- </div> -->
 </div>

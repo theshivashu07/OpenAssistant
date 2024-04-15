@@ -47,12 +47,16 @@ Testing@ | Learnings | OpenAssistant
                     
                     
                     
-                    <div class="col-md-10 edge " style="background-color: #fefefe; width: 80%; padding: 10px 35px; padding-right: 50px; font-size: larger; font-family: math;">
+                    <div class="col-md-10 edge " style="background-color: #fefefe; width: 80%; padding: 10px 35px; padding-right: 50px; /*font-size: larger;*/ font-family: math;">
                               <!-- <div style=""> -->
                                         <div class="row row-advanced" style="margin: 0; padding: 0;">
-                    
+                                                  
+
+                                                  {% if Articals.CenteredDetails.topic %}
+
                                                   <div class="col-sm-12" style="padding: 15px 0;">
                                                             <div class="head" style="margin-bottom: 45px;">
+                                                                      
                                                                       <div class="head d-flex" style="/*place-items: center;*/">
                                                                                 <div>
                                                                                           <h1 style="margin: 0;">
@@ -83,11 +87,11 @@ Testing@ | Learnings | OpenAssistant
                                                                                 </div>
                                                                                 
                                                                                 <div class="d-flex ms-auto" style="/* height: 61px; */">          
-                                                                                          <a target="_blank" id="myLink2" onclick="document.getElementById('cke_90').click()" class="btn btn-light" style="align-content: center;/*align-self: center;*/margin-left: 5px; color: blue;" 
+                                                                                          <a target="_blank" id="myLink2" onclick="document.getElementById('cke_90').click()" class="btn btn-light" style="align-content: center;/*align-self: center;*/margin-right: 5px; color: blue;" 
                                                                                                     href="http://localhost:1234/admin/theLearnings/topic/{{Articals.CenteredDetails.topic.id}}/change/">
                                                                                                     <i class="fa-solid fa-pen-to-square fa-lg"></i>
                                                                                           </a>
-                                                                                          <a target="_blank" id="myLink2" onclick="document.getElementById('cke_90').click()" class="btn btn-light" style="align-content: center;/*align-self: center;*/margin-left: 5px; color: red;" 
+                                                                                          <a target="_blank" id="myLink2" onclick="document.getElementById('cke_90').click()" class="btn btn-light" style="align-content: center;/*align-self: center;*/margin-right: 5px; color: red;" 
                                                                                                     href="http://localhost:1234/admin/theLearnings/topic/{{Articals.CenteredDetails.topic.id}}/delete/">
                                                                                                     <i class="fa-solid fa-trash fa-lg"></i>
                                                                                           </a>
@@ -119,12 +123,6 @@ Testing@ | Learnings | OpenAssistant
 
                                                             {{Articals.CenteredDetails.topic.content  | safe}}
 
-                                                            <!-- <div class="row"> -->
-                                                                      <!-- <div class="col-sm-12" style="background-color: #fdfdfd; border: 1px solid #f0f0f0; /*margin: 10px 0;*/ margin: 0; margin-bottom: 12px; padding: 18px 20px; /*padding: 15px 25px;*/ border-radius: 10px;">  -->
-                                                                      <!-- </div> -->
-                                                            <!-- </div> -->
-                                                                                
-
                                                   </div>
 
 
@@ -143,6 +141,29 @@ Testing@ | Learnings | OpenAssistant
 
 
                                                   </style>
+
+                                                  {% else %}
+
+                                                  <div class="col-sm-12" style="margin: 180px 0;text-align: center;">
+                                                            <!-- <div class="row"> -->
+                                                                      
+                    
+                                                                      <!-- <div class="col-sm-3"></div> -->
+                                                                      <!-- <div class="col-sm-6" style="text-align: center;"> -->
+                                                                      <!-- <div class="col-sm-6" style=""> -->
+                                                                                <h1 style="font-weight: bold;font-size: 100px;/* color: blue; */">
+                                                                                          {{ Articals.CenteredDetails.head.skill}}
+                                                                                </h1>
+                                                                                <!-- <span style="color: red;">Sorry, this skill has no learnings materials for now.</span> -->
+                                                                                <h4 style="background-color: whitesmoke;"> 
+                                                                                          "{{request.path}}"
+                                                                                </h4> 
+                                                                      <!-- </div> -->
+                                                                      <!-- <div class="col-sm-3"></div> -->
+                                                            <!-- </div> -->
+                                                  </div>
+                                                  
+                                                  {% endif %}
                                                   
                     
                                         </div>
