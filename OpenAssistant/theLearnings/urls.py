@@ -11,7 +11,7 @@ urlpatterns=[
 		path('<str:skillof>/<str:skill>/',views.skills,name='skills'), 
 		path('<str:skillof>/<str:skill>/<str:heading>/<str:subheading>/<str:topic>/',views.showtopic,name='showtopic'), 
 
-                    path(r'^(.*)$', views.index), 
+                    # path(r'^(.*)$', views.index), 
 
 		# path('open/',views.open,name='open'),
 		# path('open/',views.open,name='open'),
