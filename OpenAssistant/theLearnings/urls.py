@@ -19,6 +19,8 @@ urlpatterns=[
 		# path('open/',views.open,name='open'),
 		# path('open/',views.open,name='open'),
 		# path('open/',views.open,name='open'),
+		# path('open/',views.open,name='open'),
+		# path('open/',views.open,name='open'),
 
 ]
 
