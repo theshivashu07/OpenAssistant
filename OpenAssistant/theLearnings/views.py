@@ -87,6 +87,8 @@ def showtopic( request,skillof,skill,heading,subheading,topic ):
         ReturningData['Articals']['SidebarLeft'] = builder.getSidebarLeftDetails(request,skillof,skill,heading,subheading,topic) 
         ReturningData['Articals']['CenteredDetails'] = builder.getCenteredDetails(request,skillof,skill,heading,subheading,topic) 
         ReturningData['Articals']['RelatedArticalsList'] = builder.getRelatedArticalsList(request) 
+        # print(ReturningData)
+        print(ReturningData['Articals']['CenteredDetails'])
         return render(request,"theLearnings/Client/skills.html",ReturningData); 
 
 
