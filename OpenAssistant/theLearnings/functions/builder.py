@@ -125,8 +125,6 @@ def getSidebarLeftDetails( request, skillof, skill, heading=None, subheading=Non
 
 def getCenteredDetails( request,skillof,skill,heading=None,subheading=None,topic=None ): 
 
-        print(skillof,skill,heading,subheading,topic)
-
         # print( "BEFORE :  ",skillof,skill,heading,subheading,topic )
 
         skill = Skill.objects.filter( slug=skill ).first()
@@ -142,14 +140,19 @@ def getCenteredDetails( request,skillof,skill,heading=None,subheading=None,topic
                 subheading = TopicSubHeadings.objects.filter( skill=skill, headings=heading ).first()
 
         
-        print(skillof,skill,heading,subheading,topic)
+
+        # print( "MID :  ",skillof,skill,heading,subheading,topic )
+
 
         if topic: 
+
+                # TESTING PHASE - You Can Remove That
                 # for objects in Topic.objects.filter( skill=skill, headings=heading, subheadings=subheading)[-5:-1]:
-                for objects in Topic.objects.filter( skill=skill, headings=heading)[40:]: 
-                        print(objects.skill.name, objects.headings.name, objects.subheadings.name) 
-                print( Topic.objects.filter( skill=skill, headings=heading, subheadings=subheading ) ) 
+                # for objects in Topic.objects.filter( skill=skill, headings=heading)[40:]: 
+                        # print(objects.skill.name, objects.headings.name, objects.subheadings.name) 
+                # print( Topic.objects.filter( skill=skill, headings=heading, subheadings=subheading ) ) 
                 # print(Topic.objects.filter( skill=skill, headings=heading, subheadings=subheading, slug=topic ))
+
                 topic = Topic.objects.filter( skill=skill, headings=heading, subheadings=subheading, slug=topic ).first()
         else:
                 topic = Topic.objects.filter( skill=skill, headings=heading, subheadings=subheading ).first()
