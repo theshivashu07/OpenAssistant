@@ -148,8 +148,8 @@ def getCenteredDetails( request,skillof,skill,heading=None,subheading=None,topic
 
                 # TESTING PHASE - You Can Remove That
                 # for objects in Topic.objects.filter( skill=skill, headings=heading, subheadings=subheading)[-5:-1]:
-                for objects in Topic.objects.filter( skill=skill, headings=heading)[40:]: 
-                        print(objects.skill.name, objects.headings.name, objects.subheadings.name) 
+                # for objects in Topic.objects.filter( skill=skill, headings=heading)[40:]: 
+                        # print(objects.skill.name, objects.headings.name, objects.subheadings.name) 
                 # print( Topic.objects.filter( skill=skill, headings=heading, subheadings=subheading ) ) 
                 # print(Topic.objects.filter( skill=skill, headings=heading, subheadings=subheading, slug=topic ))
 
