@@ -10,21 +10,10 @@
 
                               {% for heading,subheadings in Articals.SidebarLeft.dataset.items %}
                               
-                              {% with isActivated=subheadings.securedslugOfHeading in request.path %} 
-
-
-
-
-                                {{isActivated}}
-
                               
                                       <div class="accordion" id="accordionPanelsStayOpenExample">
                                         <div class="accordion-item" style="border: 0;">
                                           <h4 class="accordion-header">
-
-                                            <!-- {{subheadings.securedslugOfHeading}} {{request.path}} -->
-                                            <!-- {% if subheadings.securedslugOfHeading in request.path %}   True {%else%} False {%endif%} -->
-
                                             <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#{{subheadings.securedslugOfHeading}}" aria-expanded="true" aria-controls="{{subheadings.securedslugOfHeading}}" style="font-size: x-large; padding: 5px 10px; padding-bottom: 0; background-color: #fdfdfd;">
                                               {{ Articals.CenteredDetails.head.skill}} - {{heading}}
                                             </button>
@@ -36,23 +25,9 @@
 
                                                   {% for subheading,topics in subheadings.items %}
                                                       {% if subheading != 'securedslugOfHeading' %}
-
-                                                      
-                                                          {% if topics.securedslugOfSubheading in request.path %}
-                                                              {% with isActivated=True %} 
-                                                          {% else %}
-                                                              {% with isActivated=False %} 
-                                                          {% endif %}
-
-                                                          {{isActivated}}
-
-
                                                           <div class="accordion" id="accordionPanelsStayOpenExample">
                                                             <div class="accordion-item" style="border: 0;">
                                                               <h4 class="accordion-header">
-                                                                <!-- {{topics.securedslugOfSubheading}} -->
-                                                                {% with isActivated = isActivated|add:topics.securedslugOfSubheading %}
-                                                                {{isActivated}}
                                                                 <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#{{topics.securedslugOfSubheading}}" aria-expanded="true" aria-controls="{{topics.securedslugOfSubheading}}" style="font-size: large; font-size: smaller; padding: 5px 10px; padding-bottom: 0; background-color: #fdfdfd;  ">
                                                                   {{subheading}}
                                                                 </button>
@@ -64,7 +39,7 @@
                                                                   {% for topic,datasets in topics.items %}
                                                                       {% if topic != 'securedslugOfSubheading' %}
                                                                                 <li class="list-group-item">
-                                                                                          <a class="side-keys row {% if datasets.path == request.path %} active {% endif %}" href="{{datasets.path}}" style="align-items: center; font-weight: normal;">
+0                                                                                          <a class="side-keys row {% if datasets.path == request.path %} active {% endif %}" href="{{datasets.path}}" style="align-items: center; font-weight: normal;">
                                                                                                     <spem class="" style="padding: 0; padding-left: 5px;">
                                                                                                               <!-- - – — -->
                                                                                                               {% if datasets.path == request.path %} — {% endif %}
@@ -80,8 +55,6 @@
                                                               </div>
                                                             </div>
                                                           </div>
-
-                                                          {% endwith %}
                                                       {% endif %}
                                                   {% endfor %}
 
@@ -95,7 +68,6 @@
                                       <!-- <hr> -->
 
 
-                              {%endwith%}
 
                               {% endfor %}
 
