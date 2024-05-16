@@ -10,12 +10,7 @@
 
                               {% for heading,subheadings in Articals.SidebarLeft.dataset.items %}
                               
-                              {% with isActivated=subheadings.securedslugOfHeading in request.path %} 
-
-
-
-
-                                {{isActivated}}
+                              [ ({{subheadings.securedslugOfHeading}}) - ({{subheadings.securedactivateOfHeading}}) ]
 
                               
                                       <div class="accordion" id="accordionPanelsStayOpenExample">
@@ -35,24 +30,15 @@
 
 
                                                   {% for subheading,topics in subheadings.items %}
-                                                      {% if subheading != 'securedslugOfHeading' %}
+                                                      {% if subheading != 'securedslugOfHeading' and subheading != 'securedactivateOfHeading' %}
 
-                                                      
-                                                          {% if topics.securedslugOfSubheading in request.path %}
-                                                              {% with isActivated=True %} 
-                                                          {% else %}
-                                                              {% with isActivated=False %} 
-                                                          {% endif %}
-
-                                                          {{isActivated}}
+                                                      [ ({{topics.securedslugOfSubheading}}) - ({{topics.securedactivateOfSubheading}}) ]
 
 
                                                           <div class="accordion" id="accordionPanelsStayOpenExample">
                                                             <div class="accordion-item" style="border: 0;">
                                                               <h4 class="accordion-header">
                                                                 <!-- {{topics.securedslugOfSubheading}} -->
-                                                                {% with isActivated = isActivated|add:topics.securedslugOfSubheading %}
-                                                                {{isActivated}}
                                                                 <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#{{topics.securedslugOfSubheading}}" aria-expanded="true" aria-controls="{{topics.securedslugOfSubheading}}" style="font-size: large; font-size: smaller; padding: 5px 10px; padding-bottom: 0; background-color: #fdfdfd;  ">
                                                                   {{subheading}}
                                                                 </button>
@@ -62,7 +48,7 @@
                                                                   <!-- <strong>This is the first item's accordion body.</strong> It is shown by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow. -->
                                                                 
                                                                   {% for topic,datasets in topics.items %}
-                                                                      {% if topic != 'securedslugOfSubheading' %}
+                                                                      {% if topic != 'securedslugOfSubheading' and topic != 'securedactivateOfSubheading' %}
                                                                                 <li class="list-group-item">
                                                                                           <a class="side-keys row {% if datasets.path == request.path %} active {% endif %}" href="{{datasets.path}}" style="align-items: center; font-weight: normal;">
                                                                                                     <spem class="" style="padding: 0; padding-left: 5px;">
@@ -81,7 +67,6 @@
                                                             </div>
                                                           </div>
 
-                                                          {% endwith %}
                                                       {% endif %}
                                                   {% endfor %}
 
@@ -94,8 +79,6 @@
 
                                       <!-- <hr> -->
 
-
-                              {%endwith%}
 
                               {% endfor %}
 

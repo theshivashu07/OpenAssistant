@@ -109,10 +109,14 @@ def getSidebarLeftDetails( request, skillof, skill, heading=None, subheading=Non
                         data['path'] = '#'
                 
                 subheadings[ topic_.title ] = data 
-                subheadings[  'securedslugOfSubheading' ] = topic_.subheadings.slug  
+                subheadings[  'securedslugOfSubheading' ] = topic_.headings.slug  + '-' + topic_.subheadings.slug  
+                subheadings[  'securedactivateOfSubheading' ] = topic_.subheadings.slug in request.path
+                print("-->",topic_.subheadings.slug, request.path, topic_.subheadings.slug in request.path)
 
                 headings[ topic_.subheadings.name ] = subheadings 
-                headings[  'securedslugOfHeading' ] = topic_.headings.slug  
+                headings[  'securedslugOfHeading' ] = topic_.subheadings.slug
+                headings[  'securedactivateOfHeading' ] = topic_.headings.slug in request.path
+                print("-->",topic_.headings.slug, request.path, topic_.headings.slug in request.path)
 
                 dicting[ topic_.headings.name ] = headings 
         
