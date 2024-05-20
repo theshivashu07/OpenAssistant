@@ -10,21 +10,29 @@
 
                               {% for heading,subheadings in Articals.SidebarLeft.dataset.items %}
                               
-                              [ ({{subheadings.securedslugOfHeading}}) - ({{subheadings.securedactivateOfHeading}}) ]
+                              <!-- [ ({{subheadings.securedslugOfHeading}}) - ({{subheadings.securedactivateOfHeading}}) ] -->
 
                               
                                       <div class="accordion" id="accordionPanelsStayOpenExample">
                                         <div class="accordion-item" style="border: 0;">
                                           <h4 class="accordion-header">
 
-                                            <!-- {{subheadings.securedslugOfHeading}} {{request.path}} -->
-                                            <!-- {% if subheadings.securedslugOfHeading in request.path %}   True {%else%} False {%endif%} -->
-
-                                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#{{subheadings.securedslugOfHeading}}" aria-expanded="true" aria-controls="{{subheadings.securedslugOfHeading}}" style="font-size: x-large; padding: 5px 10px; padding-bottom: 0; background-color: #fdfdfd;">
-                                              {{ Articals.CenteredDetails.head.skill}} - {{heading}}
+                                            {% if subheadings.securedactivateOfHeading %}   
+                                              <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#{{subheadings.securedslugOfHeading}}" aria-expanded="true" aria-controls="{{subheadings.securedslugOfHeading}}" style="font-size: x-large; padding: 5px 10px; padding-bottom: 0; background-color: #fdfdfd;">
+                                            {%else%} 
+                                              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#{{subheadings.securedslugOfHeading}}" aria-expanded="false" aria-controls="{{subheadings.securedslugOfHeading}}" style="font-size: x-large; padding: 5px 10px; padding-bottom: 0; background-color: #fdfdfd;">
+                                            {%endif%}
+                                              {{ Articals.CenteredDetails.head.skill}} - {{heading}}  
                                             </button>
+
                                           </h4>
+                                          
+                                        {% if subheadings.securedactivateOfHeading %}   
                                           <div id="{{subheadings.securedslugOfHeading}}" class="accordion-collapse collapse show" style="background-color: #fdfdfd;">
+                                        {%else%} 
+                                          <div id="{{subheadings.securedslugOfHeading}}" class="accordion-collapse collapse" style="background-color: #fdfdfd;">
+                                        {%endif%}
+                                          
                                             <div class="accordion-body">
 
 
@@ -32,18 +40,29 @@
                                                   {% for subheading,topics in subheadings.items %}
                                                       {% if subheading != 'securedslugOfHeading' and subheading != 'securedactivateOfHeading' %}
 
-                                                      [ ({{topics.securedslugOfSubheading}}) - ({{topics.securedactivateOfSubheading}}) ]
+                                                      <!-- [ ({{topics.securedslugOfSubheading}}) - ({{topics.securedactivateOfSubheading}}) ] -->
 
 
                                                           <div class="accordion" id="accordionPanelsStayOpenExample">
                                                             <div class="accordion-item" style="border: 0;">
                                                               <h4 class="accordion-header">
                                                                 <!-- {{topics.securedslugOfSubheading}} -->
-                                                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#{{topics.securedslugOfSubheading}}" aria-expanded="true" aria-controls="{{topics.securedslugOfSubheading}}" style="font-size: large; font-size: smaller; padding: 5px 10px; padding-bottom: 0; background-color: #fdfdfd;  ">
-                                                                  {{subheading}}
+                                                                
+                                                                  {% if topics.securedactivateOfSubheading %}   
+                                                                  <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#{{topics.securedslugOfSubheading}}" aria-expanded="true" aria-controls="{{topics.securedslugOfSubheading}}" style="font-size: large; font-size: smaller; padding: 5px 10px; padding-bottom: 0; background-color: #fdfdfd;">
+                                                                {%else%} 
+                                                                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#{{topics.securedslugOfSubheading}}" aria-expanded="false" aria-controls="{{topics.securedslugOfSubheading}}" style="font-size: large; font-size: smaller; padding: 5px 10px; padding-bottom: 0; background-color: #fdfdfd;">
+                                                                {%endif%}
+                                                                  {{subheading}}   
+                                                                  <!-- <i class="fa-solid fa-circle-check fa-xs" style="padding-left:8px; color: lightgray;"></i> -->
                                                                 </button>
                                                               </h4>
-                                                              <div id="{{topics.securedslugOfSubheading}}" class="accordion-collapse collapse show"  style="background-color: #fdfdfd;">
+                                                              
+                                                              {% if topics.securedactivateOfSubheading %}   
+                                                                <div id="{{topics.securedslugOfSubheading}}" class="accordion-collapse collapse show"  style="background-color: #fdfdfd;">
+                                                              {%else%} 
+                                                                <div id="{{topics.securedslugOfSubheading}}" class="accordion-collapse collapse"  style="background-color: #fdfdfd;">
+                                                              {%endif%}
                                                                 <div class="accordion-body">
                                                                   <!-- <strong>This is the first item's accordion body.</strong> It is shown by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow. -->
                                                                 
@@ -56,6 +75,11 @@
                                                                                                               {% if datasets.path == request.path %} — {% endif %}
                                                                                                               {% if datasets.path != request.path %} – {% endif %}
                                                                                                               {{datasets.name}} 
+                                                                                                              {% if datasets.visibility %}
+                                                                                                                <i class="fa-solid fa-circle-check fa-xs" style="padding-left:2px; color: gray;"></i>
+                                                                                                              {% else %}
+                                                                                                              <i class="fa-solid fa-circle-check fa-xs" style="padding-left:2px; color: lightgray;"></i>
+                                                                                                            {% endif %}
                                                                                                     </spem>
                                                                                           </a>
                                                                                 </li>
@@ -74,6 +98,7 @@
 
                                             </div>
                                           </div>
+
                                         </div>
                                       </div>
 

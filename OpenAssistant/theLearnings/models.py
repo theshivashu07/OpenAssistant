@@ -102,7 +102,7 @@ class Topic(models.Model):
         slug = AutoSlugField(populate_from='title');
         slugs = models.TextField(default=None, null=True, blank=True); 
         
-        content = RichTextUploadingField() 
+        content = RichTextUploadingField(default=None, null=True, blank=True) 
         discription = models.TextField(default=None, null=True, blank=True) 
         
         joiningdate = models.DateTimeField(auto_now_add=True);
