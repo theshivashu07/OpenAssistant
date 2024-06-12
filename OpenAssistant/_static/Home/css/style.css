@@ -8,7 +8,8 @@
 
 
 .edge{
-          padding: 25px 75px;
+          /* padding: 25px 75px; */
+          padding: 10px 25px;
 }
 
 .more-edge{
@@ -24,24 +25,36 @@
 .options{
           align-items: center;
           padding: 10px;
+          padding: 5px 10px;
           margin: 2px;
-          color: #000000ab;
-          color: white;
+          color: black;
+          /* color: white; */
           border-radius: 5px;
-          font-weight: bold;
+          /* font-weight: bold; */
+
+          font-family: Philosopher;
+          font-variant-caps: small-caps;
+          font-size: larger;
+        font-family: math;
           
 }
 
 .options.active{
-          background-color: white;
-          color: red;
+          /* background-color: #e3e3e3; */
+          /* color: red; */
           color: black;
+          /* background-color: #f8f8f8; */
+          border-bottom: 2px solid black;
+          border-radius: 0;
 }
 
 .options:hover{
-          background-color: white;
-          color: red;
+          /* background-color: white; */
+          /* color: red; */          
           color: black;
+          /* background-color: #f8f8f8; */
+          border-bottom: 2px solid black;
+          border-radius: 0;
 
 }
 
