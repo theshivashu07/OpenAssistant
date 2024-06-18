@@ -109,19 +109,23 @@
 									<!-- <img src="/_static/_user/_profiles/_default.jpeg" alt="img not found" width="40" height="40" style="font-size: 12px; border-radius: 25px;"> -->
 									<img src="/_uploads/{{ObjectUSER.Profile |default:'_user/_profiles/default.jpeg'}}" alt="img not found" width="40" height="40" style="font-size: 12px; border-radius: 25px;">
 								</button>  
-								<ul class="dropdown-menu dropdown-menu-end mt-1" style="border-radius: 5px;">
-									<li><a class="dropdown-item" href="/profile/">Profile</a></li>
-									<!-- <li><a class="dropdown-item" href="#">Activity</a></li> -->
-									<!-- <li><a class="dropdown-item" href="#">Settings</a></li> -->
-									<!-- <li><a class="dropdown-item" href="#">Cources</a></li> -->
-									<!-- <li><a class="dropdown-item" href="#">Subscriptions</a></li> -->
-									<li><a class="dropdown-item" href="/notifications/">Notifications</a></li>
+								<ul class="dropdown-menu dropdown-menu-end mt-1" style="border-radius: 5px; border: 1px solid #bfbfbf; width: 275px; position: absolute; inset: 0px 0px auto auto; margin: 0px; transform: translate3d(-4px, 46px, 0px);" data-popper-placement="bottom-end">
+									<li class="row" style="margin: 0; height: 70px; align-content: center;">
+										<div class="col-md-3" style="">
+											<img src="/_uploads/_user/_profiles/Shivashu1_zYBkZVj.jpg" alt="img not found" width="40" height="40" style="font-size: 12px;border-radius: 25px;height: 50px;width: 50px;">
+										</div>
+										<div class="col-md-9">
+											<h5 style="margin: 0; color: black; font-weight: bold;">SHivam SHukla</h5>											
+											<h6>Software Engineer - II</h6>
+										</div>
+									</li>
 									<hr class="my-1">
-									<li><a class="dropdown-item" href="/security/users-list/">Users List</a></li>
+									<li><a class="dropdown-item" href="/profile/">Profile</a></li><li><a class="dropdown-item" href="/notifications/">Notifications</a></li>
+									<hr class="my-1"><li><a class="dropdown-item" href="/security/users-list/">Users List</a></li>
 									<li><a class="dropdown-item" href="/security/default-user/">Default User</a></li>
 									<li><a class="dropdown-item" href="/security/asked-questions/">Most Asked FAQs</a></li>
 									<hr class="my-1">
-									<li><a class="dropdown-item" href="/security/logout/">Logout</a></li>
+									<li><a class="dropdown-item" href="/security/logout/" style="color: red; font-weight: bold; background-color: #fff0f0;">Logout</a></li>
 								</ul>
 							</div>
 
