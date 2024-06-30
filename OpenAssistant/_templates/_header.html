@@ -76,15 +76,6 @@
 						<!-- <div style="display: flex;"> -->
 							
 
-							<!-- <div class="position-relative" style="font-weight: bold;align-self: center;text-align: center;background-color: white;padding: 10px;border-radius: 15px;margin-right: 20px;">
-								<a href="/notifications/">
-									<i class="fa-regular fa-bell fa-xl" style="color: black;"></i>
-								</a>
-								<span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-									99+ <span class="visually-hidden">unread messages</span>
-								</span>
-							</div> -->
-
 							<div style="font-weight: bold;align-self: center;text-align: center; color: black;">
 								<h5 style="margin-bottom: -5px;font-weight: bold;">
 									{{ObjectUSER.FullName |default:"Developer"}}
@@ -95,11 +86,7 @@
 										 Software Engineer - II
 									</spen>
 								</a>	
-								<!-- 
-								<spen style="font-weight: initial; font-weight: bold; color: darkslategray; color: blue; color: #000aaa;">
-									user@{{ObjectUSER.Username |default:"none"}} ); 
-								</spen> 
-								-->
+								
 							</div>
 
 
@@ -153,19 +140,6 @@
 
 
 
-
-<!-- 
-<div class="flex">
-	1. {{request.User.username}}
-	2. {{request.user.username}}
-	3. {{request.User}}
-	4. {{request.user}}
-	5. {{request.user.first_name}} {{request.user.last_name}}
-	6. {{request.user.is_authenticated}}
-</div>  
--->
-
-
 <div style="font-weight: bold;">
 	{% if messages %}
 		<ul class="messages" style="padding: 0; margin: 0;">
@@ -177,9 +151,7 @@
 			{% endfor %}
 		</ul>
 	{% endif %}
-	<!-- <div class="alert alert-danger" role="alert" style="padding: 10px 100px">
-		This is a danger alert with <a href="#" class="alert-link">an example link</a>. Give it a click if you like.
-	</div> -->
+	
 </div>
 
 
