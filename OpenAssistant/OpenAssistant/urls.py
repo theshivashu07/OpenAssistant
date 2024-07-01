@@ -32,6 +32,7 @@ urlpatterns = [
     # path('API/', include('API.urls')),
     path('api/', include('API.urls')),
 
+    # Other Paths
     path('articals/', include('theArticals.urls')),
     path('problems/', include('theProblems.urls')),
     path('learnings/', include('theLearnings.urls')),
