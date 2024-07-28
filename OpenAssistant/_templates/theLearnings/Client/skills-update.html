@@ -1,0 +1,112 @@
+ 
+{% extends '_master.html' %}
+
+
+
+
+{% block tcontent %}
+Testing@ | Learnings | OpenAssistant
+{% endblock %}
+
+
+
+{% block headerplusplus %}
+
+{% include '_header.html' %}
+
+{% endblock %}
+
+
+
+
+{% block childcontent %}
+
+
+
+
+
+
+
+<div class="edge " style="background-color: white; margin: 0; padding: 0;">
+
+          <div class="row" style="margin: 0; padding: 0; /*padding-top: 12px;*/ background-color: #f8f8f8;background-color: #fdfdfd;">
+
+
+                    
+                    
+                    
+
+                    {% include 'thelearnings/client/scrollbar.html' %} 
+                    
+
+
+                    {% include 'thelearnings/client/sidebar-left-skills.html' %} 
+
+
+                    
+                    
+                    
+                    <!-- <div class="col-md-10 edge " style="background-color: #fefefe; width: 80%; padding: 10px 35px; padding-right: 50px; /*font-size: larger;*/ /*font-family: math;*/ font-family:  Noto Serif;"> -->
+                    <div class="col-md-10 edge " style="background-color: #fefefe; padding: 10px 35px; padding-right: 50px; /*font-size: larger;*/ /*font-family: math;*/ font-family:  Noto Serif;            width: 75%; ">
+                              <!-- <div style=""> -->
+                                        <div class="row row-advanced" style="margin: 0; padding: 0;">
+                                                  
+
+
+                                                  <div class="mains col-sm-12" style="margin: 180px 0;text-align: center; ">
+                                                            
+                                                            
+                                                            <form action="/your-name/" method="POST" enctype="multipart/form-data">
+                                                                      {% csrf_token %}
+                                                                                {{forms.media}}
+                                                                                {{forms.as_p}}
+                                                                      <input type="submit" value="Submit">
+                                                            </form>
+
+
+                                                  </div>
+
+                                                  <style>
+
+                                                            .mains select,input,textarea{
+                                                                      /* width: 100%; */
+                                                                      width: 250px;
+                                                                      border-radius: 5px;
+                                                                      /* margin-bottom: 25px; */
+                                                                      /* height: 20px; */
+                                                                      padding: 5px 10px;
+                                                                      border: 1px solid gray;
+                                                            }
+
+
+                                                  </style>
+                                                  
+                                                  
+                    
+                                        </div>
+                              <!-- </div> -->
+                              <!-- 
+                              <div style="margin: 100px 0;">
+                              </div> 
+                              -->
+                    </div>
+                    
+                    
+
+
+                    <!-- {% include 'thelearnings/client/related-articals.html' %}  -->
+                    
+
+          </div>
+
+</div>
+
+
+
+
+
+{% endblock %}
+
+
+
+

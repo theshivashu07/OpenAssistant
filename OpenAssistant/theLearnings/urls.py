@@ -11,6 +11,8 @@ urlpatterns=[
 		path('<str:skillof>/<str:skill>/',views.skills,name='skills'), 
 		path('<str:skillof>/<str:skill>/<str:heading>/<str:subheading>/<str:topic>/',views.showtopic,name='showtopic'), 
 
+		# http://localhost:1234/admin/theLearnings/topic/74/change/	
+
                     # path(r'^(.*)$', views.index), 
 
 		# path('open/',views.open,name='open'),

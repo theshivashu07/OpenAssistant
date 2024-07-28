@@ -7,6 +7,7 @@ from django.template.defaultfilters import slugify
 from Home.models import USER
 from ckeditor_uploader.fields import RichTextUploadingField
 
+# from ckeditor.fields import RichTextField  
 
 
 

@@ -18,7 +18,6 @@ import theLearnings.functions.builder as builder
 
 
 
-
 @LoginRequired(login_url="/security/login/")
 def index(request): 
         ReturningData = dict()
@@ -80,18 +79,43 @@ def showtopic( request,skillof,skill,heading,subheading,topic ):
         ReturningData = dict()
         ReturningDatabase(request,ReturningData)
 
-        # builder.dummydata_2() 
-        
         ReturningData['Articals'] = dict()
         ReturningData['Articals']['Scrollbar'] = builder.getScrollbarDetails(request) 
         ReturningData['Articals']['SidebarLeft'] = builder.getSidebarLeftDetails(request,skillof,skill,heading,subheading,topic) 
+
+        # builder.dummydata_2() 
+        way = request.GET.get("task",None)
+        if way == "update":
+                from .forms import TopicForms
+                CenteredDetails = builder.getCenteredDetails(request,skillof,skill,heading,subheading,topic).get("topic")
+                print(">>",CenteredDetails)
+                print(">>",TopicForms())
+                ReturningData["forms"] = TopicForms()
+                return render(request,"theLearnings/Client/skills-update.html",ReturningData); 
+        elif way == "delete":
+                pass
+        else:
+                pass
+        
         ReturningData['Articals']['CenteredDetails'] = builder.getCenteredDetails(request,skillof,skill,heading,subheading,topic) 
         ReturningData['Articals']['RelatedArticalsList'] = builder.getRelatedArticalsList(request) 
         # print(ReturningData)
-        print(ReturningData['Articals']['CenteredDetails'])
+        # print(ReturningData['Articals']['CenteredDetails'])
         return render(request,"theLearnings/Client/skills.html",ReturningData); 
 
 
+
+
+def editTopic( request,skillof,skill,heading,subheading,topic ):
+        ReturningData = dict()
+        ReturningDatabase(request,ReturningData)
+
+        ReturningData['Articals'] = dict()
+        ReturningData['Articals']['Scrollbar'] = builder.getScrollbarDetails(request) 
+        ReturningData['Articals']['SidebarLeft'] = builder.getSidebarLeftDetails_forApp(request) 
+        ReturningData['Articals']['RelatedArticalsList'] = builder.getRelatedArticalsList(request) 
+        ReturningData["forms"] = TopicForms()
+        return render(request,"theLearnings/Client/edit-data.html",ReturningData); 
 
 
 
