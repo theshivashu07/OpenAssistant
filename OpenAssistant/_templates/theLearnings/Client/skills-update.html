@@ -56,7 +56,7 @@ Testing@ | Learnings | OpenAssistant
                                                   <div class="mains col-sm-12" style="margin: 180px 0;text-align: center; ">
                                                             
                                                             
-                                                            <form action="/your-name/" method="POST" enctype="multipart/form-data">
+                                                            <form action="{{request.path}}" method="POST" enctype="multipart/form-data">
                                                                       {% csrf_token %}
                                                                                 {{forms.media}}
                                                                                 {{forms.as_p}}
@@ -76,7 +76,25 @@ Testing@ | Learnings | OpenAssistant
                                                                       /* height: 20px; */
                                                                       padding: 5px 10px;
                                                                       border: 1px solid gray;
+                                                                      height: 35px;
+                                                            };                                                            
+                                                            .mains{
+                                                            /* Optional styles for the container */
                                                             }
+
+                                                            p {
+                                                            display: flex; /* Make each paragraph a flex container */
+                                                            }
+                                                            p::before {
+  content: "";
+  flex-grow: 1; /* Takes up available space */
+  width: 25%;
+}
+
+p::after {
+  content: "";
+  flex-grow: 3; /* Takes up three times the space of the first part */
+}
 
 
                                                   </style>

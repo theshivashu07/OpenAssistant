@@ -89,8 +89,8 @@ def showtopic( request,skillof,skill,heading,subheading,topic ):
                 from .forms import TopicForms
                 CenteredDetails = builder.getCenteredDetails(request,skillof,skill,heading,subheading,topic).get("topic")
                 print(">>",CenteredDetails)
-                print(">>",TopicForms())
-                ReturningData["forms"] = TopicForms()
+                print(">>",TopicForms(instance=CenteredDetails))
+                ReturningData["forms"] = TopicForms(instance=CenteredDetails)
                 return render(request,"theLearnings/Client/skills-update.html",ReturningData); 
         elif way == "delete":
                 pass
