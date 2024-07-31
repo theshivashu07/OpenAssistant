@@ -90,7 +90,6 @@ class TopicSubHeadings(models.Model):
 
 
 
-
 class Topic(models.Model):
         
         USER = models.ForeignKey(USER, on_delete=models.SET_NULL, null=True, blank=True);

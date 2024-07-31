@@ -86,15 +86,15 @@ Testing@ | Learnings | OpenAssistant
                                                             display: flex; /* Make each paragraph a flex container */
                                                             }
                                                             p::before {
-  content: "";
-  flex-grow: 1; /* Takes up available space */
-  width: 25%;
-}
+                                                              content: "";
+                                                              flex-grow: 1;
+                                                              width: 25%;
+                                                            } 
 
-p::after {
-  content: "";
-  flex-grow: 3; /* Takes up three times the space of the first part */
-}
+                                                            p::after {
+                                                              content: "";
+                                                              flex-grow: 3; /* Takes up three times the space of the first part */
+                                                            }
 
 
                                                   </style>
@@ -103,10 +103,6 @@ p::after {
                     
                                         </div>
                               <!-- </div> -->
-                              <!-- 
-                              <div style="margin: 100px 0;">
-                              </div> 
-                              -->
                     </div>
                     
                     

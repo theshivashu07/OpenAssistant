@@ -289,7 +289,7 @@ def dummydata_1( *args,**kwargs ):
                                 objects.discription = topic.discription
                                 objects.save()
         
-        print( "All Sets" )
+        # print( "All Sets" )
         return
 
 
