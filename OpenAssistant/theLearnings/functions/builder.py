@@ -296,10 +296,11 @@ def dummydata_1( *args,**kwargs ):
 
 
 from theLearnings.models import Topic,TopicHeadings,TopicSubHeadings
-def dummydata_2( *args,**kwargs ):
-        # basics/datatypes/definitions/
+def dummydata_2( *args,**kwargs ): 
+        
+        # basics/datatypes/definitions/ 
         skill = Skill.objects.filter( name="Python" )[0]
-
+        
         heading = TopicHeadings.objects.filter( slug='basics' )[0]
         subheading = TopicSubHeadings.objects.filter( headings=heading,slug='datatypes' )[0]
         # topics = Topic.objects.filter( headings=heading,subheadings=subheading ) 
