@@ -61,11 +61,25 @@ Testing@ | Learnings | OpenAssistant
                                                                                 <div>
                                                                                           
                                                                                           <h2 style="margin: 0;">
-                                                                                                    <span>{{Articals.CenteredDetails.head.skill}}'s
+                                                                                                    <!-- <span>{{Articals.CenteredDetails.head.skill}}'s
                                                                                                               {{Articals.CenteredDetails.head.subheading}}</span>
-                                                                                                    —
+                                                                                                    — -->
                                                                                                     <span>{{Articals.CenteredDetails.head.topic}}</span>
                                                                                           </h2>
+
+                                                                                          <div class="basics" style="color: #b4b4b4;/*background-color: white;*/font-size: medium; /*font-weight: bold;*/ margin-top: 5px;">
+                                                                                                    <spen> 
+                                                                                                              {{Articals.CenteredDetails.head.heading}}
+                                                                                                    </spen>
+                                                                                                    <spen> > </spen>
+                                                                                                    <spen>
+                                                                                                              {{Articals.CenteredDetails.head.subheading}}
+                                                                                                    </spen>
+                                                                                                    <spen> > </spen>
+                                                                                                    <spen> 
+                                                                                                              {{Articals.CenteredDetails.head.topic}}
+                                                                                                    </spen>
+                                                                                          </div>
 
                                                                                           <div class="basics" style="color: #b4b4b4;/*background-color: white;*/font-size: medium; /*font-weight: bold;*/ margin-top: 5px;">
                                                                                                     <spen> 
@@ -115,6 +129,10 @@ Testing@ | Learnings | OpenAssistant
 
 
                                                   <style>
+
+
+                                                            /* ------------------------------------------------------------------------------------------- */
+
 
                                                             .content p{
                                                                       margin-bottom: 10px;
@@ -169,6 +187,79 @@ Testing@ | Learnings | OpenAssistant
                                                                       border-collapse: collapse;
                                                                       padding: 10px;
                                                             }
+
+
+                                                            /* ------------------------------------------------------------------------------------------- */
+
+
+                                                            .content{
+                                                                      font-family: 'Noto Serif', math;
+                                                            }
+
+                                                            /* .content h1,h2,h3,h4,h5,h6{ */
+                                                            .content h1,
+                                                            .content h2,
+                                                            .content h3,
+                                                            .content h4,
+                                                            .content h5,
+                                                            .content h6 {
+                                                                      margin-top: 25px;
+                                                                      text-decoration: underline 1px;
+                                                                      text-underline-offset: 2px;
+                                                            }
+                                                            .content h1{
+                                                                      font-size: 2.25rem;
+                                                            }
+                                                            .content h2{
+                                                                      font-size: 2.0rem;
+                                                            }
+                                                            .content h3{
+                                                                      font-size: 1.75rem;
+                                                            }
+                                                            .content h4{
+                                                                      font-size: 1.50rem;
+                                                            }
+                                                            .content h5{
+                                                                      font-size: 1.25rem;
+                                                            }
+                                                            .content h6{
+                                                                      font-size: 1.0rem;
+                                                            }
+
+                                                            .content code{
+                                                                      background-color: #f8f8f8;
+                                                                      /* background-color: #e9eef6; */
+                                                                      padding: 2px 5px;
+                                                                      border-radius: 5px;
+                                                                      
+                                                                      font-family: 'Noto Serif';
+                                                                      font-weight: 375;
+                                                            }
+                                                            
+                                                            .content pre code{
+                                                                      /* background-color: #f5faff; */
+                                                                      background-color: #fff5fe;
+                                                            }
+
+                                                            .content pre{
+                                                                      /* background-color: aliceblue; */
+                                                                      background-color: #ffeffe;
+                                                                      border-radius: 0 0 12px 12px;
+                                                                      justify-content: space-between;
+                                                                      padding: 16px;
+                                                                      margin: 0;
+                                                            }
+                                                            .content > p.pl{
+                                                                      /* background-color: aliceblue; */
+                                                                      background-color: #ffeffe;
+                                                                      border-radius: 12px 12px 0 0;
+                                                                      justify-content: space-between;
+                                                                      padding: 16px;
+                                                                      margin: 0;
+                                                                      font-size: smaller;
+                                                                      color: #d6006d;
+                                                            }
+
 
 
                                                   </style>

@@ -71,17 +71,17 @@
                                                                       {% if topic != 'securedslugOfSubheading' and topic != 'securedactivateOfSubheading' %}
                                                                                 <li class="list-group-item">
                                                                                           <a class="side-keys row {% if datasets.path == request.path %} active {% endif %}" href="{{datasets.path}}" style="align-items: center; font-weight: normal;">
-                                                                                                    <spem class="" style="padding: 0; padding-left: 5px;">
+                                                                                                    <spam class style="padding: 0; padding-left: 5px;">
                                                                                                               <!-- - – — -->
                                                                                                               {% if datasets.path == request.path %} — {% endif %}
                                                                                                               {% if datasets.path != request.path %} – {% endif %}
-                                                                                                              {{datasets.name}} 
+                                                                                                              <spam class="given-topics">{{datasets.name}} </spam>
                                                                                                               {% if datasets.visibility %}
                                                                                                                 <i class="fa-solid fa-circle-check fa-xs" style="padding-left:2px; color: gray;"></i>
                                                                                                               {% else %}
                                                                                                               <i class="fa-solid fa-circle-check fa-xs" style="padding-left:2px; color: lightgray;"></i>
                                                                                                             {% endif %}
-                                                                                                    </spem>
+                                                                                                    </spam>
                                                                                           </a>
                                                                                 </li>
                                                                       {% endif %}
@@ -104,6 +104,56 @@
                                       </div>
 
                                       <!-- <hr> -->
+
+                                      <style>
+                                        .accordion-item:last-of-type .accordion-collapse {
+                                            border-bottom-right-radius: .25rem;
+                                            border-bottom-left-radius: .25rem;
+                                            overflow: hidden;
+                                            text-overflow: ellipsis;
+                                            white-space: nowrap;
+                                        }
+
+                                        .given-topics:hover {
+                                          white-space: normal;
+                                          overflow: visible;
+                                          width: auto;
+                                        }
+                                      </style>
+
+                                      
+<script>
+  let truncateElements = document.querySelectorAll('.given-topics ');
+
+  let resateled = function(string){
+        console.log(">>>>>",string,string.length)
+        let tempString = ""
+        let tempLength = 0
+        // splittedString = string.split()
+        console.log(string.split(" "))
+        for(str of string.split(" ")){
+          tempLength += (str.length + 1)
+          if(tempLength<=38){
+            tempString += (str+" ")
+          }else{
+            console.log(tempString)
+            break
+          }
+        }
+        console.log(tempString)
+        return tempString
+  }
+
+  truncateElements.forEach(element => {
+    // resateled(element)
+    element.textContent = resateled(element.textContent) + "...";
+  //   element.scrollWidth=220
+  //   console.log(element,element.offsetWidth,element.scrollWidth,element.offsetWidth < element.scrollWidth)
+  // if (element.offsetWidth > element.scrollWidth) {
+  //     element.textContent = element.textContent.slice(0, element.offsetWidth / 6) + '...';
+  // }
+  });
+</script>
 
 
                               {% endfor %}
