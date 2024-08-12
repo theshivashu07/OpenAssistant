@@ -58,8 +58,25 @@
 			}
 			
 			.hidden {
-                              transform: translateX(-100%);
-                    }
+				/* transform: translateX(-100%); */
+				display: none; /* Or use transform: translateX(-100%) if needed */
+			}
+			.col-md-2{
+				
+				flex: 0 0 25%;
+				transition: transform 0.5s ease-in-out;
+				background-color: #fbfbfb;
+				border-right: 2px solid #f4f4f4;
+				/* display: flex; */
+				justify-content: center;
+			}
+			.col-md-10{				
+				flex: auto;
+				display: -webkit-flex;
+				flex-direction: column;
+				-webkit-box-align: center;
+				-webkit-align-items: center;
+			}
 		</style>
 
 
@@ -130,24 +147,28 @@
 
 
 		<script>
+			
 			// const articleList = document.querySelector('.col-md-2 .edge ');
 			// const articleContent = document.querySelector('.col-md-10 .edge ');
 			const articleList = document.querySelector('.col-md-2');
 			const articleContent = document.querySelector('.col-md-10');
 			let isExpanded = false;
+			console.log( articleList,articleContent )
 
 			window.addEventListener('keydown', (event) => {
 				if (event.key === 's') {
+					console.log(isExpanded)
 					isExpanded = !isExpanded;
 					if (isExpanded) {
-						articleList.classList.remove('expanded');
-						articleContent.style.transform = 'translateX(0)';
+						articleList.classList.add('hidden');
+						articleContent.style.width = '100%';
 					} else {
-						articleList.classList.add('expanded');
-						articleContent.style.transform = 'translateX(100%)';
+						articleList.classList.remove('hidden');
+						articleContent.style.width = 'calc(100% - 80%)'; // Adjust for article list width
 					}
 				}
 			});
+
 		</script>
 
 		
