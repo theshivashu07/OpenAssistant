@@ -56,6 +56,10 @@
 			*{
 				
 			}
+			
+			.hidden {
+                              transform: translateX(-100%);
+                    }
 		</style>
 
 
@@ -123,6 +127,28 @@
 			          console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
 			}
 		</script> -->
+
+
+		<script>
+			// const articleList = document.querySelector('.col-md-2 .edge ');
+			// const articleContent = document.querySelector('.col-md-10 .edge ');
+			const articleList = document.querySelector('.col-md-2');
+			const articleContent = document.querySelector('.col-md-10');
+			let isExpanded = false;
+
+			window.addEventListener('keydown', (event) => {
+				if (event.key === 's') {
+					isExpanded = !isExpanded;
+					if (isExpanded) {
+						articleList.classList.remove('expanded');
+						articleContent.style.transform = 'translateX(0)';
+					} else {
+						articleList.classList.add('expanded');
+						articleContent.style.transform = 'translateX(100%)';
+					}
+				}
+			});
+		</script>
 
 		
 		{% block scriptcontent %}

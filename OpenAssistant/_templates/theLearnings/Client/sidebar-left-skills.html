@@ -126,21 +126,16 @@
   let truncateElements = document.querySelectorAll('.given-topics ');
 
   let resateled = function(string){
-        console.log(">>>>>",string,string.length)
         let tempString = ""
         let tempLength = 0
-        // splittedString = string.split()
-        console.log(string.split(" "))
         for(str of string.split(" ")){
           tempLength += (str.length + 1)
-          if(tempLength<=38){
+          if(tempLength<=35){
             tempString += (str+" ")
           }else{
-            console.log(tempString)
             break
           }
         }
-        console.log(tempString)
         return tempString
   }
 
