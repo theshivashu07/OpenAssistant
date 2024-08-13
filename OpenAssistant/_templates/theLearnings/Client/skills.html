@@ -55,23 +55,16 @@ Testing@ | Learnings | OpenAssistant
 				-webkit-align-items: center;">
                               <!-- <div style=""> -->
                                         <div class="row row-advanced" style="margin: 0; padding: 0;">
-                                                  
+
 
                                                   {% if Articals.CenteredDetails.topic %}
 
-                                                  <div class="col-sm-12" style="padding: 30px 0; /*font-family: Noto Serif;*/ width: 850px;">
+                                                  <div class="col-sm-12" style="padding: 30px 0; /*font-family: Noto Serif;*/ width: 888px;">
                                                             <div class="head" style="margin-bottom: 45px; /*font-family: Philosopher;*/">
                                                                       
                                                                       <div class="head d-flex" style="/*place-items: center;*/">
                                                                                 <div>
                                                                                           
-                                                                                          <h2 style="margin: 0;">
-                                                                                                    <!-- <span>{{Articals.CenteredDetails.head.skill}}'s
-                                                                                                              {{Articals.CenteredDetails.head.subheading}}</span>
-                                                                                                    — -->
-                                                                                                    <span>{{Articals.CenteredDetails.head.topic}}</span>
-                                                                                          </h2>
-
                                                                                           <div class="basics" style="color: #b4b4b4;/*background-color: white;*/font-size: medium; /*font-weight: bold;*/ margin-top: 5px;">
                                                                                                     <spen> 
                                                                                                               {{Articals.CenteredDetails.head.heading}}
@@ -85,6 +78,20 @@ Testing@ | Learnings | OpenAssistant
                                                                                                               {{Articals.CenteredDetails.head.topic}}
                                                                                                     </spen>
                                                                                           </div>
+
+                                                                                </div>
+                                                                                
+
+                                                                      </div>
+
+                                                                      <hr style="height: 10px; height: 2px; color: #dbdbdb; border-radius: 15px;">
+                                                                      
+                                                                      <div class="head d-flex" style="/*place-items: center;*/">
+                                                                                <div>
+                                                                                          
+                                                                                          <h2 style="margin: 0;">
+                                                                                                    <span>{{Articals.CenteredDetails.head.topic}}</span>
+                                                                                          </h2>
 
                                                                                           <div class="basics" style="color: #b4b4b4;/*background-color: white;*/font-size: medium; /*font-weight: bold;*/ margin-top: 5px;">
                                                                                                     <spen> 
@@ -148,7 +155,8 @@ Testing@ | Learnings | OpenAssistant
                                                             
                                                             .content div p{
                                                                       margin: 0;
-                                                                      font-size: medium;
+                                                                      /* font-size: medium; */
+                                                                      font-size: 0.80rem;
                                                             }
 
                                                             div ol li{
@@ -217,11 +225,11 @@ Testing@ | Learnings | OpenAssistant
                                                             /* ------------------------------------------------------------------------------------------- */
 
 
-                                                            .content ul{
+                                                            .content ul, ol{
                                                                       margin: 12px 0 !important;
                                                             }
-                                                            .content ul li{
-                                                                      /* margin-bottom: 5px !important; */
+                                                            .content ul li, ol li{
+                                                                      margin-bottom: 2px;
                                                                       /* font-size: 14px; */
                                                                       font-size: 0.85rem;
                                                             }

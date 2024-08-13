@@ -71,11 +71,11 @@
                                                                       {% if topic != 'securedslugOfSubheading' and topic != 'securedactivateOfSubheading' %}
                                                                                 <li class="list-group-item">
                                                                                           <a class="side-keys row {% if datasets.path == request.path %} active {% endif %}" href="{{datasets.path}}" style="align-items: center; font-weight: normal;">
-                                                                                                    <spam class style="padding: 0; padding-left: 5px;">
+                                                                                                    <spam class style="padding: 0; padding-left: 5px; display: flex; align-items: center;">
                                                                                                               <!-- - – — -->
                                                                                                               {% if datasets.path == request.path %} — {% endif %}
                                                                                                               {% if datasets.path != request.path %} – {% endif %}
-                                                                                                              <spam class="given-topics">{{datasets.name}} </spam>
+                                                                                                              <spam class="given-topics" style="display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; padding-left: 5px;">{{datasets.name}} </spam>
                                                                                                               {% if datasets.visibility %}
                                                                                                                 <i class="fa-solid fa-circle-check fa-xs" style="padding-left:2px; color: gray;"></i>
                                                                                                               {% else %}
@@ -123,25 +123,29 @@
 
                                       
 <script>
-  let truncateElements = document.querySelectorAll('.given-topics ');
 
-  let resateled = function(string){
-        let tempString = ""
-        let tempLength = 0
-        for(str of string.split(" ")){
-          tempLength += (str.length + 1)
-          if(tempLength<=35){
-            tempString += (str+" ")
-          }else{
-            break
-          }
-        }
-        return tempString
-  }
+  // THIS IS FOR ADD '...' in last ! 
 
-  truncateElements.forEach(element => {
+
+  // let truncateElements = document.querySelectorAll('.given-topics ');
+
+  // let resateled = function(string){
+  //       let tempString = ""
+  //       let tempLength = 0
+  //       for(str of string.split(" ")){
+  //         tempLength += (str.length + 1)
+  //         if(tempLength<=35){
+  //           tempString += (str+" ")
+  //         }else{
+  //           break
+  //         }
+  //       }
+  //       return tempString
+  // }
+
+  // truncateElements.forEach(element => {
     // resateled(element)
-    element.textContent = resateled(element.textContent) + "...";
+    // element.textContent = resateled(element.textContent) + "...";
   //   element.scrollWidth=220
   //   console.log(element,element.offsetWidth,element.scrollWidth,element.offsetWidth < element.scrollWidth)
   // if (element.offsetWidth > element.scrollWidth) {
