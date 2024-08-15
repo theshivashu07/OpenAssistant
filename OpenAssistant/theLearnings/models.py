@@ -54,7 +54,7 @@ class Skill(models.Model):
 
 
 class TopicHeadings(models.Model):
-        skill = models.ForeignKey(Skill, on_delete=models.SET_NULL, null=True, blank=True);
+        skill = models.ForeignKey(Skill, unique=True, on_delete=models.SET_NULL, null=True, blank=True);
         name = models.CharField(max_length=50, default=None, null=True); 
         slug = AutoSlugField(populate_from='name');
         slugs = models.TextField(default=None, null=True, blank=True); 
@@ -94,12 +94,13 @@ class Topic(models.Model):
         
         USER = models.ForeignKey(USER, on_delete=models.SET_NULL, null=True, blank=True);
 
-        skill = models.ForeignKey(Skill, on_delete=models.SET_NULL, null=True, blank=True);
-        headings = models.ForeignKey(TopicHeadings, on_delete=models.SET_NULL, null=True, blank=True);
+        skill = models.ForeignKey(Skill, on_delete=models.SET_NULL, null=True, blank=True); 
+        headings = models.ForeignKey(TopicHeadings, on_delete=models.SET_NULL, null=True, blank=True); 
+        # headings = models.ForeignKey(TopicHeadings, to_field="skill", default=skill, on_delete=models.SET_NULL, null=True, blank=True);
         subheadings = models.ForeignKey(TopicSubHeadings, on_delete=models.SET_NULL, null=True, blank=True);
-        
+
         title = models.CharField(max_length=50, default=None, null=True); 
-        slug = AutoSlugField(populate_from='title');
+        slug = AutoSlugField(populate_from='title'); 
         slugs = models.TextField(default=None, null=True, blank=True); 
         
         content = RichTextUploadingField(default=None, null=True, blank=True) 
@@ -110,6 +111,7 @@ class Topic(models.Model):
 
         def __str__(self):
                 return f"{self.title}"
+        
         # this function save title's slug automatically...
         def save(self, *args, **kwargs):
                 self.slug = slugify(self.title)
