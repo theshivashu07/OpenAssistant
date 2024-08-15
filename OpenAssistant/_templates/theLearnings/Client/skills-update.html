@@ -53,7 +53,7 @@ Testing@ | Learnings | OpenAssistant
                                                   
 
 
-                                                  <div class="mains col-sm-12" style="margin: 180px 0;text-align: center; ">
+                                                  <div class="update-articles col-sm-12" style="margin: 180px 0; /*text-align: center; */">
                                                             
                                                             
                                                             <form action="{{request.path}}" method="POST" enctype="multipart/form-data">
@@ -67,39 +67,80 @@ Testing@ | Learnings | OpenAssistant
                                                   </div>
 
                                                   <style>
-
-                                                            .mains select,input,textarea{
+                                                            .update-articles form > p label{
+                                                              /* width: 20%; */
+                                                              width: 14%;
+                                                              vertical-align: top;    
+                                                              font-weight: 500;                                                              
+                                                              /* margin-bottom: 0.2rem; */
+                                                              padding: 5px 0;
+                                                            }
+                                                            
+                                                            /* .update-articles form> div, */
+                                                            .update-articles form > p select, 
+                                                            .update-articles form > p input,
+                                                            .update-articles form > p textarea{
+                                                                      width: 85%;
                                                                       /* width: 100%; */
-                                                                      width: 250px;
                                                                       border-radius: 5px;
-                                                                      /* margin-bottom: 25px; */
-                                                                      /* height: 20px; */
                                                                       padding: 5px 10px;
                                                                       border: 1px solid gray;
                                                                       height: 35px;
-                                                            };                                                            
-                                                            .mains{
-                                                            /* Optional styles for the container */
+                                                                      border: 1px solid lightgray;
+                                                                      font-weight: 300;
+                                                            }
+                                                            
+                                                            /* .update-articles p {
+                                                              display: flex; Make each paragraph a flex container
+                                                            } */
+
+                                                            .update-articles textarea{
+                                                              height: 100px !important;
                                                             }
 
-                                                            p {
-                                                            display: flex; /* Make each paragraph a flex container */
-                                                            }
-                                                            p::before {
-                                                              content: "";
-                                                              flex-grow: 1;
-                                                              width: 25%;
-                                                            } 
-
-                                                            p::after {
-                                                              content: "";
-                                                              flex-grow: 3; /* Takes up three times the space of the first part */
+                                                            .update-articles p{
+                                                                margin-top: 0;
+                                                                margin-bottom: 2rem;
                                                             }
 
+
+                                                            .update-articles form > div{                                                              
+                                                                margin-bottom: 2rem;
+                                                            }
+                                                            p:has(+div){
+                                                              margin-bottom: 0.2rem !important;
+                                                            }
+
+
+
+                                                            .update-articles form > input[type=submit] {
+                                                              background-color: #2d2d2d;
+                                                              /* background-color: black; */
+                                                              color: white;
+                                                              font-weight: bolder;
+                                                              padding: 10px 250px;
+                                                              width: -webkit-fill-available;
+                                                              border-radius: 10px;
+                                                              border: 2px solid lightgray;
+                                                              margin: 75px 0;
+                                                            }
+
+                                                            
+                                                            /* .update-articles form > p select:focus{ */
+                                                            select:focus{
+                                                                border: 1px solid lightgray !important;
+                                                            }
+
+                                                            .update-articles form > p select:focus, 
+                                                            .update-articles form > p input:focus,
+                                                            .update-articles form > p textarea:focus{                                                                
+                                                                border: 1px solid lightgray;
+                                                            }
                                                             
 
                                                   </style>
                                                   
+
                                                   
                     
                                         </div>

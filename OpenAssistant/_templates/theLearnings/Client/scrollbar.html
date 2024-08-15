@@ -15,7 +15,11 @@
                                                   
                                                             <div class="scrollbar-inner">
 
-
+                                                                      <div class="scrollbar-box">
+                                                                                <a class="scrollbar-link  " href="/learnings/others/notes/">
+                                                                                          Notes
+                                                                                </a>
+                                                                      </div>
                                                                       {% for key,object in Articals.Scrollbar.items %}
                                                                                           <div class="scrollbar-box" >
                                                                                                     <a class="scrollbar-link  {% if request.path == object.path %} active {% endif %}" href="{{object.path}}">

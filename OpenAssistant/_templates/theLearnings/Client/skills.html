@@ -65,7 +65,7 @@ Testing@ | Learnings | OpenAssistant
                                                                       <div class="head d-flex" style="/*place-items: center;*/">
                                                                                 <div>
                                                                                           
-                                                                                          <div class="basics" style="color: #b4b4b4;/*background-color: white;*/font-size: medium; /*font-weight: bold;*/ margin-top: 5px;">
+                                                                                          <div class="basics" style="color: #b4b4b4;/*background-color: white;*/font-size: 15px; /*font-weight: bold;*/ margin-top: 5px;">
                                                                                                     <spen> 
                                                                                                               {{Articals.CenteredDetails.head.heading}}
                                                                                                     </spen>
@@ -93,7 +93,7 @@ Testing@ | Learnings | OpenAssistant
                                                                                                     <span>{{Articals.CenteredDetails.head.topic}}</span>
                                                                                           </h2>
 
-                                                                                          <div class="basics" style="color: #b4b4b4;/*background-color: white;*/font-size: medium; /*font-weight: bold;*/ margin-top: 5px;">
+                                                                                          <div class="basics" style="color: #b4b4b4;/*background-color: white;*/font-size: 15px; /*font-weight: bold;*/ margin-top: 5px;">
                                                                                                     <spen> 
                                                                                                               {{Articals.CenteredDetails.head.user}}
                                                                                                     </spen>
@@ -252,7 +252,8 @@ Testing@ | Learnings | OpenAssistant
                                                                       margin-top: 40px;
                                                                       text-decoration: underline 1px;
                                                                       text-underline-offset: 2px;
-                                                            }
+                                                                      margin-bottom: 15px;
+                                                            } 
                                                             .content h1{
                                                                       font-size: 2.25rem;
                                                             }
@@ -294,9 +295,13 @@ Testing@ | Learnings | OpenAssistant
                                                                       border-radius: 0 0 12px 12px;
                                                                       justify-content: space-between;
                                                                       padding: 16px;
-                                                                      margin: 0;
+                                                                      /* margin: 0; */
                                                             }
-                                                            .content > p.pl{
+
+                                                            /* .content > p.pl{ */
+                                                            /* .content p + pre { */
+                                                            /* .content pre ~ p { */
+                                                            p:has(+pre){
                                                                       /* background-color: aliceblue; */
                                                                       background-color: #ffeffe;
                                                                       border-radius: 12px 12px 0 0;
@@ -305,7 +310,7 @@ Testing@ | Learnings | OpenAssistant
                                                                       margin: 0;
                                                                       font-size: smaller;
                                                                       color: #d6006d;
-                                                                      margin-bottom: 2px;
+                                                                      margin-bottom: 2px !important;
                                                             }
 
 
