@@ -5,6 +5,7 @@ from django.http import HttpResponse
 from .models import *
 from Home.models import *
 
+# from django.contrib.auth.decorators import login_required
 from API.Code.Management.Sessions import Authenticate, Login, Logout, LoginRequired 
 from API.Code.User.Return import ReturningDatabase
 

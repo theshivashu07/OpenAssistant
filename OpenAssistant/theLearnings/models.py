@@ -95,8 +95,7 @@ class Topic(models.Model):
         USER = models.ForeignKey(USER, on_delete=models.SET_NULL, null=True, blank=True);
 
         skill = models.ForeignKey(Skill, on_delete=models.SET_NULL, null=True, blank=True); 
-        headings = models.ForeignKey(TopicHeadings, on_delete=models.SET_NULL, null=True, blank=True); 
-        # headings = models.ForeignKey(TopicHeadings, to_field="skill", default=skill, on_delete=models.SET_NULL, null=True, blank=True);
+        headings = models.ForeignKey(TopicHeadings, limit_choices_to={'skill': skill.id}, on_delete=models.SET_NULL, null=True, blank=True);
         subheadings = models.ForeignKey(TopicSubHeadings, on_delete=models.SET_NULL, null=True, blank=True);
 
         title = models.CharField(max_length=50, default=None, null=True); 
