@@ -77,8 +77,8 @@ def skills( request,skillof,skill ):
 
 def showtopic( request,skillof,skill,heading,subheading,topic ):
 
-        if request.method == "POST":
-                
+        # if request.method == "POST":
+
         
         ReturningData = dict()
         ReturningDatabase(request,ReturningData)

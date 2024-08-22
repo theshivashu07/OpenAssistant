@@ -99,7 +99,7 @@ class Topic(models.Model):
         # headings = models.ForeignKey(TopicHeadings, to_field="skill", default=skill, on_delete=models.SET_NULL, null=True, blank=True);
         subheadings = models.ForeignKey(TopicSubHeadings, on_delete=models.SET_NULL, null=True, blank=True);
 
-        title = models.CharField(max_length=50, default=None, null=True); 
+        title = models.CharField(max_length=100, default=None, null=True); 
         slug = AutoSlugField(populate_from='title'); 
         slugs = models.TextField(default=None, null=True, blank=True); 
         
