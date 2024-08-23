@@ -60,7 +60,7 @@ class TopicHeadings(models.Model):
         slugs = models.TextField(default=None, null=True, blank=True); 
 
         def __str__(self):
-                return f"{self.name}"
+                return f"{self.name} | {self.skill.name}"
         # this function save title's slug automatically...
         def save(self, *args, **kwargs):
                 self.slug = slugify(self.name)
@@ -80,7 +80,7 @@ class TopicSubHeadings(models.Model):
         slugs = models.TextField(default=None, null=True, blank=True); 
 
         def __str__(self):
-                return f"{self.name}"
+                return f"{self.name} | {self.skill.name}/{self.headings.name}"
         # this function save title's slug automatically...
         def save(self, *args, **kwargs):
                 self.slug = slugify(self.name)
@@ -110,7 +110,8 @@ class Topic(models.Model):
         updationdate = models.DateTimeField(auto_now=True); 
 
         def __str__(self):
-                return f"{self.title}"
+                return f"{self.title} | {self.skill.name}"
+                # return f"{self.name} | {self.skill.name}/{self.headings.name}/{self.subheadings.name}"
         
         # this function save title's slug automatically...
         def save(self, *args, **kwargs):
