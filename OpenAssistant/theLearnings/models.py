@@ -54,7 +54,7 @@ class Skill(models.Model):
 
 
 class TopicHeadings(models.Model):
-        skill = models.ForeignKey(Skill, unique=True, on_delete=models.SET_NULL, null=True, blank=True);
+        skill = models.ForeignKey(Skill, on_delete=models.SET_NULL, null=True, blank=True);
         name = models.CharField(max_length=50, default=None, null=True); 
         slug = AutoSlugField(populate_from='name');
         slugs = models.TextField(default=None, null=True, blank=True); 
