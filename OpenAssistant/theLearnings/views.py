@@ -129,6 +129,11 @@ def editTopic( request,skillof,skill,heading,subheading,topic ):
 
 
 
+def showlogo(request):
+        ReturningData = dict()
+        return render(request,"theLearnings/Client/show-logo.html",ReturningData); 
+
+
 
 
 
