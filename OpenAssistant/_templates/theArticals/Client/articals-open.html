@@ -1,0 +1,158 @@
+ 
+{% extends '_master.html' %}
+
+
+
+
+{% block tcontent %}
+Testing@Articals | OpenAssistant
+{% endblock %}
+
+
+
+{% block headerplusplus %}
+
+{% include '_header.html' %}
+
+{% endblock %}
+
+
+
+
+{% block childcontent %}
+
+
+
+
+
+
+<!-- <div class="col-md-12" style="margin: 0; padding: 0;"></div> -->
+
+<div class="edge " style="background-color: white; margin: 0; padding: 0;">
+
+          <div class="row" style="margin: 0; padding: 0; /*padding-top: 12px;*/ background-color: #f8f8f8;background-color: #fdfdfd;">
+
+
+                    
+                    
+                    
+
+                    {% include 'thearticals/client/scrollbar.html' %} 
+                    
+
+
+
+
+                    
+                    
+                    <div class="col-md-9 edge " style="background-color: white; padding: 0;">
+                              <div class="row" style="padding: 18px;background-color: #f8f8f8;background-color: #fcfcfc;background-color: white; padding: 40px;">
+                                        <!-- <div class="row" style="margin: 0; padding: 0;"> -->
+                    
+                                                  <!-- <div class="col-sm-12"> -->
+                                                            <!-- <div class="row"> -->
+
+                                                                      <div class="content">
+                                                                                
+                                                                                <h2>{{Articals.slug}}</h2>
+                                                                                <span>  {{Articals.slug}}  </span>
+
+
+                                                                      </div>
+                                                                      
+                                                            <!-- </div> -->
+                                                  <!-- </div> -->
+                                                  
+                    
+                                        <!-- </div> -->
+                              </div>
+                              <div style="margin: 100px 0;">
+                              </div>
+                    </div>
+
+                    <div class="col-md-3 edge " style="background-color: #f8f8f8; background-color: #fbfbfb;">
+                              <div class="articals-right" style="padding: 25px 10px;">
+                                                                                                    <div class="explore" style="font-size: 38px; text-align: center; color: #8d8d8d;">
+                                                                                                              Recent Articals
+                                                                                                              <hr class="my-3">
+                                                                                                    </div>
+                                                                                                    <div class="recommendation" style="padding: 20px 10px;">
+                                                                                                              <div style="padding: 12px 0;">
+                                                                                                                        <ul class="list-group list-group-flush">
+                    
+                                                                                                                                  {% for object in sidebarright %}
+                                                                                                                                  <li class="list-group-item sidebar-right">
+                                                                                                                                            <a class="side-keys row {% if request.path == object.path %} active {% endif %} " href="{{object.path}}" class="row" style="align-items: center; font-weight: normal;">
+                                                                                                                                                      <spem>
+                                                                                                                                                                {{object.name}}
+                                                                                                                                                      </spem>
+                                                                                                                                            </a>
+                                                                                                                                  </li>
+                                                                                                                                  {% endfor %}
+                                                                                
+                                                                                                                        </ul>
+                                                                                                                                  <style>
+                                                                                                                                            .sidebar-right{
+                                                                                                                                                      /* background-color: #fbfbfb; */
+                                                                                                                                                      background-color: #fbfbfb;
+                                                                                                                                                      color: #8d8d8d;
+                                                                                                                                                      padding: 5px 20px;
+                                                                                                                                                      padding: 0 5px;
+                                                                                                                                            }
+                                                                                                                                            .sidebar-right.disabled{
+                                                                                                                                                      background-color: #fafafa;
+                                                                                                                                                      color: #d8d8d8;
+                                                                                                                                            }
+
+                                                                                                                                            
+                                                  .list-group-item{
+                                                            /* background-color: #fdfdfd; */
+                                                            /* padding: 5px 10px; */
+                                                            border: 1px solid #0000000a;
+                                                  }
+                                                  .side-keys{
+                                                            /* padding: 0.5rem 1rem; */
+                                                            text-decoration: auto;
+                                                            color: unset;
+                                                            font-weight: bold;
+                                                            font-size: larger;
+                                                            font-size: 16px;
+                                                            padding: 5px;
+                                                            align-items: center;
+                                                  }
+                                                  .side-keys:hover{
+                                                            background-color: #f8f8f8; 
+                                                            color: rebeccapurple;
+                                                            border-radius: 50px; 
+                                                  }
+                                                  /* 
+                                                  .side-keys.active{
+                                                            background-color: rebeccapurple; 
+                                                            color: #f8f8f8;
+                                                            border-radius: 50px; 
+                                                  } 
+                                                  */
+
+                                                  
+                                                                                                                                  </style>
+                                                                                                              </div>
+                                                                                                    </div>
+                              </div>
+                              <div style="margin: 100px 0;">
+                              </div>
+                    </div>
+                    
+                    
+          </div>
+
+</div>
+
+
+
+
+
+{% endblock %}
+
+
+
+

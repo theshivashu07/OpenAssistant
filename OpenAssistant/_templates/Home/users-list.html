@@ -1,0 +1,130 @@
+ 
+{% extends '_master.html' %}
+
+
+
+
+{% block tcontent %}
+Users List | OpenAssistant
+{% endblock %}
+
+
+
+{% block headerplusplus %}
+
+{% include '_header.html' %}
+
+{% endblock %}
+
+
+
+{% block childcontent %}
+
+
+
+
+
+
+
+<div class="edge " style="background-color: #f8f8f8;background-color: #fdfdfd;">
+	<div style="padding: 25px;background-color: #f8f8f8;background-color: #fcfcfc;background-color: white;/* padding: 50px 25px; */border-radius: 10px;">
+		<div class="row">
+			<div class="col-sm-12" style="margin: 50px 0;">
+				<div class="row">
+					
+
+					<div class="col-sm-1">
+					</div>
+					<!-- <div class="col-sm-6" style="text-align: center;"> -->
+					<div class="col-sm-10" style="">
+						<!-- <h1 style="font-weight: bold; text-align: center;"> All Users List </h1> -->
+                                                            <div style="display: flex;text-align: center;place-content: center;">
+                                                                      <h1 style="font-weight: bold;text-align: center;"> All Users List  </h1>
+                                                                      
+                                                                      
+                                                                      <form class="row row-cols-lg-auto g-3 align-items-center" name="myform" method="GET" action="{{request.path}}">
+                                                                      <!-- {% csrf_token %} -->
+                                                                                <div class="col-2" style="text-align: center; align-self: center; margin-left: 15px;">
+                                                                                          <label class="visually-hidden" for="given">Preference</label>
+                                                                                          <select class="form-select" name="given" id="given"  onchange="myform.submit()">
+                                                                                                    <option value="all" {% if YourGiven == 'all' %} selected="" {% endif %} >All</option>
+                                                                                                    <option value="manuals" {% if YourGiven == 'manuals' %} selected="" {% endif %} >Manuals</option>
+                                                                                                    <option value="superusers" {% if YourGiven == 'superusers' %} selected="" {% endif %} >Superusers</option>
+                                                                                          </select>
+                                                                                </div>
+                                                                      </form>
+
+                                                            </div>
+						<h6 style=" text-align: center;">Here is a list of all users. (<spen style="text-decoration: line-through;""> superuser or manually users-list </spen>).
+                                                            </h6>
+						<!-- <br><br> -->
+                                                            
+						<!-- <form class="row row-cols-lg-auto g-3 align-items-center"  method="POST" action="{{request.path}}"> -->
+						<!-- {% csrf_token %} -->
+							<div class="row">
+								<div class="col-12 g-5">
+									<div class="row">
+
+                                                                                                    <div class="bd-example my-4" style="border: solid #f0f0f0; border-width: 1px; padding: 40px 40px 20px 40px; border-radius: 5px;">
+                                                                                                              <table class="table" style="margin: 0; padding: 0; text-align: center;">
+                                                                                                                        <caption>List of User's ( superusers non-included )</caption>
+                                                                                                                        <thead>
+                                                                                                                        <tr>
+                                                                                                                                  <th scope="col">S. No.</th>
+                                                                                                                                  <!-- <th scope="col">User</th> -->
+                                                                                                                                  <th scope="col">Username</th>
+                                                                                                                                  <th scope="col">Full Name</th>
+                                                                                                                                  <th scope="col">Email</th>
+                                                                                                                                  <th scope="col">isChecked</th>
+                                                                                                                                  <th scope="col">isActive</th>
+                                                                                                                                  <th scope="col">Password</th>
+                                                                                                                                  <th scope="col">Joining Date</th>
+                                                                                                                        </tr>
+                                                                                                                        </thead>
+                                                                                                                        <tbody>
+
+                                                                                                                                  {% for user in values.userslist %}
+                                                                                                                                            <tr {% if user.isActive %}style="background-color: ghostwhite;" {% endif %} >
+                                                                                                                                                      <th scope="row">{{ forloop.counter }}</th>
+                                                                                                                                                      <!-- <td>{{user.User}}</td> -->
+                                                                                                                                                      <td>{{user.Username}}</td>
+                                                                                                                                                      <td>{{user.FullName}}</td>
+                                                                                                                                                      <td>{{user.Email}}</td>
+                                                                                                                                                      <td>{{user.isChecked}}</td>
+                                                                                                                                                      <td>{{user.isActive}}</td>
+                                                                                                                                                      <td>{{user.Password}}</td>
+                                                                                                                                                      <td>{{user.JoiningDate}}</td>
+                                                                                                                                            </tr>
+                                                                                                                                  {% endfor %}                                                                                                                                  
+
+                                                                                                                        </tbody>
+
+                                                                                                              </table>
+                                                                                                    </div>
+                                                                                                    
+                                                                                                    
+                                                                                          </div>
+								</div>
+							</div>
+						<!-- </form> -->
+					</div>
+					<div class="col-sm-1">
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div style="margin: 100px 0;">
+	</div>
+</div>
+
+
+
+
+
+
+{% endblock %}
+
+
+
+

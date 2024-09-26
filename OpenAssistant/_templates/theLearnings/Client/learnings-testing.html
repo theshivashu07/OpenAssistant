@@ -1,0 +1,152 @@
+ 
+{% extends '_master.html' %}
+
+
+
+
+{% block tcontent %}
+Testing@Learnings | OpenAssistant
+{% endblock %}
+
+
+
+{% block headerplusplus %}
+
+{% include '_header.html' %}
+
+{% endblock %}
+
+
+
+
+{% block childcontent %}
+
+
+
+
+
+
+<!-- <div class="col-md-12" style="margin: 0; padding: 0;"></div> -->
+
+<div class="edge " style="background-color: white; margin: 0; padding: 0; position: relative;">
+
+          <div class="row" style="margin: 0; padding: 0; /*padding-top: 12px;*/ background-color: #f8f8f8;background-color: #fdfdfd;">
+
+
+                    
+                    
+                    
+
+                    {% include 'thelearnings/client/scrollbar.html' %} 
+                    
+
+
+                    {% include 'thelearnings/client/sidebar-left.html' %} 
+
+
+                    
+                    
+                    
+                    <div class="col-md-7 edge " style="/*background-color: #f8f8f8;*/ /*background-color: #fdfdfd;*/ background-color: white; padding: 0;">
+                              <div style="padding: 18px;background-color: #f8f8f8;background-color: #fcfcfc;background-color: white;/* padding: 50px 25px;*/ /*border-radius: 10px;*/ padding: 40px;">
+                                        <div class="row" style="margin: 0; padding: 0;">
+                    
+                                                  <div class="col-sm-12">
+                                                            <div class="row">
+                    
+                                                                      {% for object in Articals.DefaultArticalsList %}
+                    
+                                                                      <div class="col-sm-12" style="background-color: #fdfdfd; border: 1px solid #f0f0f0; /*margin: 10px 0;*/ margin: 0; margin-bottom: 12px; padding: 18px 20px; /*padding: 15px 25px;*/ border-radius: 10px;"> 
+                                                                                <div class="row">
+                                                                                          <div class="col-md-12">
+                                                                                                    <div class="artical-heading" style="line-height: normal;">
+                                                                                                              <div class="title" style="font-weight: bold;font-size: 24px;">
+                                                                                                                        <a class="title" href="{{object.Artical.path}}" style="color: #0077bb; text-decoration: auto;  font-family: math; font-weight: 500;"> 
+                                                                                                                                  <!-- | • ◦ ● -->
+                                                                                                                                  {{object.Artical.title}}
+                                                                                                                        </a>
+                                                                                                              </div>
+                                                                                                              <div class="basics" style="color: #939393;/*background-color: white;*/font-size: 15px; font-weight: bold;">
+                                                                                                                        <spen> 
+                                                                                                                                  <!-- SHivam SHukla (theshivashu) -->
+                                                                                                                                  {{object.User.fullname}} ({{object.User.username}})
+                                                                                                                        </spen>
+                                                                                                                        <spen> • </spen>
+                                                                                                                        <spen>
+                                                                                                                                  <!-- 17-02-2024 -->
+                                                                                                                                  {{object.Artical.date}}
+                                                                                                                        </spen>
+                                                                                                                        <spen> • </spen>
+                                                                                                                        <spen> 
+                                                                                                                                  <!-- Saturday -->
+                                                                                                                                  {{object.Artical.day}} 
+                                                                                                                        </spen>
+                                                                                                              </div>
+                                                                                                    </div>
+                                                                                                    <div class="artical-content" style="line-height: normal;">
+                                                                                                              <div class="data" style="color: #606060;/*font-weight: bold;*/padding-top: 10px;padding-bottom: 5px;font-size: 14px;  font-family: math;"> 
+                                                                                                                        <!-- <span style="/*font-size: 15px;*/ /*color: black;*/ font-weight: bold;"> Important on Artical : </span> -->
+                                                                                                                         LTS is short for "Long Term Support", a software lifecycle term 
+                                                                                                                        that denotes a release as stable and officially maintained for a long period of time. 
+                                                                                                                        While regular updates will be part of releases we ship to the current version of Font Awesome, 
+                                                                                                                        <!-- LTS versions will be focused on dependability and stability and not regularly updated.  -->
+                                                                                                                        ... <span style="color: lightgray;">...more</span>
+                                                                                                              </div>
+                                                                                                              
+                                                                                                              <div class="basics" style="color: #ababab;/*background-color: white;*/font-size: 15px;/*font-weight: bold;*/ text-transform: capitalize; font-family: math;">
+                                                                                                                        <!-- <spen> 4 days ago</spen> -->
+                                                                                                                        <spen>{{object.Artical.ago}} </spen>
+                                                                                                                        <spen> • </spen>
+                                                                                                                        <spen>198k Views</spen>
+                                                                                                                        <spen> • </spen>
+                                                                                                                        <spen>74k Likes</spen>
+                                                                                                                        <spen> • </spen>
+                                                                                                                        <spen>2.6k Comments</spen>
+                                                                                                                        <spen> • </spen>
+                                                                                                                        <spen>197 Reports</spen>
+                                                                                                                        <spen> • </spen>
+                                                                                                                        <spen>593 Suggestions</spen>
+                                                                                                                        <spen> • </spen>
+                                                                                                                        <spen>2.6k Varify</spen>
+                                                                                                              </div>
+                                                                                                    </div>
+                                                                                          </div>
+                                                                                          <!-- 
+                                                                                          <div class="col-md-3">
+                                                                                                    ?
+                                                                                          </div> 
+                                                                                          -->
+                                                                                </div>
+                                                                      </div>
+                                                                      
+                    
+                                                                      {% endfor %} 
+                                                            </div>
+                                                  </div>
+                                                  
+                    
+                                        </div>
+                              </div>
+                              <div style="margin: 100px 0;">
+                              </div>
+                    </div>
+                    
+                    
+
+
+                    {% include 'thelearnings/client/related-articals.html' %} 
+                    
+
+          </div>
+
+</div>
+
+
+
+
+
+{% endblock %}
+
+
+
+
