@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-q-7wqv3=-(^9tu6%*trzw!*qwdwlnhiug)j1zh^mj(ija77=!#
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 # ADD - these below lines are only for set another address+port for our website
 from django.core.management.commands.runserver import Command as runserver        # adding  
