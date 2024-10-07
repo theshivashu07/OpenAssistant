@@ -1,0 +1,396 @@
+ 
+{% extends '_master.html' %}
+
+
+
+
+{% block tcontent %}
+Testing@ | Learnings | OpenAssistant
+{% endblock %}
+
+
+
+{% block headerplusplus %}
+
+{% include '_header.html' %}
+
+{% endblock %}
+
+
+
+
+{% block childcontent %}
+
+
+
+
+
+
+
+<div class="edge " style="background-color: white; margin: 0; padding: 0;">
+
+          <div class="row" style="margin: 0; padding: 0; /*padding-top: 12px;*/ background-color: #f8f8f8;background-color: #fdfdfd;">
+
+
+                    
+                    
+                    
+
+                    {% include 'thelearnings/client/scrollbar.html' %} 
+                    
+
+
+                    {% include 'thelearnings/client/sidebar-left-skills.html' %} 
+
+
+                    
+                    
+                    
+                    <!-- <div class="col-md-10 edge " style="background-color: #fefefe; width: 80%; padding: 10px 35px; padding-right: 50px; /*font-size: larger;*/ /*font-family: math;*/ font-family:  Noto Serif;"> -->
+                    <div class="col-md-10 edge " style="background-color: #fefefe; padding: 10px 35px; padding-right: 50px; /*font-size: larger;*/ /*font-family: math;*/ font-family:  Noto Serif;            width: 75%; 
+                    flex: auto;
+				display: -webkit-flex;
+				flex-direction: column;
+				-webkit-box-align: center;
+				-webkit-align-items: center;">
+                              <!-- <div style=""> -->
+
+                                        <!-- <div class="row row-advanced" style="margin: 0; padding: 0;"> -->
+                                        <div class="row" style="margin: 0; padding: 0;">
+
+
+                                                  {% if Articals.CenteredDetails.topic %}
+
+                                                  <div class="col-sm-12" style="padding: 30px 0; /*font-family: Noto Serif;*/ width: 888px;">
+                                                            <div class="head" style="margin-bottom: 45px; /*font-family: Philosopher;*/">
+                                                                      
+                                                                      <div class="head d-flex" style="/*place-items: center;*/">
+                                                                                <div>
+                                                                                          
+                                                                                          <div class="basics" style="color: #b4b4b4;/*background-color: white;*/font-size: 15px; /*font-weight: bold;*/ margin-top: 5px;">
+                                                                                                    <spen> 
+                                                                                                              {{Articals.CenteredDetails.head.heading}}
+                                                                                                    </spen>
+                                                                                                    <spen> > </spen>
+                                                                                                    <spen>
+                                                                                                              {{Articals.CenteredDetails.head.subheading}}
+                                                                                                    </spen>
+                                                                                                    <spen> > </spen>
+                                                                                                    <spen> 
+                                                                                                              {{Articals.CenteredDetails.head.topic}}
+                                                                                                    </spen>
+                                                                                          </div>
+
+                                                                                </div>
+                                                                                
+
+                                                                      </div>
+
+                                                                      <hr style="height: 10px; height: 2px; color: #dbdbdb; border-radius: 15px;">
+                                                                      
+                                                                      <div class="head d-flex" style="/*place-items: center;*/">
+                                                                                <div>
+                                                                                          
+                                                                                          <h2 style="margin: 0;">
+                                                                                                    <span>{{Articals.CenteredDetails.head.topic}}</span>
+                                                                                          </h2>
+
+                                                                                          <div class="basics" style="color: #b4b4b4;/*background-color: white;*/font-size: 15px; /*font-weight: bold;*/ margin-top: 5px;">
+                                                                                                    <spen> 
+                                                                                                              {{Articals.CenteredDetails.head.user}}
+                                                                                                    </spen>
+                                                                                                    <spen> • </spen>
+                                                                                                    <spen>
+                                                                                                              {{Articals.CenteredDetails.head.date}}
+                                                                                                    </spen>
+                                                                                                    <spen> • </spen>
+                                                                                                    <spen> 
+                                                                                                              {{Articals.CenteredDetails.head.day}}
+                                                                                                    </spen>
+                                                                                                    <spen> • </spen>
+                                                                                                    <spen> 
+                                                                                                              Updated {{Articals.CenteredDetails.head.ago}}
+                                                                                                    </spen>
+                                                                                          </div>
+                                                                                </div>
+                                                                                
+                                                                                <div class="d-flex ms-auto" style="/* height: 61px; */">          
+                                                                                          <a id="myLink2" onclick="document.getElementById('cke_90').click()" class="btn btn-light" style="align-content: center;/*align-self: center;*/margin-right: 5px; color: blue;" 
+                                                                                                    href="{{request.path}}?task=update">
+                                                                                                    <i class="fa-solid fa-pen-to-square fa-lg"></i>
+                                                                                          </a>       
+                                                                                          <a target="_blank" id="myLink2" onclick="document.getElementById('cke_90').click()" class="btn btn-light" style="align-content: center;/*align-self: center;*/margin-right: 5px; color: blue;" 
+                                                                                                    href="http://localhost:1234/admin/theLearnings/topic/{{Articals.CenteredDetails.topic.id}}/change/">
+                                                                                                    <i class="fa-solid fa-pen-to-square fa-lg"></i>
+                                                                                          </a>
+                                                                                          <a target="_blank" id="myLink2" onclick="document.getElementById('cke_90').click()" class="btn btn-light" style="align-content: center;/*align-self: center;*/margin-right: 5px; color: red;" 
+                                                                                                    href="http://localhost:1234/admin/theLearnings/topic/{{Articals.CenteredDetails.topic.id}}/delete/">
+                                                                                                    <i class="fa-solid fa-trash fa-lg"></i>
+                                                                                          </a>
+                                                                                </div>
+
+                                                                      </div>
+
+                                                                      <hr style="height: 10px; height: 2px; color: #dbdbdb; border-radius: 15px;">
+
+                                                            </div>
+                                                            
+                                                            <div class="content">
+                                                            {{Articals.CenteredDetails.topic.content  | safe}}
+                                                            </div>
+
+                                                  </div>
+
+
+                                                  <style>
+
+
+                                                            /* ------------------------------------------------------------------------------------------- */
+
+
+                                                            .content p{
+                                                                      margin-bottom: 10px;
+                                                                      /* font-size: 15px; */
+                                                                      font-size: 0.90rem;
+
+                                                            }
+                                                            
+                                                            .content div p{
+                                                                      margin: 0;
+                                                                      /* font-size: medium; */
+                                                                      font-size: 0.80rem;
+                                                            }
+
+                                                            div ol li{
+                                                                      margin-top: 10px;
+                                                            }
+                                                            div ol li ul li{
+                                                                      margin: 0;
+                                                            }
+
+                                                            .content div{
+
+                                                                      margin-top: -10px !important;
+                                                                      margin-bottom: 15px;
+                                                                      border-radius: 5px;
+
+                                                                      background: #fbfbfb !important;
+                                                                      border: 1px solid #f0f0f0 !important;
+                                                                      line-height: normal !important;
+                                                                      padding: 20px 10px !important;
+
+                                                            }
+
+                                                            .content div div{
+                                                                      margin: 0;
+                                                                      border-radius: 5px;
+                                                                      font-size: smaller;
+                                                            }
+
+                                                            .content div div p{
+                                                                      font-size: larger;
+                                                            }
+
+
+
+                                                            /* TABLE - DEFAULT  */
+
+                                                            .content table,th,td{
+                                                                      border: 1px solid white;
+                                                                      /* border-collapse: collapse; */
+                                                                      padding: 10px 15px;
+
+                                                                      /* font-size: 15px; */
+                                                                      font-size: 0.85rem;
+
+                                                            }
+                                                            
+
+                                                            .content table{
+                                                                      width: 100% !important;
+                                                                      /* margin: 25px 0 8px 0; */
+                                                                      margin: 20px 0 5px 0;
+                                                                      
+                                                                      border-radius: 15px !important;
+                                                                      background-color: #ffeffe !important;
+                                                                      border: 1px solid white !important;
+                                                                      padding: 10px 15px !important;
+
+                                                                      font-size: inherit;
+                                                            }
+
+                                                            .content tbody th{
+                                                                      border-bottom-width: 2px;
+                                                            }
+
+                                                            
+                                                            /* ------------------------------------------------------------------------------------------- */
+
+
+                                                            .content ul, ol{
+                                                                      margin: 12px 0 !important;
+                                                            }
+                                                            .content ul li, ol li{
+                                                                      margin-bottom: 2px;
+                                                                      /* font-size: 14px; */
+                                                                      font-size: 0.85rem;
+                                                            }
+                                                            
+
+                                                            /* ------------------------------------------------------------------------------------------- */
+
+
+                                                            .content{
+                                                                      font-family: 'Noto Serif', math;
+                                                                      font-family: 'PT Serif', math;
+                                                            }
+
+                                                            /* .content h1,h2,h3,h4,h5,h6{ */
+                                                            .content h1,
+                                                            .content h2,
+                                                            .content h3,
+                                                            .content h4,
+                                                            .content h5,
+                                                            .content h6 {
+                                                                      margin-top: 40px;
+                                                                      text-decoration: underline 1px;
+                                                                      text-underline-offset: 2px;
+                                                                      margin-bottom: 15px;
+                                                            } 
+                                                            .content h1{
+                                                                      font-size: 2.25rem;
+                                                            }
+                                                            .content h2{
+                                                                      font-size: 2.0rem;
+                                                            }
+                                                            .content h3{
+                                                                      font-size: 1.75rem;
+                                                            }
+                                                            .content h4{
+                                                                      font-size: 1.50rem;
+                                                            }
+                                                            .content h5{
+                                                                      font-size: 1.25rem;
+                                                            }
+                                                            .content h6{
+                                                                      font-size: 1.0rem;
+                                                            }
+
+                                                            .content code{
+                                                                      background-color: #f8f8f8;
+                                                                      /* background-color: #e9eef6; */
+                                                                      padding: 2px 5px;
+                                                                      border-radius: 5px;
+                                                                      
+                                                                      font-family: 'Noto Serif';
+                                                                      font-weight: 375;
+                                                            }
+                                                            
+                                                            .content pre code{
+                                                                      /* background-color: #f5faff; */
+                                                                      /* background-color: #fff5fe; */
+                                                                      /* background-color: #fbfbfb; */
+                                                                      background-color: #fcfcfc;
+                                                                      font-size: 0.80rem;
+                                                            }
+
+                                                            .content pre{
+                                                                      /* background-color: aliceblue; */
+                                                                      /* background-color: #ffeffe; */
+                                                                      background-color: #fbfbfb;
+                                                                      border-radius: 0 0 12px 12px;
+                                                                      justify-content: space-between;
+                                                                      padding: 16px;
+                                                                      /* margin: 0; */
+                                                            }
+
+                                                            /* .content > p.pl{ */
+                                                            /* .content p + pre { */
+                                                            /* .content pre ~ p { */
+                                                            p:has(+pre){
+                                                                      /* background-color: aliceblue; */
+                                                                      /* background-color: #ffeffe; */
+                                                                      background-color: #fbfbfb;
+                                                                      border-radius: 12px 12px 0 0;
+                                                                      justify-content: space-between;
+                                                                      padding: 16px;
+                                                                      margin: 0;
+                                                                      font-size: smaller;
+                                                                      color: #d6006d;
+                                                                      margin-bottom: 2px !important;
+
+                                                                      margin-top: 5px;
+                                                            }
+
+
+                                                            blockquote{
+                                                                 font-style: italic;
+                                                                 font-family: Georgia, Times, "Times New Roman", serif;
+                                                                 border-style: solid;
+                                                                 border-color: #ccc;
+                                                                 border-width: 0;
+                                                                 padding: 5px;
+                                                                 padding-left: 20px;
+                                                                 padding-right: 10px;
+                                                                 border-left-width: 5px;
+                                                                 margin: 0 25px;
+                                                                 margin-bottom: 15px;
+                                                            }
+
+
+                                                            p .refer{
+                                                                 color: black;
+                                                            }
+
+                                                            blockquote p {
+                                                                 margin: 0 !important;
+                                                            }
+
+
+                                                  </style>
+
+                                                  {% else %}
+
+                                                  <div class="col-sm-12" style="margin: 180px 0;text-align: center; ">
+                                                            <!-- <div class="row"> -->
+                                                                      
+                    
+                                                                                <h1 style="font-weight: bold;/*font-size: 100px;*//* color: blue; */">
+                                                                                          {{ Articals.CenteredDetails.head.skill}}
+                                                                                </h1>
+                                                                                <h4 style="background-color: whitesmoke;"> 
+                                                                                          "{{request.path}}"
+                                                                                </h4> 
+                                                            <!-- </div> -->
+                                                  </div>
+                                                  
+                                                  {% endif %}
+                                                  
+                    
+                                        </div>
+                              <!-- </div> -->
+                              <!-- 
+                              <div style="margin: 100px 0;">
+                              </div> 
+                              -->
+                    </div>
+                    
+                    
+
+
+                    <!-- {% include 'thelearnings/client/related-articals.html' %}  -->
+                    
+
+          </div>
+
+</div>
+
+
+
+
+
+{% endblock %}
+
+
+
+
