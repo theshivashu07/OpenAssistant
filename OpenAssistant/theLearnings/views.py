@@ -43,10 +43,6 @@ def learnings_from_(request,skillsof_=None,skills_=None):
         return render(request,"theLearnings/Client/learnings-testing.html",ReturningData); 
 
 
-		# path('options/<str:skillof>/',views.options,name='options'), 
-		# path('<str:skillof>/<str:skill>/',views.skills,name='skills'), 
-
-
 def options( request,skillof ):
         ReturningData = dict()
         ReturningDatabase(request,ReturningData)
@@ -136,4 +132,28 @@ def showlogo(request):
 
 
 
+# def resting(request):
+#         ReturningData = dict()
+#         return render(request,"theLearnings/Client/_resting.html",ReturningData); 
+
+
+
+from django.http import JsonResponse
+from django.views.decorators.csrf import csrf_exempt 
+# csrf_exempt
+
+# @csrf_exempt
+def resting(request):
+  data_structures = [
+      "Array",
+      "Linked List",
+      "Stack",
+      "Queue",
+      "Tree",
+      "Graph",
+      "Dynamic Programming",
+      "Hash Table",
+      "Dynamic Array" 
+  ] 
+  return JsonResponse(data_structures, safe=False)
 

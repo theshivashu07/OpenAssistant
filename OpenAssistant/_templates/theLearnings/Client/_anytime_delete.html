@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+          <meta charset="UTF-8">
+          <meta name="viewport" content="width=device-width, initial-scale=1.0">
+          <title>testings</title>
+
+          <style>
+
+                    /* first  */
+
+                    div.emptychecks p:empty {
+                              background-color: lightblue; /* Example styling */
+                    }
+
+
+                    /* last  */
+
+                    .container {
+                        position: relative;
+                    }
+
+                    .truncated-text {
+                        white-space: nowrap;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                    }
+
+                    .full-text {
+                        position: absolute;
+                        top: -100%; /* Adjust this value based on your font size and desired position */
+                        left: 0;
+                        opacity: 0;
+                        transition: opacity 0.3s ease;
+                    }
+
+                    .truncated-text:hover + .full-text {
+                        opacity: 1;
+                        top: 100%; /* Adjust this value based on your font size and desired position */
+                    }
+
+          </style>
+</head>
+<body>
+          
+          <!-- first  -->
+          <div class="content">
+                    <p><strong>Hey, Shivam</strong></p> 
+                    <p>Welcome <strong>Shivam</strong></p> 
+                    <p><strong>Hello</strong>, how are you?</p> 
+                    <p>Hey,  <strong>Shivam Shukla</strong>, how are you <strong>BHAI?</strong></p> 
+          </div>
+
+
+          <!-- second  -->
+          <div class="const">
+            <div class="container">
+                <span class="truncated-text">This is a very long piece of text that needs to be truncated.</span>
+                <span class="full-text">This is a very long piece of text that needs to be truncated.</span>
+            </div>
+          </div>
+
+          <script>
+
+// first 
+document.querySelectorAll('p').forEach(p => {
+    // Check if the <p> contains ONLY a <strong> element
+    if (
+        p.childNodes.length === 1 && // Only one child node
+        p.firstElementChild &&       // That child is an element
+        p.firstElementChild.tagName === 'STRONG' && // That element is <strong>
+        p.textContent.trim() === p.firstElementChild.textContent.trim() // No text outside <strong>
+    ) {
+        // Apply CSS to the <strong> tag
+        p.firstElementChild.style.color = 'red'; // Example style
+    }
+});
+
+          </script>
+</body>
+</html>
