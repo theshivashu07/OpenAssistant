@@ -20,17 +20,19 @@ import theLearnings.functions.builder as builder
 
 @LoginRequired(login_url="/security/login/")
 def index(request): 
-        ReturningData = dict()
+        ReturningData = dict() 
         ReturningDatabase(request,ReturningData)
-        # print(request.session.get('User',None))
-        # for keys,values in request.session.items():
-                # print(f"{keys} : {values}")
+        
+        if request.GET.get("skill",None):
+                skill = Skill.object.filter()
+                topics = TopicHeadings.objects.filter( skill=skill, status=True ) 
                 
         ReturningData['Articals'] = dict()
         ReturningData['Articals']['Scrollbar'] = builder.getScrollbarDetails(request) 
-        ReturningData['Articals']['SidebarLeft'] = builder.getSidebarLeftDetails_forApp(request) 
-        ReturningData['Articals']['RelatedArticalsList'] = builder.getRelatedArticalsList(request) 
-        return render(request,"theLearnings/Client/learnings-testing.html",ReturningData); 
+        # ReturningData['Articals']['SidebarLeft'] = builder.getSidebarLeftDetails_forApp(request) 
+        # ReturningData['Articals']['RelatedArticalsList'] = builder.getRelatedArticalsList(request) 
+        return render(request,"theLearnings/Client/landing-page.html",ReturningData); 
+        # return render(request,"theLearnings/Client/learnings-testing.html",ReturningData); 
 
 def learnings_from_(request,skillsof_=None,skills_=None): 
         ReturningData = dict() 
@@ -56,6 +58,7 @@ def options( request,skillof ):
 
 
 def skills( request,skillof,skill ):
+        print('AT HERE')
         ReturningData = dict()
         ReturningDatabase(request,ReturningData)
         
@@ -132,28 +135,12 @@ def showlogo(request):
 
 
 
-# def resting(request):
-#         ReturningData = dict()
-#         return render(request,"theLearnings/Client/_resting.html",ReturningData); 
-
-
-
-from django.http import JsonResponse
-from django.views.decorators.csrf import csrf_exempt 
-# csrf_exempt
-
-# @csrf_exempt
 def resting(request):
-  data_structures = [
-      "Array",
-      "Linked List",
-      "Stack",
-      "Queue",
-      "Tree",
-      "Graph",
-      "Dynamic Programming",
-      "Hash Table",
-      "Dynamic Array" 
-  ] 
-  return JsonResponse(data_structures, safe=False)
+        ReturningData = dict()
+        return render(request,"theLearnings/Client/_resting.html",ReturningData); 
+
+
+
+
+
 
