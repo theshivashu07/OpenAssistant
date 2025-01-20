@@ -23,10 +23,27 @@ def index(request):
         ReturningData = dict() 
         ReturningDatabase(request,ReturningData)
         
-        if request.GET.get("skill",None):
-                skill = Skill.object.filter()
-                topics = TopicHeadings.objects.filter( skill=skill, status=True ) 
-                
+        skill = request.GET.get("skill",None)
+        if skill:
+                skillobj = Skill.objects.filter(name__iexact=skill)
+                if skillobj:
+                        topics = TopicHeadings.objects.filter( skill=skillobj.first() )
+                else:
+                        # object = Skill()
+                        # object.skillsof = SkillOf.objects.get(id=6)  #default:Others
+                        # object.name = skill
+                        # object.status = False
+                        # object.save()
+                        print(f"New object '{skill}' is created successfully !!!")
+                        topics = list()
+                ReturningData['topics'] = topics
+                ReturningData['from'] = 'topics-selection'
+                ReturningData['Articals'] = dict()
+                ReturningData['Articals']['Scrollbar'] = builder.getScrollbarDetails(request) 
+                return render(request,"theLearnings/Client/landing-page.html",ReturningData); 
+
+        
+        ReturningData['from'] = 'skills-selection'
         ReturningData['Articals'] = dict()
         ReturningData['Articals']['Scrollbar'] = builder.getScrollbarDetails(request) 
         # ReturningData['Articals']['SidebarLeft'] = builder.getSidebarLeftDetails_forApp(request) 
