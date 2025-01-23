@@ -13,6 +13,7 @@ from _dummydatabase.aadhyatm import AadhyatmRUN
 
 
 import theLearnings.functions.builder as builder
+import theLearnings.functions.ShortTime as ShortTime
 
 
 
@@ -29,25 +30,26 @@ def index(request):
                 if skillobj:
                         topics = TopicHeadings.objects.filter( skill=skillobj.first() )
                 else:
-                        # object = Skill()
-                        # object.skillsof = SkillOf.objects.get(id=6)  #default:Others
-                        # object.name = skill
-                        # object.status = False
-                        # object.save()
-                        print(f"New object '{skill}' is created successfully !!!")
-                        topics = list()
-                ReturningData['topics'] = topics
-                ReturningData['from'] = 'topics-selection'
+                        return redirect(request.path)
+                ReturningData['topics'] = topics 
                 ReturningData['Articals'] = dict()
                 ReturningData['Articals']['Scrollbar'] = builder.getScrollbarDetails(request) 
-                return render(request,"theLearnings/Client/landing-page.html",ReturningData); 
+                ReturningData['Articals']['skills'] = builder.getSidebarLeftDetails_forApp(request) 
+                
+                skillObject = Skill.objects.filter(name__iexact=skill)[0]
+                print(skillObject)
+                ReturningData['skill'] = skillObject 
+                ReturningData['topics'] = ShortTime.getTopics(request,skillObject) 
+
+                return render(request,"theLearnings/Client/landing-page-2-skills-list.html",ReturningData); 
 
         
-        ReturningData['from'] = 'skills-selection'
         ReturningData['Articals'] = dict()
         ReturningData['Articals']['Scrollbar'] = builder.getScrollbarDetails(request) 
-        # ReturningData['Articals']['SidebarLeft'] = builder.getSidebarLeftDetails_forApp(request) 
-        # ReturningData['Articals']['RelatedArticalsList'] = builder.getRelatedArticalsList(request) 
+        # ReturningData['Articals']['skills'] = builder.getSidebarLeftDetails_forApp(request) 
+        
+        ReturningData['skills'] = ShortTime.getSkills(request)
+
         return render(request,"theLearnings/Client/landing-page.html",ReturningData); 
         # return render(request,"theLearnings/Client/learnings-testing.html",ReturningData); 
 

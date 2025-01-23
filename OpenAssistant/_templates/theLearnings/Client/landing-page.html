@@ -138,8 +138,8 @@ Testing@Learnings | OpenAssistant
                                 <input type="input" list="programmingLanguages" id="form1" name="skill" class="form-control btn-lg" placeholder="Search" required>
                                 
                                 <datalist id="programmingLanguages" class="col-md-12">
-                                  {% for topic in topics %}
-                                  <option value="{{topic.name}}">{{topic.name}}</option>
+                                  {% for skill in skills %}
+                                  <option value="{{skill.name}}">{{skill.name}}</option>
                                   {% endfor %}
                               </datalist>
                               </div>

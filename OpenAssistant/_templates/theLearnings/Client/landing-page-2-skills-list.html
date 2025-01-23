@@ -1,0 +1,287 @@
+ 
+{% extends '_master.html' %}
+
+
+
+
+{% block tcontent %}
+Testing@Learnings | OpenAssistant
+{% endblock %}
+
+
+
+{% block headerplusplus %}
+
+{% include '_header.html' %}
+
+{% endblock %}
+
+
+
+
+{% block childcontent %}
+
+
+
+
+
+
+<!-- <div class="col-md-12" style="margin: 0; padding: 0;"></div> -->
+
+<div class="edge " style="background-color: white; margin: 0; padding: 0; position: relative;">
+
+          <div class="row" style="margin: 0; padding: 0; /*padding-top: 12px;*/ background-color: #f8f8f8;background-color: #fdfdfd;">
+
+
+                    
+                    
+                    
+
+                    {% include 'thelearnings/client/scrollbar.html' %} 
+                    
+
+
+                    
+                    
+
+                    
+                    <section class="py-5 text-center container my-4">
+
+                      <form method="GET">
+                      <div class="row py-lg-5">
+                        <div class="col-lg-6 col-md-8 mx-auto">
+                          <h1 class="fw-light">Learning Section</h1>
+                          <p> Select your skill which you want to work on. And in case you want to add new skill so freely write and create it's name. We give you notifications because you are the one who is start writting for this skill. So after clarifications, you still take ownership of start writing your selected skills tutorials. Keep it up. </p>
+                          <div class="container col-md-12 mt-5">
+                    
+                            <div class="input-group">
+                              <div class="form-outline  col-md-9" data-mdb-input-init="">
+                                <input type="input" list="programmingLanguages" id="form1" name="skill" value="{{skill.name}}" class="form-control btn-lg" placeholder="Search" required>
+                                
+                                <datalist id="programmingLanguages" class="col-md-12">
+                                  {% for topic in topics %}
+                                  <option value="{{topic.name}}">{{topic.name}}</option>
+                                  {% endfor %}
+                              </datalist>
+                              </div>
+                              <button type="button btn-lg" class="btn btn-primary col-md-3" data-mdb-ripple-init="">
+                                <i class="fa-solid fa-right-long"></i>
+                              </button>
+                            </div>
+        
+                          </div>
+                          <div class="suggestions-container col-md-12 mt-5">                            
+                            <!-- <button type="button" class="btn btn-outline-dark">Python</button> -->
+                            <p>
+                              You can also choose your skills from below given options !!!
+                            </p>
+
+                            <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
+                              <div class="btn-group" role="group">
+                                <button type="button" class="btn btn-light dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                                  Programming Language
+                                </button>
+                                <ul class="dropdown-menu">
+                                  <li><a class="dropdown-item" href="?skill=C">C</a></li>
+                                  <li><a class="dropdown-item" href="?skill=C++">C++</a></li>
+                                  <li><a class="dropdown-item" href="?skill=Python">Python</a></li>
+                                  <li><a class="dropdown-item" href="?skill=JavaScript">JavaScript</a></li>
+                                  <li><a class="dropdown-item" href="?skill=TypeScript">TypeScript</a></li>
+                                  <li><a class="dropdown-item" href="?skill=Java">Java</a></li>
+                                </ul>
+                              </div>
+                              <div class="btn-group" role="group">
+                                <button type="button" class="btn btn-light dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                                  Frameworks
+                                </button>
+                                <ul class="dropdown-menu">
+                                  <li><a class="dropdown-item" href="?skill=Django">Django</a></li>
+                                  <li><a class="dropdown-item" href="?skill=Django Rest">Django Rest</a></li>
+                                  <li><a class="dropdown-item" href="?skill=React">React</a></li>
+                                </ul>
+                              </div>
+                              <div class="btn-group" role="group">
+                                <button type="button" class="btn btn-light dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                                  Databases
+                                </button>
+                                <ul class="dropdown-menu">
+                                  <li><a class="dropdown-item" href="?skill=SQLite">SQLite</a></li>
+                                  <li><a class="dropdown-item" href="?skill=MySQL">MySQL</a></li>
+                                  <li><a class="dropdown-item" href="?skill=Postgress">Postgress</a></li>
+                                  <li><a class="dropdown-item" href="?skill=MongoDB">MongoDB</a></li>
+                                  <li><a class="dropdown-item" href="?skill=Redis">Redis</a></li>
+                                </ul>
+                              </div>
+                              <div class="btn-group" role="group">
+                                <button type="button" class="btn btn-light dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                                  Advanced 
+                                </button>
+                                <ul class="dropdown-menu">
+                                  <li><a class="dropdown-item" href="?skill=DSA">DSA</a></li>
+                                  <li><a class="dropdown-item" href="?skill=System Design">System Design</a></li>
+                                  <li><a class="dropdown-item" href="?skill=OOPs">OOPs</a></li>
+                                  <li><a class="dropdown-item" href="?skill=SOLID-Proncipal">SOLID Proncipal</a></li>
+                                </ul>
+                              </div>
+                              <div class="btn-group" role="group">
+                                <button type="button" class="btn btn-light dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                                  DevOps Advanced
+                                </button>
+                                <ul class="dropdown-menu">
+                                  <li><a class="dropdown-item" href="?skill=Postman">Postman</a></li>
+                                  <li><a class="dropdown-item" href="?skill=Git-GitHub">Git/GitHub</a></li>
+                                  <li><a class="dropdown-item" href="?skill=Docker">Docker</a></li>
+                                </ul>
+                              </div>
+                            </div>
+
+
+                          </div>
+                        </div>
+                      </div>
+                      </form>
+                    </section>
+
+                    
+
+
+
+
+
+
+                    <!-- accordion alls show open -->
+                    <!-- <div class="container p-5">
+
+                              <div class="accordion" id="accordionPanelsStayOpenExample">
+                                        
+                                  {% for topic in topics %}
+                                  
+                                        
+                                        <div class="accordion-item">
+                                                  <h2 class="accordion-header" id="panelsStayOpen-headingTwo">
+                                                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-{{topic.slug}}" aria-expanded="false" aria-controls="panelsStayOpen-{{topic.slug}}">
+                                                  {{topic.name}} 
+                                                  </button>
+                                                  </h2>
+                                                  <div id="panelsStayOpen-{{topic.slug}}" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingTwo">
+                                                  <div class="accordion-body">
+                                                  <strong>This is the second item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                                                  </div>
+                                                  </div>
+                                        </div>
+
+                                        
+                                  {% endfor %}
+
+                                      </div>
+
+                    </div> -->
+
+
+
+                    <!-- accordion any one show open -->
+                    <div class="container p-5">
+                              <div class="accordion" id="accordionExample">
+                                        
+                                        
+                              {% for topic in topics %}
+                                  
+                                        
+
+                                        <div class="accordion-item">
+                                                  <h2 class="accordion-header" id="headingTwo">
+                                                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#{{topic.slug}}" aria-expanded="false" aria-controls="{{topic.slug}}">
+                                                            {{topic.title}}  
+                                                  </button>
+                                                  </h2>
+                                                  <div id="{{topic.slug}}" class="accordion-c ollapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                                                  <div class="accordion-body">
+
+                                                            <div class="container p-2">
+                                                            
+                                                                      <div class="btn-group btn-group-sm" role="group" aria-label="...">
+                                                                                <button type="button" class="btn btn-primary">
+                                                                                          <i class="fa-solid fa-plus"></i>
+                                                                                          <strong>Add</strong>
+                                                                                </button>
+                                                                                <button type="button" class="btn btn-warning">
+                                                                                          <i class="fa-solid fa-pen-to-square"></i>
+                                                                                          <strong>Edit</strong>
+                                                                                </button>
+                                                                                <button type="button" class="btn btn-danger">
+                                                                                          <i class="fa-solid fa-trash"></i>
+                                                                                          <strong>Delete</strong>
+                                                                                </button>
+                                                                      </div>
+
+                                                                      <table class="table table-sm mt-4" style="font-size: smaller; font-family: math;">
+                                                                                <thead class="row">
+                                                                                <tr>
+                                                                                <th scope="col">#</th>
+                                                                                <th scope="col">First</th>
+                                                                                <th scope="col">Last</th>
+                                                                                <th scope="col">Handle</th>
+                                                                                </tr>
+                                                                                </thead>
+                                                                                <tbody>
+
+                                                                                <tr>
+
+                                                                                          <th scope="row">1</th>
+                                                                                          <td>Mark</td>
+                                                                                          <td>
+                                                                                                    <div class="btn-group btn-group-sm" role="group" aria-label="...">
+                                                                                                    <button type="button" class="btn btn-primary">
+                                                                                                              <i class="fa-solid fa-plus"></i>
+                                                                                                              <strong>Add</strong>
+                                                                                                    </button>
+                                                                                                    <button type="button" class="btn btn-warning">
+                                                                                                              <i class="fa-solid fa-pen-to-square"></i>
+                                                                                                              <strong>Edit</strong>
+                                                                                                    </button>
+                                                                                                    <button type="button" class="btn btn-danger">
+                                                                                                              <i class="fa-solid fa-trash"></i>
+                                                                                                              <strong>Delete</strong>
+                                                                                                    </button>
+                                                                                          </div></td>
+                                                                                          <td>
+                                                                                                    <a href="#">well done</a>,
+                                                                                                    <a href="#">well strong</a>,
+                                                                                                    <a href="#">well trolled</a>,
+                                                                                                    <a href="#">well go on</a>,
+                                                                                                    <a href="#">well done</a>,
+                                                                                                    <a href="#">well strong</a>,
+                                                                                                    <a href="#">well trolled</a>,
+                                                                                                    <a href="#">well go on</a>.
+                                                                                          </td>
+                                                                                          
+                                                                                </tr>
+                                                                                </tbody>
+                                                                      </table>
+
+                                                                      
+
+                                                            </div>
+
+                                                  </div>
+                                                  </div>
+                                        </div>
+
+                                        
+                                        {% endfor %}
+      
+                              </div>
+
+                    </div>
+
+          </div>
+</div>
+
+
+
+
+{% endblock %}
+
+
+
+
