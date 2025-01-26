@@ -26,6 +26,7 @@ def getTopics(request,skillObject):
                 if dataList:
                         resuntantDict[topicheading.name].append(topicheading)
                         continue
+                
                 topicsubheadings = TopicSubHeadings.objects.filter( headings=topicheadings ) 
         return topicheading 
 
