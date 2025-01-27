@@ -161,5 +161,25 @@ def resting(request):
 
 
 
+# def handler404(request,exception):
+def handler404(request,exception,*args, **kwargs):
+        print("at redirection center !!!")
+        print(*args,**kwargs)
+        # print(args,kwargs)
+        # ReturningData = dict()
+        # return render(request,"_404.html",status=404); 
+        return redirect('/fast404/')
 
+
+
+# def fast404(request,*args, **kwargs):
+def fast404(request):
+        print("at serve template !!! ")
+        # print(*args, **kwargs)
+        # print(args, kwargs)
+        ReturningData = dict()
+        ReturningData['previousURL'] = request.META.get('HTTP_REFERER')
+        print(ReturningData)
+        return render(request,"_404.html",ReturningData); 
+        # return redirect('/fast404/')
 

@@ -15,9 +15,17 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.views.generic import TemplateView
+
+from theLearnings.views import fast404
+
+# HANDLER404 = 'theLearnings.views.handler404' 
+handler404 = 'theLearnings.views.handler404'  
+
+
 
 urlpatterns = [
-
+ 
     path('admin/', admin.site.urls),
 
     # path('Admin/', include('Admin.urls')),
@@ -39,6 +47,11 @@ urlpatterns = [
 
     path('ckeditor/', include('ckeditor_uploader.urls')), 
 
+    # path('404/', TemplateView.as_view(template_name='theLearnings/Client/404.html'), name='404'), 
+
+    # path('fast404/', include('theLearnings.views.fast404')),
+    path('fast404/', fast404, name='fast404'),
+
     
 ]
 
@@ -51,4 +64,6 @@ if settings.DEBUG:
                               document_root=settings.MEDIA_ROOT)
         urlpatterns += static(settings.STATIC_URL,
                               document_root=settings.STATIC_ROOT)
+
+
 

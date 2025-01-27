@@ -1,0 +1,540 @@
+
+		
+                    <div>
+			<!-- Back to top button -->
+			<button
+			type="button"
+			class="btn btn-light btn-floating btn-lg"
+			id="btn-back-to-top"
+			>
+			<i class="fa fa-arrow-up"></i>
+			</button>
+			
+			<style>
+			#btn-back-to-top {
+			position: fixed;
+			bottom: 20px;
+			right: 20px;
+			display: none;
+			}
+			</style>
+
+			<script>
+				//Get the button
+let mybutton = document.getElementById("btn-back-to-top");
+
+// When the user scrolls down 20px from the top of the document, show the button
+window.onscroll = function () {
+  scrollFunction();
+};
+
+function scrollFunction() {
+  if (
+    document.body.scrollTop > 20 ||
+    document.documentElement.scrollTop > 20
+  ) {
+    mybutton.style.display = "block";
+  } else {
+    mybutton.style.display = "none";
+  }
+}
+// When the user clicks on the button, scroll to the top of the document
+mybutton.addEventListener("click", backToTop);
+
+function backToTop() {
+  document.body.scrollTop = 0;
+  document.documentElement.scrollTop = 0;
+}
+			</script>
+			</div>
+
+
+
+		<!-- -----------------------------------------------------------------  -->
+
+
+
+			<div>
+				<!-- Back to top button -->
+				<button type="button" class="btn btn-light btn-floating btn-lg" id="btn-back-to-top">
+				  <i class="fa fa-arrow-up"></i>
+				</button>
+			        
+				<style>
+				  #btn-back-to-top {
+				    position: fixed;
+				    bottom: 20px;
+				    right: 20px;
+				    display: none;
+				    width: 60px;
+				    height: 60px;
+				    border: 4px solid transparent;
+				    border-radius: 50%;
+				    background-color: #f8f9fa;
+				    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+				    transition: transform 0.3s, opacity 0.3s;
+				  }
+			        
+				  #btn-back-to-top.visible {
+				    display: block;
+				    opacity: 1;
+				    transform: scale(1);
+				  }
+			        
+				  #btn-back-to-top:hover {
+				    background-color: #e2e6ea;
+				  }
+				</style>
+			        
+				<script>
+				  // Get the button
+				  let mybutton = document.getElementById("btn-back-to-top");
+			        
+				  // When the user scrolls, update the button's visibility and border progress
+				  window.onscroll = function () {
+				    scrollFunction();
+				  };
+			        
+				  function scrollFunction() {
+				    const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+				    const documentHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+				    const scrollPercent = (scrollTop / documentHeight) * 100;
+			        
+				    // Update the button's border with a conic gradient
+				    mybutton.style.borderImage = `conic-gradient(#007BFF ${scrollPercent}%, transparent 0) 1`;
+			        
+				    // Show or hide the button based on scroll position
+				    if (scrollTop > 20) {
+				      mybutton.style.display = "block";
+				    } else {
+				      mybutton.style.display = "none";
+				    }
+				  }
+			        
+				  // When the user clicks on the button, scroll to the top of the document
+				  mybutton.addEventListener("click", function () {
+				    document.body.scrollTop = 0; // For Safari
+				    document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE, and Opera
+				  });
+				</script>
+			        </div>
+
+			        
+		<!-- -----------------------------------------------------------------  -->
+
+		<!-- IMPLEMENTED  -->
+
+
+			        <div>
+				<!-- Back to top button -->
+				<button type="button" class="btn btn-light btn-floating btn-lg" id="btn-back-to-top">
+				  <i class="fa fa-arrow-up"></i>
+				</button>
+			        
+				<style>
+				  #btn-back-to-top {
+				    position: fixed;
+				    bottom: 20px;
+				    right: 20px;
+				    display: none;
+				    width: 60px;
+				    height: 60px;
+				    border: 4px solid transparent;
+				    border-radius: 50%; /* Ensures the button stays circular */
+				    background-color: #f8f9fa;
+				    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+				    transition: transform 0.3s, opacity 0.3s;
+				    /* Add an extra layer for the progress border */
+				    background-image: conic-gradient(#007BFF 0%, transparent 0%);
+				    background-origin: border-box;
+				    background-clip: padding-box, border-box;
+				  }
+			        
+				  /* Make button visible when user scrolls */
+				  #btn-back-to-top.visible {
+				    display: block;
+				    opacity: 1;
+				    transform: scale(1);
+				  }
+			        
+				  #btn-back-to-top:hover {
+				    background-color: #e2e6ea;
+				  }
+				</style>
+			        
+				<script>
+				  // Get the button
+				  const mybutton = document.getElementById("btn-back-to-top");
+			        
+				  // Update progress border and button visibility on scroll
+				  window.addEventListener("scroll", function () {
+				    const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+				    const documentHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+				    const scrollPercent = (scrollTop / documentHeight) * 100;
+			        
+				    // Update the button's circular progress
+				    mybutton.style.backgroundImage = `conic-gradient(#007BFF ${scrollPercent}%, transparent 0%)`;
+			        
+				    // Show or hide the button based on scroll position
+				    if (scrollTop > 20) {
+				      mybutton.style.display = "block";
+				    } else {
+				      mybutton.style.display = "none";
+				    }
+				  });
+			        
+				  // Scroll back to top when button is clicked
+				  mybutton.addEventListener("click", function () {
+				    document.body.scrollTop = 0; // For Safari
+				    document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE, and Opera
+				  });
+				</script>
+			        </div>
+			        
+
+
+		<!-- -----------------------------------------------------------------  -->
+
+
+
+
+			        <div>
+				<!-- Back to top button -->
+				<button type="button" class="btn btn-light btn-floating btn-lg" id="btn-back-to-top">
+				  <i class="fa fa-arrow-up"></i>
+				</button>
+			        
+				<style>
+				  /* Base styling for the button */
+				  #btn-back-to-top {
+				    position: fixed;
+				    bottom: 20px;
+				    right: 20px;
+				    width: 60px;
+				    height: 60px;
+				    border: 4px solid transparent; /* Transparent border for progress */
+				    border-radius: 50%; /* Keep the button circular */
+				    background-color: #f8f9fa;
+				    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+				    display: none; /* Initially hidden */
+				    z-index: 1000;
+				  }
+			        
+				  /* Progress border using pseudo-element */
+				  #btn-back-to-top::before {
+				    content: "";
+				    position: absolute;
+				    top: -6px;
+				    left: -6px;
+				    width: 72px;
+				    height: 72px;
+				    border-radius: 50%;
+				    background: conic-gradient(#007BFF 0%, transparent 0%);
+				    z-index: -1;
+				    mask: radial-gradient(circle, transparent 30px, black 36px);
+				    -webkit-mask: radial-gradient(circle, transparent 30px, black 36px);
+				  }
+			        
+				  /* Make the button visible on scroll */
+				  #btn-back-to-top.visible {
+				    display: block;
+				    opacity: 1;
+				  }
+			        
+				  /* Hover effect for the button */
+				  #btn-back-to-top:hover {
+				    background-color: #e2e6ea;
+				  }
+				</style>
+			        
+				<script>
+				  // Select the button
+				  const mybutton = document.getElementById("btn-back-to-top");
+			        
+				  // Handle scroll event
+				  window.addEventListener("scroll", function () {
+				    const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+				    const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+				    const scrollPercent = (scrollTop / scrollHeight) * 100;
+			        
+				    // Update progress border dynamically
+				    const progressBorder = `conic-gradient(#007BFF ${scrollPercent}%, transparent ${scrollPercent}%)`;
+				    mybutton.style.setProperty("--progress-border", progressBorder);
+			        
+				    // Show/hide the button based on scroll position
+				    if (scrollTop > 20) {
+				      mybutton.style.display = "block";
+				    } else {
+				      mybutton.style.display = "none";
+				    }
+				  });
+			        
+				  // Scroll to top when button is clicked
+				  mybutton.addEventListener("click", function () {
+				    document.body.scrollTop = 0; // For Safari
+				    document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE, and Opera
+				  });
+				</script>
+			        </div>
+			        
+
+
+		<!-- -----------------------------------------------------------------  -->
+
+
+
+
+
+			        <div>
+  <!-- Back to top button -->
+  <button type="button" class="btn btn-light btn-floating btn-lg" id="btn-back-to-top">
+    <i class="fa fa-arrow-up"></i>
+  </button>
+
+  <style>
+    #btn-back-to-top {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 60px;
+      height: 60px;
+      border: 2px solid transparent; /* Thin border for the progress effect */
+      border-radius: 50%; /* Circular button */
+      background-color: #f8f9fa;
+      box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+      display: none; /* Initially hidden */
+      z-index: 1000;
+      transition: transform 0.3s, opacity 0.3s;
+    }
+
+    /* Progress border using pseudo-element */
+    #btn-back-to-top::before {
+      content: "";
+      position: absolute;
+      top: -2px; /* Align with the border */
+      left: -2px;
+      width: 64px; /* Match button size + 2px border */
+      height: 64px;
+      border-radius: 50%; /* Rounded progress */
+      background: conic-gradient(#007BFF 0%, transparent 0%); /* Dynamic progress */
+      z-index: -1; /* Place behind the button */
+    }
+
+    #btn-back-to-top.visible {
+      display: block;
+      opacity: 1;
+    }
+
+    #btn-back-to-top:hover {
+      background-color: #e2e6ea;
+    }
+  </style>
+
+  <script>
+    // Select the button
+    const mybutton = document.getElementById("btn-back-to-top");
+
+    // Scroll event listener
+    window.addEventListener("scroll", function () {
+      const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+      const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const scrollPercent = (scrollTop / scrollHeight) * 100;
+
+      // Update the progress border
+      mybutton.style.setProperty(
+        "border-image",
+        `conic-gradient(#007BFF ${scrollPercent}%, transparent 0%) 1`
+      );
+
+      // Show or hide the button based on scroll position
+      if (scrollTop > 20) {
+        mybutton.style.display = "block";
+      } else {
+        mybutton.style.display = "none";
+      }
+    });
+
+    // Scroll to top when button is clicked
+    mybutton.addEventListener("click", function () {
+      document.body.scrollTop = 0; // For Safari
+      document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE, and Opera
+    });
+  </script>
+				</div>
+
+
+
+		<!-- -----------------------------------------------------------------  -->
+
+
+
+
+				<div>
+					<!-- Back to top button -->
+					<button type="button" class="btn btn-light btn-floating btn-lg" id="btn-back-to-top">
+					  <i class="fa fa-arrow-up"></i>
+					</button>
+				        
+					<style>
+					  /* Back-to-top button styling */
+					  #btn-back-to-top {
+					    position: fixed;
+					    bottom: 20px;
+					    right: 20px;
+					    width: 60px;
+					    height: 60px;
+					    border: 2px solid transparent; /* Placeholder for progress border */
+					    border-radius: 50%; /* Keep button circular */
+					    background-color: #f8f9fa;
+					    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+					    display: none; /* Initially hidden */
+					    z-index: 1000;
+					    transition: transform 0.3s, opacity 0.3s;
+					  }
+				        
+					  /* Progress border using pseudo-element */
+					  #btn-back-to-top::before {
+					    content: "";
+					    position: absolute;
+					    top: 0;
+					    left: 0;
+					    width: 100%;
+					    height: 100%;
+					    border-radius: 50%; /* Ensure circular progress */
+					    background: conic-gradient(#007BFF 0%, transparent 0%);
+					    mask: radial-gradient(circle, transparent 28px, black 30px); /* Cut out the center */
+					    -webkit-mask: radial-gradient(circle, transparent 28px, black 30px); /* Support for WebKit browsers */
+					    z-index: -1; /* Place behind the button content */
+					  }
+				        
+					  /* Show button on scroll */
+					  #btn-back-to-top.visible {
+					    display: block;
+					  }
+				        
+					  /* Button hover effect */
+					  #btn-back-to-top:hover {
+					    background-color: #e2e6ea;
+					  }
+					</style>
+				        
+					<script>
+					  // Get the button
+					  const mybutton = document.getElementById("btn-back-to-top");
+				        
+					  // Scroll event listener
+					  window.addEventListener("scroll", function () {
+					    const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+					    const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+					    const scrollPercent = (scrollTop / scrollHeight) * 100;
+				        
+					    // Update progress border
+					    mybutton.style.setProperty(
+					      "--progress-border",
+					      `conic-gradient(#007BFF ${scrollPercent}%, transparent ${scrollPercent}%)`
+					    );
+				        
+					    mybutton.style.background = `conic-gradient(#007BFF ${scrollPercent}%, transparent ${scrollPercent}%)`;
+					  });
+				        
+					  // Scroll to top functionality
+					  mybutton.addEventListener("click", function () {
+					    document.body.scrollTop = 0; // For Safari
+					    document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE, and Opera
+					  });
+					</script>
+				</div>
+				        
+				        
+
+		<!-- -----------------------------------------------------------------  -->
+
+
+
+		
+
+				<div>
+					<!-- Back to top button -->
+					<button type="button" class="btn btn-light btn-floating btn-lg" id="btn-back-to-top">
+					  <i class="fa fa-arrow-up"></i>
+					</button>
+				        
+					<style>
+					  #btn-back-to-top {
+					    position: fixed;
+					    bottom: 20px;
+					    right: 20px;
+					    width: 60px;
+					    height: 60px;
+					    border: 2px solid transparent; /* Placeholder for the progress effect */
+					    border-radius: 50%; /* Circular button */
+					    background-color: #f8f9fa;
+					    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+					    display: none; /* Initially hidden */
+					    z-index: 1000;
+					    transition: transform 0.3s, opacity 0.3s;
+					  }
+				        
+					  /* Progress border using pseudo-element */
+					  #btn-back-to-top::before {
+					    content: "";
+					    position: absolute;
+					    top: -2px; /* Align with the border */
+					    left: -2px;
+					    width: 64px; /* Match button size + 2px border */
+					    height: 64px;
+					    border-radius: 50%; /* Ensure circular progress border */
+					    background: conic-gradient(#007BFF 0%, transparent 0%); /* Dynamic progress */
+					    z-index: -1; /* Place behind the button */
+					  }
+				        
+					  /* Show button when scrolled */
+					  #btn-back-to-top.visible {
+					    display: block;
+					    opacity: 1;
+					  }
+				        
+					  /* Hover effect for button */
+					  #btn-back-to-top:hover {
+					    background-color: #e2e6ea;
+					  }
+					</style>
+				        
+					<script>
+					  // Select the button
+					  const mybutton = document.getElementById("btn-back-to-top");
+				        
+					  // Scroll event listener
+					  window.addEventListener("scroll", function () {
+					    const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+					    const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+					    const scrollPercent = (scrollTop / scrollHeight) * 100;
+				        
+					    // Update the progress border
+					    mybutton.style.setProperty(
+					      "--scroll-progress",
+					      `${scrollPercent}%`
+					    );
+				        
+					    mybutton.style.setProperty(
+					      "border-image",
+					      `conic-gradient(#007BFF ${scrollPercent}%, transparent 0%) 1`
+					    );
+				        
+					    // Show or hide the button based on scroll position
+					    if (scrollTop > 20) {
+					      mybutton.style.display = "block";
+					    } else {
+					      mybutton.style.display = "none";
+					    }
+					  });
+				        
+					  // Scroll to top when the button is clicked
+					  mybutton.addEventListener("click", function () {
+					    document.body.scrollTop = 0; // For Safari
+					    document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE, and Opera
+					  });
+					</script>
+				        </div>
+				        
+				

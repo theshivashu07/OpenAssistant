@@ -23,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-q-7wqv3=-(^9tu6%*trzw!*qwdwlnhiug)j1zh^mj(ija77=!#'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ["*"]
 
@@ -33,6 +33,14 @@ runserver.default_port = '8080'        # <-- Your port                          
 runserver.default_port = '1234'        # <-- Your port                                                                       # adding  
 # runserver.default_addr = '127.0.0.1'                                                                                               # adding  
 runserver.default_addr = 'localhost'                                                                                                  # adding  
+
+
+
+# 404 default
+# HANDLER404 = 'django.views.generic.TemplateView.as_view(template_name="404.html")'
+# HANDLER404 = 'django.views.generic.TemplateView.as_view(template_name="theLearnings/Client/404.html")' 
+# HANDLER404 = 'theLearnings.views.your_404_view' 
+handler404 = 'theLearnings.views.handler404'  
 
 
 
@@ -73,7 +81,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [BASE_DIR,"_templates"],    # 'DIRS': [],
-        'APP_DIRS': True,
+        'APP_DIRS': True, 
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',
@@ -183,9 +191,6 @@ CKEDITOR_CONFIGS = {
             ]),
     },
 }
-
-
-
 
 
 

@@ -117,10 +117,10 @@ Testing@ | Learnings | OpenAssistant
                                                                                 </div>
                                                                                 
                                                                                 <div class="d-flex ms-auto" style="/* height: 61px; */">          
-                                                                                          <a id="myLink2" onclick="document.getElementById('cke_90').click()" class="btn btn-light" style="align-content: center;/*align-self: center;*/margin-right: 5px; color: blue;" 
+                                                                                          <!-- <a id="myLink2" onclick="document.getElementById('cke_90').click()" class="btn btn-light" style="align-content: center;/*align-self: center;*/margin-right: 5px; color: blue;" 
                                                                                                     href="{{request.path}}?task=update">
                                                                                                     <i class="fa-solid fa-pen-to-square fa-lg"></i>
-                                                                                          </a>       
+                                                                                          </a>        -->
                                                                                           <a target="_blank" id="myLink2" onclick="document.getElementById('cke_90').click()" class="btn btn-light" style="align-content: center;/*align-self: center;*/margin-right: 5px; color: blue;" 
                                                                                                     href="http://localhost:1234/admin/theLearnings/topic/{{Articals.CenteredDetails.topic.id}}/change/">
                                                                                                     <i class="fa-solid fa-pen-to-square fa-lg"></i>
@@ -292,19 +292,23 @@ Testing@ | Learnings | OpenAssistant
                                                             .content code{
                                                                       background-color: #f8f8f8;
                                                                       /* background-color: #e9eef6; */
+                                                                      background-color: #fafafa;
                                                                       padding: 2px 5px;
                                                                       border-radius: 5px;
                                                                       
                                                                       font-family: 'Noto Serif';
-                                                                      font-weight: 375;
+                                                                      font-size: 1rem;
+                                                                      font-weight: bold;
                                                             }
                                                             
                                                             .content pre code{
                                                                       /* background-color: #f5faff; */
                                                                       /* background-color: #fff5fe; */
                                                                       /* background-color: #fbfbfb; */
-                                                                      background-color: #fcfcfc;
+                                                                      /* background-color: #fcfcfc; */
                                                                       font-size: 0.80rem;
+                                                                      font-weight: unset;
+                                                                      padding: 0;
                                                             }
 
                                                             .content pre{
