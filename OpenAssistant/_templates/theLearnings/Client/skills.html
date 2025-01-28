@@ -333,7 +333,9 @@ Testing@ | Learnings | OpenAssistant
                                                                       padding: 16px;
                                                                       margin: 0;
                                                                       font-size: smaller !important;
-                                                                      color: #d6006d;
+                                                                      /* color: #d6006d; */
+                                                                      color: black;
+                                                                      font-weight: bold;
                                                                       margin-bottom: 2px !important;
 
                                                                       margin-top: 5px;
@@ -365,6 +367,39 @@ Testing@ | Learnings | OpenAssistant
 
 
                                                   </style>
+
+                                                  
+<script>
+     // Select all <p> tags that have a <pre> sibling immediately after
+     document.querySelectorAll("p:has(+pre)").forEach((pTag) => {
+       // Create the copy button
+       const copyButton = document.createElement("button");
+       copyButton.className = "btn btn-light";
+       copyButton.style.padding = "0";
+       copyButton.innerHTML = '<i class="fa-solid fa-copy" style="color: dimgray;"></i>';
+   
+       // Add the button to the right of the <p> tag
+       pTag.style.display = "flex";
+       pTag.style.justifyContent = "space-between";
+       pTag.appendChild(copyButton);
+   
+       // Add the copy functionality
+       copyButton.addEventListener("click", () => {
+         const preTag = pTag.nextElementSibling; // Get the <pre> right after the <p>
+         const code = preTag.innerText.trim(); // Extract the code text
+         navigator.clipboard.writeText(code).then(() => {
+           copyButton.innerHTML = 'Copied!';
+          //  copyButton.innerHTML = '<i class="fa-solid fa-check" style="color: dimgray;">';
+           setTimeout(() => {
+             copyButton.innerHTML = '<i class="fa-solid fa-copy" style="color: dimgray;"></i>';
+           }, 2000);
+         }).catch(err => {
+           console.error("Failed to copy: ", err);
+         });
+       });
+     });
+   </script>
+   
 
                                                   {% else %}
                                                   
