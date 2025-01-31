@@ -134,30 +134,28 @@
 		<!-- this is for save my headers height width change when i zoom-in or zoom-out -->
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, zoom=1.0">
 
+		<!-- CKEditor Content Styles -->
+		<link rel="stylesheet" href="https://cdn.ckeditor.com/4.16.2/standard-all/contents.css">
+		<!-- Prism.js for syntax highlighting -->
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+		<script>
+		document.addEventListener("DOMContentLoaded", function () {
+		Prism.highlightAll();
+		});
+		</script>
+		<!-- Highlight.js -->
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css">
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+		<script>
+		document.addEventListener("DOMContentLoaded", function () {
+		document.querySelectorAll('pre code').forEach((block) => {
+		hljs.highlightElement(block);
+		});
+		});
+		</script>
 
-
-          <!-- CKEditor Content Styles -->
-          <link rel="stylesheet" href="https://cdn.ckeditor.com/4.16.2/standard-all/contents.css">
-
-	<!-- Prism.js for syntax highlighting -->
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
-	<script>
-	document.addEventListener("DOMContentLoaded", function () {
-	Prism.highlightAll();
-	});
-	</script>
-	<!-- Highlight.js -->
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css">
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
-	<script>
-	document.addEventListener("DOMContentLoaded", function () {
-	document.querySelectorAll('pre code').forEach((block) => {
-	hljs.highlightElement(block);
-	});
-	});
-	</script>
 
 
 

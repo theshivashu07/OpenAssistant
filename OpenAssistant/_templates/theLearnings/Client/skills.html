@@ -138,10 +138,113 @@ Testing@ | Learnings | OpenAssistant
                                                             </div>
                                                             
                                                             <div class="content">
+
                                                             {{Articals.CenteredDetails.topic.content  | safe}}
+                                                            
+
+
+
+                                                            <!--                                                             
+
+                                                            {% for table_name,table_data in Table %} 
+
+                                                            <p> <strong>{{table_name}}</strong> table's data !!!</p>
+
+                                                            <table>
+                                                                 <tbody>
+                                                                      {% for rows in table_data %}
+
+                                                                           {% if forloop.counter0 is 0 %}
+                                                                                <tr>
+                                                                                     {% for key,value in rows.items %}
+                                                                                          <th>{{key}}</th>
+                                                                                     {% endfor %}
+                                                                                </tr>
+                                                                           {% endif %}
+
+                                                                      <tr>
+                                                                           {% for key,value in rows.items %}
+                                                                                <td>{{value}}</td>
+                                                                           {% endfor %}
+                                                                      </tr>
+                                                                      {% endfor %}
+                                                                 </tbody>
+                                                            </table>
+                                                            <p>&nbsp;</p>
+
+                                                            {% endfor %}
+                                                            
+                                                            -->
+
                                                             </div>
 
                                                   </div>
+
+
+                                                  <style>
+
+                                                       .content p{
+                                                            font-size: larger;
+                                                       }
+
+                                                       p:has(+pre){
+                                                                      background-color: #fbfbfb;
+                                                                      border-radius: 12px 12px 0 0;
+                                                                      justify-content: space-between;
+                                                                      padding: 16px;
+                                                                      margin: 0;
+                                                                      font-size: larger !important;
+                                                                      color: black;
+                                                                      /* font-weight: bold; */
+                                                                      margin-bottom: 2px !important;
+
+                                                                      margin-top: 5px;
+                                                            }
+
+
+
+                                                            /* table  */
+                                                            
+
+                                                            .content table,th,td{
+                                                                      border: 1px solid white;
+                                                                      /* border-collapse: collapse; */
+                                                                      padding: 10px 15px;
+
+                                                                      /* font-size: 15px; */
+                                                                      font-size: 0.95rem;
+
+                                                            }
+                                                            
+                                                            .content table{
+                                                                      width: 100% !important;
+                                                                      /* margin: 25px 0 8px 0; */
+                                                                      margin: 20px 0 5px 0;
+                                                                      
+                                                                      border-radius: 15px !important;
+                                                                      background-color: #ffeffe !important;
+                                                                      border: 1px solid white !important;
+                                                                      padding: 10px 15px !important;
+
+                                                                      font-size: inherit;
+                                                            }
+
+                                                            .content tbody th{
+                                                                      border-bottom-width: 2px;
+                                                            }
+
+                                                            
+                                                            .content ul, ol{
+                                                                      margin: 12px 0 !important;
+                                                            }
+                                                            .content ul li, ol li{
+                                                                      margin-bottom: 2px;
+                                                                      /* font-size: 14px; */
+                                                                      font-size: 0.95rem;
+                                                            }
+                                                            
+
+                                                  </style>
 
 <!-- 
                                                   <style>

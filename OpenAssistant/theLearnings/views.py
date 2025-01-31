@@ -16,6 +16,8 @@ import theLearnings.functions.builder as builder
 import theLearnings.functions.ShortTime as ShortTime
 
 
+import requests
+
 
 
 
@@ -96,10 +98,26 @@ def skills( request,skillof,skill ):
 def showtopic( request,skillof,skill,heading,subheading,topic ):
 
         # if request.method == "POST":
-
+        print( "ACTIVES" )
         
         ReturningData = dict()
         ReturningDatabase(request,ReturningData)
+
+        ReturningData['Table'] = list()
+
+        tables_dict = {
+                'Designation' : 'http://127.0.0.1:8000/api/designations/',
+                'Teacher' : 'http://127.0.0.1:8000/api/teachers/',
+                'Classes' : 'http://127.0.0.1:8000/api/classes/',
+                'Student' : 'http://127.0.0.1:8000/api/students/',                
+        }
+        for key,link in tables_dict.items():
+                ReturningData['Table'].append( [
+                        key,
+                        requests.get( link ).json()
+                ] )
+        print( ReturningData['Table'] )
+
 
         ReturningData['Articals'] = dict()
         ReturningData['Articals']['Scrollbar'] = builder.getScrollbarDetails(request) 
