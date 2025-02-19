@@ -34,7 +34,7 @@ def askedquestions(request):
 	ReturningData = {}
 	ReturningDatabase(request,ReturningData)
 	return render(request,"home/asked-questions.html",ReturningData); 
-	# return redirect("/security/asked-questions/")
+	# return redirect("/security/asked-questions/") 
 
 
 def index(request): 

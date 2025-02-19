@@ -136,7 +136,7 @@ LANGUAGE_CODE = 'en-us'
 # USE_I18N = True
 # USE_TZ = True
 TIME_ZONE =  'Asia/Kolkata'     # adding  
-USE_I18N = True     # adding  
+USE_I18N = True                          # adding  
 
 
 # Static files (CSS, JavaScript, Images)
@@ -175,9 +175,7 @@ MESSAGE_TAGS = {                                                                
 
 CKEDITOR_BASEPATH = "/_static/ckeditor/ckeditor/"
 
-
 CKEDITOR_UPLOAD_PATH = "/_static/ckeditor/ckeditor/"
-
 
 CKEDITOR_UPLOAD_PATH = "uploads/"
 CKEDITOR_IMAGE_BACKEND = "pillow"
