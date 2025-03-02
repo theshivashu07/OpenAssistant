@@ -103,20 +103,31 @@ def showtopic( request,skillof,skill,heading,subheading,topic ):
         ReturningData = dict()
         ReturningDatabase(request,ReturningData)
 
+        """
         ReturningData['Table'] = list()
 
         tables_dict = {
-                'Designation' : 'http://127.0.0.1:8000/api/designations/',
-                'Teacher' : 'http://127.0.0.1:8000/api/teachers/',
-                'Classes' : 'http://127.0.0.1:8000/api/classes/',
-                'Student' : 'http://127.0.0.1:8000/api/students/',                
+                'Designation' : '/api/designations/',
+                'Teacher' : '/api/teachers/',
+                'Classes' : '/api/classes/',
+                'Student' : '/api/students/',                
         }
+                
+        # Get the scheme (http or https) and host from the request object
+        scheme = request.scheme  # 'http' or 'https'
+        host = request.get_host()  # 'localhost:1234'
+        schemeHost = scheme + "://" + host
+        print(  scheme, host, schemeHost  )
+
         for key,link in tables_dict.items():
+                print(key,schemeHost+link)
                 ReturningData['Table'].append( [
                         key,
-                        requests.get( link ).json()
+                        requests.get( schemeHost+link ).json()
                 ] )
+                print(key,link)
         print( ReturningData['Table'] )
+        """
 
 
         ReturningData['Articals'] = dict()

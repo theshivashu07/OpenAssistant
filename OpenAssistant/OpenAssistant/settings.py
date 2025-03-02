@@ -27,12 +27,15 @@ DEBUG = True
 
 ALLOWED_HOSTS = ["*"]
 
+
 # ADD - these below lines are only for set another address+port for our website
 from django.core.management.commands.runserver import Command as runserver        # adding  
 runserver.default_port = '8080'        # <-- Your port                                                                      # adding  
 runserver.default_port = '1234'        # <-- Your port                                                                       # adding  
 # runserver.default_addr = '127.0.0.1'                                                                                               # adding  
 runserver.default_addr = 'localhost'                                                                                                  # adding  
+
+
 
 
 
