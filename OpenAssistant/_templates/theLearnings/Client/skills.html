@@ -5,7 +5,8 @@
 
 
 {% block tcontent %}
-Testing@ | Learnings | OpenAssistant
+{{Articals.CenteredDetails.head.topic}} - {{Articals.CenteredDetails.head.subheading}} - {{Articals.CenteredDetails.head.heading}}
+| Learnings | OpenAssistant
 {% endblock %}
 
 
@@ -192,15 +193,18 @@ Testing@ | Learnings | OpenAssistant
                                                        }
 
                                                        p:has(+pre){
-                                                            background-color: #fbfbfb;
-                                                            border-radius: 12px 12px 0 0;
-                                                            color: black;
-                                                            margin-top: 15px;
-                                                            margin-bottom: 2px !important;
-                                                            border: 1px solid #e2e2e2;
-                                                            font-weight: bold;
-                                                            padding: .8rem 1.5rem;
-                                                            padding-top: 1rem;
+                                                            /* background-color: #fbfbfb; */
+                                                            /* border-radius: 10px 10px 0 0; */
+                                                            /* color: black; */
+                                                            /* margin-top: 15px; */
+                                                            /* margin-bottom: 2px !important; */
+                                                            /* border: 1px solid #e2e2e2; */
+                                                            /* font-weight: bold; */
+                                                            /* padding: .8rem 1.5rem; */
+                                                            /* padding-top: 1rem; */
+                                                            /* padding: .2rem 1.5rem; */
+                                                            /* padding-top: .8rem; */
+                                                            /* background-color: dimgray; */
                                                             }
 
 
@@ -272,6 +276,8 @@ Testing@ | Learnings | OpenAssistant
                                                                  margin: 0;
                                                                  /* margin-bottom: 25px; */
                                                                  margin-bottom: 10px;
+                                                                 /* border-radius: 0 0 5px 5px; */
+                                                                 /* background-color: dimgray; */
                                                             }
                                                             
 
@@ -502,7 +508,7 @@ Testing@ | Learnings | OpenAssistant
 
                                                   </style> -->
 
-                                                  
+<!--                                                   
 <script>
      // Select all <p> tags that have a <pre> sibling immediately after
      document.querySelectorAll("p:has(+pre)").forEach((pTag) => {
@@ -532,7 +538,64 @@ Testing@ | Learnings | OpenAssistant
          });
        });
      });
+   </script> -->
+
+            
+<script>
+     // Select all <p> tags that have a <pre> sibling immediately after
+     document.querySelectorAll("content>pre").forEach((pre) => {
+       // Create the copy button
+       const copyButton = document.createElement("button");
+       copyButton.className = "btn btn-light";
+       copyButton.style.padding = "0";
+       copyButton.innerHTML = '<i class="fa-solid fa-copy" style="color: dimgray;"></i>';
+   
+       // Add the button to the right of the <p> tag
+       pTag.style.display = "flex";
+       pTag.style.justifyContent = "space-between";
+       pTag.appendChild(copyButton);
+   
+       // Add the copy functionality
+       copyButton.addEventListener("click", () => {
+         const preTag = pTag.nextElementSibling; // Get the <pre> right after the <p>
+         const code = preTag.innerText.trim(); // Extract the code text
+         navigator.clipboard.writeText(code).then(() => {
+           copyButton.innerHTML = 'Copied!';
+          //  copyButton.innerHTML = '<i class="fa-solid fa-check" style="color: dimgray;">';
+           setTimeout(() => {
+             copyButton.innerHTML = '<i class="fa-solid fa-copy" style="color: dimgray;"></i>';
+           }, 2000);
+         }).catch(err => {
+           console.error("Failed to copy: ", err);
+         });
+       });
+     });
    </script>
+
+
+
+<script>
+
+// Select all .content divs
+document.querySelectorAll('.content').forEach(div => {
+    // For each <pre> inside the div
+    div.querySelectorAll('pre').forEach(pre => {
+        const code = pre.querySelector('code');
+
+        // Proceed only if code exists AND has no class attribute
+        if (code && !code.hasAttribute('class')) {
+            // Update <pre> tag
+            pre.classList.add('language-sql');
+            pre.setAttribute('tabindex', '0');
+
+            // Set the correct class on <code> tag
+          //   code.className = 'language-sql hljs';
+        }
+    });
+});
+
+
+</script>
    
 
                                                   {% else %}
@@ -567,10 +630,6 @@ Testing@ | Learnings | OpenAssistant
           </div>
 
 </div>
-
-
-
-
 
 
 

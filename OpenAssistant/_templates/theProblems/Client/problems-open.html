@@ -1,0 +1,746 @@
+{% extends '_master.html' %} {% block tcontent %} Open Problem | OpenAssistant
+{% endblock %} {% block headerplusplus %} {% include '_header.html' %} {%
+endblock %} {% block childcontent %}
+
+<div class="edge" style="background-color: white; margin: 0; padding: 0">
+  <div
+    class="row"
+    style="
+      margin: 0;
+      padding: 0; /*padding-top: 12px;*/
+      background-color: #f8f8f8;
+      background-color: #fdfdfd;
+    "
+  >
+    <div
+      class="col-md-12"
+      style="padding: 0; margin: 0; background-color: white"
+    >
+      <div class="scrollbar-cover col-md-12" style="margin: 0; padding: 0 12px">
+        <div class="scrollbar-outer">
+          <div class="scrollbar col-md-auto">
+            <div class="scrollbar-inner">
+              {% for keys,values in DataSets.items %} {% for object in values %}
+              <div class="scrollbar-box">
+                <a
+                  class="scrollbar-link {% if request.path == object.path %} active {% endif %}"
+                  href="{{object.path}}"
+                >
+                  {{object.name}}
+                </a>
+              </div>
+              {% endfor %} {% endfor %}
+            </div>
+          </div>
+        </div>
+        <style>
+          .scrollbar-cover {
+            background-color: white;
+            border: 1px solid #f0f0f0;
+          }
+
+          .scrollbar-outer {
+            /*background-color: #f8f8f8;*/
+            /* background-color: white;  */
+            /* border: 1px solid #f0f0f0;  */
+          }
+
+          .scrollbar {
+            border: 1px solid #fbfbfb;
+            overflow-x: auto;
+            padding: 2px 10px;
+          }
+
+          .scrollbar-inner {
+            /*background-color: #f8f8f8;*/
+            padding: 5px 20px;
+            display: flex;
+            width: max-content;
+          }
+
+          .scrollbar::-webkit-scrollbar {
+            width: 0;
+            height: 0;
+          }
+
+          .scrollbar-box {
+            padding: 2px;
+            /* margin: 0 5px;  */
+            margin: 0 2px;
+            width: fit-content;
+            border-radius: 25px;
+            font-size: smaller;
+            background-color: white;
+            background-color: #fdfdfd;
+            border: 1px solid #f8f8f8;
+          }
+
+          .scrollbar-link {
+            border-radius: 25px;
+            padding: 5px 10px;
+            color: black;
+            text-decoration: auto;
+          }
+
+          .scrollbar-link:hover {
+            color: white;
+            background-color: black;
+          }
+
+          .scrollbar-link.active {
+            color: white;
+            background-color: black;
+          }
+        </style>
+      </div>
+    </div>
+
+    <!--  -->
+    <div class="col-md-12 edge" style="background-color: white; padding: 0">
+      <div
+        class="edge"
+        style="background-color: #f8f8f8; background-color: #fdfdfd"
+      >
+        <div
+          style="
+            margin: 25px; /* background-color: #f8f8f8; */ /* padding: 50px 25px; */ /* border-radius: 3px; */
+          "
+        >
+          <div class="" style="padding: 20px">
+            <div class="btn-group" style="float: right">
+              <button
+                type="button"
+                class="btn btn-light dropdown-toggle"
+                data-bs-toggle="dropdown"
+                data-bs-display="static"
+                aria-expanded="false"
+              >
+                Options
+              </button>
+              <ul class="dropdown-menu dropdown-menu-lg-end">
+                <li>
+                  <button class="dropdown-item btn-sm" type="button">
+                    Edit Problems
+                  </button>
+                </li>
+                <li>
+                  <button class="dropdown-item btn-sm" type="button">
+                    Delete Problems
+                  </button>
+                </li>
+                <li><hr class="dropdown-divider" /></li>
+                <li>
+                  <button class="dropdown-item btn-sm" type="button">
+                    Add Examples
+                  </button>
+                </li>
+                <li>
+                  <button class="dropdown-item btn-sm" type="button">
+                    Edit Examples
+                  </button>
+                </li>
+                <li>
+                  <button class="dropdown-item btn-sm" type="button">
+                    Edit Constraints
+                  </button>
+                </li>
+                <li>
+                  <button class="dropdown-item btn-sm" type="button">
+                    Edit Time N Space Complexity
+                  </button>
+                </li>
+                <li><hr class="dropdown-divider" /></li>
+                <li>
+                  <button class="dropdown-item btn-sm" type="button">
+                    Add Solutions
+                  </button>
+                </li>
+              </ul>
+            </div>
+            <div style="align-items: center; display: flex">
+              <div
+                class="problem-title"
+                style="
+                  font-weight: bold;
+                  font-size: xx-large;
+                  font-family: Noto Serif; /* font-family: 'Merriweather', serif; */ /*color: darkolivegreen;*/
+                "
+              >
+                <h1 style="font-weight: bold">001. Subarray with given sum</h1>
+              </div>
+            </div>
+          </div>
+          <div
+            style="
+              background-color: white;
+              padding: 25px;
+              border-radius: 10px;
+              font-size: medium;
+              border: 2px solid #f8f8f8;
+              font-family: 'Merriweather';
+            "
+          >
+            <div
+              class=""
+              style="
+                /* background-color: white; */ /* padding: 25px; */ /* border-radius: 10px; */
+                display: flex; /* font-size: medium; */
+              "
+            >
+              <div
+                style="
+                  margin-top: 25px;
+                  padding-right: 20px;
+                  font-size: 14px; /* border-right: groove; */ /* padding-right: 36px; */
+                "
+                class="col-6"
+              >
+                <div
+                  class="tags"
+                  style="
+                    font-size: small;
+                    display: flex;
+                    margin: 0; /* margin: 0 10px; */
+                    margin-bottom: 50px;
+                  "
+                >
+                  <div
+                    class="problem-topics-tags tags"
+                    style="font-weight: bold; font-size: larger"
+                  >
+                    <span class="badge bg-warning text-dark">Python</span>
+                    <span class="badge bg-warning text-dark">C++</span>
+                    <span class="badge bg-warning text-dark">Array</span>
+                    <span class="badge bg-warning text-dark">DP</span>
+                    <span class="badge bg-warning text-dark">Recursion</span>
+                  </div>
+                </div>
+
+                Given an unsorted array A of size N that contains only positive
+                integers, find a continuous sub-array that adds to a given
+                number S and return the left and right index(1-based indexing)
+                of that subarray.
+                <br />
+                In case of multiple subarrays, return the subarray indexes which
+                come first on moving from left to right.
+                <br />
+                <strong>Note:-</strong> You have to return an ArrayList
+                consisting of two elements left and right. In case no such
+                subarray exists return an array consisting of element -1.
+                <br />
+                <br />
+                <strong>Your Task:</strong>
+                You don't need to read input or print anything. The task is to
+                complete the function <code>subarraySum()</code>
+                which takes arr, N, and S as input parameters and returns an
+                ArrayList containing the starting and ending positions of the
+                first such occurring subarray from the left where sum equals to
+                S. The two indexes in the array should be according to 1-based
+                indexing. If no such subarray is found, return an array
+                consisting of only one element that is -1.
+                <br />
+                <br />
+                <div class="" style="margin-top: 10px 0">
+                  <div class="" style="margin-top: 10px 0">
+                    <div
+                      class="bd-example"
+                      style="
+                        margin: 25px 0 0 0;
+                        border: groove white;
+                        border-radius: 5px;
+                      "
+                    >
+                      <div style="/* margin: 100px 0; */">
+                        <div
+                          class="accordion"
+                          id="accordionPanelsStayOpenExample"
+                        >
+                          <div class="accordion-item">
+                            <h2
+                              class="accordion-header"
+                              id="panelsStayOpen-headingOne"
+                            >
+                              <button
+                                class="accordion-button disable"
+                                type="button"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#panelsStayOpen-collapseOne"
+                                aria-expanded="true"
+                                aria-controls="panelsStayOpen-collapseOne"
+                                style="
+                                  background-color: #f8f8f8;
+                                  background-color: #fcfcfc;
+                                  font-weight: bold;
+                                "
+                              >
+                                Example's
+                              </button>
+                              <!-- <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne" style="background-color: #f8f8f8;">Example's</button> -->
+                            </h2>
+                            <div
+                              id="panelsStayOpen-collapseOne"
+                              class="accordion-collapse collapse show"
+                              aria-labelledby="panelsStayOpen-headingOne"
+                              style=""
+                            >
+                              <!-- <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingOne" style=""> -->
+                              <div class="accordion-body">
+                                <br />
+                                <strong> Example 1.</strong>
+                                <br />
+                                <code> Input: </code>
+                                <br />
+                                N = 5, S = 12
+                                <br />
+                                A[] = {1,2,3,7,5}
+                                <br />
+                                <code>Output: </code> 2 4
+                                <br />
+                                <code>Explanation:</code> The sum of elements
+                                from 2nd position to 4th position is 12.
+                                <br />
+                                <br />
+                                <strong> Example 2.</strong>
+                                <br />
+                                <code> Input: </code>
+                                <br />
+                                N = 10, S = 15
+                                <br />
+                                A[] = {1,2,3,4,5,6,7,8,9,10}
+                                <br />
+                                <code>Output: </code> 1 5
+                                <br />
+                                <code>Explanation:</code> The sum of elements
+                                from 1st position to 5th position is 15.
+                                <br />
+                                <br />
+                              </div>
+                            </div>
+                          </div>
+                          <div class="accordion-item">
+                            <h2
+                              class="accordion-header"
+                              id="panelsStayOpen-headingTwo"
+                            >
+                              <button
+                                class="accordion-button collapsed"
+                                type="button"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#panelsStayOpen-collapseTwo"
+                                aria-expanded="false"
+                                aria-controls="panelsStayOpen-collapseTwo"
+                                style="
+                                  background-color: #f8f8f8;
+                                  background-color: #fcfcfc;
+                                  font-weight: bold;
+                                "
+                              >
+                                Constraint's
+                              </button>
+                            </h2>
+                            <div
+                              id="panelsStayOpen-collapseTwo"
+                              class="accordion-collapse collapse"
+                              aria-labelledby="panelsStayOpen-headingTwo"
+                              style=""
+                            >
+                              <div class="accordion-body">
+                                <br />
+                                <strong>Constraints:</strong>
+                                <br />
+                                <code>1 &lt;= N &lt;= 105</code>
+                                <br />
+                                <code>0 &lt;= Ai &lt;= 109</code>
+                                <br />
+                                <code>0&lt;= S &lt;= 109</code>
+                                <br />
+                                <br />
+                              </div>
+                            </div>
+                          </div>
+
+                          <div class="accordion-item">
+                            <h2
+                              class="accordion-header"
+                              id="panelsStayOpen-headingThree"
+                            >
+                              <button
+                                class="accordion-button collapsed"
+                                type="button"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#panelsStayOpen-collapseThree"
+                                aria-expanded="false"
+                                aria-controls="panelsStayOpen-collapseThree"
+                                style="
+                                  background-color: #f8f8f8;
+                                  background-color: #fcfcfc;
+                                  font-weight: bold;
+                                "
+                              >
+                                Time &amp; Space Complexity's
+                              </button>
+                            </h2>
+                            <div
+                              id="panelsStayOpen-collapseThree"
+                              class="accordion-collapse collapse"
+                              aria-labelledby="panelsStayOpen-headingThree"
+                              style=""
+                            >
+                              <div class="accordion-body">
+                                <br />
+                                <strong>Expected Time Complexity:-</strong>
+                                O(N).
+                                <br />
+                                <strong>Expected Auxiliary Space:-</strong>
+                                O(1).
+                                <br />
+                                <br />
+                              </div>
+                            </div>
+                          </div>
+                          <div class="accordion-item">
+                            <h2
+                              class="accordion-header"
+                              id="panelsStayOpen-headingFour"
+                            >
+                              <button
+                                class="accordion-button collapsed"
+                                type="button"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#panelsStayOpen-collapseFour"
+                                aria-expanded="false"
+                                aria-controls="panelsStayOpen-collapseFour"
+                                style="
+                                  background-color: #f8f8f8;
+                                  background-color: #fcfcfc;
+                                  font-weight: bold;
+                                "
+                              >
+                                Given Link's
+                              </button>
+                            </h2>
+                            <div
+                              id="panelsStayOpen-collapseFour"
+                              class="accordion-collapse collapse"
+                              aria-labelledby="panelsStayOpen-headingFour"
+                              style=""
+                            >
+                              <div class="accordion-body">
+                                <br />
+                                <strong>Link :-</strong>?
+                                <br />
+                                <br />
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              <div
+                class="bd-example col-md-6"
+                style="
+                  background-color: #f8f8f8;
+                  /* padding: 25px; */
+                  /* margin-top: 20px; */
+                  border-radius: 10px;
+                "
+              >
+                <div
+                  class="align-items-start"
+                  style="
+                    overflow: hidden;
+                    background-color: #f8f8f8; /* padding: 15px; */
+                    border-radius: 5px;
+                    padding: 10px;
+                  "
+                >
+                  <div
+                    class="nav d-flex flex-row nav-pills"
+                    id="v-pills-tab"
+                    role="tablist"
+                    aria-orientation="vertical"
+                    style="
+                      /* padding: 5px; */ /* padding-bottom: 0; */ /* display: flex; */
+                    "
+                  >
+                    <div
+                      class="nav d-flex nav-pills"
+                      id="v-pills-tab"
+                      role="tablist"
+                      aria-orientation="vertical"
+                      style="
+                        /* padding: 10px; */
+                        display: flex;
+                        background-color: black;
+                        background-color: #fcfcfc;
+                        background-color: #0000e5;
+                        background-color: #fcfcfc; /* border: groove white; */ /* border-radius: 5px; */
+                        border-radius: 5px 5px 0 0;
+                        width: -webkit-fill-available;
+                        padding: 5px;
+                        font-family: 'Philosopher';
+                      "
+                    >
+                      <spen
+                        style="
+                          padding: 5px;
+                          padding-left: 15px;
+                          padding-right: 25px;
+                          color: blue;
+                          color: black;
+                          font-weight: bold;
+                          font-size: larger;
+                          text-decoration: underline;
+                          font-variant: small-caps;
+                        "
+                      >
+                        Approches
+                        <spen style="font-size: small">:-</spen>
+                      </spen>
+                      <button
+                        class="nav-link"
+                        id="v-pills-home-tab"
+                        data-bs-toggle="pill"
+                        data-bs-target="#v-pills-home"
+                        type="button"
+                        role="tab"
+                        aria-controls="v-pills-home"
+                        aria-selected="false"
+                        style=""
+                      >
+                        @top1
+                      </button>
+                      <button
+                        class="nav-link active"
+                        id="v-pills-profile-tab"
+                        data-bs-toggle="pill"
+                        data-bs-target="#v-pills-profile"
+                        type="button"
+                        role="tab"
+                        aria-controls="v-pills-profile"
+                        aria-selected="true"
+                      >
+                        @top2
+                      </button>
+                      <button
+                        class="nav-link"
+                        id="v-pills-messages-tab"
+                        data-bs-toggle="pill"
+                        data-bs-target="#v-pills-messages"
+                        type="button"
+                        role="tab"
+                        aria-controls="v-pills-messages"
+                        aria-selected="false"
+                      >
+                        @top3
+                      </button>
+                      <button
+                        class="nav-link"
+                        id="v-pills-settings-tab"
+                        data-bs-toggle="pill"
+                        data-bs-target="#v-pills-settings"
+                        type="button"
+                        role="tab"
+                        aria-controls="v-pills-settings"
+                        aria-selected="false"
+                        style="/* padding: 0px; */ /* margin: 0px; */"
+                      >
+                        @top4
+                      </button>
+                    </div>
+                  </div>
+                  <div
+                    style="
+                      padding: 15px; /* border: solid blue; */ /* border: solid black; */
+                      border: solid #fcfcfc;
+                      border-radius: 5px;
+                      border-radius: 0 0 5px 5px;
+                    "
+                  >
+                    <div
+                      class="tab-content"
+                      id="v-pills-tabContent"
+                      style="
+                        /* background-color: #ffffff; */
+                        border-radius: 5px;
+                        /* padding: 20px 10px; */
+                        padding: 10px 5px;
+                        /* margin-top: 13px; */
+                        /* margin: 15px 0; */
+                        font-size: smaller;
+                      "
+                    >
+                      <div
+                        class="tab-pane fade active show"
+                        id="v-pills-profile"
+                        role="tabpanel"
+                        aria-labelledby="v-pills-profile-tab"
+                      >
+                        <spen
+                          style="
+                            font-weight: bold;
+                            color: blue;
+                            padding-bottom: 10px;
+                            font-size: 15px;
+                            text-decoration: underline;
+                            /* color: darkolivegreen; */
+                          "
+                          >Detailed discription about our applied approch
+                          :-</spen
+                        >
+
+                        <p style="margin: 0.2rem 0">
+                          <strong
+                            >This is some placeholder content the Profile tab's
+                            associated content.</strong
+                          >
+                          Clicking another tab will toggle the visibility of
+                          this one for the next. The tab JavaScript swaps
+                          classes to control the content visibility and styling.
+                          You can use it with tabs, pills, and any other
+                          <code>.nav</code>-powered navigation.
+                        </p>
+                      </div>
+                    </div>
+                    <div
+                      class="bd-example"
+                      style="
+                        background-color: #ffffff;
+                        padding: 5px;
+                        /* margin-top: 0; */
+                        border-radius: 5px;
+                        /* margin: 20px; */
+                        /* margin-top: 0; */
+                        min-height: 300px;
+                      "
+                    >
+                      <div class="align-items-start" style="overflow: hidden">
+                        <div
+                          class="nav d-flex flex-row nav-pills"
+                          id="v-pills-tab"
+                          role="tablist"
+                          aria-orientation="vertical"
+                          style="
+                            border-radius: 2px;
+                            background-color: #fbfbfb;
+                            padding: 5px 15px;
+                            font-family: 'Philosopher';
+                          "
+                        >
+                          <button
+                            class="nav-link btn-sm"
+                            id="v-pills-home-tab"
+                            data-bs-toggle="pill"
+                            data-bs-target="#v-pills-home"
+                            type="button"
+                            role="tab"
+                            aria-controls="v-pills-home"
+                            aria-selected="false"
+                          >
+                            C++
+                          </button>
+                          <button
+                            class="nav-link btn-sm active"
+                            id="v-pills-profile-tab"
+                            data-bs-toggle="pill"
+                            data-bs-target="#v-pills-profile"
+                            type="button"
+                            role="tab"
+                            aria-controls="v-pills-profile"
+                            aria-selected="true"
+                          >
+                            Python
+                          </button>
+                          <button
+                            class="nav-link btn-sm"
+                            id="v-pills-messages-tab"
+                            data-bs-toggle="pill"
+                            data-bs-target="#v-pills-messages"
+                            type="button"
+                            role="tab"
+                            aria-controls="v-pills-messages"
+                            aria-selected="false"
+                          >
+                            Java
+                          </button>
+                          <button
+                            class="nav-link btn-sm"
+                            id="v-pills-settings-tab"
+                            data-bs-toggle="pill"
+                            data-bs-target="#v-pills-settings"
+                            type="button"
+                            role="tab"
+                            aria-controls="v-pills-settings"
+                            aria-selected="false"
+                          >
+                            JavaScript
+                          </button>
+                        </div>
+                        <div
+                          class="tab-content"
+                          id="v-pills-tabContent"
+                          style="
+                            background-color: #ffffff;
+                            border-radius: 5px;
+                            padding: 0 20px;
+                            margin-top: 5px;
+                            margin: 15px 0;
+                            font-size: small;
+                          "
+                        >
+                          <div
+                            class="tab-pane fade active show"
+                            id="v-pills-home"
+                            role="tabpanel"
+                            aria-labelledby="v-pills-home-tab"
+                            style=""
+                          >
+                            <p>a</p>
+                          </div>
+                          <div
+                            class="tab-pane fade"
+                            id="v-pills-profile"
+                            role="tabpanel"
+                            aria-labelledby="v-pills-profile-tab"
+                          >
+                            <p>ab</p>
+                          </div>
+                          <div
+                            class="tab-pane fade"
+                            id="v-pills-messages"
+                            role="tabpanel"
+                            aria-labelledby="v-pills-messages-tab"
+                          >
+                            <p>abc</p>
+                          </div>
+                          <div
+                            class="tab-pane fade"
+                            id="v-pills-settings"
+                            role="tabpanel"
+                            aria-labelledby="v-pills-settings-tab"
+                          >
+                            <p>abcd</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+            </div>
+          </div>
+        </div>
+
+        <div style="margin: 100px 0"></div>
+      </div>
+    </div>
+    <!--  -->
+  </div>
+</div>
+
+{% endblock %}

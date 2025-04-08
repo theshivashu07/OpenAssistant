@@ -25,6 +25,11 @@ import API.Code.Management.Messages as __Messages
 import API.Code.Management.Sessions as __Sessions
 
 
+
+
+
+
+
 # def index(request):
 # 	return HttpResponse("Hey there, This is <b>Client</b>  ( from Home App ) !!!");
 
@@ -115,11 +120,18 @@ def signup(request):
 
 def login(request): 
 
+	# if user is already logged in, then redirect to home page...
+	# we have two ways of login, so may you login
+	# if request.user.is_authenticated:
+	# 	Login(request,request.user.username)
+	# 	print(f"new user is logged in !!!  {request.user.username}")
+	# 	return redirect("/") 
+	
 	if request.method == "POST":
 		next = filterValue(request.POST.get('next',None))
 		print('NEXT :',next)
 		LogInObject = __LogIn.__LogIn(
-			request = request,
+			request = request, 
 			user = filterValue(request.POST.get('user',None)),
 			by = filterValue(request.POST.get('by',None)),
 			password = filterValue(request.POST.get('password',None)),
@@ -172,6 +184,11 @@ def login(request):
 				}
 				ReturningData['values'] = values
 				break 
+	
+	if request.user.is_authenticated:
+		print(dir(request.user))
+		print(request.user,request.user.username,request.user.email,request.user.first_name,request.user.last_name,request.user.is_authenticated,request.user.is_active,request.user.is_staff,request.user.is_superuser)
+	
 	return render(request,"home/login.html", ReturningData); 
 
 def logout(request): 
@@ -183,9 +200,57 @@ def logout(request):
 		password = filterValue(request.POST.get('password',None)),
 		check = filterValue(request.POST.get('check',None)),
 	)
+
 	return redirect('/security/login/')
 	# ReturningData = dict() 
 	# return render(request,"home/logout.html", ReturningData); 
+
+
+
+from django.contrib.auth.models import User
+
+def profilesetup(request): 
+	print(dir(request.user))
+
+	if request.method == "POST":
+
+		user = request.POST.get('user',None) 
+		user = User.objects.filter(Username=user).first()
+		
+		# if user:
+		if user:
+			# user.FirstName = request.POST.get('firstname',None)
+			# user.LastName = request.POST.get('lastname',None)
+			# # user.Mobile = request.POST.get('mobile',None)
+			# user.Email = request.POST.get('email',None)
+			# user.Username = request.POST.get('username',None)
+			user.Password = request.POST.get('password',None)
+			# user.PasswordAgain = request.POST.get('passwordagain',None)
+			# # user.Profile = request.POST.get('profile',None)
+			# # user.isChecked = request.POST.get('check',None)
+			# # user.isActive = request.POST.get('active',None)
+			# user.save()
+			print("User from POST !!!")
+			# return redirect("/")
+			return signup(request)
+
+	print("User from GET !!!")
+
+	ReturningData = dict() 
+	ReturningData['values'] = {
+		'firstname' : request.user.first_name,
+		'lastname' : request.user.last_name,
+		# 'mobile' : request.user.mobile,
+		'email' : request.user.email,
+		'username' : request.user.username,
+		'password' : request.user.password,
+		'passwordagain' : request.user.password,
+		# 'profile' : request.user.profile,
+		# 'check' : request.user.isChecked,
+		# 'active' : request.user.isActive,
+	}
+	return render(request,"home/profile-setup.html", ReturningData); 
+
 
 def resetpassword(request): 
 	ReturningData = dict() 

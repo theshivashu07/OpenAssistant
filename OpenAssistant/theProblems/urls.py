@@ -5,6 +5,9 @@ from . import views
 urlpatterns=[
 		path('',views.index,name='index'),
 		# path('index/',views.index,name='index'),
+                    
+
+		path('openproblem/',views.openproblem,name='openproblem'),
 
 		path('<str:from_>/',views.problems_from_,name='problems_from_'),
                     

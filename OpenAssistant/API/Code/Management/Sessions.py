@@ -30,6 +30,8 @@ def Authenticate(username,password):
                 return users[0]
         return False
 
+
+
 # that is decorator and the arguments you pass on it, all these are same like normal function...
 def LoginRequired( function=None, login_url=None ):
         # and on that function, which argument we mention here, those are the original function, which we want to call...

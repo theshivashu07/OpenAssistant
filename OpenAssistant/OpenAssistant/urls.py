@@ -23,10 +23,15 @@ from theLearnings.views import fast404
 handler404 = 'theLearnings.views.handler404'  
 
 
+from Home.views_google import google_login
 
 urlpatterns = [
  
     path('admin/', admin.site.urls),
+
+    # all auth - google, facebook, github
+    path('accounts/', include('allauth.urls')), 
+    path("google-login/", google_login, name="google_login"),
 
     # path('Admin/', include('Admin.urls')),
     path('developer/', include('Admin.urls')),
@@ -51,7 +56,6 @@ urlpatterns = [
 
     # path('fast404/', include('theLearnings.views.fast404')),
     path('fast404/', fast404, name='fast404'),
-
     
 ]
 

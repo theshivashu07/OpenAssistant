@@ -2,7 +2,31 @@ from django.urls import path
 from . import views
 
 
-urlpatterns=[
+
+
+
+from django.urls import path, include
+from rest_framework.routers import DefaultRouter
+from .views import SkillViewSet, SkillOfViewSet, HeadingViewSet, SubheadingViewSet, TopicViewSet
+
+router = DefaultRouter()
+router.register(r'skills', SkillViewSet)
+router.register(r'skillof', SkillOfViewSet)
+router.register(r'headings', HeadingViewSet)
+router.register(r'subheadings', SubheadingViewSet)
+router.register(r'topics', TopicViewSet)
+
+urlpatterns = [
+    path('api/', include(router.urls)),
+]
+
+
+
+
+
+
+
+urlpatterns += [
 		path('',views.index,name='index'),
                     
 		
@@ -29,9 +53,6 @@ urlpatterns=[
 
 
 ]
-
-
-
 
 
 

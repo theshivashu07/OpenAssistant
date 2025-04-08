@@ -30,9 +30,11 @@ def index(request):
         if skill:
                 skillobj = Skill.objects.filter(name__iexact=skill)
                 if skillobj:
-                        topics = TopicHeadings.objects.filter( skill=skillobj.first() )
+                       return redirect('/learnings/'+skillobj.first().skillsof.slugs+'/'+skillobj.first().slugs+'/')
                 else:
                         return redirect(request.path)
+                
+
                 ReturningData['topics'] = topics 
                 ReturningData['Articals'] = dict()
                 ReturningData['Articals']['Scrollbar'] = builder.getScrollbarDetails(request) 
@@ -212,3 +214,38 @@ def fast404(request):
         return render(request,"_404.html",ReturningData); 
         # return redirect('/fast404/')
 
+
+
+
+
+################################################################################
+
+
+
+
+
+
+
+from rest_framework import viewsets
+# from .models import Skill, SkillOf, TopicHeadings, TopicSubHeadings, Topic
+from .serializers import SkillSerializer, SkillOfSerializer, HeadingSerializer, SubheadingSerializer, TopicSerializer
+
+class SkillViewSet(viewsets.ModelViewSet):
+    queryset = Skill.objects.all()
+    serializer_class = SkillSerializer
+
+class SkillOfViewSet(viewsets.ModelViewSet):
+    queryset = SkillOf.objects.all()
+    serializer_class = SkillOfSerializer
+
+class HeadingViewSet(viewsets.ModelViewSet):
+    queryset = TopicHeadings.objects.all()
+    serializer_class = HeadingSerializer
+
+class SubheadingViewSet(viewsets.ModelViewSet):
+    queryset = TopicSubHeadings.objects.all()
+    serializer_class = SubheadingSerializer
+
+class TopicViewSet(viewsets.ModelViewSet):
+    queryset = Topic.objects.all()
+    serializer_class = TopicSerializer

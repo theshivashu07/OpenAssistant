@@ -1,0 +1,173 @@
+
+ 
+{% extends '_master.html' %}
+
+
+
+
+{% block tcontent %}
+Profile Setup | OpenAssistant
+{% endblock %}
+
+
+
+{% block headerplusplus %}
+
+{% include '_header.html' %}
+
+{% endblock %}
+
+
+
+
+{% block childcontent %}
+
+
+
+
+
+
+
+<div class="edge " style="background-color: #f8f8f8;background-color: #fdfdfd;">
+	<div style="padding: 25px;background-color: #f8f8f8;background-color: #fcfcfc;background-color: white;/* padding: 50px 25px; */border-radius: 10px;">
+		<div class="row">
+			<div class="col-sm-12" style="margin: 50px 0;">
+				<div class="row">
+					<div class="col-sm-3"></div>
+					<!-- <div class="col-sm-6" style="text-align: center;"> -->
+					<div class="col-sm-6" style="">
+						<h1 style="
+							font-weight: bold;
+							"> Profile Setup </h1>
+						<h6>To explore this site, not must to setup your profile.</h6>
+						<br><br>
+
+						<form class="row row-cols-lg-auto g-3 align-items-center"  method="POST" action="{{request.path}}">
+                        				{% csrf_token %}
+							<div class="row">
+								<div class="col-12">
+									<div class="row">
+										<div class="col-12 g-2">
+											<div class="row">
+												<div class="col-4">
+													<label class="col-form-label" style="
+														font-weight: bold;
+														"> Your Name </label>
+												</div>
+												<div class="col-4">
+													<input type="text" id="firstname" name="firstname" class="form-control" {% if values.firstname %} value='{{values.firstname}}' {% endif %} placeholder="First Name" autofocus required>
+												</div>
+												<div class="col-4">
+													<input type="text" id="lastname" name="lastname" class="form-control" {% if values.lastname %} value='{{values.lastname}}' {% endif %} placeholder="Last Name" required>
+												</div>
+											</div>
+										</div>
+										<div class="col-12 g-2">
+											<div class="row">
+												<div class="col-4">
+													<label class="col-form-label" style="
+														font-weight: bold;
+														"> Mobile Number </label>
+												</div>
+												<div class="col-8">
+													<input type="number" id="mobile" name="mobile" class="form-control" {% if values.mobile %} value='{{values.mobile}}' {% endif %} placeholder="78985650xx" required>
+												</div>
+											</div>
+										</div>
+										<div class="col-12 g-2">
+											<div class="row">
+												<div class="col-4">
+													<label class="col-form-label" style="
+														font-weight: bold;
+														"> Email Id </label>
+												</div>
+												<div class="col-8">
+													<input type="email" id="email" name="email" class="form-control" {% if values.email %} value='{{values.email}}' {% endif %} placeholder="theshivashu07@gmail.com" required>
+												</div>
+											</div>
+										</div>
+										<div class="col-12 g-2">
+											<div class="row">
+												<div class="col-4">
+													<label class="col-form-label" style="
+														font-weight: bold;
+														"> Username </label>
+												</div>
+												<div class="col-8">
+													<input type="text" id="username" name="username" class="form-control" {% if values.username %} value='{{values.username}}' {% endif %} placeholder="theshivashu07" required>
+												</div>
+											</div>
+										</div>
+										<div class="col-12 g-2">
+											<div class="row">
+												<div class="col-4">
+													<label class="col-form-label" style="
+														font-weight: bold;
+														"> Password</label>
+												</div>
+												<div class="col-8">
+													<input type="password" id="password" name="password" class="form-control" {% if values.password %} value='{{values.password}}' {% endif %} placeholder="**********" required>
+												</div>
+											</div>
+										</div>
+										<div class="col-12 g-2">
+											<div class="row">
+												<div class="col-4">
+													<label class="col-form-label" style="
+														font-weight: bold;
+														"> Password Again</label>
+												</div>
+												<div class="col-8">
+													<input type="password" id="passwordagain" name="passwordagain" class="form-control" {% if values.passwordagain %} value='{{values.passwordagain}}' {% endif %} placeholder="**********" required>
+													<div id="passwordHelpBlock" class="form-text">
+														Your password must be 8-20 characters long, contain letters and numbers, 
+														and must not contain spaces, special characters, or emoji.
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<br>
+								<div class="col-12 g-5">
+									<div class="form-check">
+										<!-- <input class="form-check-input" type="checkbox" name="check" id="check" required> -->
+										<input class="form-check-input" type="checkbox" name="check" id="check" {% if values.check %} checked {% endif %} >
+										<label class="form-check-label" for="check">
+										Remember me
+										</label>
+									</div>
+								</div>
+								<div class="d-grid gap-2 col-12 mx-auto g-2">
+									<input class="btn btn-primary" type="submit" style="font-weight: bold;" value="Sign Up"> 
+									<!-- <button class="btn btn-primary" type="button" style=" font-weight: bold;">Sign Up</button> -->
+									<div class="col-12" style="text-align: center;">
+										Already a member?? <a href="/security/login/" style="
+											font-weight: bold;
+											">LogIn</a>
+									</div>
+								</div>
+							</div>
+						</form>
+					</div>
+					<div class="col-sm-3"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div style="margin: 100px 0;">
+	</div>
+</div>
+
+
+
+
+
+{% endblock %}
+
+
+
+
+
+
+

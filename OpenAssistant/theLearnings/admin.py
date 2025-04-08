@@ -43,7 +43,8 @@ admin.site.register(TopicHeadings, TopicHeadingsAdmin)
 # admin.site.register(Skills)
 class TopicSubHeadingsAdmin(admin.ModelAdmin):
     fields = [ 'skill', 'headings', 'name' ] 
-    list_display = [ 'id', 'skill', 'headings', 'name', 'slug', 'slugs' ] 
+    # list_display = [ 'id', 'skill', 'headings', 'name', 'slug', 'slugs' ] 
+    list_display = [ 'id', 'skill', 'name', 'slug', 'slugs' ] 
     def __str__(self):
         return f"{self.name}" 
 admin.site.register(TopicSubHeadings, TopicSubHeadingsAdmin)
@@ -52,7 +53,8 @@ admin.site.register(TopicSubHeadings, TopicSubHeadingsAdmin)
 # admin.site.register(Skills)
 class TopicAdmin(admin.ModelAdmin):
     fields = [ 'USER', 'skill', 'headings', 'subheadings', 'title', 'content', 'discription' ] 
-    list_display = [ 'id', 'USER', 'skill', 'headings', 'subheadings', 'title', 'slug', 'slugs', 'updationdate' ] 
+    # list_display = [ 'id', 'USER', 'skill', 'headings', 'subheadings', 'title', 'slug', 'slugs', 'updationdate' ] 
+    list_display = [ 'id', 'title',  'updationdate' ] 
     def __str__(self): 
         return f"{self.name}" 
 admin.site.register(Topic, TopicAdmin) 

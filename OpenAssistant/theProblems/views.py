@@ -35,6 +35,17 @@ def problems_from_(request,from_):
         return render(request,"theproblems/client/problems-testing.html",ReturningData); 
 
 
+# @LoginRequired(login_url="/security/login/") 
+def openproblem(request): 
+        ReturningData = dict()
+        ProblemsRUN( dictionary=ReturningData)
+        ReturningDatabase(request,ReturningData)
+        # return render(request,"theproblems/client/problems.html",ReturningData); 
+        # return render(request,"theproblems/client/problems-open.html",ReturningData); 
+        return render(request,"theproblems/client/problems-open-new.html",ReturningData); 
+        # return render(request,"theproblems/client/problems-solution-only.html",ReturningData); 
+
+
 
 
 

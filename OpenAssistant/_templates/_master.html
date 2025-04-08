@@ -58,13 +58,13 @@
 				/* transform: translateX(-100%); */
 				display: none; /* Or use transform: translateX(-100%) if needed */
 			}
+			/*
 			.col-md-2{
-				
 				flex: 0 0 25%;
 				transition: transform 0.5s ease-in-out;
 				background-color: #fbfbfb;
 				border-right: 2px solid #f4f4f4;
-				/* display: flex; */
+				display: flex;
 				justify-content: center;
 			}
 			.col-md-10{				
@@ -74,6 +74,7 @@
 				-webkit-box-align: center;
 				-webkit-align-items: center;
 			}
+			*/
 
 
 			
@@ -376,18 +377,52 @@ function checkNetworkStatus() {
 
 
 
-{% block scriptcontent %}
+		{% block scriptcontent %}
 		
 		{% endblock %}
 
 
 
+		<!-- How to Hide the Popup for Logged-in Users? -->
+		 
+		{% if not user.is_authenticated %}
+		<script src="https://accounts.google.com/gsi/client" async defer></script>
+		<script>
+		  window.onload = function () {
+		    google.accounts.id.initialize({
+		      client_id: "YOUR_GOOGLE_CLIENT_ID",
+		      callback: handleCredentialResponse
+		    });
+		
+		    google.accounts.id.prompt(); // Show only for non-authenticated users
+		  };
+		
+		  function handleCredentialResponse(response) {
+		    fetch("/google-login/", {
+		      method: "POST",
+		      headers: { "Content-Type": "application/json" },
+		      body: JSON.stringify({ token: response.credential }),
+		    })
+		    .then(res => res.json())
+		    .then(data => {
+		      if (data.success) {
+		        window.location.href = "/dashboard/";
+		      } else {
+		        alert("Login failed!");
+		      }
+		    });
+		  }
+		</script>
+		{% endif %}
+		
 
 		      
 
 	</body>
 	<!--end::Body-->
 </html>
+
+
 
 
 

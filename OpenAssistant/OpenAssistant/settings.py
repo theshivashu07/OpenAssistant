@@ -29,13 +29,11 @@ ALLOWED_HOSTS = ["*"]
 
 
 # ADD - these below lines are only for set another address+port for our website
-from django.core.management.commands.runserver import Command as runserver        # adding  
+from django.core.management.commands.runserver import Command as runserver        # type: ignore # adding  
 runserver.default_port = '8080'        # <-- Your port                                                                      # adding  
 runserver.default_port = '1234'        # <-- Your port                                                                       # adding  
 # runserver.default_addr = '127.0.0.1'                                                                                               # adding  
 runserver.default_addr = 'localhost'                                                                                                  # adding  
-
-
 
 
 
@@ -55,6 +53,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
+
+    'rest_framework',
     
     'ckeditor',
     'ckeditor_uploader',
@@ -66,7 +67,24 @@ INSTALLED_APPS = [
     'theArticals',
     'theProblems',
     'theLearnings',
+
+
+    
+    # 'google-auth',
+    
+    # all auth - google, facebook, github
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.google', 
+    # 'allauth.socialaccount.providers.facebook',
+    # 'allauth.socialaccount.providers.github',
+    # 'allauth.socialaccount.providers.twitter',
+    # 'allauth.socialaccount.providers.linkedin',
+    # 'allauth.socialaccount.providers.instagram',
 ]
+
+# CSRF_TRUSTED_ORIGINS = ['http://localhost:1234']
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -76,6 +94,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    
+    "allauth.account.middleware.AccountMiddleware", 
 ]
 
 ROOT_URLCONF = 'OpenAssistant.urls'
@@ -91,6 +111,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                # all auth - google, facebook, github
+                'django.template.context_processors.request',
             ],
         },
     },
@@ -177,9 +199,7 @@ MESSAGE_TAGS = {                                                                
 
 
 CKEDITOR_BASEPATH = "/_static/ckeditor/ckeditor/"
-
 CKEDITOR_UPLOAD_PATH = "/_static/ckeditor/ckeditor/"
-
 CKEDITOR_UPLOAD_PATH = "uploads/"
 CKEDITOR_IMAGE_BACKEND = "pillow"
 
@@ -194,11 +214,52 @@ CKEDITOR_CONFIGS = {
 }
 
 
+# all auth - google, facebook, github
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBackend',
+]
+
+
+# all auth - google, facebook, github
+SITE_ID = 2
 
 
 
+# Provider specific settings
+SOCIALACCOUNT_PROVIDERS = {
+    'google': {
+            'SCOPE'  : [
+                    'profile', 
+                    'email',
+            ],
+            'AUTH_PARAMS': {
+                    'access_type': 'online',
+            },
+    }
+}
 
 
 
+LOGIN_REDIRECT_URL = "/"
+LOGOUT_REDIRECT_URL = "/security/login/"
+
+ACCOUNT_SIGNUP_REDIRECT_URL = '/security/profile-setup/'  # New user goes here
+ACCOUNT_LOGIN_REDIRECT_URL = '/'       # Existing user goes here 
+ACCOUNT_LOGOUT_REDIRECT_URL = '/security/login/'          # Logout here 
 
 
+# LOGIN_REDIRECT_URL = "/"
+# ACCOUNT_LOGOUT_REDIRECT_URL = "/"
+# ACCOUNT_EMAIL_VERIFICATION = "none"  # Set to "optional" or "mandatory" if required
+# SOCIALACCOUNT_QUERY_EMAIL = True
+
+
+#  #django-allauth registraion settings 
+# ACCOUNT_EMAIL_CONFIRMATION_EXPIRE_DAYS =1
+# ACCOUNT_EMAIL_REQUIRED = True
+# ACCOUNT_EMAIL_VERIFICATION = "mandatory"
+# ACCOUNT_LOGIN_ATTEMPTS_LIMIT = 5
+  
+# # 1 day 
+# ACCOUNT_LOGIN_ATTEMPTS_TIMEOUT = 86400 

@@ -1,0 +1,336 @@
+{% extends '_master.html' %} 
+
+
+{% block tcontent %} 
+Open Problem | OpenAssistant
+{% endblock %} 
+
+{% block headerplusplus %} 
+{% include '_header.html' %} 
+{% endblock %} 
+
+{% block childcontent %}
+
+
+<div class="edge" style="background-color: white; margin: 0; padding: 0">
+  <div
+    class="row"
+    style="
+      margin: 0;
+      padding: 0; /*padding-top: 12px;*/
+      background-color: #f8f8f8;
+      background-color: #fdfdfd;
+    "
+  >
+    <div
+      class="col-md-12"
+      style="padding: 0; margin: 0; background-color: white"
+    >
+      <div class="scrollbar-cover col-md-12" style="margin: 0; padding: 0 12px">
+        <div class="scrollbar-outer">
+          <div class="scrollbar col-md-auto">
+            <div class="scrollbar-inner">
+              {% for keys,values in DataSets.items %} {% for object in values %}
+              <div class="scrollbar-box">
+                <a
+                  class="scrollbar-link {% if request.path == object.path %} active {% endif %}"
+                  href="{{object.path}}"
+                >
+                  {{object.name}}
+                </a>
+              </div>
+              {% endfor %} {% endfor %}
+            </div>
+          </div>
+        </div>
+        <style>
+          .scrollbar-cover {
+            background-color: white;
+            border: 1px solid #f0f0f0;
+          }
+
+          .scrollbar-outer {
+            /*background-color: #f8f8f8;*/
+            /* background-color: white;  */
+            /* border: 1px solid #f0f0f0;  */
+          }
+
+          .scrollbar {
+            border: 1px solid #fbfbfb;
+            overflow-x: auto;
+            padding: 2px 10px;
+          }
+
+          .scrollbar-inner {
+            /*background-color: #f8f8f8;*/
+            padding: 5px 20px;
+            display: flex;
+            width: max-content;
+          }
+
+          .scrollbar::-webkit-scrollbar {
+            width: 0;
+            height: 0;
+          }
+
+          .scrollbar-box {
+            padding: 2px;
+            /* margin: 0 5px;  */
+            margin: 0 2px;
+            width: fit-content;
+            border-radius: 25px;
+            font-size: smaller;
+            background-color: white;
+            background-color: #fdfdfd;
+            border: 1px solid #f8f8f8;
+          }
+
+          .scrollbar-link {
+            border-radius: 25px;
+            padding: 5px 10px;
+            color: black;
+            text-decoration: auto;
+          }
+
+          .scrollbar-link:hover {
+            color: white;
+            background-color: black;
+          }
+
+          .scrollbar-link.active {
+            color: white;
+            background-color: black;
+          }
+        </style>
+      </div>
+    </div>
+
+    <!--  -->
+    <div class="col-md-12 edge" style="background-color: white; padding: 0">
+      <div
+        class="edge"
+        style="background-color: #f8f8f8; background-color: #fdfdfd; padding:50px;"
+      >
+        <div class="bd-example" style=" background-color: #f8f8f8; /* padding:50px; */ /* margin-top: 20px; */ border-radius: 10px; ">
+                <div class="align-items-start" style="  overflow: hidden; /* background-color: #f8f8f8; */ /* padding: 15px; */ border-radius: 5px; /* padding: 10px; */ ">
+                  <div class="nav d-flex flex-row nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical" style=" /* padding: 5px; */ /* padding-bottom: 0; */ /* display: flex; */ /* background-color: black; */ /* color: white; */ background-color: #fdfdfd; border: solid #f8f8f8; ">
+                    <div class="nav d-flex nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical" style=" /* padding: 10px; */ /* display: flex; */ /* background-color: black; */ /* background-color: #fcfcfc; */ /* background-color: #0000e5; */ /* background-color: #fcfcfc; */ /* border: groove white; */ /* border-radius: 5px; */ border-radius: 5px 5px 0 0; width: -webkit-fill-available; padding: 5px; font-family: 'Philosopher'; ">
+                      <spen style=" padding: 5px; padding-left: 15px; padding-right: 25px; /* color: blue; */ /* color: black; */ font-weight: bold; font-size: larger; text-decoration: underline;  font-variant: small-caps; ">
+                        Approches
+                        <spen style="font-size: small">:-</spen>
+                      </spen>
+                      <button class="nav-link active" id="v-pills-top1-tab" data-bs-toggle="pill" data-bs-target="#v-pills-top1" type="button" role="tab" aria-controls="v-pills-top1" aria-selected="true">
+                        @top1
+                      </button>
+                      <button class="nav-link" id="v-pills-top2-tab" data-bs-toggle="pill" data-bs-target="#v-pills-top2" type="button" role="tab" aria-controls="v-pills-top2" aria-selected="false">
+                        @top2
+                      </button>
+                      <button class="nav-link" id="v-pills-top3-tab" data-bs-toggle="pill" data-bs-target="#v-pills-top3" type="button" role="tab" aria-controls="v-pills-top3" aria-selected="false">
+                        @top3
+                      </button>
+                      <button class="nav-link" id="v-pills-top4-tab" data-bs-toggle="pill" data-bs-target="#v-pills-top4" type="button" role="tab" aria-controls="v-pills-top4" aria-selected="false">
+                        @top4
+                      </button>
+                    </div>
+                  </div>
+                  <div style="padding: 15px; /* border: solid blue; */ border: solid #f8f8f8; /* border: solid #fcfcfc; */border-radius: 5px; border-radius: 0 0 5px 5px; background-color: #f8f8f8;">
+                    <div class="tab-content" id="v-pills-tabContent" style="/* background-color: #ffffff; */ border-radius: 5px; /* padding: 20px 10px; */ padding: 10px 5px; /* margin-top: 13px; */ /* margin: 15px 0; */ font-size: smaller;">
+
+                      <div class="tab-pane fade active show" id="v-pills-top1" role="tabpanel" aria-labelledby="v-pills-top1-tab">
+                        <spen style=" font-weight: bold; color: blue; padding-bottom: 10px; font-size: 15px; text-decoration: underline; /* color: darkolivegreen; */ ">Detailed discription about our applied approch :-</spen>
+
+                        <p style="margin: 0.2rem 0">
+                          <strong>This is some placeholder content the Profile tab's
+                            associated content.</strong>
+                          Clicking another tab will toggle the visibility of
+                          this one for the next. The tab JavaScript swaps
+                          classes to control the content visibility and styling.
+                          You can use it with tabs, pills, and any other
+                          <code>.nav</code>-powered navigation.
+                        </p>
+                        
+                          <div class="bd-example" style="background-color: #ffffff; padding: 5px; /* margin-top: 0; */ border-radius: 5px; /* margin: 20px; */ /* margin-top: 0; */ min-height: 300px; ">
+                              <div class="align-items-start" style="overflow: hidden">
+                                <div class="nav d-flex flex-row nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical" style="border-radius: 2px; background-color: #fbfbf8; padding: 5px 15px; font-family: 'Philosopher';">
+                                  <button class="nav-link btn-sm" id="v-pills-top1-cpp-tab" data-bs-toggle="pill" data-bs-target="#v-pills-top1-cpp" type="button" role="tab" aria-controls="v-pills-top1-cpp" aria-selected="false">
+                                    C++
+                                  </button>
+                                  <button class="nav-link btn-sm active" id="v-pills-top1-python-tab" data-bs-toggle="pill" data-bs-target="#v-pills-top1-python" type="button" role="tab" aria-controls="v-pills-top1-python" aria-selected="true">
+                                    Python
+                                  </button>
+                                  <button class="nav-link btn-sm" id="v-pills-top1-java-tab" data-bs-toggle="pill" data-bs-target="#v-pills-top1-java" type="button" role="tab" aria-controls="v-pills-top1-java" aria-selected="false">
+                                    Java
+                                  </button>
+                                  <button class="nav-link btn-sm" id="v-pills-top1-javascript-tab" data-bs-toggle="pill" data-bs-target="#v-pills-top1-javascript" type="button" role="tab" aria-controls="v-pills-top1-javascript" aria-selected="false">
+                                    JavaScript
+                                  </button>
+                                </div>
+                                <div class="tab-content" id="v-pills-tabContent" style=" background-color: #ffffff; border-radius: 5px; padding: 0 20px; margin-top: 5px; margin: 15px 0; font-size: small; ">
+                                  <div class="tab-pane fade" id="v-pills-top1-cpp" role="tabpanel" aria-labelledby="v-pills-top1-cpp-tab">
+                                    <p>top1 - cpp</p>
+                                  </div>
+                                  <div class="tab-pane fade active show" id="v-pills-top1-python" role="tabpanel" aria-labelledby="v-pills-top1-python-tab">
+                                    <p>top1 - python</p>
+                                  </div>
+                                  <div class="tab-pane fade" id="v-pills-top1-java" role="tabpanel" aria-labelledby="v-pills-top1-java-tab">
+                                    <p>top1 - java</p>
+                                  </div>
+                                  <div class="tab-pane fade" id="v-pills-top1-javascript" role="tabpanel" aria-labelledby="v-pills-top1-javascript-tab">
+                                    <p>top1 - javascript</p>
+                                  </div>
+                                </div>
+                              </div>
+                          </div>
+                      </div>
+
+                      <div class="tab-pane fade" id="v-pills-top2" role="tabpanel" aria-labelledby="v-pills-top2-tab">
+                              <spen style=" font-weight: bold; color: blue; padding-bottom: 10px; font-size: 15px; text-decoration: underline; /* color: darkolivegreen; */ ">Detailed discription about our applied approch :-</spen>
+      
+                              <p style="margin: 0.2rem 0">
+                                <strong>This is some placeholder content the Profile tab's
+                                  associated content.</strong>
+                                Clicking another tab will toggle the visibility of
+                                this one for the next. The tab JavaScript swaps
+                                classes to control the content visibility and styling.
+                                You can use it with tabs, pills, and any other
+                                <code>.nav</code>-powered navigation.
+                              </p>
+                              
+                                <div class="bd-example" style="background-color: #ffffff; padding: 5px; /* margin-top: 0; */ border-radius: 5px; /* margin: 20px; */ /* margin-top: 0; */ min-height: 300px; ">
+                                    <div class="align-items-start" style="overflow: hidden">
+                                      <div class="nav d-flex flex-row nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical" style="border-radius: 2px; background-color: #fbfbf8; padding: 5px 15px; font-family: 'Philosopher';">
+                                        <button class="nav-link btn-sm" id="v-pills-top2-cpp-tab" data-bs-toggle="pill" data-bs-target="#v-pills-top2-cpp" type="button" role="tab" aria-controls="v-pills-top2-cpp" aria-selected="false">
+                                          C++
+                                        </button>
+                                        <button class="nav-link btn-sm active" id="v-pills-top2-python-tab" data-bs-toggle="pill" data-bs-target="#v-pills-top2-python" type="button" role="tab" aria-controls="v-pills-top2-python" aria-selected="true">
+                                          Python
+                                        </button>
+                                        <button class="nav-link btn-sm" id="v-pills-top2-java-tab" data-bs-toggle="pill" data-bs-target="#v-pills-top2-java" type="button" role="tab" aria-controls="v-pills-top2-java" aria-selected="false">
+                                          Java
+                                        </button>
+                                        <button class="nav-link btn-sm" id="v-pills-top2-javascript-tab" data-bs-toggle="pill" data-bs-target="#v-pills-top2-javascript" type="button" role="tab" aria-controls="v-pills-top2-javascript" aria-selected="false">
+                                          JavaScript
+                                        </button>
+                                      </div>
+                                      <div class="tab-content" id="v-pills-tabContent" style=" background-color: #ffffff; border-radius: 5px; padding: 0 20px; margin-top: 5px; margin: 15px 0; font-size: small; ">
+                                        <div class="tab-pane fade" id="v-pills-top2-cpp" role="tabpanel" aria-labelledby="v-pills-top2-cpp-tab" style="">
+                                          <p>top2 - cpp</p>
+                                        </div>
+                                        <div class="tab-pane fade  active show" id="v-pills-top2-python" role="tabpanel" aria-labelledby="v-pills-top2-python-tab">
+                                          <p>top2 - python</p>
+                                        </div>
+                                        <div class="tab-pane fade" id="v-pills-top2-java" role="tabpanel" aria-labelledby="v-pills-top2-java-tab">
+                                          <p>top2 - java</p>
+                                        </div>
+                                        <div class="tab-pane fade" id="v-pills-top2-javascript" role="tabpanel" aria-labelledby="v-pills-top2-javascript-tab">
+                                          <p>top2 - javascript</p>
+                                        </div>
+                                      </div>
+                                    </div>
+                                </div>
+                      </div>
+
+                      <div class="tab-pane fade" id="v-pills-top3" role="tabpanel" aria-labelledby="v-pills-top3-tab">
+                        <spen style=" font-weight: bold; color: blue; padding-bottom: 10px; font-size: 15px; text-decoration: underline; /* color: darkolivegreen; */ ">Detailed discription about our applied approch :-</spen>
+
+                        <p style="margin: 0.2rem 0">
+                          <strong>This is some placeholder content the Profile tab's
+                            associated content.</strong>
+                          Clicking another tab will toggle the visibility of
+                          this one for the next. The tab JavaScript swaps
+                          classes to control the content visibility and styling.
+                          You can use it with tabs, pills, and any other
+                          <code>.nav</code>-powered navigation.
+                        </p>
+                        
+                          <div class="bd-example" style="background-color: #ffffff; padding: 5px; /* margin-top: 0; */ border-radius: 5px; /* margin: 20px; */ /* margin-top: 0; */ min-height: 300px; ">
+                              <div class="align-items-start" style="overflow: hidden">
+                                <div class="nav d-flex flex-row nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical" style="border-radius: 2px; background-color: #fbfbf8; padding: 5px 15px; font-family: 'Philosopher';">
+                                  <button class="nav-link btn-sm" id="v-pills-top3-cpp-tab" data-bs-toggle="pill" data-bs-target="#v-pills-top3-cpp" type="button" role="tab" aria-controls="v-pills-top3-cpp" aria-selected="false">
+                                    C++
+                                  </button>
+                                  <button class="nav-link btn-sm active" id="v-pills-top3-python-tab" data-bs-toggle="pill" data-bs-target="#v-pills-top3-python" type="button" role="tab" aria-controls="v-pills-top3-python" aria-selected="true">
+                                    Python
+                                  </button>
+                                  <button class="nav-link btn-sm" id="v-pills-top3-java-tab" data-bs-toggle="pill" data-bs-target="#v-pills-top3-java" type="button" role="tab" aria-controls="v-pills-top3-java" aria-selected="false">
+                                    Java
+                                  </button>
+                                  <button class="nav-link btn-sm" id="v-pills-top3-javascript-tab" data-bs-toggle="pill" data-bs-target="#v-pills-top3-javascript" type="button" role="tab" aria-controls="v-pills-top3-javascript" aria-selected="false">
+                                    JavaScript
+                                  </button>
+                                </div>
+                                <div class="tab-content" id="v-pills-tabContent" style=" background-color: #ffffff; border-radius: 5px; padding: 0 20px; margin-top: 5px; margin: 15px 0; font-size: small; ">
+                                  <div class="tab-pane fade" id="v-pills-top3-cpp" role="tabpanel" aria-labelledby="v-pills-top3-cpp-tab" style="">
+                                    <p>top3 - cpp</p>
+                                  </div>
+                                  <div class="tab-pane fade active show" id="v-pills-top3-python" role="tabpanel" aria-labelledby="v-pills-top3-python-tab">
+                                    <p>top3 - python</p>
+                                  </div>
+                                  <div class="tab-pane fade" id="v-pills-top3-java" role="tabpanel" aria-labelledby="v-pills-top3-java-tab">
+                                    <p>top3 - java</p>
+                                  </div>
+                                  <div class="tab-pane fade" id="v-pills-top3-javascript" role="tabpanel" aria-labelledby="v-pills-top3-javascript-tab">
+                                    <p>top3 - javascript</p>
+                                  </div>
+                                </div>
+                              </div>
+                          </div>
+                      </div>
+
+                      <div class="tab-pane fade" id="v-pills-top4" role="tabpanel" aria-labelledby="v-pills-top4-tab">
+                              <spen style=" font-weight: bold; color: blue; padding-bottom: 10px; font-size: 15px; text-decoration: underline; /* color: darkolivegreen; */ ">Detailed discription about our applied approch :-</spen>
+      
+                              <p style="margin: 0.2rem 0">
+                                <strong>This is some placeholder content the Profile tab's
+                                  associated content.</strong>
+                                Clicking another tab will toggle the visibility of
+                                this one for the next. The tab JavaScript swaps
+                                classes to control the content visibility and styling.
+                                You can use it with tabs, pills, and any other
+                                <code>.nav</code>-powered navigation.
+                              </p>
+                              
+                                <div class="bd-example" style="background-color: #ffffff; padding: 5px; /* margin-top: 0; */ border-radius: 5px; /* margin: 20px; */ /* margin-top: 0; */ min-height: 300px; ">
+                                    <div class="align-items-start" style="overflow: hidden">
+                                      <div class="nav d-flex flex-row nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical" style="border-radius: 2px; background-color: #fbfbf8; padding: 5px 15px; font-family: 'Philosopher';">
+                                        <button class="nav-link btn-sm" id="v-pills-top4-cpp-tab" data-bs-toggle="pill" data-bs-target="#v-pills-top4-cpp" type="button" role="tab" aria-controls="v-pills-top4-cpp" aria-selected="false">
+                                          C++
+                                        </button>
+                                        <button class="nav-link btn-sm active" id="v-pills-top4-python-tab" data-bs-toggle="pill" data-bs-target="#v-pills-top4-python" type="button" role="tab" aria-controls="v-pills-top4-python" aria-selected="true">
+                                          Python
+                                        </button>
+                                        <button class="nav-link btn-sm" id="v-pills-top4-java-tab" data-bs-toggle="pill" data-bs-target="#v-pills-top4-java" type="button" role="tab" aria-controls="v-pills-top4-java" aria-selected="false">
+                                          Java
+                                        </button>
+                                        <button class="nav-link btn-sm" id="v-pills-top4-javascript-tab" data-bs-toggle="pill" data-bs-target="#v-pills-top4-javascript" type="button" role="tab" aria-controls="v-pills-top4-javascript" aria-selected="false">
+                                          JavaScript
+                                        </button>
+                                      </div>
+                                      <div class="tab-content" id="v-pills-tabContent" style=" background-color: #ffffff; border-radius: 5px; padding: 0 20px; margin-top: 5px; margin: 15px 0; font-size: small; ">
+                                        <div class="tab-pane fade" id="v-pills-top4-cpp" role="tabpanel" aria-labelledby="v-pills-top4-cpp-tab" style="">
+                                          <p>top4 - cpp</p>
+                                        </div>
+                                        <div class="tab-pane fade active show" id="v-pills-top4-python" role="tabpanel" aria-labelledby="v-pills-top4-python-tab">
+                                          <p>top4 - python</p>
+                                        </div>
+                                        <div class="tab-pane fade" id="v-pills-top4-java" role="tabpanel" aria-labelledby="v-pills-top4-java-tab">
+                                          <p>top4 - java</p>
+                                        </div>
+                                        <div class="tab-pane fade" id="v-pills-top4-javascript" role="tabpanel" aria-labelledby="v-pills-top4-javascript-tab">
+                                          <p>top4 - javascript</p>
+                                        </div>
+                                      </div>
+                                    </div>
+                                </div>
+                      </div>
+                      
+                    </div>
+                  </div>
+                </div>
+              </div>
+    </div>
+    <!--  -->
+  </div>
+</div>
+
+{% endblock %}

@@ -1,4 +1,4 @@
- 
+
 {% extends '_master.html' %}
 
 
@@ -24,28 +24,58 @@ Log In | OpenAssistant
 
 
 
-
-
  
 <div class="edge " style="background-color: #f8f8f8;background-color: #fdfdfd;">
 	<div style="padding: 25px;background-color: #f8f8f8;background-color: #fcfcfc;background-color: white;/* padding: 50px 25px; */border-radius: 10px;">
 		<div class="row">
 			<div class="col-sm-12" style="margin: 50px 0;">
-				<div class="row">
+				<div class="row" style="justify-content: center;">
 					
-
-					<div class="col-sm-3">
-					</div>
 					<!-- <div class="col-sm-6" style="text-align: center;"> -->
 					<div class="col-sm-6" style="">
-						<h1 style="font-weight: bold;"> LOG IN </h1>
+						<h1 style="font-weight: bold;"> LOG IN    (user@{{user.email}})</h1>
 						<h6>To explore this site, almost must to login first.</h6>
+						<h6>{{security.isNew}}</h6>
+						
+						<!-- <p><a href="/security/logout/" class="px-4">logout</a></p> -->
 						<br><br>
 
 
 						<form class="row row-cols-lg-auto g-3 align-items-center"  method="POST" action="{{request.path}}">
                         				{% csrf_token %}
+
+						
 							<div class="row">
+
+								
+								{% load socialaccount %}
+								
+								<div class="col-12 g-4 p-2" style="display: inline-flex;font-size: x-large;place-content: center;background-image: linear-gradient(90deg, #fa5560 40%, #b14bf4 50%, #4d91ff 60%);color: white !important;!i;!;border-radius: 50px;margin: 20px 0; margin-bottom: 50px; border: 2px solid #4d91ff;">
+									<a href="{% provider_login_url 'google' %}" class="px-4 brands"><i class="fa-brands fa-google"></i></a>
+									<a href="#" class="px-4 brands"><i class="fa-brands fa-facebook"></i></a>
+									<a href="#" class="px-4 brands"><i class="fa-brands fa-github"></i></a>
+									<a href="#" class="px-4 brands"><i class="fa-brands fa-linkedin"></i></a>
+									<a href="#" class="px-4 brands"><i class="fa-brands fa-discord"></i></a>
+									<a href="#" class="px-4 brands"><i class="fa-brands fa-apple"></i></a>
+									<a href="#" class="px-4 brands"><i class="fa-brands fa-docker"></i></a>
+									<style>
+										.brands{
+											cursor: pointer;
+											color: white;
+											border-radius: 2px 20px;
+											/* background-color: #f5f5f55f; */
+											/* padding: 2px 15px; */
+										}
+										.brands:hover{
+											color: white;
+											background-color: #ffffff3e;
+										}
+									</style>
+								</div>
+
+								
+
+								
 								<div class="col-12">
 									<div class="row">
 										<div class="col-12 g-2">
@@ -98,6 +128,8 @@ Log In | OpenAssistant
 									</div>
 								</div>
 								<br>
+
+								<!-- <div class="col-12 g-5"> -->
 								<div class="col-12 g-5">
 									<div class="form-check">
 										<input class="form-check-input" type="checkbox" name="check" id="check" {% if values.check %} checked {% endif %}>
@@ -122,10 +154,28 @@ Log In | OpenAssistant
 										<a href="/security/signup/" style="font-weight: bold;">SignUp</a>
 									</div>
 								</div>
+
+								<!-- <div class="col-12 g-4" style="display: inline-flex;font-size: xx-large;place-content: center;background-image: linear-gradient(90deg, #fa5560 40%, #b14bf4 50%, #4d91ff 60%);color: white !important;!i;!;border-radius: 50px;margin: 20px 0; padding: 5px;">
+									<a href="#" class="px-2 m-2 brands"><i class="fa-brands fa-google"></i></a>
+									<a href="#" class="px-2 m-2 brands"><i class="fa-brands fa-facebook"></i></a>
+									<a href="#" class="px-2 m-2 brands"><i class="fa-brands fa-github"></i></a>
+									<style>
+										.brands{
+											cursor: pointer;
+											color: white;
+											border-radius: 10px;
+											/* background-color: #f5f5f55f; */
+											/* padding: 2px 15px; */
+										}
+										.brands:hover{
+											color: white;
+											background-color: #ffffff3e;
+										}
+									</style>
+								</div> -->
+
 							</div>
 						</form>
-					</div>
-					<div class="col-sm-3">
 					</div>
 				</div>
 			</div>
